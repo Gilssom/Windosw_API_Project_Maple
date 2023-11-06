@@ -1,10 +1,9 @@
 ﻿// Editor_Window.cpp : 애플리케이션에 대한 진입점을 정의합니다.
 //
 
-// Project Test
-
 #include "framework.h"
 #include "Editor_Window.h"
+#include "CommonInclude.h"
 
 #define MAX_LOADSTRING 100
 
@@ -19,10 +18,11 @@ BOOL                InitInstance(HINSTANCE, int);
 LRESULT CALLBACK    WndProc(HWND, UINT, WPARAM, LPARAM);
 INT_PTR CALLBACK    About(HWND, UINT, WPARAM, LPARAM);
 
-int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
-                     _In_opt_ HINSTANCE hPrevInstance,
-                     _In_ LPWSTR    lpCmdLine,
-                     _In_ int       nCmdShow)
+int APIENTRY wWinMain(_In_ HINSTANCE hInstance,         // 프로그램의 인스턴스 핸들
+                     _In_opt_ HINSTANCE hPrevInstance,  // 바로 앞에 실행된 현재 프로그램의 인스턴스 핸들, 없을경우 null 
+                                                        //(호환성 문제로 사용하지 않음)
+                     _In_ LPWSTR    lpCmdLine,          // 명령행 으로 입력된 프로그램 인수
+                     _In_ int       nCmdShow)           // 프로그램이 실행될 형태, 보통 모양 정보 등이 전달된다.
 {
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);

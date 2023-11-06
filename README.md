@@ -4,8 +4,7 @@
 <br>
 <br>
 
-
-![image](https://github.com/Gilssom/Windosw_API_Project_Terraria/assets/83547233/e075b526-d412-4524-ae55-16f6d6dcb2e4) <br>
+![image](https://github.com/Gilssom/Windosw_API_Project_Terraria/assets/83547233/c1d60900-4ada-4c2a-8109-54eaf44a41ec) <br>
 <br>
 <br>
 
@@ -14,19 +13,23 @@
 
 :loudspeaker: **11/05 기준 게임 목표** <br>
 **1. 집을 지을 수 있는 규모의 프로젝트** <br>
-![image](https://github.com/Gilssom/Windosw_API_Project_Terraria/assets/83547233/f37ca9f5-14c4-4a63-b904-30225b62e614) <br>
+![image](https://github.com/Gilssom/Windosw_API_Project_Terraria/assets/83547233/5b6c0ec8-aca2-4c9c-bd05-ef06fe619f5a) <br>
+<br>
 <br>
 
 **2. 보스와의 전투가 가능한 규모의 프로젝트** <br>
-![image](https://github.com/Gilssom/Windosw_API_Project_Terraria/assets/83547233/c5a6c35a-63e9-4a71-bb2e-58d7ed6f0f57) <br>
+![image](https://github.com/Gilssom/Windosw_API_Project_Terraria/assets/83547233/c1c91f1d-8e0c-4afd-859e-f42b1194bea2) <br>
+<br>
 <br>
 
 **3. 아이템의 조합법과 제작을 할 수 있는 규모의 프로젝트** <br>
-![image](https://github.com/Gilssom/Windosw_API_Project_Terraria/assets/83547233/a22ffdc4-60a5-4fd5-938a-0008c4c52a44) <br>
+![image](https://github.com/Gilssom/Windosw_API_Project_Terraria/assets/83547233/5fbb5f99-86ee-4346-b1fe-aa67789a1828) <br>
+<br>
 <br>
 
 **4. Npc와 대화가 가능하고 AI 가 붙어있는 규모의 프로젝트** <br>
-![image](https://github.com/Gilssom/Windosw_API_Project_Terraria/assets/83547233/1d2a975f-85eb-4baa-93a2-fe310f76e186) <br>
+![image](https://github.com/Gilssom/Windosw_API_Project_Terraria/assets/83547233/a2496cd2-901d-436d-910b-c15a4d4bba2f) <br>
+<br>
 <br>
 
 

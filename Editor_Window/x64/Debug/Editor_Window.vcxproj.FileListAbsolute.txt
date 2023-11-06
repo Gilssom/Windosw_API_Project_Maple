@@ -1,1 +1,2 @@
 C:\Users\gil52\OneDrive\문서\GitHub\Windosw_API_Project_Terraria\Editor_Window\x64\Debug\Editor_Window.exe
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\Editor_Window\x64\Debug\Editor_Window.exe

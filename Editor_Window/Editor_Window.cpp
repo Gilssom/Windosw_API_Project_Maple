@@ -3,7 +3,10 @@
 
 #include "framework.h"
 #include "Editor_Window.h"
-#include "CommonInclude.h"
+
+#include "../WinAPI_Source/YH_Application.h"
+
+Application App;
 
 #define MAX_LOADSTRING 100
 
@@ -28,6 +31,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,         // 프로그램의 인�
     UNREFERENCED_PARAMETER(lpCmdLine);
 
     // TODO: 여기에 코드를 입력합니다.
+    
+    // 정적 라이브러리 생성 및 해당 코드 실행
+    App.Test();
 
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
@@ -44,15 +50,43 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,         // 프로그램의 인�
 
     MSG msg;
 
+    // GetMessage(&msg, nullptr, 0, 0)
+    // 프로세스에서 발생한 메세지를 메세지 큐에서 가져오는 함수
+    // 메세지큐에 아무것도 없다면? 아무 메세지도 가져오지 않게 된다.
+
+    // PeekMessage : 메세지큐에 메세지 유무에 상관없이 함수가 리턴된다.
+    //                리턴 값이 true 인 경우 메세지가 있고,
+    //                          false 인 경우는 메세지가 없다 라고 가르켜준다.
+
+    while (true)
+    {
+        if (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE))
+        {
+            if (msg.message == WM_QUIT)
+                break;
+
+            if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
+            {
+                TranslateMessage(&msg);
+                DispatchMessage(&msg);
+            }
+        }
+        else
+        {
+            // 메세지가 없을 경우 여기서 처리
+            // 게임 로직이 들어가면 된다.
+        }
+    }
+
     // 기본 메시지 루프입니다:
-    while (GetMessage(&msg, nullptr, 0, 0))
+    /*while (GetMessage(&msg, nullptr, 0, 0))
     {
         if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
         {
             TranslateMessage(&msg);
             DispatchMessage(&msg);
         }
-    }
+    }*/
 
     return (int) msg.wParam;
 }
@@ -100,8 +134,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
+   // 2개 이상의 윈도우도 생성이 가능하다.
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, CW_USEDEFAULT, 0, nullptr, nullptr, hInstance, nullptr);
+      CW_USEDEFAULT, 0, 1600, 900, nullptr, nullptr, hInstance, nullptr);
 
    if (!hWnd)
    {
@@ -147,8 +182,42 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
         break;
     case WM_PAINT:
         {
+            // DC란 화면 위 출력에 필요한 모든 정보를 가지는 데이터 구조체이며
+            // GDI 모듈에 의해서 관리된다.
+            // 어떤 폰트, 선의 굵기, 색상으로 그릴 것인지
+            // 화면 출력에 필요한 모든 경우는 WinAPI 에서는 DC 를 통해서 작업을 진행할 수 있다.
+
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hWnd, &ps);
+
+            HBRUSH brush = CreateSolidBrush(RGB(125, 255, 255));
+            HBRUSH oldbrush = (HBRUSH)SelectObject(hdc, brush);
+
+            Rectangle(hdc, 100, 100, 200, 200);
+
+            SelectObject(hdc, oldbrush);
+
+            Rectangle(hdc, 800, 800, 900, 900);
+
+            DeleteObject(brush);
+
+            HPEN redPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
+            HPEN oldPen = (HPEN)SelectObject(hdc, redPen);
+
+            Ellipse(hdc, 200, 200, 700, 700);
+
+            SelectObject(hdc, oldPen);
+            DeleteObject(redPen);
+
+            // 기본으로 자주 사용되는 GDI 오브젝트를 미리 DC 안에 만들어뒀는데
+            // 그 오브젝트들을 Stock Object 라고 한다.
+            HBRUSH graybrush = (HBRUSH)GetStockObject(GRAY_BRUSH);
+            oldbrush = (HBRUSH)SelectObject(hdc, graybrush);
+
+            Rectangle(hdc, 300, 300, 500, 500);
+
+            SelectObject(hdc, oldbrush);
+
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
             EndPaint(hWnd, &ps);
         }

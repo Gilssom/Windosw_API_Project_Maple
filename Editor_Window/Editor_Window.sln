@@ -5,6 +5,10 @@ VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Editor_Window", "Editor_Window.vcxproj", "{9B70B463-BA60-4DDA-8EC1-7159D8EBAF78}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinAPI_Engine", "..\WinAPI_Engine\WinAPI_Engine.vcxproj", "{C21BA7C1-A47E-4F78-89E9-F5E24F6B9924}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "WinAPI_Source", "..\WinAPI_Source\WinAPI_Source.vcxitems", "{22971AA3-D5D2-431D-A661-76E6C91A86A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -21,11 +25,24 @@ Global
 		{9B70B463-BA60-4DDA-8EC1-7159D8EBAF78}.Release|x64.Build.0 = Release|x64
 		{9B70B463-BA60-4DDA-8EC1-7159D8EBAF78}.Release|x86.ActiveCfg = Release|Win32
 		{9B70B463-BA60-4DDA-8EC1-7159D8EBAF78}.Release|x86.Build.0 = Release|Win32
+		{C21BA7C1-A47E-4F78-89E9-F5E24F6B9924}.Debug|x64.ActiveCfg = Debug|x64
+		{C21BA7C1-A47E-4F78-89E9-F5E24F6B9924}.Debug|x64.Build.0 = Debug|x64
+		{C21BA7C1-A47E-4F78-89E9-F5E24F6B9924}.Debug|x86.ActiveCfg = Debug|Win32
+		{C21BA7C1-A47E-4F78-89E9-F5E24F6B9924}.Debug|x86.Build.0 = Debug|Win32
+		{C21BA7C1-A47E-4F78-89E9-F5E24F6B9924}.Release|x64.ActiveCfg = Release|x64
+		{C21BA7C1-A47E-4F78-89E9-F5E24F6B9924}.Release|x64.Build.0 = Release|x64
+		{C21BA7C1-A47E-4F78-89E9-F5E24F6B9924}.Release|x86.ActiveCfg = Release|Win32
+		{C21BA7C1-A47E-4F78-89E9-F5E24F6B9924}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0B014FF1-6E93-4C58-89E1-B1220FD189F7}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\WinAPI_Source\WinAPI_Source.vcxitems*{22971aa3-d5d2-431d-a661-76e6c91a86a5}*SharedItemsImports = 9
+		..\WinAPI_Source\WinAPI_Source.vcxitems*{9b70b463-ba60-4dda-8ec1-7159d8ebaf78}*SharedItemsImports = 4
+		..\WinAPI_Source\WinAPI_Source.vcxitems*{c21ba7c1-a47e-4f78-89e9-f5e24f6b9924}*SharedItemsImports = 4
 	EndGlobalSection
 EndGlobal

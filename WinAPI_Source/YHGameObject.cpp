@@ -2,7 +2,7 @@
 
 namespace YH
 {
-	GameObject::GameObject()
+	GameObject::GameObject() : m_X(0), m_Y(0)
 	{
 
 	}
@@ -16,70 +16,31 @@ namespace YH
 		if (type == 0)
 		{
 			if (GetAsyncKeyState(VK_LEFT) & 0x8000)
-			{
 				m_X -= 0.01f;
-			}
 
 			if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
-			{
 				m_X += 0.01f;
-			}
 
 			if (GetAsyncKeyState(VK_UP) & 0x8000)
-			{
 				m_Y -= 0.01f;
-			}
 
 			if (GetAsyncKeyState(VK_DOWN) & 0x8000)
-			{
 				m_Y += 0.01f;
-			}
 		}
 
 		if (type == 1)
 		{
 			if (GetAsyncKeyState('A') & 0x8000)
-			{
 				m_X -= 0.01f;
-			}
 
 			if (GetAsyncKeyState('D') & 0x8000)
-			{
 				m_X += 0.01f;
-			}
 
 			if (GetAsyncKeyState('W') & 0x8000)
-			{
 				m_Y -= 0.01f;
-			}
 
 			if (GetAsyncKeyState('S') & 0x8000)
-			{
 				m_Y += 0.01f;
-			}
-		}
-
-		if (type == 2)
-		{
-			if (GetAsyncKeyState('H') & 0x8000)
-			{
-				m_X -= 0.01f;
-			}
-
-			if (GetAsyncKeyState('K') & 0x8000)
-			{
-				m_X += 0.01f;
-			}
-
-			if (GetAsyncKeyState('U') & 0x8000)
-			{
-				m_Y -= 0.01f;
-			}
-
-			if (GetAsyncKeyState('J') & 0x8000)
-			{
-				m_Y += 0.01f;
-			}
 		}
 	}
 	void GameObject::LateUpdate()
@@ -114,36 +75,32 @@ namespace YH
 
 			DeleteObject(brush);
 		}
+	}
 
-		if (type == 2)
-		{
-			HBRUSH brush = CreateSolidBrush(RGB(0, 255, 0));
+	void GameObject::MonsterRender(HDC hdc)
+	{
+		HBRUSH brush = CreateSolidBrush(RGB(255, 0, 0));
 
-			HBRUSH oldbrush = (HBRUSH)SelectObject(hdc, brush);
+		HBRUSH oldbrush = (HBRUSH)SelectObject(hdc, brush);
 
-			Rectangle(hdc, 100 + m_X, 100 + m_Y, 200 + m_X, 200 + m_Y);
+		Ellipse(hdc, 100 + m_X, 100 + m_Y, 200 + m_X, 200 + m_Y);
 
-			SelectObject(hdc, oldbrush);
+		SelectObject(hdc, oldbrush);
 
-			DeleteObject(brush);
-		}
+		DeleteObject(brush);
+	}
+	void GameObject::MonsterMoving()
+	{
+		int nx = rand() % 3;
+		int ny = rand() % 3;
 
-		//HPEN redPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
-		//HPEN oldPen = (HPEN)SelectObject(m_Hdc, redPen);
+		if (nx == ny)
+			return;
 
-		//Ellipse(m_Hdc, 800, 80, 850, 300);
-		////Ellipse(m_Hdc, 10, 10, 50, 50);
+		if (m_X + dir[nx] < -100 || m_X + dir[nx] > 1500 || m_Y + dir[ny] < -100 || m_Y + dir[ny] > 800)
+			return;
 
-		//SelectObject(m_Hdc, oldPen);
-		//DeleteObject(redPen);
-
-		//// 기본으로 자주 사용되는 GDI 오브젝트를 미리 DC 안에 만들어뒀는데
-		//// 그 오브젝트들을 Stock Object 라고 한다.
-		//HBRUSH graybrush = (HBRUSH)GetStockObject(GRAY_BRUSH);
-		//oldbrush = (HBRUSH)SelectObject(m_Hdc, graybrush);
-
-		//Rectangle(m_Hdc, 800, 100, 900, 400);
-
-		//SelectObject(m_Hdc, oldbrush);
+		m_X += dir[nx];
+		m_Y += dir[ny];
 	}
 }

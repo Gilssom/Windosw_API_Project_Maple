@@ -1,2 +1,36 @@
-﻿  YH_Application.cpp
-  WinAPI_Engine.vcxproj -> C:\Users\gil52\OneDrive\문서\GitHub\Windosw_API_Project_Terraria\Editor_Window\x64\Debug\WinAPI_Engine.lib
+﻿  YHGameObject.cpp
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YHGameObject.cpp(59,56): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YHGameObject.cpp(59,45): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YHGameObject.cpp(59,34): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YHGameObject.cpp(59,23): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YHGameObject.cpp(72,54): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YHGameObject.cpp(72,43): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YHGameObject.cpp(72,32): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YHGameObject.cpp(72,21): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YHGameObject.cpp(86,53): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YHGameObject.cpp(86,42): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YHGameObject.cpp(86,31): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YHGameObject.cpp(86,20): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  YH_Application.cpp
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Application.cpp(24,64): warning C4244: '인수': '_Ty2'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              _Ty2=int
+          ]
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Application.cpp(24,42): warning C4244: '인수': '_Ty1'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              _Ty1=int
+          ]
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Application.cpp(25,67): warning C4244: '인수': '_Ty2'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              _Ty2=int
+          ]
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Application.cpp(25,44): warning C4244: '인수': '_Ty1'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+          with
+          [
+              _Ty1=int
+          ]
+  코드를 생성하고 있습니다...
+  WinAPI_Engine.vcxproj -> C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\Editor_Window\x64\Debug\WinAPI_Engine.lib

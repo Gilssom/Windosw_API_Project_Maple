@@ -134,7 +134,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    // 2개 이상의 윈도우도 생성이 가능하다.
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
-      CW_USEDEFAULT, 0, 1600, 900, nullptr, nullptr, hInstance, nullptr);
+       CW_USEDEFAULT, 0, 1600, 900, nullptr, nullptr, hInstance, nullptr);
 
    App.Initialize(hWnd);
 

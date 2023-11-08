@@ -13,6 +13,9 @@ namespace YH
 		void LateUpdate();
 		void Render(HDC hdc, int type);
 
+		void MonsterRender(HDC hdc);
+		void MonsterMoving();
+
 		void SetPosition(float x, float y)
 		{
 			m_X = x;
@@ -26,5 +29,8 @@ namespace YH
 		// 게임오브젝트의 좌표
 		float m_X;
 		float m_Y;
+
+		// 몬스터 움직임 좌표
+		float dir[3] = { -0.4f, 0, 0.4f };
 	};
 }

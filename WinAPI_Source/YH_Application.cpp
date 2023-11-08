@@ -2,7 +2,7 @@
 
 namespace YH
 {
-	Application::Application() : m_Hand(nullptr), m_Hdc(nullptr), m_Speed(0), v(0)
+	Application::Application() : m_Hand(nullptr), m_Hdc(nullptr), m_Speed(0), m_PlayerVec(0), m_MonsterVec(0)
 	{
 
 	}
@@ -16,12 +16,15 @@ namespace YH
 		m_Hand = hwnd;
 		m_Hdc = GetDC(m_Hand);
 
-		v = { {0,0},{600,300},{100,200} };
+		m_PlayerVec = { {0,0},{600,300} };
+		m_MonsterVec = { {100,200},{800,450} };
 
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 2; i++)
 		{
-			m_Player[i].SetPosition(v[i].first, v[i].second);
+			m_Player[i].SetPosition(m_PlayerVec[i].first, m_PlayerVec[i].second);
+			m_Monster[i].SetPosition(m_MonsterVec[i].first, m_MonsterVec[i].second);
 		}
+
 	}
 	void Application::Run()
 	{
@@ -32,10 +35,12 @@ namespace YH
 
 	void Application::Update()
 	{
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 2; i++)
 		{
 			m_Player[i].Update(i);
+			m_Monster[i].MonsterMoving();
 		}
+
 	}
 	void Application::LateUpdate()
 	{
@@ -44,9 +49,10 @@ namespace YH
 
 	void Application::Render()
 	{
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 2; i++)
 		{
 			m_Player[i].Render(m_Hdc, i);
+			m_Monster[i].MonsterRender(m_Hdc);
 		}
 	}
 }

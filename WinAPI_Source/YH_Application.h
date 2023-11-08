@@ -25,7 +25,10 @@ namespace YH
 
 		float m_Speed;
 
-		std::vector<std::pair<int, int>> v;
+		std::vector<std::pair<int, int>> m_PlayerVec;
 		GameObject m_Player[3];
+
+		std::vector<std::pair<int, int>> m_MonsterVec;
+		GameObject m_Monster[3];
 	};
 }

@@ -6,7 +6,7 @@
 
 #include "../WinAPI_Source/YH_Application.h"
 
-Application App;
+YH::Application App;
 
 #define MAX_LOADSTRING 100
 
@@ -31,9 +31,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,         // 프로그램의 인�
     UNREFERENCED_PARAMETER(lpCmdLine);
 
     // TODO: 여기에 코드를 입력합니다.
-    
-    // 정적 라이브러리 생성 및 해당 코드 실행
-    App.Test();
 
     // 전역 문자열을 초기화합니다.
     LoadStringW(hInstance, IDS_APP_TITLE, szTitle, MAX_LOADSTRING);
@@ -75,6 +72,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,         // 프로그램의 인�
         {
             // 메세지가 없을 경우 여기서 처리
             // 게임 로직이 들어가면 된다.
+            App.Run();
         }
     }
 
@@ -138,6 +136,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    HWND hWnd = CreateWindowW(szWindowClass, szTitle, WS_OVERLAPPEDWINDOW,
       CW_USEDEFAULT, 0, 1600, 900, nullptr, nullptr, hInstance, nullptr);
 
+   App.Initialize(hWnd);
+
    if (!hWnd)
    {
       return FALSE;
@@ -188,35 +188,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
             // 화면 출력에 필요한 모든 경우는 WinAPI 에서는 DC 를 통해서 작업을 진행할 수 있다.
 
             PAINTSTRUCT ps;
-            HDC hdc = BeginPaint(hWnd, &ps);
-
-            HBRUSH brush = CreateSolidBrush(RGB(125, 255, 255));
-            HBRUSH oldbrush = (HBRUSH)SelectObject(hdc, brush);
-
-            Rectangle(hdc, 100, 100, 200, 200);
-
-            SelectObject(hdc, oldbrush);
-
-            Rectangle(hdc, 800, 800, 900, 900);
-
-            DeleteObject(brush);
-
-            HPEN redPen = CreatePen(PS_SOLID, 2, RGB(255, 0, 0));
-            HPEN oldPen = (HPEN)SelectObject(hdc, redPen);
-
-            Ellipse(hdc, 200, 200, 700, 700);
-
-            SelectObject(hdc, oldPen);
-            DeleteObject(redPen);
-
-            // 기본으로 자주 사용되는 GDI 오브젝트를 미리 DC 안에 만들어뒀는데
-            // 그 오브젝트들을 Stock Object 라고 한다.
-            HBRUSH graybrush = (HBRUSH)GetStockObject(GRAY_BRUSH);
-            oldbrush = (HBRUSH)SelectObject(hdc, graybrush);
-
-            Rectangle(hdc, 300, 300, 500, 500);
-
-            SelectObject(hdc, oldbrush);
+            HDC hdc = BeginPaint(hWnd, &ps);      
 
             // TODO: 여기에 hdc를 사용하는 그리기 코드를 추가합니다...
             EndPaint(hWnd, &ps);

@@ -30,7 +30,7 @@ namespace YH
 		float m_X;
 		float m_Y;
 
-		// 몬스터 움직임 좌표
-		float dir[3] = { -0.4f, 0, 0.4f };
+		// 몬스터 움직임 좌표 및 속도
+		float dir[3] = { -0.5f, 0, 0.5f };
 	};
 }

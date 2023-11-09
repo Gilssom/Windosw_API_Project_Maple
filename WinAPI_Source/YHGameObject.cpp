@@ -1,4 +1,5 @@
 #include "YHGameObject.h"
+#include "YHInput.h"
 
 namespace YH
 {
@@ -15,31 +16,31 @@ namespace YH
 	{
 		if (type == 0)
 		{
-			if (GetAsyncKeyState(VK_LEFT) & 0x8000)
+			if (Input::GetKey(KeyCode::A))
 				m_X -= 0.01f;
 
-			if (GetAsyncKeyState(VK_RIGHT) & 0x8000)
+			if (Input::GetKey(KeyCode::D))
 				m_X += 0.01f;
 
-			if (GetAsyncKeyState(VK_UP) & 0x8000)
+			if (Input::GetKey(KeyCode::W))
 				m_Y -= 0.01f;
 
-			if (GetAsyncKeyState(VK_DOWN) & 0x8000)
+			if (Input::GetKey(KeyCode::S))
 				m_Y += 0.01f;
 		}
 
 		if (type == 1)
 		{
-			if (GetAsyncKeyState('A') & 0x8000)
+			if (Input::GetKey(KeyCode::Left))
 				m_X -= 0.01f;
 
-			if (GetAsyncKeyState('D') & 0x8000)
+			if (Input::GetKey(KeyCode::Right))
 				m_X += 0.01f;
 
-			if (GetAsyncKeyState('W') & 0x8000)
+			if (Input::GetKey(KeyCode::Up))
 				m_Y -= 0.01f;
 
-			if (GetAsyncKeyState('S') & 0x8000)
+			if (Input::GetKey(KeyCode::Down))
 				m_Y += 0.01f;
 		}
 	}

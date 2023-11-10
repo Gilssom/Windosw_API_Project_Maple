@@ -1,5 +1,6 @@
 #include "YHGameObject.h"
 #include "YHInput.h"
+#include "YHTime.h"
 
 namespace YH
 {
@@ -14,19 +15,21 @@ namespace YH
 
 	void GameObject::Update(int type)
 	{
+		const int speed = 100.0f;
+
 		if (type == 0)
 		{
 			if (Input::GetKey(KeyCode::A))
-				m_X -= 0.01f;
+				m_X -= speed * Time::DeltaTime();
 
 			if (Input::GetKey(KeyCode::D))
-				m_X += 0.01f;
+				m_X += speed * Time::DeltaTime();
 
 			if (Input::GetKey(KeyCode::W))
-				m_Y -= 0.01f;
+				m_Y -= speed * Time::DeltaTime();
 
 			if (Input::GetKey(KeyCode::S))
-				m_Y += 0.01f;
+				m_Y += speed * Time::DeltaTime();
 		}
 
 		if (type == 1)

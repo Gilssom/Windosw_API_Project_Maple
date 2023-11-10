@@ -11,7 +11,7 @@ namespace YH
 		Application();
 		~Application();
 
-		void Initialize(HWND hwnd);
+		void Initialize(HWND hwnd, UINT width, UINT height);
 		void Run();
 
 		void Update();
@@ -22,6 +22,12 @@ namespace YH
 	private:
 		HWND m_Hand;
 		HDC m_Hdc;
+
+		HDC m_BackHdc;
+		HBITMAP m_BackBitmap;
+
+		UINT m_Width;
+		UINT m_Height;
 
 		float m_Speed;
 

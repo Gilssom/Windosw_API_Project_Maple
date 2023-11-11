@@ -1,10 +1,12 @@
 #include "YHGameObject.h"
 #include "YHInput.h"
 #include "YHTime.h"
+#include "YHRocket.h"
+#include "YH_Application.h"
 
 namespace YH
 {
-	GameObject::GameObject() : m_X(0), m_Y(0)
+	GameObject::GameObject() : m_X(0), m_Y(0), m_LookState(Lookfor::None)
 	{
 
 	}
@@ -20,16 +22,29 @@ namespace YH
 		if (type == 0)
 		{
 			if (Input::GetKey(KeyCode::A))
+			{
 				m_X -= speed * Time::DeltaTime();
+				m_LookState = Lookfor::Left;
+			}
 
 			if (Input::GetKey(KeyCode::D))
+			{
 				m_X += speed * Time::DeltaTime();
+				m_LookState = Lookfor::Right;
+			}
 
 			if (Input::GetKey(KeyCode::W))
+			{
 				m_Y -= speed * Time::DeltaTime();
+				m_LookState = Lookfor::Up;
+			}
+				
 
 			if (Input::GetKey(KeyCode::S))
+			{
 				m_Y += speed * Time::DeltaTime();
+				m_LookState = Lookfor::Down;
+			}		
 		}
 
 		if (type == 1)
@@ -73,7 +88,7 @@ namespace YH
 
 			HBRUSH oldbrush = (HBRUSH)SelectObject(hdc, brush);
 
-			Ellipse(hdc, 100 + m_X, 100 + m_Y, 200 + m_X, 200 + m_Y);
+			Ellipse(hdc, 0 + m_X, 0 + m_Y, 50 + m_X, 50 + m_Y);
 
 			SelectObject(hdc, oldbrush);
 
@@ -93,6 +108,7 @@ namespace YH
 
 		DeleteObject(brush);
 	}
+
 	void GameObject::MonsterMoving()
 	{
 		int nx = rand() % 3;

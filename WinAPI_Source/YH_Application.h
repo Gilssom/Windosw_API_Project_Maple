@@ -36,5 +36,7 @@ namespace YH
 
 		std::vector<std::pair<int, int>> m_MonsterVec;
 		GameObject m_Monster[3];
+
+		std::vector<Rocket*> m_RocketArray;
 	};
 }

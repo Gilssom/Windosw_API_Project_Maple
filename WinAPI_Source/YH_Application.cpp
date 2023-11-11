@@ -1,6 +1,7 @@
 #include "YH_Application.h"
 #include "YHInput.h"
 #include "YHTime.h"
+#include "YHRocket.h"
 
 namespace YH
 {
@@ -43,9 +44,10 @@ namespace YH
 		Input::Initailize();
 		Time::Initailize();
 
+		m_Player[0].SetPosition(m_PlayerVec[0].first, m_PlayerVec[0].second);
+
 		for (int i = 0; i < 2; i++)
 		{
-			m_Player[i].SetPosition(m_PlayerVec[i].first, m_PlayerVec[i].second);
 			m_Monster[i].SetPosition(m_MonsterVec[i].first, m_MonsterVec[i].second);
 		}
 	}
@@ -62,9 +64,31 @@ namespace YH
 		Input::Update();
 		Time::Update();
 
+		m_Player[0].Update(0);
+
+#pragma region 미사일 발사
+		if (m_Player[0].isAttack())
+		{
+			Rocket* r = new Rocket();
+
+			m_RocketArray.push_back(r);
+
+			int state = static_cast<int>(m_Player[0].m_LookState);
+
+			r->CreateRocket(m_Player[0].GetPositionX(), m_Player[0].GetPositionY(), state);
+		}
+
+		for (int i = 0; i < m_RocketArray.size(); i++)
+		{
+			if (m_RocketArray[i]->AreaOutCheck())
+				continue;
+
+			m_RocketArray[i]->Update();
+		}
+#pragma endregion	
+
 		for (int i = 0; i < 2; i++)
 		{
-			m_Player[i].Update(i);
 			m_Monster[i].MonsterMoving();
 		}
 	}
@@ -79,9 +103,20 @@ namespace YH
 
 		Time::Render(m_BackHdc);
 
+#pragma region 미사일 발사
+		for (int i = 0; i < m_RocketArray.size(); i++)
+		{
+			if (m_RocketArray[i]->AreaOutCheck())
+				continue;
+
+			m_RocketArray[i]->RocketRender(m_BackHdc);
+		}
+#pragma endregion
+
+		m_Player[0].Render(m_BackHdc, 0);
+
 		for (int i = 0; i < 2; i++)
 		{
-			m_Player[i].Render(m_BackHdc, i);
 			m_Monster[i].MonsterRender(m_BackHdc);
 		}
 

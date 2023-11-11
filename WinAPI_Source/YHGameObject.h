@@ -1,8 +1,15 @@
 #pragma once
 #include "CommonInclude.h"
+#include "YHRocket.h"
+#include "YHInput.h"
 
 namespace YH
 {
+	enum class Lookfor
+	{
+		Left, Right, Up, Down, None,
+	};
+
 	class GameObject
 	{
 	public:
@@ -25,6 +32,10 @@ namespace YH
 		float GetPositionX() { return m_X; }
 		float GetPositionY() { return m_Y; }
 
+		// 미사일 발사
+		bool isAttack() { return Input::GetKeyDown(KeyCode::Space); }
+
+		Lookfor m_LookState;
 	private:
 		// 게임오브젝트의 좌표
 		float m_X;

@@ -37,7 +37,7 @@ namespace YH
 
 		// wchar 초기화 방법
 		wchar_t str[50] = L"";
-		swprintf_s(str, 50, L"Time : %d", (int)fps);
+		swprintf_s(str, 50, L"Time : %f", time);
 		int len = wcsnlen_s(str, 50);
 
 		TextOut(hdc, 0, 0, str, len);

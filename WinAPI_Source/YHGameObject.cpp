@@ -75,7 +75,7 @@ namespace YH
 
 			HBRUSH oldbrush = (HBRUSH)SelectObject(hdc, brush);
 
-			Rectangle(hdc, 100 + m_X, 100 + m_Y, 200 + m_X, 200 + m_Y);
+			Rectangle(hdc, m_X, m_Y, 100 + m_X, 100 + m_Y);
 
 			SelectObject(hdc, oldbrush);
 
@@ -88,7 +88,7 @@ namespace YH
 
 			HBRUSH oldbrush = (HBRUSH)SelectObject(hdc, brush);
 
-			Ellipse(hdc, 0 + m_X, 0 + m_Y, 50 + m_X, 50 + m_Y);
+			Ellipse(hdc, m_X, m_Y, 50 + m_X, 50 + m_Y);
 
 			SelectObject(hdc, oldbrush);
 

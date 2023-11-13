@@ -49,7 +49,7 @@ namespace YH
 
 			HBRUSH oldbrush = (HBRUSH)SelectObject(hdc, brush);
 
-			Ellipse(hdc, 125 + m_X, 125 + m_Y, 175 + m_X, 175 + m_Y);
+			Ellipse(hdc, 25 + m_X, 25 + m_Y, 75 + m_X, 75 + m_Y);
 
 			SelectObject(hdc, oldbrush);
 

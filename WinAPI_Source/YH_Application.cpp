@@ -2,11 +2,12 @@
 #include "YHInput.h"
 #include "YHTime.h"
 #include "YHRocket.h"
+#include "YH_SceneManager.h"
 
 namespace YH
 {
 	Application::Application() : m_Hand(nullptr), m_Hdc(nullptr), m_Speed(0), m_PlayerVec(0), m_MonsterVec(0),
-		m_Width(0), m_Height(0), m_BackHdc(nullptr), m_BackBitmap(nullptr)
+		m_Width(0), m_Height(0), m_BackHdc(nullptr), m_BackBitmap(nullptr), m_RocketArray{ }
 	{
 
 	}
@@ -41,10 +42,9 @@ namespace YH
 		m_PlayerVec = { {0,0},{600,300} };
 		m_MonsterVec = { {100,200},{800,450} };
 
+		SceneManager::Initialize();
 		Input::Initailize();
 		Time::Initailize();
-
-		m_Player[0].SetPosition(m_PlayerVec[0].first, m_PlayerVec[0].second);
 
 		for (int i = 0; i < 2; i++)
 		{
@@ -61,21 +61,22 @@ namespace YH
 
 	void Application::Update()
 	{
+		SceneManager::Update();
 		Input::Update();
 		Time::Update();
 
-		m_Player[0].Update(0);
-
 #pragma region 미사일 발사
-		if (m_Player[0].isAttack())
+		GameObject* obj = SceneManager::GetScene()->GetGameObject();
+
+		if (obj->isAttack())
 		{
 			Rocket* r = new Rocket();
 
 			m_RocketArray.push_back(r);
 
-			int state = static_cast<int>(m_Player[0].m_LookState);
+			int state = static_cast<int>(obj->m_LookState);
 
-			r->CreateRocket(m_Player[0].GetPositionX(), m_Player[0].GetPositionY(), state);
+			r->CreateRocket(obj->GetPositionX(), obj->GetPositionY(), state);
 		}
 
 		for (int i = 0; i < m_RocketArray.size(); i++)
@@ -99,8 +100,9 @@ namespace YH
 
 	void Application::Render()
 	{
-		Rectangle(m_BackHdc, 0, 0, 1600, 900);
+		ClearRenderTarget();
 
+		SceneManager::Render(m_BackHdc);
 		Time::Render(m_BackHdc);
 
 #pragma region 미사일 발사
@@ -113,14 +115,20 @@ namespace YH
 		}
 #pragma endregion
 
-		m_Player[0].Render(m_BackHdc, 0);
-
 		for (int i = 0; i < 2; i++)
 		{
 			m_Monster[i].MonsterRender(m_BackHdc);
 		}
 
+		CopyRenderTarget(m_BackHdc, m_Hdc);
+	}
+	void Application::ClearRenderTarget()
+	{
+		Rectangle(m_BackHdc, -1, -1, 1600, 900);
+	}
+	void Application::CopyRenderTarget(HDC source, HDC dest)
+	{
 		// BackBuffer 에 있는 정보들을 원본 Buffer 에 복사 ( 그려준다 )
-		BitBlt(m_Hdc, 0, 0, m_Width, m_Height, m_BackHdc, 0, 0, SRCCOPY);
+		BitBlt(dest, 0, 0, m_Width, m_Height, source, 0, 0, SRCCOPY);
 	}
 }

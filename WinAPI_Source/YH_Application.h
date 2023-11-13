@@ -20,6 +20,10 @@ namespace YH
 		void Render();
 
 	private:
+		void ClearRenderTarget();
+		void CopyRenderTarget(HDC source, HDC dest);
+
+	private:
 		HWND m_Hand;
 		HDC m_Hdc;
 
@@ -38,5 +42,7 @@ namespace YH
 		GameObject m_Monster[3];
 
 		std::vector<Rocket*> m_RocketArray;
+
+		//std::vector<Scene*> m_Scenes;
 	};
 }

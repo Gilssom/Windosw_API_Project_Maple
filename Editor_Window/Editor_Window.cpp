@@ -5,6 +5,7 @@
 #include "Editor_Window.h"
 
 #include "../WinAPI_Source/YH_Application.h"
+#include "../WinAPI_Engine/YH_LoadScenes.h"
 
 YH::Application App;
 
@@ -148,6 +149,9 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
+
+   //Load Scene
+   YH::LoadScenes();
 
    return TRUE;
 }

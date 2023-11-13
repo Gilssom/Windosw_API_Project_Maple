@@ -5,6 +5,8 @@
     <ClInclude Include="YH_LoadScenes.h">
       <Filter>Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="YH_TitleScene.h" />
+    <ClInclude Include="YH_LobbyScene.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scenes">
@@ -13,5 +15,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="YH_PlayScene.cpp" />
+    <ClCompile Include="YH_TitleScene.cpp" />
+    <ClCompile Include="YH_LobbyScene.cpp" />
   </ItemGroup>
 </Project>

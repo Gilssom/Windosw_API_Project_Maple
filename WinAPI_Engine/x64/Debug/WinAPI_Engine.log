@@ -1,14 +1,21 @@
 ﻿  YH_Application.cpp
-C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Application.cpp(24,22): warning C4838: 'UINT'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Application.cpp(24,29): warning C4838: 'UINT'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Application.cpp(51,67): warning C4244: '인수': '_Ty2'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Application.cpp(84,23): warning C4838: 'UINT'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Application.cpp(84,30): warning C4838: 'UINT'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Application.cpp(120,67): warning C4244: '인수': '_Ty2'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
           with
           [
               _Ty2=int
           ]
-C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Application.cpp(51,44): warning C4244: '인수': '_Ty1'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Application.cpp(120,44): warning C4244: '인수': '_Ty1'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
           with
           [
               _Ty1=int
           ]
+  YH_Scene.cpp
+  YH_SceneManager.cpp
+  YH_LobbyScene.cpp
+  YH_PlayScene.cpp
+  YH_TitleScene.cpp
+  코드를 생성하고 있습니다...
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Scene.cpp(56): warning C4715: 'YH::Scene::GetGameObject': 모든 제어 경로에서 값을 반환하지는 않습니다.
   WinAPI_Engine.vcxproj -> C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\Editor_Window\x64\Debug\WinAPI_Engine.lib

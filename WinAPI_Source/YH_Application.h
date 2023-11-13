@@ -22,6 +22,13 @@ namespace YH
 	private:
 		void ClearRenderTarget();
 		void CopyRenderTarget(HDC source, HDC dest);
+		void AdJustWindowRect(HWND hwnd, UINT width, UINT height);
+		void CreateBuffer(UINT width, UINT height);
+		void InitializeEtc();
+
+		void TestSpawn();
+		void TestRocketUpdate();
+		void TestRocketRender();
 
 	private:
 		HWND m_Hand;

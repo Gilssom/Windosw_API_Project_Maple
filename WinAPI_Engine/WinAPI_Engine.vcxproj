@@ -134,11 +134,13 @@
   <ItemGroup>
     <ClInclude Include="YH_LoadScenes.h" />
     <ClInclude Include="YH_LobbyScene.h" />
+    <ClInclude Include="YH_Player.h" />
     <ClInclude Include="YH_PlayScene.h" />
     <ClInclude Include="YH_TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="YH_LobbyScene.cpp" />
+    <ClCompile Include="YH_Player.cpp" />
     <ClCompile Include="YH_PlayScene.cpp" />
     <ClCompile Include="YH_TitleScene.cpp" />
   </ItemGroup>

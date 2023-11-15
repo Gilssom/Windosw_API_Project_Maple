@@ -1,21 +1,45 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClInclude Include="YH_PlayScene.h" />
     <ClInclude Include="YH_LoadScenes.h">
       <Filter>Scenes</Filter>
     </ClInclude>
-    <ClInclude Include="YH_TitleScene.h" />
-    <ClInclude Include="YH_LobbyScene.h" />
+    <ClInclude Include="YH_Player.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="YH_LobbyScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="YH_PlayScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="YH_TitleScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scenes">
       <UniqueIdentifier>{001f8444-d122-4783-932b-0aac3eff36ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{560237fb-76bc-4ecd-afd7-aae40254e6a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Contents">
+      <UniqueIdentifier>{059437e2-efe0-4c25-826b-f5ac2516fd1c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="YH_PlayScene.cpp" />
-    <ClCompile Include="YH_TitleScene.cpp" />
-    <ClCompile Include="YH_LobbyScene.cpp" />
+    <ClCompile Include="YH_Player.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="YH_LobbyScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="YH_PlayScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="YH_TitleScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

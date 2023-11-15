@@ -1,7 +1,8 @@
 // 중복된 헤더파일이 있어도 확인해서 빌드 시간을 줄여준다.
 #pragma once 
 #include "CommonInclude.h"
-#include "YHGameObject.h"
+#include "YH_GameObject.h"
+#include "YH_Rocket.h"
 
 namespace YH
 {
@@ -39,11 +40,6 @@ namespace YH
 
 		UINT m_Width;
 		UINT m_Height;
-
-		float m_Speed;
-
-		std::vector<std::pair<int, int>> m_PlayerVec;
-		GameObject m_Player[3];
 
 		std::vector<std::pair<int, int>> m_MonsterVec;
 		GameObject m_Monster[3];

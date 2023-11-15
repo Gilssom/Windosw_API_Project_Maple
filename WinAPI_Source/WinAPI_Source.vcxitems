@@ -15,23 +15,29 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)YHGameObject.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)YHInput.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)YHRocket.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)YHTime.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_GameObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Input.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Rocket.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Time.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Application.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Component.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Entity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Scene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_SceneManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_SpriteRenderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Transform.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)YHGameObject.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)YHInput.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)YHRocket.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)YHTime.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_GameObject.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Input.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Rocket.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Time.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Application.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Component.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Entity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Scene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_SceneManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_SpriteRenderer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Transform.cpp" />
   </ItemGroup>
 </Project>

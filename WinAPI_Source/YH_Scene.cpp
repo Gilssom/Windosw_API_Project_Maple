@@ -16,15 +16,10 @@ namespace YH
 	}
 	void Scene::Update()
 	{
-		/*for (size_t i = 0; i < m_GameObjects.size(); i++)
-		{
-			m_GameObjects[i]->Update(0);
-		}*/
-
 		// 범위 기반 for 문
 		for (GameObject* gameObj : m_GameObjects)
 		{
-			gameObj->Update(0);
+			gameObj->Update();
 		}
 	}
 	void Scene::LateUpdate()
@@ -38,7 +33,7 @@ namespace YH
 	{
 		for (GameObject* gameObj : m_GameObjects)
 		{
-			gameObj->Render(hdc, 0);
+			gameObj->Render(hdc);
 		}
 	}
 

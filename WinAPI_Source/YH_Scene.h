@@ -1,6 +1,6 @@
 #pragma once
 #include "YH_Entity.h"
-#include "YHGameObject.h"
+#include "YH_GameObject.h"
 
 namespace YH
 {

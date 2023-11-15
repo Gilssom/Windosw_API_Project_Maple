@@ -1,12 +1,12 @@
 #include "YH_Application.h"
-#include "YHInput.h"
-#include "YHTime.h"
-#include "YHRocket.h"
+#include "YH_Input.h"
+#include "YH_Time.h"
+#include "YH_Rocket.h"
 #include "YH_SceneManager.h"
 
 namespace YH
 {
-	Application::Application() : m_Hand(nullptr), m_Hdc(nullptr), m_Speed(0), m_PlayerVec(0), m_MonsterVec(0),
+	Application::Application() : m_Hand(nullptr), m_Hdc(nullptr), m_MonsterVec(0),
 		m_Width(0), m_Height(0), m_BackHdc(nullptr), m_BackBitmap(nullptr), m_RocketArray{ }
 	{
 
@@ -112,18 +112,18 @@ namespace YH
 
 	void Application::TestSpawn()
 	{
-		m_PlayerVec = { {0,0},{600,300} };
+		/*m_PlayerVec = { {0,0},{600,300} };
 		m_MonsterVec = { {100,200},{800,450} };
 
 		for (int i = 0; i < 2; i++)
 		{
 			m_Monster[i].SetPosition(m_MonsterVec[i].first, m_MonsterVec[i].second);
-		}
+		}*/
 	}
 	
 	void Application::TestRocketUpdate()
 	{
-		GameObject* obj = SceneManager::GetScene()->GetGameObject();
+		/*GameObject* obj = SceneManager::GetScene()->GetGameObject();
 
 		if (obj->isAttack())
 		{
@@ -142,7 +142,7 @@ namespace YH
 				continue;
 
 			m_RocketArray[i]->Update();
-		}
+		}*/
 	}
 
 	void Application::TestRocketRender()

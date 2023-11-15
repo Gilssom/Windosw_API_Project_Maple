@@ -1,5 +1,5 @@
 #include "YH_LobbyScene.h"
-#include "YHGameObject.h"
+#include "YH_GameObject.h"
 
 namespace YH
 {

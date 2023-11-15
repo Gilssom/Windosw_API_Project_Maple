@@ -1,7 +1,6 @@
 #pragma once
 #include "CommonInclude.h"
-#include "YHGameObject.h"
-#include "YHTime.h"
+#include "YH_Time.h"
 
 namespace YH
 {

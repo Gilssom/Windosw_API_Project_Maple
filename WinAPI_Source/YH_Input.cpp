@@ -1,4 +1,4 @@
-#include "YHInput.h"
+#include "YH_Input.h"
 
 namespace YH
 {

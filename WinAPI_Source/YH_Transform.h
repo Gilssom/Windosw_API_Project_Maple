@@ -4,6 +4,8 @@
 
 namespace YH
 {
+	using namespace math;
+
 	class Transform : public Component
 	{
 	public:
@@ -15,14 +17,13 @@ namespace YH
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
-		void SetPos(float x, float y) { m_X = x; m_Y = y; }
+		void SetPos(Vector2 pos) { m_Position.x = pos.x; m_Position.y = pos.y; }
 		void SetSpeed(float speed) { m_Speed = speed; }
-		float GetX() { return m_X; }
-		float GetY() { return m_Y; }
+		
+		Vector2 GetPostion() { return m_Position; }
 
 	private:
-		float m_X;
-		float m_Y;
+		Vector2 m_Position;
 		float m_Speed;
 	};
 }

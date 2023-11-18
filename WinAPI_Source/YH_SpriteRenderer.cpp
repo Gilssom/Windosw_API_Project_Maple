@@ -4,7 +4,7 @@
 
 namespace YH
 {
-	SpriteRenderer::SpriteRenderer()
+	SpriteRenderer::SpriteRenderer() : m_Image(nullptr), m_Width(0), m_Height(0)
 	{
 	}
 	SpriteRenderer::~SpriteRenderer()
@@ -21,16 +21,21 @@ namespace YH
 	}
 	void SpriteRenderer::Render(HDC hdc)
 	{
-		HBRUSH brush = CreateSolidBrush(RGB(125, 255, 255));
-
-		HBRUSH oldbrush = (HBRUSH)SelectObject(hdc, brush);
-
 		Transform* transform = GetOwner()->GetComponent<Transform>();
 
-		Rectangle(hdc, transform->GetX(), transform->GetY() , 100 + transform->GetX(), 100 + transform->GetY());
+		Vector2 pos = transform->GetPostion();
 
-		SelectObject(hdc, oldbrush);
+		Gdiplus::Graphics graphics(hdc);
+		graphics.DrawImage(m_Image, Gdiplus::Rect(pos.x, pos.y, m_Width, m_Height));
+	}
 
-		DeleteObject(brush);
+	void SpriteRenderer::ImageLoad(const std::wstring& path)
+	{
+		m_Image = Gdiplus::Image::FromFile(path.c_str());
+
+		//m_Width = m_Image->GetWidth();
+		//m_Height = m_Image->GetHeight();
+		m_Width = 1600;
+		m_Height = 900;
 	}
 }

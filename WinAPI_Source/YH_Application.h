@@ -27,10 +27,6 @@ namespace YH
 		void CreateBuffer(UINT width, UINT height);
 		void InitializeEtc();
 
-		void TestSpawn();
-		void TestRocketUpdate();
-		void TestRocketRender();
-
 	private:
 		HWND m_Hand;
 		HDC m_Hdc;
@@ -40,12 +36,5 @@ namespace YH
 
 		UINT m_Width;
 		UINT m_Height;
-
-		std::vector<std::pair<int, int>> m_MonsterVec;
-		GameObject m_Monster[3];
-
-		std::vector<Rocket*> m_RocketArray;
-
-		//std::vector<Scene*> m_Scenes;
 	};
 }

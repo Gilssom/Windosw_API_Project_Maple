@@ -16,17 +16,18 @@ namespace YH
 
 	void PlayScene::Initialize()
 	{
-		Player* player = new Player();
+		Player* bg = new Player();
 
-		Transform* transform = player->AddComponent<Transform>();
-		transform->SetPos(800.f, 450.f);
-		transform->SetSpeed(100.f);
+		Transform* transform = bg->AddComponent<Transform>();
+		transform->SetPos(Vector2(0, 0));
 		transform->SetName(L"Transform");
 
-		SpriteRenderer* renderer = player->AddComponent<SpriteRenderer>();
+		SpriteRenderer* renderer = bg->AddComponent<SpriteRenderer>();
 		renderer->SetName(L"Sprite Renderer");
 
-		AddGameObject(player);
+		renderer->ImageLoad(L"C:\\Users\\user\\Documents\\GitHub\\Windosw_API_Project_Terraria\\Resources\\Images\\Background_284.png");
+
+		AddGameObject(bg);
 	}
 
 	void PlayScene::Update()

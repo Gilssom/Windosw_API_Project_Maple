@@ -4,8 +4,6 @@
 #include "YH_LobbyScene.h"
 #include "YH_PlayScene.h"
 
-#pragma comment (lib, "x64/Debug/WinAPI_Engine.lib")
-
 namespace YH
 {
 	void LoadScenes()
@@ -14,6 +12,8 @@ namespace YH
 		SceneManager::CreateScene<LobbyScene>(L"LobbyScene");
 		SceneManager::CreateScene<PlayScene>(L"PlayScene");
 
-		SceneManager::LoadScene(L"PlayScene");
+		SceneManager::LoadScene(L"TitleScene");
+		//SceneManager::LoadScene(L"LobbyScene");
+		//SceneManager::LoadScene(L"PlayScene");
 	}
 }

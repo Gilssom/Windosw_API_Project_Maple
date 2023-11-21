@@ -11,6 +11,7 @@ namespace YH
 		{
 			T* scene = new T();
 			scene->SetName(name);
+			m_ActiveScene = scene;
 			scene->Initialize();
 
 			m_Scene.insert(std::make_pair(name, scene));
@@ -18,23 +19,13 @@ namespace YH
 			return scene;
 		}
 
-		static Scene* LoadScene(const std::wstring& name)
-		{
-			std::map<std::wstring, Scene*>::iterator iter = m_Scene.find(name);
-
-			if (iter == m_Scene.end())
-				return nullptr;
-
-			m_ActiveScene = iter->second;
-
-			return iter->second;
-		}
+		static Scene* LoadScene(const std::wstring& name);
+		static Scene* GetScene() { return m_ActiveScene; }
 
 		static void Initialize();
 		static void Update();
 		static void LateUpdate();
 		static void Render(HDC hdc);
-		static Scene* GetScene() { return m_ActiveScene; }
 
 	private:
 		//static std::vector<Scene*> m_Scene;

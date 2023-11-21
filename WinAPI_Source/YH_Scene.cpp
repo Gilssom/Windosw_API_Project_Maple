@@ -2,51 +2,80 @@
 
 namespace YH
 {
-	Scene::Scene() : m_GameObjects { }
+	Scene::Scene() : m_Layers { }
 	{
-
+		CreateLayers();
 	}
+
 	Scene::~Scene()
 	{
 
 	}
+
 	void Scene::Initialize()
 	{
+		for (Layer* layer : m_Layers)
+		{
+			if (!layer)
+				continue;
 
+			layer->Initialize();
+		}
 	}
 	void Scene::Update()
 	{
 		// 범위 기반 for 문
-		for (GameObject* gameObj : m_GameObjects)
+		for (Layer* layer : m_Layers)
 		{
-			gameObj->Update();
+			if (!layer)
+				continue;
+
+			layer->Update();
 		}
 	}
 	void Scene::LateUpdate()
 	{
-		for (GameObject* gameObj : m_GameObjects)
+		for (Layer* layer : m_Layers)
 		{
-			gameObj->LateUpdate();
+			if (!layer)
+				continue;
+
+			layer->LateUpdate();
 		}
 	}
 	void Scene::Render(HDC hdc)
 	{
-		for (GameObject* gameObj : m_GameObjects)
+		for (Layer* layer : m_Layers)
 		{
-			gameObj->Render(hdc);
+			if (!layer)
+				continue;
+
+			layer->Render(hdc);
 		}
 	}
 
-	void Scene::AddGameObject(GameObject* gameObject)
+	void Scene::AddGameObject(GameObject* gameObj, const enums::LayerType layerType)
 	{
-		m_GameObjects.push_back(gameObject);
+		m_Layers[(UINT)layerType]->AddGameObject(gameObj);
 	}
 
-	GameObject* Scene::GetGameObject()
+	void Scene::CreateLayers()
 	{
-		for (GameObject* gameObj : m_GameObjects)
+		m_Layers.resize((UINT)enums::LayerType::Max);
+
+		for (size_t i = 0; i < (UINT)enums::LayerType::Max; i++)
 		{
-			return gameObj;
+			m_Layers[i] = new Layer();
 		}
+	}
+
+	void Scene::OnEnter()
+	{
+
+	}
+
+	void Scene::OnExit()
+	{
+
 	}
 }

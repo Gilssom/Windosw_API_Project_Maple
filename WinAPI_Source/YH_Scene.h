@@ -1,6 +1,7 @@
 #pragma once
 #include "YH_Entity.h"
 #include "YH_GameObject.h"
+#include "YH_Layer.h"
 
 namespace YH
 {
@@ -15,11 +16,17 @@ namespace YH
 		virtual void LateUpdate();
 		virtual void Render(HDC hdc);
 
-		void AddGameObject(GameObject* gameObject);
-		GameObject* GetGameObject();
+		virtual void OnEnter();
+		virtual void OnExit();
+
+		void AddGameObject(GameObject* gameObj, const enums::LayerType layerType);
+		Layer* GetLayer(enums::LayerType layerType) { return m_Layers[(UINT)layerType]; };
 
 	private:
-		std::vector<GameObject*> m_GameObjects;
+		void CreateLayers();
+
+	private:
+		std::vector<Layer*> m_Layers;
  	};
 }
 

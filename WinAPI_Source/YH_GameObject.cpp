@@ -2,13 +2,15 @@
 #include "YH_Input.h"
 #include "YH_Time.h"
 #include "YH_Application.h"
+#include "YH_Transform.h"
 
 namespace YH
 {
 	GameObject::GameObject() : m_LookState(Lookfor::None)
 	{
-
+		InitTransform();
 	}
+
 	GameObject::~GameObject()
 	{
 		for (Component* comp : m_Components)
@@ -88,5 +90,9 @@ namespace YH
 
 		m_X += dir[nx];
 		m_Y += dir[ny];*/
+	}
+	void GameObject::InitTransform()
+	{
+		AddComponent<Transform>();
 	}
 }

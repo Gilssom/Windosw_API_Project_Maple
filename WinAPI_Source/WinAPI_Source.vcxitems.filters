@@ -38,6 +38,9 @@
       <Filter>Application</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Resources.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Layer.cpp">
+      <Filter>Layer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Component.h">
@@ -80,6 +83,15 @@
       <Filter>Application</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Resources.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Layer.h">
+      <Filter>Layer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Enums.h">
+      <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Object.h">
+      <Filter>Application</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Component">
@@ -102,6 +114,9 @@
     </Filter>
     <Filter Include="Etc">
       <UniqueIdentifier>{913e8bdd-2ee9-470b-900c-388c35e0a16d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Layer">
+      <UniqueIdentifier>{b481ca18-641e-4622-9c5f-a2555a9e3c0b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

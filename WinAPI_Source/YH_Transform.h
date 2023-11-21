@@ -17,7 +17,7 @@ namespace YH
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
-		void SetPos(Vector2 pos) { m_Position.x = pos.x; m_Position.y = pos.y; }
+		void SetPosition(Vector2 pos) { m_Position.x = pos.x; m_Position.y = pos.y; }
 		void SetSpeed(float speed) { m_Speed = speed; }
 		
 		Vector2 GetPostion() { return m_Position; }

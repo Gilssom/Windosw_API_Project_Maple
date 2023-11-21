@@ -3,6 +3,7 @@
 #include "YH_Player.h"
 #include "YH_Transform.h"
 #include "YH_SpriteRenderer.h"
+#include "YH_Object.h"
 
 namespace YH
 {
@@ -17,10 +18,10 @@ namespace YH
 
 	void LobbyScene::Initialize()
 	{
-		Player* bg = new Player();
+		/*bg = new Player();
 
 		Transform* transform = bg->AddComponent<Transform>();
-		transform->SetPos(Vector2(0, 0));
+		transform->SetPosition(Vector2(0, 0));
 		transform->SetName(L"Transform");
 
 		SpriteRenderer* renderer = bg->AddComponent<SpriteRenderer>();
@@ -28,7 +29,19 @@ namespace YH
 
 		renderer->ImageLoad(L"C:\\Users\\user\\Documents\\GitHub\\Windosw_API_Project_Terraria\\Resources\\Images\\SplashScreens\\Splash_9_0.png");
 
-		AddGameObject(bg);
+		AddGameObject(bg, enums::LayerType::BackGround);*/
+
+		bg = object::Instantiate<Player>(enums::LayerType::BackGround, Vector2(0, 0));
+
+		SpriteRenderer* renderer = bg->AddComponent<SpriteRenderer>();
+		renderer->SetName(L"Sprite Renderer");
+		renderer->ImageLoad(L"C:\\Users\\user\\Documents\\GitHub\\Windosw_API_Project_Terraria\\Resources\\Images\\SplashScreens\\Splash_9_0.png");
+
+		logo = object::Instantiate<Player>(enums::LayerType::UI, Vector2(600, 100));
+
+		SpriteRenderer* renderer2 = logo->AddComponent<SpriteRenderer>();
+		renderer2->SetName(L"Sprite Renderer");
+		renderer2->ImageLoad(L"C:\\Users\\user\\Documents\\GitHub\\Windosw_API_Project_Terraria\\Resources\\Images\\Logo.png");
 	}
 
 	void LobbyScene::Update()
@@ -44,5 +57,9 @@ namespace YH
 	void LobbyScene::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
+
+		wchar_t str[50] = L"Lobby Scene";
+
+		TextOut(hdc, 0, 0, str, 11);
 	}
 }

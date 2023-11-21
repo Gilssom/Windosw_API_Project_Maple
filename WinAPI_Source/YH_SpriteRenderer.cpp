@@ -33,9 +33,9 @@ namespace YH
 	{
 		m_Image = Gdiplus::Image::FromFile(path.c_str());
 
-		//m_Width = m_Image->GetWidth();
-		//m_Height = m_Image->GetHeight();
-		m_Width = 1600;
-		m_Height = 900;
+		m_Width = m_Image->GetWidth();
+		m_Height = m_Image->GetHeight();
+		//m_Width = 1600;
+		//m_Height = 900;
 	}
 }

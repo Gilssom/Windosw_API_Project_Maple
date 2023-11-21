@@ -25,6 +25,8 @@ namespace YH
 		T* AddComponent()
 		{
 			T* comp = new T();
+
+			comp->Initialize();
 			comp->SetOwner(this);
 			m_Components.push_back(comp);
 
@@ -55,6 +57,10 @@ namespace YH
 		bool isAttack() { return Input::GetKeyDown(KeyCode::Space); }
 
 		Lookfor m_LookState;
+
+	private:
+		void InitTransform();
+
 	private:
 		std::vector<Component*> m_Components;
 

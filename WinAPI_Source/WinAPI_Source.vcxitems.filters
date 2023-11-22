@@ -37,9 +37,17 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Math.cpp">
       <Filter>Application</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Resources.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Layer.cpp">
       <Filter>Layer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Resource.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Resources.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Texture.cpp">
+      <Filter>Resource\Texture</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -82,7 +90,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Math.h">
       <Filter>Application</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Resources.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Layer.h">
       <Filter>Layer</Filter>
     </ClInclude>
@@ -91,6 +98,15 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Object.h">
       <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Resource.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Resources.h">
+      <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Texture.h">
+      <Filter>Resource\Texture</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -117,6 +133,12 @@
     </Filter>
     <Filter Include="Layer">
       <UniqueIdentifier>{b481ca18-641e-4622-9c5f-a2555a9e3c0b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{93cbbfd6-b892-4dd9-8200-443228d1a680}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Texture">
+      <UniqueIdentifier>{174d1a90-87ad-481b-81be-2915dab5c11e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

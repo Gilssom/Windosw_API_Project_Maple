@@ -14,4 +14,12 @@ namespace YH::enums
 		Max = 20,
 		// ...
 	};
+
+	enum class ResourceType
+	{
+		Texture,
+		AudioClip,
+		Prefab,
+		End,
+	};
 }

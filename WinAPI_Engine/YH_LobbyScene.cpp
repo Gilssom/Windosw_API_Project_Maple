@@ -4,6 +4,8 @@
 #include "YH_Transform.h"
 #include "YH_SpriteRenderer.h"
 #include "YH_Object.h"
+#include "YH_Texture.h"
+#include "YH_Resources.h"
 
 namespace YH
 {
@@ -18,30 +20,25 @@ namespace YH
 
 	void LobbyScene::Initialize()
 	{
-		/*bg = new Player();
-
-		Transform* transform = bg->AddComponent<Transform>();
-		transform->SetPosition(Vector2(0, 0));
-		transform->SetName(L"Transform");
+		bg = object::Instantiate<Player>(enums::LayerType::BackGround);
 
 		SpriteRenderer* renderer = bg->AddComponent<SpriteRenderer>();
 		renderer->SetName(L"Sprite Renderer");
+		renderer->SetSize(Vector2(0.84f, 0.84f));
 
-		renderer->ImageLoad(L"C:\\Users\\user\\Documents\\GitHub\\Windosw_API_Project_Terraria\\Resources\\Images\\SplashScreens\\Splash_9_0.png");
+		// 게임 오브젝트 만들기 전에 리소스들 전부 Load 해놓으면 좋다.
+		graphics::Texture* bg = Resources::Find<graphics::Texture>(L"Lobby_Bg");
+		renderer->SetTexture(bg);
 
-		AddGameObject(bg, enums::LayerType::BackGround);*/
+		// 이 작업들을 줄일 만한 방법 찾아보기
+		logo = object::Instantiate<Player>(enums::LayerType::UI, Vector2(500, 100));
 
-		bg = object::Instantiate<Player>(enums::LayerType::BackGround, Vector2(0, 0));
+		renderer = logo->AddComponent<SpriteRenderer>();
 
-		SpriteRenderer* renderer = bg->AddComponent<SpriteRenderer>();
-		renderer->SetName(L"Sprite Renderer");
-		renderer->ImageLoad(L"C:\\Users\\user\\Documents\\GitHub\\Windosw_API_Project_Terraria\\Resources\\Images\\SplashScreens\\Splash_9_0.png");
+		graphics::Texture* logo = Resources::Find<graphics::Texture>(L"Lobby_Logo");
+		renderer->SetTexture(logo);
 
-		logo = object::Instantiate<Player>(enums::LayerType::UI, Vector2(600, 100));
-
-		SpriteRenderer* renderer2 = logo->AddComponent<SpriteRenderer>();
-		renderer2->SetName(L"Sprite Renderer");
-		renderer2->ImageLoad(L"C:\\Users\\user\\Documents\\GitHub\\Windosw_API_Project_Terraria\\Resources\\Images\\Logo.png");
+		Scene::Initialize();
 	}
 
 	void LobbyScene::Update()

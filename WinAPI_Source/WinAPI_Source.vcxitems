@@ -21,8 +21,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Layer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Math.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Object.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Resource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Resources.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Rocket.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Texture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Time.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Application.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Component.h" />
@@ -37,8 +39,10 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Input.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Layer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Math.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Resource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Resources.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Rocket.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Texture.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Time.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Application.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Component.cpp" />

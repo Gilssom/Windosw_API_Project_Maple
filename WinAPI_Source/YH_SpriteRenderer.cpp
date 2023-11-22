@@ -4,38 +4,49 @@
 
 namespace YH
 {
-	SpriteRenderer::SpriteRenderer() : m_Image(nullptr), m_Width(0), m_Height(0)
+	SpriteRenderer::SpriteRenderer() : Component(), m_Texture(nullptr), m_Size(Vector2::One)
 	{
+
 	}
+
 	SpriteRenderer::~SpriteRenderer()
 	{
+
 	}
+
 	void SpriteRenderer::Initialize()
 	{
+
 	}
 	void SpriteRenderer::Update()
 	{
+
 	}
 	void SpriteRenderer::LateUpdate()
 	{
+
 	}
 	void SpriteRenderer::Render(HDC hdc)
 	{
-		Transform* transform = GetOwner()->GetComponent<Transform>();
+		if (!m_Texture) // Texture Setting !!
+			assert(false);
 
+		Transform* transform = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = transform->GetPostion();
 
-		Gdiplus::Graphics graphics(hdc);
-		graphics.DrawImage(m_Image, Gdiplus::Rect(pos.x, pos.y, m_Width, m_Height));
-	}
-
-	void SpriteRenderer::ImageLoad(const std::wstring& path)
-	{
-		m_Image = Gdiplus::Image::FromFile(path.c_str());
-
-		m_Width = m_Image->GetWidth();
-		m_Height = m_Image->GetHeight();
-		//m_Width = 1600;
-		//m_Height = 900;
+		if (m_Texture->GetTextureType() == graphics::Texture::TextureType::Bmp)
+		{
+			TransparentBlt(hdc, pos.x, pos.y, m_Texture->GetWidth() * m_Size.x, m_Texture->GetHeight() * m_Size.y, 
+				m_Texture->GetHdc(), 0, 0, m_Texture->GetWidth(), 
+				m_Texture->GetHeight(), RGB(255, 0, 255));
+		}
+		else if (m_Texture->GetTextureType() == graphics::Texture::TextureType::Png)
+		{
+			Gdiplus::Graphics graphics(hdc);
+			graphics.DrawImage(m_Texture->GetImage(), Gdiplus::Rect
+				(
+					pos.x, pos.y, m_Texture->GetWidth() * m_Size.x, m_Texture->GetHeight() * m_Size.y
+				));
+		}
 	}
 }

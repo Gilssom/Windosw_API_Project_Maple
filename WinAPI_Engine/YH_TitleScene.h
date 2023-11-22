@@ -16,5 +16,6 @@ namespace YH
 
 	private:
 		class Player* bg;
+		class Player* logo;
 	};
 }

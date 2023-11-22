@@ -20,6 +20,8 @@ namespace YH
 
 		void Render();
 
+		HDC GetHdc() { return m_Hdc; }
+
 	private:
 		void ClearRenderTarget();
 		void CopyRenderTarget(HDC source, HDC dest);

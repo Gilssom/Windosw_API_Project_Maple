@@ -3,10 +3,9 @@
 #include "YH_Player.h"
 #include "YH_Transform.h"
 #include "YH_SpriteRenderer.h"
-#include "YH_Input.h"
-#include "YH_PlayScene.h"
-#include "YH_SceneManager.h"
 #include "YH_Object.h"
+#include "YH_Texture.h"
+#include "YH_Resources.h"
 
 namespace YH
 {
@@ -21,17 +20,22 @@ namespace YH
 
 	void TitleScene::Initialize()
 	{
-		bg = object::Instantiate<Player>(enums::LayerType::BackGround, Vector2(0, 0));
+		bg = object::Instantiate<Player>(enums::LayerType::BackGround);
 
 		SpriteRenderer* renderer = bg->AddComponent<SpriteRenderer>();
 		renderer->SetName(L"Sprite Renderer");
-		renderer->ImageLoad(L"C:\\Users\\user\\Documents\\GitHub\\Windosw_API_Project_Terraria\\Resources\\Images\\SplashScreens\\Splash_1_0.png");
+		renderer->SetSize(Vector2(0.84f, 0.84f));
+		graphics::Texture* bg_1 = Resources::Find<graphics::Texture>(L"Title_Bg");
+		renderer->SetTexture(bg_1);
 
-		bg = object::Instantiate<Player>(enums::LayerType::UI, Vector2(-200, -100));
+		logo = object::Instantiate<Player>(enums::LayerType::UI);
 
-		renderer = bg->AddComponent<SpriteRenderer>();
-		renderer->SetName(L"Sprite Renderer");
-		renderer->ImageLoad(L"C:\\Users\\user\\Documents\\GitHub\\Windosw_API_Project_Terraria\\Resources\\Images\\SplashScreens\\Splash_1_2.png");
+		renderer = logo->AddComponent<SpriteRenderer>();
+		renderer->SetSize(Vector2(0.84f, 0.84f));
+		graphics::Texture* logo_1 = Resources::Find<graphics::Texture>(L"Title_Logo");
+		renderer->SetTexture(logo_1);
+
+		Scene::Initialize();
 	}
 
 	void TitleScene::Update()

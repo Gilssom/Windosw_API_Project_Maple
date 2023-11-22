@@ -1,6 +1,7 @@
 #pragma once
 #include "YH_Entity.h"
 #include "YH_Component.h"
+#include "YH_Texture.h"
 
 namespace YH
 {
@@ -15,12 +16,12 @@ namespace YH
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
-		void ImageLoad(const std::wstring& path);
+		void SetTexture(graphics::Texture* texture) { m_Texture = texture; }
+		void SetSize(math::Vector2 size) { m_Size = size; }
 
 	private:
-		Gdiplus::Image* m_Image;
-		UINT m_Width;
-		UINT m_Height;
+		graphics::Texture* m_Texture;
+		math::Vector2 m_Size;
 	};
 }
 

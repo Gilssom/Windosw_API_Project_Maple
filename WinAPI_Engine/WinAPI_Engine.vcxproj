@@ -132,6 +132,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="LoadResources.h" />
     <ClInclude Include="YH_LoadScenes.h" />
     <ClInclude Include="YH_LobbyScene.h" />
     <ClInclude Include="YH_Player.h" />

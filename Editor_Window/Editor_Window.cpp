@@ -5,6 +5,7 @@
 #include "Editor_Window.h"
 
 #include "../WinAPI_Source/YH_Application.h"
+#include "../WinAPI_Engine/LoadResources.h"
 #include "../WinAPI_Engine/YH_LoadScenes.h"
 
 YH::Application App;
@@ -150,6 +151,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    Gdiplus::GdiplusStartup(&GpToken, &Gpsi, NULL);
 
    //Load Scene
+   YH::LoadResources();
    YH::LoadScenes();
 
    return TRUE;

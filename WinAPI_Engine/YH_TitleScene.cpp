@@ -21,24 +21,17 @@ namespace YH
 
 	void TitleScene::Initialize()
 	{
-		/*bg = new Player();
-
-		Transform* transform = bg->AddComponent<Transform>();
-		transform->SetPosition(Vector2(0, 0));
-		transform->SetName(L"Transform");
-
-		SpriteRenderer* renderer = bg->AddComponent<SpriteRenderer>();
-		renderer->SetName(L"Sprite Renderer");
-
-		renderer->ImageLoad(L"C:\\Users\\user\\Documents\\GitHub\\Windosw_API_Project_Terraria\\Resources\\Images\\SplashScreens\\Splash_1.png");
-
-		AddGameObject(bg, enums::LayerType::BackGround);*/
-
 		bg = object::Instantiate<Player>(enums::LayerType::BackGround, Vector2(0, 0));
 
 		SpriteRenderer* renderer = bg->AddComponent<SpriteRenderer>();
 		renderer->SetName(L"Sprite Renderer");
-		renderer->ImageLoad(L"C:\\Users\\user\\Documents\\GitHub\\Windosw_API_Project_Terraria\\Resources\\Images\\SplashScreens\\Splash_1.png");
+		renderer->ImageLoad(L"C:\\Users\\user\\Documents\\GitHub\\Windosw_API_Project_Terraria\\Resources\\Images\\SplashScreens\\Splash_1_0.png");
+
+		bg = object::Instantiate<Player>(enums::LayerType::UI, Vector2(-200, -100));
+
+		renderer = bg->AddComponent<SpriteRenderer>();
+		renderer->SetName(L"Sprite Renderer");
+		renderer->ImageLoad(L"C:\\Users\\user\\Documents\\GitHub\\Windosw_API_Project_Terraria\\Resources\\Images\\SplashScreens\\Splash_1_2.png");
 	}
 
 	void TitleScene::Update()

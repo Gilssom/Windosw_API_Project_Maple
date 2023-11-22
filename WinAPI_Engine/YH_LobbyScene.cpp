@@ -52,6 +52,11 @@ namespace YH
 	void LobbyScene::LateUpdate()
 	{
 		Scene::LateUpdate();
+
+		if (Input::GetKeyDown(KeyCode::N))
+		{
+			SceneManager::LoadScene(L"PlayScene");
+		}
 	}
 
 	void LobbyScene::Render(HDC hdc)

@@ -18,6 +18,7 @@ namespace YH
 		void OnExit() override;
 
 	private:
-		class Player* bg[50];
+		class GameObject* bg[50];
+		class Player* m_Player;
 	};
 }

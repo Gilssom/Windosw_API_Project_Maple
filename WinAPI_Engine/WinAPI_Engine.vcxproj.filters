@@ -17,6 +17,9 @@
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="LoadResources.h" />
+    <ClInclude Include="YH_PlayerScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scenes">
@@ -27,6 +30,9 @@
     </Filter>
     <Filter Include="Contents">
       <UniqueIdentifier>{059437e2-efe0-4c25-826b-f5ac2516fd1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripts">
+      <UniqueIdentifier>{05fcfa93-bbfc-49be-b284-51998485e35e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -41,6 +47,9 @@
     </ClCompile>
     <ClCompile Include="YH_TitleScene.cpp">
       <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="YH_PlayerScript.cpp">
+      <Filter>Scripts</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

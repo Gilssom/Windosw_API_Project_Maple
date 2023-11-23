@@ -4,7 +4,7 @@
 
 namespace YH
 {
-	Transform::Transform() : m_Speed(0)
+	Transform::Transform() : Component(enums::ComponentType::Transform), m_Speed(0)
 	{
 	}
 	Transform::~Transform()

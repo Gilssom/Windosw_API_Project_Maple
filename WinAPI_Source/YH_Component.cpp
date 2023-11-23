@@ -2,7 +2,7 @@
 
 namespace YH
 {
-	Component::Component() : m_Owner(nullptr)
+	Component::Component(enums::ComponentType type) : m_Owner(nullptr), m_Type(type)
 	{
 	}
 

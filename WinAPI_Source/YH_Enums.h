@@ -2,9 +2,19 @@
 
 namespace YH::enums
 {
+	enum class ComponentType
+	{
+		Transform,
+		SpriteRenderer,
+		Script,
+		Camera,
+		End,
+	};
+
 	enum class LayerType
 	{
 		None,
+		Sky,
 		BackGround,
 		UI,
 		Tree,

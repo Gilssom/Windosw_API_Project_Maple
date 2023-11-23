@@ -8,6 +8,7 @@ namespace YH
 {
 	GameObject::GameObject() : m_LookState(Lookfor::None)
 	{
+		m_Components.resize((UINT)enums::ComponentType::End);
 		InitTransform();
 	}
 
@@ -24,6 +25,9 @@ namespace YH
 	{
 		for (Component* comp : m_Components)
 		{
+			if (!comp)
+				continue;
+
 			comp->Initialize();
 		}
 	}
@@ -32,6 +36,9 @@ namespace YH
 	{
 		for (Component* comp : m_Components)
 		{
+			if (!comp)
+				continue;
+
 			comp->Update();
 		}
 	}
@@ -39,6 +46,9 @@ namespace YH
 	{
 		for (Component* comp : m_Components)
 		{
+			if (!comp)
+				continue;
+
 			comp->LateUpdate();
 		}
 	}
@@ -47,6 +57,9 @@ namespace YH
 	{
 		for (Component* comp : m_Components)
 		{
+			if (!comp)
+				continue;
+
 			comp->Render(hdc);
 		}
 

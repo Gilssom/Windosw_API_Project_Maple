@@ -1,10 +1,14 @@
 #include "YH_SpriteRenderer.h"
 #include "YH_GameObject.h"
 #include "YH_Transform.h"
+#include "YH_Renderer.h"
 
 namespace YH
 {
-	SpriteRenderer::SpriteRenderer() : Component(), m_Texture(nullptr), m_Size(Vector2::One)
+	SpriteRenderer::SpriteRenderer() 
+		: Component(enums::ComponentType::SpriteRenderer)
+		, m_Texture(nullptr)
+		, m_Size(Vector2::One)
 	{
 
 	}
@@ -33,6 +37,7 @@ namespace YH
 
 		Transform* transform = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = transform->GetPostion();
+		pos = renderer::mainCamera->CaluatePosition(pos);
 
 		if (m_Texture->GetTextureType() == graphics::Texture::TextureType::Bmp)
 		{

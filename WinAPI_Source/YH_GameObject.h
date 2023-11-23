@@ -28,7 +28,8 @@ namespace YH
 
 			comp->Initialize();
 			comp->SetOwner(this);
-			m_Components.push_back(comp);
+
+			m_Components[(UINT)comp->GetType()] = comp;
 
 			return comp;
 		}

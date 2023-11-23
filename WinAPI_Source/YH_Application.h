@@ -21,6 +21,8 @@ namespace YH
 		void Render();
 
 		HDC GetHdc() { return m_Hdc; }
+		UINT GetWidth() { return m_Width; }
+		UINT GetHeight() { return m_Height; }
 
 	private:
 		void ClearRenderTarget();

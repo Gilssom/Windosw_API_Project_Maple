@@ -22,14 +22,14 @@ namespace YH
 	void LobbyScene::Initialize()
 	{
 		#pragma region BackGround Settings
-		bg[0] = object::Instantiate<GameObject>(enums::LayerType::BackGround, Vector2(0, 150));
+		bg[0] = object::Instantiate<GameObject>(enums::LayerType::BackGround);
 
 		SpriteRenderer* renderer = bg[0]->AddComponent<SpriteRenderer>();
-		renderer->SetSize(Vector2(1.2f, 1.2f));
-		graphics::Texture* bg_0 = Resources::Find<graphics::Texture>(L"Lobby_Mountain");
-		renderer->SetTexture(bg_0);
+		renderer->SetSize(Vector2(1.57f, 1.18f));
+		graphics::Texture* bg_0 = Resources::Find<graphics::Texture>(L"WorldSelect");
+		renderer->SetTexture(bg_0);6
 
-		bg[0] = object::Instantiate<GameObject>(enums::LayerType::BackGround, Vector2(bg_0->GetWidth() * 1.2f, 150));
+		/*bg[0] = object::Instantiate<GameObject>(enums::LayerType::BackGround, Vector2(bg_0->GetWidth() * 1.2f, 150));
 
 		renderer = bg[0]->AddComponent<SpriteRenderer>();
 		renderer->SetSize(Vector2(1.2f, 1.2f));
@@ -65,7 +65,7 @@ namespace YH
 		logo = object::Instantiate<GameObject>(enums::LayerType::UI, Vector2(500, 100));
 		renderer = logo->AddComponent<SpriteRenderer>();
 		graphics::Texture* logo = Resources::Find<graphics::Texture>(L"Lobby_Logo");
-		renderer->SetTexture(logo);
+		renderer->SetTexture(logo);*/
 		#pragma endregion
 
 		Scene::Initialize();
@@ -75,13 +75,13 @@ namespace YH
 	{
 		Scene::Update();
 
-		bg[2]->GetComponent<Transform>()->SetPosition(
+		/*bg[2]->GetComponent<Transform>()->SetPosition(
 			Vector2(bg[2]->GetComponent<Transform>()->GetPostion().x + 7.5f * Time::DeltaTime(),
 			bg[2]->GetComponent<Transform>()->GetPostion().y));
 
 		bg[3]->GetComponent<Transform>()->SetPosition(
 			Vector2(bg[3]->GetComponent<Transform>()->GetPostion().x + 7.5f * Time::DeltaTime(),
-				bg[3]->GetComponent<Transform>()->GetPostion().y));
+				bg[3]->GetComponent<Transform>()->GetPostion().y));*/
 	}
 
 	void LobbyScene::LateUpdate()

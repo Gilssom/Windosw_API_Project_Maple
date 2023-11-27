@@ -28,15 +28,15 @@ namespace YH
 		renderer::mainCamera = cameraComp;
 
 		#pragma region BackGround Settings
-		bg[0] = object::Instantiate<GameObject>(enums::LayerType::BackGround, Vector2(0, 100));
+		bg[0] = object::Instantiate<GameObject>(enums::LayerType::BackGround);
 
 		SpriteRenderer* renderer = bg[0]->AddComponent<SpriteRenderer>();
-		renderer->SetName(L"Sprite Renderer");
-		graphics::Texture* bg_1 = Resources::Find<graphics::Texture>(L"Play_Mountain");
+		renderer->SetName(L"Back Ground");
+		graphics::Texture* bg_1 = Resources::Find<graphics::Texture>(L"Leferae");
 		renderer->SetTexture(bg_1);
-		renderer->SetSize(Vector2(1.5f, 1.5f));
+		//renderer->SetSize(Vector2(1.5f, 1.5f));
 
-		bg[0] = object::Instantiate<GameObject>(enums::LayerType::BackGround, Vector2(bg_1->GetWidth() * 1.5f, 100));
+		/*bg[0] = object::Instantiate<GameObject>(enums::LayerType::BackGround, Vector2(bg_1->GetWidth() * 1.5f, 100));
 
 		renderer = bg[0]->AddComponent<SpriteRenderer>();
 		renderer->SetTexture(bg_1);
@@ -76,10 +76,10 @@ namespace YH
 		bg[3] = object::Instantiate<GameObject>(enums::LayerType::BackGround, Vector2(800, 0));
 
 		renderer = bg[3]->AddComponent<SpriteRenderer>();
-		renderer->SetTexture(cloud);
+		renderer->SetTexture(cloud);*/
 		#pragma endregion
 		
-		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(800.0f, 450.0f));
+		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(2340.0f, 1300.0f));
 
 		SpriteRenderer* playerRender = m_Player->AddComponent<SpriteRenderer>();
 		playerRender->SetName(L"Sprite Renderer");

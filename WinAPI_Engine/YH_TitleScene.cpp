@@ -20,20 +20,20 @@ namespace YH
 
 	void TitleScene::Initialize()
 	{
-		bg = object::Instantiate<Player>(enums::LayerType::BackGround);
+		bg = object::Instantiate<Player>(enums::LayerType::BackGround, Vector2(500.0f, 250.0f));
 
 		SpriteRenderer* renderer = bg->AddComponent<SpriteRenderer>();
 		renderer->SetName(L"Sprite Renderer");
-		renderer->SetSize(Vector2(0.84f, 0.84f));
-		graphics::Texture* bg_1 = Resources::Find<graphics::Texture>(L"Title_Bg");
+		//renderer->SetSize(Vector2(0.84f, 0.84f));
+		graphics::Texture* bg_1 = Resources::Find<graphics::Texture>(L"Title");
 		renderer->SetTexture(bg_1);
 
-		logo = object::Instantiate<Player>(enums::LayerType::UI);
+		/*logo = object::Instantiate<Player>(enums::LayerType::UI);
 
 		renderer = logo->AddComponent<SpriteRenderer>();
 		renderer->SetSize(Vector2(0.84f, 0.84f));
 		graphics::Texture* logo_1 = Resources::Find<graphics::Texture>(L"Title_Logo");
-		renderer->SetTexture(logo_1);
+		renderer->SetTexture(logo_1);*/
 
 		Scene::Initialize();
 	}

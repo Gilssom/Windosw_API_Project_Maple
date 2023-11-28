@@ -27,7 +27,7 @@ namespace YH
 		SpriteRenderer* renderer = bg[0]->AddComponent<SpriteRenderer>();
 		renderer->SetSize(Vector2(1.57f, 1.18f));
 		graphics::Texture* bg_0 = Resources::Find<graphics::Texture>(L"WorldSelect");
-		renderer->SetTexture(bg_0);6
+		renderer->SetTexture(bg_0);
 
 		/*bg[0] = object::Instantiate<GameObject>(enums::LayerType::BackGround, Vector2(bg_0->GetWidth() * 1.2f, 150));
 

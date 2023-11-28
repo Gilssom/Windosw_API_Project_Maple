@@ -6,6 +6,7 @@ namespace YH::enums
 	{
 		Transform,
 		SpriteRenderer,
+		Animator,
 		Script,
 		Camera,
 		End,
@@ -29,6 +30,7 @@ namespace YH::enums
 	{
 		Texture,
 		AudioClip,
+		Animation,
 		Prefab,
 		End,
 	};

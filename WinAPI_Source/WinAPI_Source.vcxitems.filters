@@ -58,6 +58,12 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Renderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Animator.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Animation.cpp">
+      <Filter>Resource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Component.h">
@@ -125,6 +131,12 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Renderer.h">
       <Filter>Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Animator.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Animation.h">
+      <Filter>Resource</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

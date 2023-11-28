@@ -1,4 +1,4 @@
-# Windosw_API_Project_Terraria
+# Windosw_API_Project_MapleStoty
 
 ### :mega: 23년 11월 06일 부터 시작할 Windows API 포트폴리오 프로젝트 <br>
 <br>
@@ -9,7 +9,9 @@
 <br>
 
 
-:evergreen_tree: 모작할 게임 : **Terraria** ( 테라리아 )
+:evergreen_tree: 모작할 게임 : **MapleStory** ( 메이플스토리 )
+<br>
+🙏 ~~23년 11년 28일 기준 Terraria 구현 불가 판정 이후 게임 변경~~
 
 :loudspeaker: **11/05 기준 게임 목표** <br>
 **1. 집을 지을 수 있는 규모의 프로젝트** <br>

@@ -28,7 +28,7 @@ namespace YH::graphics
 			if (!m_Bitmap)
 				return false;
 
-			BITMAP info = { };
+			BITMAP info = {};
 			GetObject(m_Bitmap, sizeof(BITMAP), &info);
 
 			m_Width = info.bmWidth;

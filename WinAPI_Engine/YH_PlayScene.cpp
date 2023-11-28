@@ -35,14 +35,20 @@ namespace YH
 		SpriteRenderer* renderer = bg[0]->AddComponent<SpriteRenderer>();
 		renderer->SetName(L"Back Ground");
 		graphics::Texture* bg_1 = Resources::Find<graphics::Texture>(L"Leferae");
+		renderer->SetTexture(bg_1);
 
-		// 애니메이션 추가 과정
-		Animator* animator = bg[0]->AddComponent<Animator>();
-		animator->CreateAnimation(L"Test", bg_1, Vector2(0.0f, 0.0f), Vector2(32.0f, 32.0f),
-			Vector2::Zero, 4, 0.1f);
+		// 몬스터 애니메이션 적용
+		bg[1] = object::Instantiate<GameObject>(enums::LayerType::Character, Vector2(2345.f, 1305.f));
+		
+		//SpriteRenderer* renderer1 = bg[1]->AddComponent<SpriteRenderer>();
+		graphics::Texture* Test = Resources::Find<graphics::Texture>(L"Mushroom");
+		//renderer1->SetTexture(Test);
 
-		animator->PlayAnimation(L"Test");
-		//renderer->SetTexture(bg_1);	
+		Animator* animator = bg[1]->AddComponent<Animator>();
+		animator->CreateAnimation(L"Test Move", Test, Vector2(0.0f, 0.0f), Vector2(65.0f, 70.0f),
+			Vector2::Zero, 3, 0.3f);
+
+		animator->PlayAnimation(L"Test Move");
 		#pragma endregion
 		
 		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(2340.0f, 1300.0f));

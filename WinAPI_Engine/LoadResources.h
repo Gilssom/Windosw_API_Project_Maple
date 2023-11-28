@@ -6,6 +6,7 @@ namespace YH
 {
 	void LoadResources()
 	{
+		Resources::Load<graphics::Texture>(L"Mushroom", L"..\\Resources\\Alpha_Test.bmp");
 		// Title Scene
 		Resources::Load<graphics::Texture>(L"Title", L"..\\Resources\\Title_Test.png");
 
@@ -16,6 +17,7 @@ namespace YH
 		Resources::Load<graphics::Texture>(L"Player", L"..\\Resources\\Player_Walk0_Test.png");
 
 		Resources::Load<graphics::Texture>(L"Leferae", L"..\\Resources\\Leferae_Test.png");
+
 
 		// 단풍나무의 숲 -> ... -> 시그너스의 전당 ( 여제 레이드 )
 	}

@@ -7,11 +7,12 @@ namespace YH
 	void LoadResources()
 	{
 		Resources::Load<graphics::Texture>(L"Mushroom", L"..\\Resources\\Alpha_Test.bmp");
+
 		// Title Scene
-		Resources::Load<graphics::Texture>(L"Title", L"..\\Resources\\Title_Test.png");
+		Resources::Load<graphics::Texture>(L"Title", L"..\\Resources\\Title.png");
 
 		// Lobby Scene
-		Resources::Load<graphics::Texture>(L"WorldSelect", L"..\\Resources\\WorldSelect_Test.png");
+		Resources::Load<graphics::Texture>(L"WorldSelect", L"..\\Resources\\WorldSelect.png");
 
 		// Play Scene
 		Resources::Load<graphics::Texture>(L"Player", L"..\\Resources\\Player_Walk0_Test.png");

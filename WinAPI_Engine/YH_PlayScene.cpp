@@ -48,9 +48,6 @@ namespace YH
 
 		mushAnim->PlayAnimation(L"Mushroom Move");
 
-		//m_Monster[0]->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
-		//m_Monster[0]->GetComponent<Transform>()->SetRotation(50.0f);
-
 		// 이펙트 적용
 		m_Effect[0] = object::Instantiate<GameObject>(enums::LayerType::Effect, Vector2(2145.f, 1350.f));
 

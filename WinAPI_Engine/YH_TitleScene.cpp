@@ -7,6 +7,8 @@
 #include "YH_Texture.h"
 #include "YH_Resources.h"
 
+#include "YH_Animator.h"
+
 namespace YH
 {
 	TitleScene::TitleScene()
@@ -20,20 +22,14 @@ namespace YH
 
 	void TitleScene::Initialize()
 	{
-		bg = object::Instantiate<Player>(enums::LayerType::BackGround, Vector2(500.0f, 250.0f));
+		bg = object::Instantiate<Player>(enums::LayerType::BackGround, Vector2(800.0f, 400.0f));
 
-		SpriteRenderer* renderer = bg->AddComponent<SpriteRenderer>();
-		renderer->SetName(L"Sprite Renderer");
-		//renderer->SetSize(Vector2(0.84f, 0.84f));
 		graphics::Texture* bg_1 = Resources::Find<graphics::Texture>(L"Title");
-		renderer->SetTexture(bg_1);
 
-		/*logo = object::Instantiate<Player>(enums::LayerType::UI);
-
-		renderer = logo->AddComponent<SpriteRenderer>();
-		renderer->SetSize(Vector2(0.84f, 0.84f));
-		graphics::Texture* logo_1 = Resources::Find<graphics::Texture>(L"Title_Logo");
-		renderer->SetTexture(logo_1);*/
+		Animator* title = bg->AddComponent<Animator>();
+		title->CreateAnimation(L"Title Movie", bg_1, Vector2(0.0f, 0.0f), Vector2(456.0f, 285.0f),
+			Vector2::Zero, 25, 0.1f);
+		title->PlayAnimation(L"Title Movie", false);
 
 		Scene::Initialize();
 	}

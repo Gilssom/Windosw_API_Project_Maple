@@ -4,7 +4,7 @@
 <br>
 <br>
 
-![image](https://github.com/Gilssom/Windosw_API_Project_Terraria/assets/83547233/c1d60900-4ada-4c2a-8109-54eaf44a41ec) <br>
+![image](https://github.com/Gilssom/Windosw_API_Project_Maple/assets/83547233/26f4c3ec-f01e-41ac-941f-5c5990f21f80) <br>
 <br>
 <br>
 
@@ -13,31 +13,34 @@
 <br>
 🙏 ~~23년 11년 28일 기준 Terraria 구현 불가 판정 이후 게임 변경~~
 
-:loudspeaker: **11/05 기준 게임 목표** <br>
-**1. 집을 지을 수 있는 규모의 프로젝트** <br>
-![image](https://github.com/Gilssom/Windosw_API_Project_Terraria/assets/83547233/5b6c0ec8-aca2-4c9c-bd05-ef06fe619f5a) <br>
+:loudspeaker: **11/29 기준 게임 목표** <br>
+**1. 단풍나무 언덕 (초보자 지역) 구현** <br>
+![image](https://github.com/Gilssom/Windosw_API_Project_Maple/assets/83547233/348972dc-e11a-46c2-9579-ad4359f26f62) <br>
 <br>
 <br>
 
-**2. 보스와의 전투가 가능한 규모의 프로젝트** <br>
-![image](https://github.com/Gilssom/Windosw_API_Project_Terraria/assets/83547233/c1c91f1d-8e0c-4afd-859e-f42b1194bea2) <br>
+**2. 메이플 아일랜드 ( 암허스트 - 사우스페리 ) 구현** <br>
+![image](https://github.com/Gilssom/Windosw_API_Project_Maple/assets/83547233/0ab235fe-b520-4234-8817-895499308cfa) <br>
 <br>
 <br>
 
-**3. 아이템의 조합법과 제작을 할 수 있는 규모의 프로젝트** <br>
-![image](https://github.com/Gilssom/Windosw_API_Project_Terraria/assets/83547233/5fbb5f99-86ee-4346-b1fe-aa67789a1828) <br>
+**3. 파괴된 헤네시스 - 타락한 시그너스 보스 레이드 구현** <br>
+![image](https://github.com/Gilssom/Windosw_API_Project_Maple/assets/83547233/c48c801a-8772-4b34-b3ec-303d3b92444c)
+![image](https://github.com/Gilssom/Windosw_API_Project_Maple/assets/83547233/15ce9e03-283f-433b-978b-661d87533ea5) <br>
 <br>
 <br>
 
-**4. Npc와 대화가 가능하고 AI 가 붙어있는 규모의 프로젝트** <br>
-![image](https://github.com/Gilssom/Windosw_API_Project_Terraria/assets/83547233/a2496cd2-901d-436d-910b-c15a4d4bba2f) <br>
+**4. 아이템 장착 및 스타포스 강화 시스템** <br>
+![image](https://github.com/Gilssom/Windosw_API_Project_Maple/assets/83547233/3da7471a-8553-4afe-b852-711419efb99d)
+![image](https://github.com/Gilssom/Windosw_API_Project_Maple/assets/83547233/2205b168-c42d-4012-81ad-0664ec7f8b44) <br>
 <br>
 <br>
 
-
-:bookmark_tabs: **Terraria 리소스 모음** <br>
-[Resources Image File](https://github.com/Gilssom/Windosw_API_Project_Terraria/tree/main/Resources/Image) <br>
+**5. 현재 정해진 직업은 윈드브레이커** <br>
+![image](https://github.com/Gilssom/Windosw_API_Project_Maple/assets/83547233/b552803c-381a-4ab8-9702-bf2cf023320a) <br>
+<br>
 <br>
 
-:bookmark_tabs: **Terraria 리소스 모음 (외부 링크)** <br> 
-[Sound Track Download](https://downloads.khinsider.com/game-soundtracks/album/terraria-complete-soundtrack) <br>
+:bookmark_tabs: **메이플 관련 리소스** <br>
+https://m.blog.naver.com/yeji__tok/221703890764 <br>
+![image](https://github.com/Gilssom/Windosw_API_Project_Maple/assets/83547233/6e133c62-646c-4448-9309-f8fd0d8d3578)

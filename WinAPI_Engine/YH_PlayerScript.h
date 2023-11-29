@@ -6,6 +6,14 @@ namespace YH
 	class PlayerScript : public Script
 	{
 	public:
+		enum class State
+		{
+			Idle,
+			LeftWalk,
+			RightWalk,
+			Attack,
+		};
+
 		PlayerScript();
 		~PlayerScript();
 
@@ -15,7 +23,7 @@ namespace YH
 		void Render(HDC hdc) override;
 
 	private:
-
+		State m_State;
 	};
 }
 

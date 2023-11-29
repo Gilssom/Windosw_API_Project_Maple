@@ -49,6 +49,9 @@ namespace YH
 			Vector2::Zero, 3, 0.3f);
 
 		animator->PlayAnimation(L"Test Move");
+
+		bg[1]->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
+		bg[1]->GetComponent<Transform>()->SetRotation(50.0f);
 		#pragma endregion
 		
 		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(2340.0f, 1300.0f));

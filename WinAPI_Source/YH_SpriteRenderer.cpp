@@ -37,6 +37,9 @@ namespace YH
 
 		Transform* transform = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = transform->GetPostion();
+		float rot = transform->GetRotation();
+		Vector2 scale = transform->GetScale();
+
 		pos = renderer::mainCamera->CaluatePosition(pos);
 
 		if (m_Texture->GetTextureType() == graphics::Texture::TextureType::Bmp)
@@ -48,6 +51,11 @@ namespace YH
 		else if (m_Texture->GetTextureType() == graphics::Texture::TextureType::Png)
 		{
 			Gdiplus::Graphics graphics(hdc);
+
+			//graphics.TranslateTransform(pos.x, pos.y);
+			//graphics.RotateTransform(rot);
+			//graphics.TranslateTransform(-pos.x, -pos.y);
+
 			graphics.DrawImage(m_Texture->GetImage(), Gdiplus::Rect
 				(
 					pos.x, pos.y, m_Texture->GetWidth() * m_Size.x, m_Texture->GetHeight() * m_Size.y

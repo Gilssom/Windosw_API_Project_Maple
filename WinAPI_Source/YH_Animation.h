@@ -41,6 +41,9 @@ namespace YH
 		bool IsComplete() { return m_Complete; }
 		void SetAnimator(class Animator* animator) { m_Animator = animator; }
 
+		// 방향 전환 (테스트)
+		void AnimFlip();
+
 	private:
 		class Animator* m_Animator;
 		graphics::Texture* m_Texture;

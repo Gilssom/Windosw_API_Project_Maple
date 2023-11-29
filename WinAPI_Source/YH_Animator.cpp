@@ -77,4 +77,9 @@ namespace YH
 		m_ActiveAnimation->Reset();
 		isLoop = loop;
 	}
+
+	void Animator::ImageFlip()
+	{
+		m_ActiveAnimation->AnimFlip();
+	}
 }

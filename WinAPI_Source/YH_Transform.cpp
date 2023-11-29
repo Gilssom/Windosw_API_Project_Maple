@@ -4,7 +4,8 @@
 
 namespace YH
 {
-	Transform::Transform() : Component(enums::ComponentType::Transform), m_Speed(0), m_Scale(Vector2::Zero), m_Rotation(0.0f)
+	Transform::Transform() : Component(enums::ComponentType::Transform)
+		, m_Speed(0), m_Scale(Vector2::One), m_Rotation(0.0f)
 	{
 	}
 	Transform::~Transform()

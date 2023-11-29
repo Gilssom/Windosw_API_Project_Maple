@@ -64,8 +64,8 @@ namespace YH
 			pos = renderer::mainCamera->CaluatePosition(pos);
 
 		Sprite sprite = m_AnimationSheet[m_Index];
-
 		graphics::Texture::TextureType type = m_Texture->GetTextureType();
+
 		if (type == graphics::Texture::TextureType::Bmp)
 		{
 			BLENDFUNCTION func = {};
@@ -76,7 +76,7 @@ namespace YH
 
 			HDC imgHdc = m_Texture->GetHdc();
 
-			AlphaBlend(hdc, pos.x - (sprite.leftTop.x / 2.0f), pos.y - (sprite.leftTop.y / 2.0f)
+			AlphaBlend(hdc, pos.x - (sprite.size.x / 2.0f), pos.y - (sprite.size.y / 2.0f)
 				, sprite.size.x * scale.x
 				, sprite.size.y * scale.y
 				, imgHdc, sprite.leftTop.x, sprite.leftTop.y
@@ -88,7 +88,7 @@ namespace YH
 			Gdiplus::ImageAttributes imgAtt = {};
 
 			// 투명화 시킬 픽셀의 색 범위
-			imgAtt.SetColorKey(Gdiplus::Color(100, 100, 100), Gdiplus::Color(255, 255, 255));
+			imgAtt.SetColorKey(Gdiplus::Color(230, 230, 230), Gdiplus::Color(255, 255, 255));
 
 			Gdiplus::Graphics graphics(hdc);
 
@@ -98,8 +98,8 @@ namespace YH
 
 			graphics.DrawImage(m_Texture->GetImage()
 				, Gdiplus::Rect(
-					  pos.x - (sprite.leftTop.x / 2.0f)
-					, pos.y - (sprite.leftTop.y / 2.0f)
+					  pos.x - (sprite.size.x / 2.0f)
+					, pos.y - (sprite.size.y / 2.0f)
 					, sprite.size.x * scale.x
 					, sprite.size.y * scale.y
 				)
@@ -138,5 +138,10 @@ namespace YH
 		m_Time = 0.0f;
 		m_Index = 0;
 		m_Complete = false;
+	}
+
+	void Animation::AnimFlip()
+	{
+		m_Texture->GetImage()->RotateFlip(Gdiplus::RotateNoneFlipX);
 	}
 }

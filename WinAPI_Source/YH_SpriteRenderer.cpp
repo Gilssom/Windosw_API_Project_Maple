@@ -44,22 +44,38 @@ namespace YH
 
 		if (m_Texture->GetTextureType() == graphics::Texture::TextureType::Bmp)
 		{
-			TransparentBlt(hdc, pos.x, pos.y, m_Texture->GetWidth() * m_Size.x, m_Texture->GetHeight() * m_Size.y, 
-				m_Texture->GetHdc(), 0, 0, m_Texture->GetWidth(), 
-				m_Texture->GetHeight(), RGB(255, 0, 255));
+			TransparentBlt(hdc, pos.x, pos.y
+				, m_Texture->GetWidth() * m_Size.x * scale.x
+				, m_Texture->GetHeight() * m_Size.y * scale.y
+				, m_Texture->GetHdc(), 0, 0
+				, m_Texture->GetWidth()
+				, m_Texture->GetHeight(), RGB(255, 0, 255));
 		}
 		else if (m_Texture->GetTextureType() == graphics::Texture::TextureType::Png)
 		{
+			Gdiplus::ImageAttributes imgAtt = {};
+
+			// 투명화 시킬 픽셀의 색 범위
+			imgAtt.SetColorKey(Gdiplus::Color(100, 100, 100), Gdiplus::Color(255, 255, 255));
+
 			Gdiplus::Graphics graphics(hdc);
 
-			//graphics.TranslateTransform(pos.x, pos.y);
-			//graphics.RotateTransform(rot);
-			//graphics.TranslateTransform(-pos.x, -pos.y);
+			graphics.TranslateTransform(pos.x, pos.y);
+			graphics.RotateTransform(rot);
+			graphics.TranslateTransform(-pos.x, -pos.y);
 
-			graphics.DrawImage(m_Texture->GetImage(), Gdiplus::Rect
-				(
-					pos.x, pos.y, m_Texture->GetWidth() * m_Size.x, m_Texture->GetHeight() * m_Size.y
-				));
+			graphics.DrawImage(m_Texture->GetImage()
+				, Gdiplus::Rect(
+					pos.x, pos.y
+					, m_Texture->GetWidth() * m_Size.x * scale.x
+					, m_Texture->GetHeight() * m_Size.y * scale.y
+				)
+				, 0, 0
+				, m_Texture->GetWidth()
+				, m_Texture->GetHeight()
+				, Gdiplus::UnitPixel
+				, nullptr
+			);
 		}
 	}
 }

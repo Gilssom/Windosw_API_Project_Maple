@@ -38,29 +38,56 @@ namespace YH
 		renderer->SetTexture(bg_1);
 
 		// 몬스터 애니메이션 적용
-		bg[1] = object::Instantiate<GameObject>(enums::LayerType::Character, Vector2(2345.f, 1305.f));
+		m_Monster[0] = object::Instantiate<GameObject>(enums::LayerType::Character, Vector2(2255.f, 1325.f));
 		
-		//SpriteRenderer* renderer1 = bg[1]->AddComponent<SpriteRenderer>();
-		graphics::Texture* Test = Resources::Find<graphics::Texture>(L"Mushroom");
-		//renderer1->SetTexture(Test);
+		graphics::Texture* mushroom = Resources::Find<graphics::Texture>(L"Mushroom");
 
-		Animator* animator = bg[1]->AddComponent<Animator>();
-		animator->CreateAnimation(L"Test Move", Test, Vector2(0.0f, 0.0f), Vector2(65.0f, 70.0f),
+		Animator* mushAnim = m_Monster[0]->AddComponent<Animator>();
+		mushAnim->CreateAnimation(L"Mushroom Move", mushroom, Vector2(0.0f, 0.0f), Vector2(65.0f, 70.0f),
 			Vector2::Zero, 3, 0.3f);
 
-		animator->PlayAnimation(L"Test Move");
+		mushAnim->PlayAnimation(L"Mushroom Move");
 
-		bg[1]->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
-		bg[1]->GetComponent<Transform>()->SetRotation(50.0f);
+		//m_Monster[0]->GetComponent<Transform>()->SetScale(Vector2(2.0f, 2.0f));
+		//m_Monster[0]->GetComponent<Transform>()->SetRotation(50.0f);
+
+		// 이펙트 적용
+		m_Effect[0] = object::Instantiate<GameObject>(enums::LayerType::Effect, Vector2(2145.f, 1350.f));
+
+		graphics::Texture* fairyTurn = Resources::Find<graphics::Texture>(L"FairyTurn");
+
+		Animator* animator = m_Effect[0]->AddComponent<Animator>();
+		animator->CreateAnimation(L"Fairy Turn Attack", fairyTurn, Vector2(0.0f, 0.0f), Vector2(580.0f, 348.0f),
+			Vector2::Zero, 11, 0.02f);
+
+		animator->PlayAnimation(L"Fairy Turn Attack");
 		#pragma endregion
 		
-		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(2340.0f, 1300.0f));
+		#pragma region Player Setting
+		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(2340.0f, 1350.0f));
 
-		SpriteRenderer* playerRender = m_Player->AddComponent<SpriteRenderer>();
-		playerRender->SetName(L"Sprite Renderer");
-		graphics::Texture* player = Resources::Find<graphics::Texture>(L"Player");
-		playerRender->SetTexture(player);
+		graphics::Texture* player = Resources::Find<graphics::Texture>(L"Player_Idle");
+		graphics::Texture* player_Walk = Resources::Find<graphics::Texture>(L"Player_Walk");
+		graphics::Texture* player_Att = Resources::Find<graphics::Texture>(L"Player_Attack");
+
 		m_Player->AddComponent<PlayerScript>();
+
+		Animator* playerAnim = m_Player->AddComponent<Animator>();
+		playerAnim->CreateAnimation(L"Player Idle", player, Vector2(0.0f, 0.0f), Vector2(140.0f, 91.0f),
+			Vector2(55.0f, 91.0f), 4, 0.5f);
+
+		playerAnim->CreateAnimation(L"Player Walk", player_Walk, Vector2(0.0f, 0.0f), Vector2(141.0f, 76.0f),
+			Vector2(91.0f, 76.0f), 4, 0.3f);
+
+		playerAnim->CreateAnimation(L"Player Attack", player_Att, Vector2(0.0f, 0.0f), Vector2(220.0f, 227.0f),
+			Vector2(116.0f, 131.0f), 3, 0.15f);
+
+		playerAnim->PlayAnimation(L"Player Idle");
+
+		//m_Player->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 100.0f));
+		#pragma endregion
+
+		
 
 		cameraComp->SetTarget(m_Player);
 		

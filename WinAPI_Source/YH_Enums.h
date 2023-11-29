@@ -22,6 +22,7 @@ namespace YH::enums
 		Ground,
 		Character,
 		Player,
+		Effect,
 		Max = 20,
 		// ...
 	};

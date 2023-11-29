@@ -9,9 +9,16 @@ namespace YH
 		enum class State
 		{
 			Idle,
-			LeftWalk,
-			RightWalk,
+			Walk,
+			Down,
 			Attack,
+			FairyTurn,
+		};
+
+		enum class Direction
+		{
+			Right,
+			Left,
 		};
 
 		PlayerScript();
@@ -23,7 +30,16 @@ namespace YH
 		void Render(HDC hdc) override;
 
 	private:
+		void Idle();
+		void Move();
+		void SitDown();
+		void Attack();
+		void FairyTurn();
+
+	private:
 		State m_State;
+		Direction m_Dir;
+		class Animator* m_Animator;
 	};
 }
 

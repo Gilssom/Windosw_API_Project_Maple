@@ -16,6 +16,12 @@ namespace YH
 		// Play Scene
 		Resources::Load<graphics::Texture>(L"Player", L"..\\Resources\\Player_Walk0_Test.png");
 
+		Resources::Load<graphics::Texture>(L"Player_Idle", L"..\\Resources\\Player_Idle.png");
+		Resources::Load<graphics::Texture>(L"Player_Walk", L"..\\Resources\\Player_Walk.png");
+		Resources::Load<graphics::Texture>(L"Player_Attack", L"..\\Resources\\Player_Attack.png");
+
+		Resources::Load<graphics::Texture>(L"FairyTurn", L"..\\Resources\\FairyTurn.png");
+
 		Resources::Load<graphics::Texture>(L"Leferae", L"..\\Resources\\Leferae_Test.png");
 
 

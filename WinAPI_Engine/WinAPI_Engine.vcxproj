@@ -139,6 +139,8 @@
     <ClInclude Include="LoadResources.h" />
     <ClInclude Include="YH_LoadScenes.h" />
     <ClInclude Include="YH_LobbyScene.h" />
+    <ClInclude Include="YH_Mushroom.h" />
+    <ClInclude Include="YH_MushScript.h" />
     <ClInclude Include="YH_Player.h" />
     <ClInclude Include="YH_PlayerScript.h" />
     <ClInclude Include="YH_PlayScene.h" />
@@ -146,6 +148,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="YH_LobbyScene.cpp" />
+    <ClCompile Include="YH_Mushroom.cpp" />
+    <ClCompile Include="YH_MushScript.cpp" />
     <ClCompile Include="YH_Player.cpp" />
     <ClCompile Include="YH_PlayerScript.cpp" />
     <ClCompile Include="YH_PlayScene.cpp" />

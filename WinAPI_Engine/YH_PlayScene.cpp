@@ -7,6 +7,7 @@
 #include "YH_Texture.h"
 #include "YH_Resources.h"
 #include "YH_PlayerScript.h"
+#include "YH_MushScript.h"
 #include "YH_Camera.h"
 #include "YH_Renderer.h"
 
@@ -38,8 +39,8 @@ namespace YH
 		renderer->SetTexture(bg_1);
 
 		// 몬스터 애니메이션 적용
-		m_Monster[0] = object::Instantiate<GameObject>(enums::LayerType::Character, Vector2(2255.f, 1325.f));
-		
+		m_Mushroom = object::Instantiate<Mushroom>(enums::LayerType::Character, Vector2(2255.f, 1325.f));
+
 		graphics::Texture* mushroom = Resources::Find<graphics::Texture>(L"Mushroom");
 
 		Animator* mushAnim = m_Monster[0]->AddComponent<Animator>();

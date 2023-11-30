@@ -20,6 +20,12 @@
     <ClInclude Include="YH_PlayerScript.h">
       <Filter>Scripts</Filter>
     </ClInclude>
+    <ClInclude Include="YH_MushScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="YH_Mushroom.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scenes">
@@ -33,6 +39,9 @@
     </Filter>
     <Filter Include="Scripts">
       <UniqueIdentifier>{05fcfa93-bbfc-49be-b284-51998485e35e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Monster">
+      <UniqueIdentifier>{9cc5b5d5-0f18-4edd-98ef-d7aadb0343bb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -50,6 +59,12 @@
     </ClCompile>
     <ClCompile Include="YH_PlayerScript.cpp">
       <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="YH_MushScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="YH_Mushroom.cpp">
+      <Filter>Monster</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

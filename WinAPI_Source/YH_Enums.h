@@ -21,6 +21,7 @@ namespace YH::enums
 		Tree,
 		Ground,
 		Character,
+		Monster,
 		Player,
 		Effect,
 		Max = 20,

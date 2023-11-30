@@ -20,6 +20,7 @@ namespace YH
 	private:
 		class GameObject* bg[50];
 		class GameObject* m_Monster[50];
+		class Mushroom* m_Mushroom;
 		class GameObject* m_Effect[50];
 		class Player* m_Player;
 	};

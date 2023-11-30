@@ -37,7 +37,8 @@ namespace YH
 		case YH::MushScript::State::Attack:
 			Attack();
 			break;
-		case YH::MushScript::State::FairyTurn:
+		case YH::MushScript::State::Death:
+			Death();
 			break;
 		default:
 			break;
@@ -55,10 +56,12 @@ namespace YH
 	void MushScript::Idle()
 	{
 		m_Time += Time::DeltaTime();
-		if (m_Time > 3.0f)
+
+		if (m_Time > 5.0f)
 		{
 			m_State = MushScript::State::Walk;
-			int direction = (rand() % 4);
+
+			int direction = (rand() % 2);
 			m_Dir = (Direction)direction;
 			PlayWalkAnimationByDirection(m_Dir);
 			m_Time = 0.0f;
@@ -68,18 +71,25 @@ namespace YH
 	void MushScript::Move()
 	{
 		m_Time += Time::DeltaTime();
+
 		if (m_Time > 2.0f)
 		{
 			int isLayDown = rand() % 2;
 			if (isLayDown)
 			{
-				//m_State = State::LayDown;
-				m_Animator->PlayAnimation(L"LayDown", false);
-			}
-			else
-			{
-				//m_State = State::SitDown;
-				m_Animator->PlayAnimation(L"SitDown", false);
+				m_State = State::Idle;
+
+				switch (m_Dir)
+				{
+				case YH::MushScript::Direction::Right:
+					m_Animator->PlayAnimation(L"Mush Right Idle");
+					break;
+				case YH::MushScript::Direction::Left:
+					m_Animator->PlayAnimation(L"Mush Left Idle");
+					break;
+				default:
+					break;
+				}
 			}
 		}
 
@@ -92,13 +102,20 @@ namespace YH
 
 	}
 
+	void MushScript::Death()
+	{
+		m_Animator->PlayAnimation(L"Mush Die");
+	}
+
 	void MushScript::PlayWalkAnimationByDirection(Direction dir)
 	{
 		switch (dir)
 		{
 		case YH::MushScript::Direction::Right:
+			m_Animator->PlayAnimation(L"Mush Right Move");
 			break;
 		case YH::MushScript::Direction::Left:
+			m_Animator->PlayAnimation(L"Mush Left Move");
 			break;
 		default:
 			break;
@@ -112,10 +129,10 @@ namespace YH
 		switch (m_Dir)
 		{
 		case YH::MushScript::Direction::Right:
-			pos.x += 100.f * Time::DeltaTime();
+			pos.x += 50.f * Time::DeltaTime();
 			break;
 		case YH::MushScript::Direction::Left:
-			pos.x -= 100.f * Time::DeltaTime();
+			pos.x -= 50.f * Time::DeltaTime();
 			break;
 		default:
 			assert(false);

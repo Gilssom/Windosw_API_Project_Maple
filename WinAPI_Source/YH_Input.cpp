@@ -1,8 +1,12 @@
 #include "YH_Input.h"
+#include "YH_Application.h"
+
+extern YH::Application App;
 
 namespace YH
 {
-	std::vector<Input::Key> Input::m_Keys = { };
+	std::vector<Input::Key> Input::m_Keys = {};
+	math::Vector2 Input::m_MousePosition = math::Vector2::One;
 
 	int ASCII[(UINT)KeyCode::End]
 	{ 
@@ -48,10 +52,20 @@ namespace YH
 
 	void Input::UpdateKey(Input::Key& key)
 	{
-		if (IsKeyDown(key.keyCode))
-			UpdateKeyDown(key);
+		if (GetFocus())
+		{
+			if (IsKeyDown(key.keyCode))
+				UpdateKeyDown(key);
+			else
+				UpdateKeyUp(key);
+
+			GetMousePositionByWindow();
+		}
 		else
-			UpdateKeyUp(key);
+		{
+			ClearKeys();
+		}
+		
 	}
 
 	bool Input::IsKeyDown(KeyCode code)
@@ -77,5 +91,28 @@ namespace YH
 			key.state = KeyState::None;
 
 		key.pressed = false;
+	}
+
+	void Input::GetMousePositionByWindow()
+	{
+		POINT mousePos = { };
+		GetCursorPos(&mousePos);
+		ScreenToClient(App.GetHwnd(), &mousePos);
+
+		m_MousePosition.x = mousePos.x;
+		m_MousePosition.y = mousePos.y;
+	}
+
+	void Input::ClearKeys()
+	{
+		for (Key& key : m_Keys)
+		{
+			if (key.state == KeyState::Down || key.state == KeyState::Pressed)
+				key.state = KeyState::Up;
+			else if (key.state == KeyState::Up)
+				key.state = KeyState::None;
+
+			key.pressed = false;
+		}
 	}
 }

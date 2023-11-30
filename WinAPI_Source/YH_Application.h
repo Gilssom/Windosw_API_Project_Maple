@@ -20,6 +20,7 @@ namespace YH
 
 		void Render();
 
+		HWND GetHwnd() { return m_Hand; }
 		HDC GetHdc() { return m_Hdc; }
 		UINT GetWidth() { return m_Width; }
 		UINT GetHeight() { return m_Height; }

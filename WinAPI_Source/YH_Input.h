@@ -37,6 +37,7 @@ namespace YH
 		static bool GetKeyDown(KeyCode keyCode) { return m_Keys[(UINT)keyCode].state == KeyState::Down; }
 		static bool GetKeyUp(KeyCode keyCode)	{ return m_Keys[(UINT)keyCode].state == KeyState::Up; }
 		static bool GetKey(KeyCode keyCode)		{ return m_Keys[(UINT)keyCode].state == KeyState::Pressed; }
+		static math::Vector2 GetMousePosition() { return m_MousePosition; }
 
 	private:
 		static void CreateKeys();
@@ -45,9 +46,12 @@ namespace YH
 		static bool IsKeyDown(KeyCode code);
 		static void UpdateKeyDown(Input::Key& key);
 		static void UpdateKeyUp(Input::Key& key);
+		static void GetMousePositionByWindow();
+		static void ClearKeys();
 
 	private:
 		static std::vector<Key> m_Keys;
+		static math::Vector2 m_MousePosition;
 	};
 }
 

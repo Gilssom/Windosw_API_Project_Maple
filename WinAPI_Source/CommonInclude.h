@@ -7,6 +7,7 @@
 #include <algorithm>
 #include <string>
 #include <map>
+#include <functional>
 
 #pragma comment (lib, "x64/Debug/WinAPI_Engine.lib")
 

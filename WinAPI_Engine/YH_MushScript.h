@@ -11,9 +11,8 @@ namespace YH
 		{
 			Idle,
 			Walk,
-			Down,
 			Attack,
-			FairyTurn,
+			Death,
 		};
 
 		enum class Direction
@@ -34,6 +33,7 @@ namespace YH
 		void Idle();
 		void Move();
 		void Attack();
+		void Death();
 
 		void PlayWalkAnimationByDirection(Direction dir);
 

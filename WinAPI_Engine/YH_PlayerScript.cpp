@@ -59,28 +59,14 @@ namespace YH
 		if (Input::GetKey(KeyCode::Right))
 		{
 			m_State = PlayerScript::State::Walk;
-
-			m_Animator->PlayAnimation(L"Player Walk");
-
-			if (m_Dir != PlayerScript::Direction::Right)
-			{
-				m_Animator->ImageFlip();
-				m_Dir = PlayerScript::Direction::Right;
-			}
-
+			m_Dir = PlayerScript::Direction::Right;
+			m_Animator->PlayAnimation(L"Player Right Walk");
 		}
 		if (Input::GetKey(KeyCode::Left))
 		{
 			m_State = PlayerScript::State::Walk;
-
-			m_Animator->PlayAnimation(L"Player Walk");
-
-			if (m_Dir != PlayerScript::Direction::Left)
-			{
-				m_Animator->ImageFlip();
-				m_Dir = PlayerScript::Direction::Left;
-			}
-
+			m_Dir = PlayerScript::Direction::Left;
+			m_Animator->PlayAnimation(L"Player Left Walk");
 		}
 		if (Input::GetKey(KeyCode::Up))
 			m_State = PlayerScript::State::Idle;
@@ -88,8 +74,21 @@ namespace YH
 			m_State = PlayerScript::State::Down;
 
 		if (Input::GetKey(KeyCode::LeftCtrl))
-			m_State = PlayerScript::State::Attack;
-
+		{
+			m_State = PlayerScript::State::Attack; 
+			
+			switch (m_Dir)
+			{
+			case YH::PlayerScript::Direction::Right:
+				m_Animator->PlayAnimation(L"Player Right Attack", false);
+				break;
+			case YH::PlayerScript::Direction::Left:
+				m_Animator->PlayAnimation(L"Player Left Attack", false);
+				break;
+			default:
+				break;
+			}
+		}
 	}
 
 	void PlayerScript::Move()
@@ -108,39 +107,61 @@ namespace YH
 		if (Input::GetKeyUp(KeyCode::Right) || Input::GetKeyUp(KeyCode::Left))
 		{
 			m_State = PlayerScript::State::Idle;
-			m_Animator->PlayAnimation(L"Player Idle");
-			m_Animator->ImageFlip();
+
+			switch (m_Dir)
+			{
+			case YH::PlayerScript::Direction::Right:
+				m_Animator->PlayAnimation(L"Player Right Idle");
+				break;
+			case YH::PlayerScript::Direction::Left:
+				m_Animator->PlayAnimation(L"Player Left Idle");
+				break;
+			default:
+				break;
+			}
 		}
 	}
 
 	void PlayerScript::SitDown()
 	{
-		if (Input::GetKey(KeyCode::Down))
+		/*if (Input::GetKey(KeyCode::Down))
 			m_Animator->PlayAnimation(L"Player Down");
 
 		if (Input::GetKeyUp(KeyCode::Down))
 		{
 			m_State = PlayerScript::State::Idle;
 			m_Animator->PlayAnimation(L"Idle");
-		}
+		}*/
 	}
 
 	void PlayerScript::Attack()
 	{
-		if (Input::GetKey(KeyCode::LeftCtrl))
-		{
-			m_Animator->PlayAnimation(L"Player Attack");
-		}
-
-		if (Input::GetKeyUp(KeyCode::LeftCtrl))
+		if (m_Animator->IsComplete())
 		{
 			m_State = PlayerScript::State::Idle;
-			m_Animator->PlayAnimation(L"Idle");
+
+			switch (m_Dir)
+			{
+			case YH::PlayerScript::Direction::Right:
+				m_Animator->PlayAnimation(L"Player Right Idle");
+				break;
+			case YH::PlayerScript::Direction::Left:
+				m_Animator->PlayAnimation(L"Player Left Idle");
+				break;
+			default:
+				break;
+			}
 		}
 	}
 
 	void PlayerScript::FairyTurn()
 	{
-
+		// 마우스 좌표 가져오는 로직
+		/*if (Input::GetKey(KeyCode::LeftMouse))
+		{
+			m_State = PlayerScript::State::FairyTurn;
+			
+			Vector2 mousePos = Input::GetMousePosition();
+		}*/
 	}
 }

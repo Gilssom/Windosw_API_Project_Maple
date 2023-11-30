@@ -6,7 +6,7 @@ namespace YH
 {
 	void LoadResources()
 	{
-		Resources::Load<graphics::Texture>(L"Mushroom", L"..\\Resources\\Alpha_Test.bmp");
+		Resources::Load<graphics::Texture>(L"Mushroom", L"..\\Resources\\Mushroom_Sprite.png");
 
 		// Title Scene
 		Resources::Load<graphics::Texture>(L"Title", L"..\\Resources\\Title.png");
@@ -15,11 +15,11 @@ namespace YH
 		Resources::Load<graphics::Texture>(L"WorldSelect", L"..\\Resources\\WorldSelect.png");
 
 		// Play Scene
-		Resources::Load<graphics::Texture>(L"Player", L"..\\Resources\\Player_Walk0_Test.png");
+		Resources::Load<graphics::Texture>(L"Player", L"..\\Resources\\Player_Sprite.png");
 
-		Resources::Load<graphics::Texture>(L"Player_Idle", L"..\\Resources\\Player_Idle.png");
-		Resources::Load<graphics::Texture>(L"Player_Walk", L"..\\Resources\\Player_Walk.png");
-		Resources::Load<graphics::Texture>(L"Player_Attack", L"..\\Resources\\Player_Attack.png");
+		//Resources::Load<graphics::Texture>(L"Player_Idle", L"..\\Resources\\Player_Idle.png");
+		//Resources::Load<graphics::Texture>(L"Player_Walk", L"..\\Resources\\Player_Walk.png");
+		//Resources::Load<graphics::Texture>(L"Player_Attack", L"..\\Resources\\Player_Attack.png");
 
 		Resources::Load<graphics::Texture>(L"FairyTurn", L"..\\Resources\\FairyTurn.png");
 

@@ -17,7 +17,7 @@ namespace YH
 			void operator()()
 			{
 				if (m_Event)
-					m_Event;
+					m_Event();
 			}
 
 			std::function<void()> m_Event;
@@ -25,9 +25,9 @@ namespace YH
 
 		struct Events
 		{
-			Event m_StartEvent;
-			Event m_CompleteEvent;
-			Event m_EndEvent;
+			Event startEvent;
+			Event completeEvent;
+			Event endEvent;
 		};
 
 		Animator();
@@ -45,6 +45,12 @@ namespace YH
 
 		Animation* FindAnimation(const std::wstring& name);
 		void PlayAnimation(const std::wstring& name, bool loop = true);
+
+		Events* FindEvents(const std::wstring& name);
+
+		std::function<void()>& GetStartEvent(const std::wstring& name);
+		std::function<void()>& GetCompleteEvent(const std::wstring& name);
+		std::function<void()>& GetEndEvent(const std::wstring& name);
 
 		bool IsComplete() { return m_ActiveAnimation->IsComplete(); }
 

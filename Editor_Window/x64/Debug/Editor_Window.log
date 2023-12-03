@@ -1,1 +1,5 @@
-﻿  Editor_Window.vcxproj -> C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\Editor_Window\x64\Debug\Editor_Window.exe
+﻿  Editor_Window.cpp
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\Editor_Window\Editor_Window.cpp(162,10): warning C4311: '형식 캐스트': 'int *'에서 'unsigned int'(으)로 포인터가 잘립니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\Editor_Window\Editor_Window.cpp(162,10): warning C4302: '형식 캐스트': 'int *'에서 'unsigned int'(으)로 잘립니다.
+  Editor_Window.vcxproj -> C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\Editor_Window\x64\Debug\Editor_Window.exe

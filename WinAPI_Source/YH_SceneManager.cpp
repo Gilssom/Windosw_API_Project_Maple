@@ -41,4 +41,13 @@ namespace YH
 	{
 		m_ActiveScene->Render(hdc);
 	}
+
+	void SceneManager::Release()
+	{
+		for (auto& iter : m_Scene)
+		{
+			delete iter.second;
+			iter.second = nullptr;
+		}
+	}
 }

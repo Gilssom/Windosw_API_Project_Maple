@@ -6,8 +6,6 @@ namespace YH
 {
 	void LoadResources()
 	{
-		Resources::Load<graphics::Texture>(L"Mushroom", L"..\\Resources\\Mushroom_Sprite.png");
-
 		// Title Scene
 		Resources::Load<graphics::Texture>(L"Title", L"..\\Resources\\Title.png");
 
@@ -16,14 +14,15 @@ namespace YH
 
 		// Play Scene
 		Resources::Load<graphics::Texture>(L"Player", L"..\\Resources\\Player_Sprite.png");
+		Resources::Load<graphics::Texture>(L"Mushroom", L"..\\Resources\\Mushroom_Sprite.png");
 
-		//Resources::Load<graphics::Texture>(L"Player_Idle", L"..\\Resources\\Player_Idle.png");
-		//Resources::Load<graphics::Texture>(L"Player_Walk", L"..\\Resources\\Player_Walk.png");
-		//Resources::Load<graphics::Texture>(L"Player_Attack", L"..\\Resources\\Player_Attack.png");
-
+		// Skill
 		Resources::Load<graphics::Texture>(L"FairyTurn", L"..\\Resources\\FairyTurn.png");
+		Resources::Load<graphics::Texture>(L"BoringSong", L"..\\Resources\\BoringSong.png");
+		Resources::Load<graphics::Texture>(L"BoringSongEnd", L"..\\Resources\\BoringSongEnd.png");
 
-		Resources::Load<graphics::Texture>(L"Leferae", L"..\\Resources\\Leferae_Test.png");
+		// Map
+		Resources::Load<graphics::Texture>(L"Mapleisland_0", L"..\\Resources\\Mapleisland_0.png");
 
 
 		// 단풍나무의 숲 -> ... -> 시그너스의 전당 ( 여제 레이드 )

@@ -2,13 +2,20 @@
 
 namespace YH
 {
-	Layer::Layer() : m_GameObjects { }
+	Layer::Layer() : m_Type(enums::LayerType::None), m_GameObjects{}
 	{
 
 	}
 	Layer::~Layer()
 	{
+		for (GameObject* gameObj : m_GameObjects)
+		{
+			if (!gameObj)
+				continue;
 
+			delete gameObj;
+			gameObj = nullptr;
+		}
 	}
 
 	void Layer::Initialize()

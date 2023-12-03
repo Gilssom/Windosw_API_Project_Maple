@@ -3,6 +3,7 @@
 #include "YH_Time.h"
 #include "YH_Rocket.h"
 #include "YH_SceneManager.h"
+#include "YH_Resources.h"
 
 namespace YH
 {
@@ -49,6 +50,12 @@ namespace YH
 		//Time::Render(m_BackHdc);
 
 		CopyRenderTarget(m_BackHdc, m_Hdc);
+	}
+
+	void Application::Release()
+	{
+		SceneManager::Release();
+		Resources::Release();
 	}
 
 	void Application::ClearRenderTarget()

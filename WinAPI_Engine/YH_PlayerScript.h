@@ -11,8 +11,10 @@ namespace YH
 			Idle,
 			Walk,
 			Down,
+			DownAttack,
 			Attack,
 			FairyTurn,
+			BoringSong,
 		};
 
 		enum class Direction
@@ -29,17 +31,26 @@ namespace YH
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
+		void FairyTurnEff();
+		void BoringSongEff();
+
 	private:
 		void Idle();
 		void Move();
 		void SitDown();
+		void DownAttack();
 		void Attack();
 		void FairyTurn();
+		void BoringSong();
 
 	private:
 		State m_State;
 		Direction m_Dir;
 		class Animator* m_Animator;
+		GameObject* m_RightEff[50];
+		GameObject* m_LeftEff[50];
+		Animator* m_RightEffAnim[50];
+		Animator* m_LeftEffAnim[50];
 	};
 }
 

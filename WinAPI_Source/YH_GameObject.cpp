@@ -16,6 +16,9 @@ namespace YH
 	{
 		for (Component* comp : m_Components)
 		{
+			if (!comp)
+				continue;
+
 			delete comp;
 			comp = nullptr;
 		}

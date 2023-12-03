@@ -32,11 +32,11 @@ namespace YH
 		renderer::mainCamera = cameraComp;
 
 		#pragma region BackGround Settings
-		bg[0] = object::Instantiate<GameObject>(enums::LayerType::BackGround);
+		bg[0] = object::Instantiate<GameObject>(enums::LayerType::BackGround/*, Vector2(-1135.0f, -903.5f)*/);
 
 		SpriteRenderer* renderer = bg[0]->AddComponent<SpriteRenderer>();
 		renderer->SetName(L"Back Ground");
-		graphics::Texture* bg_1 = Resources::Find<graphics::Texture>(L"Leferae");
+		graphics::Texture* bg_1 = Resources::Find<graphics::Texture>(L"Mapleisland_0");
 		renderer->SetTexture(bg_1);
 
 		// 몬스터 애니메이션 적용
@@ -58,28 +58,14 @@ namespace YH
 			Vector2::Zero, 12, 0.1f);
 
 		mushAnim->PlayAnimation(L"Mush Left Idle");
-
-		// 이펙트 적용
-		m_Effect[0] = object::Instantiate<GameObject>(enums::LayerType::Effect, Vector2(2145.f, 1350.f));
-
-		graphics::Texture* fairyTurn = Resources::Find<graphics::Texture>(L"FairyTurn");
-
-		Animator* animator = m_Effect[0]->AddComponent<Animator>();
-		animator->CreateAnimation(L"Fairy Turn Attack", fairyTurn, Vector2(0.0f, 0.0f), Vector2(580.0f, 348.0f),
-			Vector2::Zero, 11, 0.02f);
-
-		animator->PlayAnimation(L"Fairy Turn Attack");
 		#pragma endregion
 		
 		#pragma region Player Setting
 		// 플레이어 적용
-		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(2340.0f, 1350.0f));
+		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(900.0f, 1120.0f));
 
 		graphics::Texture* player = Resources::Find<graphics::Texture>(L"Player");
-		//graphics::Texture* player_Walk = Resources::Find<graphics::Texture>(L"Player_Walk");
-		//graphics::Texture* player_Att = Resources::Find<graphics::Texture>(L"Player_Attack");
-
-		m_Player->AddComponent<PlayerScript>();
+		PlayerScript* playerScript = m_Player->AddComponent<PlayerScript>();
 
 		Animator* playerAnim = m_Player->AddComponent<Animator>();
 		playerAnim->CreateAnimation(L"Player Left Idle", player, Vector2(0.0f, 0.0f), Vector2(170.0f, 170.0f),
@@ -97,12 +83,36 @@ namespace YH
 		playerAnim->CreateAnimation(L"Player Right Attack", player, Vector2(510.0f, 340.0f), Vector2(170.0f, 170.0f),
 			Vector2::Zero, 3, 0.15f);
 
+		playerAnim->CreateAnimation(L"Player Left Down", player, Vector2(0.0f, 510.0f), Vector2(170.0f, 170.0f),
+			Vector2::Zero, 1, 0.0f);
+		playerAnim->CreateAnimation(L"Player Right Down", player, Vector2(1020.0f, 340.0f), Vector2(170.0f, 170.0f),
+			Vector2::Zero, 1, 0.0f);
+
+		playerAnim->CreateAnimation(L"Player Left Down Attack", player, Vector2(170.0f, 510.0f), Vector2(170.0f, 170.0f),
+			Vector2::Zero, 1, 0.3f);
+		playerAnim->CreateAnimation(L"Player Right Down Attack", player, Vector2(1190.0f, 340.0f), Vector2(170.0f, 170.0f),
+			Vector2::Zero, 1, 0.3f);
+
+		playerAnim->CreateAnimation(L"Player Fairy Left Attack", player, Vector2(0.0f, 340.0f), Vector2(170.0f, 170.0f),
+			Vector2::Zero, 3, 0.15f);
+		playerAnim->CreateAnimation(L"Player Fairy Right Attack", player, Vector2(510.0f, 340.0f), Vector2(170.0f, 170.0f),
+			Vector2::Zero, 3, 0.15f);
+
+		playerAnim->CreateAnimation(L"Player Boring Left Attack", player, Vector2(1020.0f, 510.0f), Vector2(170.0f, 170.0f),
+			Vector2::Zero, 1, 0.0f);
+		playerAnim->CreateAnimation(L"Player Boring Right Attack", player, Vector2(1190.0f, 510.0f), Vector2(170.0f, 170.0f),
+			Vector2::Zero, 1, 0.0f);
+
 		playerAnim->PlayAnimation(L"Player Left Idle");
+
+		playerAnim->GetStartEvent(L"Player Fairy Left Attack") = std::bind(&PlayerScript::FairyTurnEff, playerScript);
+		playerAnim->GetStartEvent(L"Player Fairy Right Attack") = std::bind(&PlayerScript::FairyTurnEff, playerScript);
+
+		playerAnim->GetStartEvent(L"Player Boring Left Attack") = std::bind(&PlayerScript::BoringSongEff, playerScript);
+		playerAnim->GetStartEvent(L"Player Boring Right Attack") = std::bind(&PlayerScript::BoringSongEff, playerScript);
 
 		//m_Player->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 100.0f));
 		#pragma endregion
-
-		
 
 		cameraComp->SetTarget(m_Player);
 		

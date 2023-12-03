@@ -19,6 +19,7 @@ namespace YH
 		void LateUpdate();
 
 		void Render();
+		void Release();
 
 		HWND GetHwnd() { return m_Hand; }
 		HDC GetHdc() { return m_Hdc; }

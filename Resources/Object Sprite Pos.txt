@@ -1,2 +1,6 @@
 Player Sprite  	x = 170.0f , y = 170.0f
 Mushroom Sprite  	x = 60.0f , y = 60.0f
+
+Boring Song Att Start 	x = 604.0f , y = 494.0f // (0,0) ~ (10268,0)
+Boring Song Attacking	x = 604.0f , y = 494.0f // 
+Boring Sond Att End	x = 382.0f , y = 408.0f

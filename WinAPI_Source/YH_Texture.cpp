@@ -1,11 +1,38 @@
 #include "YH_Texture.h"
 #include "YH_Application.h"
+#include "YH_Resources.h"
 
 // 해당 전역변수가 존재함을 알리는 키워드
 extern YH::Application App; 
 
 namespace YH::graphics
 {
+	Texture* Texture::Create(const std::wstring& name, UINT width, UINT height)
+	{
+		Texture* image = Resources::Find<graphics::Texture>(name);
+
+		if (image)
+			return image;
+
+		image = new Texture();
+		image->SetName(name);
+		image->SetWidth(width);
+		image->SetHeight(height);
+
+		HDC hdc = App.GetHdc();
+		HWND hwnd = App.GetHwnd();
+
+		image->m_Bitmap = CreateCompatibleBitmap(hdc, width, height);
+		image->m_Hdc = CreateCompatibleDC(hdc);
+
+		HBITMAP oldBitmap = (HBITMAP)SelectObject(image->m_Hdc, image->m_Bitmap);
+		DeleteObject(oldBitmap);
+
+		Resources::Insert(name + L" Image", image);
+
+		return image;
+	}
+
 	Texture::Texture() : Resource(enums::ResourceType::Texture)
 	{
 

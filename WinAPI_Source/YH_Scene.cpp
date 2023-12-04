@@ -58,6 +58,17 @@ namespace YH
 		}
 	}
 
+	void Scene::Destroy()
+	{
+		for (Layer* layer : m_Layers)
+		{
+			if (!layer)
+				continue;
+
+			layer->Destroy();
+		}
+	}
+
 	void Scene::AddGameObject(GameObject* gameObj, const enums::LayerType layerType)
 	{
 		m_Layers[(UINT)layerType]->AddGameObject(gameObj);

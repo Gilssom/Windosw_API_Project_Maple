@@ -6,7 +6,7 @@
 
 namespace YH
 {
-	GameObject::GameObject() : m_LookState(Lookfor::None)
+	GameObject::GameObject() : m_LookState(Lookfor::None), m_State(State::Active)
 	{
 		m_Components.resize((UINT)enums::ComponentType::End);
 		InitTransform();

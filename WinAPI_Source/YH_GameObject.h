@@ -2,6 +2,7 @@
 #include "CommonInclude.h"
 #include "YH_Component.h"
 #include "YH_Input.h"
+//#include "YH_Object.h"
 
 namespace YH
 {
@@ -13,6 +14,16 @@ namespace YH
 	class GameObject
 	{
 	public:
+		/*friend void object::Destroy(GameObject* obj);*/
+
+		enum class State
+		{
+			Active,
+			Paused,
+			Dead,
+			End
+		};
+
 		GameObject();
 		~GameObject();
 
@@ -33,7 +44,6 @@ namespace YH
 
 			return comp;
 		}
-
 		template <typename T>
 		T* GetComponent()
 		{
@@ -51,6 +61,16 @@ namespace YH
 			return target;
 		}
 
+		State GetActive() { return m_State; }
+
+		void SetActive(bool power)
+		{
+			if (power) m_State = State::Active;
+			if (!power) m_State = State::Paused;
+		}
+
+		void Death() { m_State = State::Dead; }
+
 		void MonsterRender(HDC hdc);
 		void MonsterMoving();
 
@@ -63,6 +83,8 @@ namespace YH
 		void InitTransform();
 
 	private:
+		State m_State;
+
 		std::vector<Component*> m_Components;
 
 		// 몬스터 움직임 좌표 및 속도

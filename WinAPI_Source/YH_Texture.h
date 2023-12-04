@@ -13,6 +13,8 @@ namespace YH::graphics
 			None,
 		};
 
+		static Texture* Create(const std::wstring& name, UINT width, UINT height);
+
 		Texture();
 		~Texture();
 
@@ -20,7 +22,9 @@ namespace YH::graphics
 		virtual bool Load(const std::wstring& path) override;
 
 		UINT GetWidth() { return m_Width; }
+		void SetWidth(UINT width) { m_Width = width; }
 		UINT GetHeight() { return m_Height; }
+		void SetHeight(UINT height) { m_Height = height; }
 		HDC GetHdc() { return m_Hdc; }
 		TextureType GetTextureType() { return m_Type; }
 		Gdiplus::Image* GetImage() { return m_Image; }

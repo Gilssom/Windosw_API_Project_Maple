@@ -9,70 +9,79 @@
 
 namespace YH
 {
-	PlayerScript::PlayerScript() : m_State(PlayerScript::State::Idle), m_Animator(nullptr), m_Dir(PlayerScript::Direction::Left),
-		m_RightEff{}, m_LeftEff{}, m_RightEffAnim{}, m_LeftEffAnim{}
+	PlayerScript::PlayerScript() : m_State(PlayerScript::State::Idle), m_Animator(nullptr), m_Dir(PlayerScript::Direction::Left)
 	{
 	}
 
 	PlayerScript::~PlayerScript()
 	{
+		/*for (GameObject* obj : m_LeftEff)
+		{
+			if (!obj)
+				continue;
+
+			delete obj;
+			obj = nullptr;
+		}*/
+
+		/*for (Animator* anim : m_LeftEffAnim, m_RightEffAnim)
+		{
+			if (!anim)
+				continue;
+
+			delete anim;
+			anim = nullptr;
+		}*/
 	}
 
 	void PlayerScript::Initialize()
 	{
-		m_RightEff[0] = object::Instantiate<GameObject>(enums::LayerType::Effect);
-		m_RightEff[0]->AddComponent<Transform>();
-
-		m_LeftEff[0] = object::Instantiate<GameObject>(enums::LayerType::Effect);
-		m_LeftEff[0]->AddComponent<Transform>();
-
+		m_FairyTurn = object::Instantiate<GameObject>(enums::LayerType::Effect);
 		graphics::Texture* fairyTurn = Resources::Find<graphics::Texture>(L"FairyTurn");
+		m_FairyAnim = m_FairyTurn->AddComponent<Animator>();
+		m_FairyTurn->AddComponent<Transform>();
 
-		m_RightEffAnim[0] = m_RightEff[0]->AddComponent<Animator>();
-		m_RightEffAnim[0]->CreateAnimation(L"Fairy Turn Right Attack", fairyTurn, Vector2(0.0f, 348.0f), Vector2(580.0f, 348.0f),
+		m_FairyAnim->CreateAnimation(L"Fairy Turn Right Attack", fairyTurn, Vector2(0.0f, 348.0f), Vector2(580.0f, 348.0f),
 			Vector2::Zero, 11, 0.02f);
 
-		m_LeftEffAnim[0] = m_LeftEff[0]->AddComponent<Animator>();
-		m_LeftEffAnim[0]->CreateAnimation(L"Fairy Turn Left Attack", fairyTurn, Vector2(0.0f, 0.0f), Vector2(580.0f, 348.0f),
+		m_FairyAnim->CreateAnimation(L"Fairy Turn Left Attack", fairyTurn, Vector2(0.0f, 0.0f), Vector2(580.0f, 348.0f),
 			Vector2::Zero, 11, 0.02f);
 
-		m_RightEff[1] = object::Instantiate<GameObject>(enums::LayerType::Effect);
-		m_RightEff[1]->AddComponent<Transform>();
+		//------------------------------------------------------
 
-		m_LeftEff[1] = object::Instantiate<GameObject>(enums::LayerType::Effect);
-		m_LeftEff[1]->AddComponent<Transform>();
-
+		m_BoringSong = object::Instantiate<GameObject>(enums::LayerType::Effect);
 		graphics::Texture* boringSong = Resources::Find<graphics::Texture>(L"BoringSong");
+		m_BoringAnim = m_BoringSong->AddComponent<Animator>();
+		m_BoringSong->AddComponent<Transform>();
 
-		m_LeftEffAnim[1] = m_LeftEff[1]->AddComponent<Animator>();
-		m_LeftEffAnim[1]->CreateAnimation(L"Boring Song Left Attack", boringSong, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
-			Vector2::Zero, 17, 0.05f);
+		m_BoringAnim->CreateAnimation(L"Boring Song Left Attack", boringSong, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
+			Vector2::Zero, 17, 0.01f);
 
-		m_RightEffAnim[1] = m_RightEff[1]->AddComponent<Animator>();
-		m_RightEffAnim[1]->CreateAnimation(L"Boring Song Right Attack", boringSong, Vector2(0.0f, 494.0f), Vector2(604.0f, 494.0f),
-			Vector2::Zero, 17, 0.05f);
+		m_BoringAnim->CreateAnimation(L"Boring Song Right Attack", boringSong, Vector2(0.0f, 494.0f), Vector2(604.0f, 494.0f),
+			Vector2::Zero, 17, 0.01f);
 
-		m_RightEff[2] = object::Instantiate<GameObject>(enums::LayerType::Effect);
-		m_RightEff[2]->AddComponent<Transform>();
+		m_BoringAnim->CreateAnimation(L"Boring Song Left Attaking", boringSong, Vector2(0.0f, 988.0f), Vector2(604.0f, 494.0f),
+			Vector2::Zero, 5, 0.0003f);
 
-		m_LeftEff[2] = object::Instantiate<GameObject>(enums::LayerType::Effect);
-		m_LeftEff[2]->AddComponent<Transform>();
+		m_BoringAnim->CreateAnimation(L"Boring Song Right Attaking", boringSong, Vector2(3030.5f, 988.0f), Vector2(604.0f, 494.0f),
+			Vector2::Zero, 5, 0.0003f);
 
-		graphics::Texture* boringSongEnd = Resources::Find<graphics::Texture>(L"BoringSongEnd");
+		m_BoringAnim->CreateAnimation(L"Boring Song Left End", boringSong, Vector2(0.0f, 1482.0f), Vector2(382.0f, 496.0f),
+			Vector2::Zero, 10, 0.005f);
 
-		m_LeftEffAnim[2] = m_LeftEff[2]->AddComponent<Animator>();
-		m_LeftEffAnim[2]->CreateAnimation(L"Boring Song Left End", boringSongEnd, Vector2(0.0f, 0.0f), Vector2(382.0f, 408.0f),
-			Vector2::Zero, 10, 0.05f);
+		m_BoringAnim->CreateAnimation(L"Boring Song Right End", boringSong, Vector2(3820.0f, 1482.0f), Vector2(382.0f, 496.0f),
+			Vector2::Zero, 10, 0.005f);
 
-		m_RightEffAnim[2] = m_RightEff[2]->AddComponent<Animator>();
-		m_RightEffAnim[2]->CreateAnimation(L"Boring Song Right End", boringSongEnd, Vector2(0.0f, 408.0f), Vector2(382.0f, 408.0f),
-			Vector2::Zero, 10, 0.05f);
+		m_BoringAnim->GetCompleteEvent(L"Boring Song Left Attack") = std::bind(&PlayerScript::BoringSongEffing, this);
+		m_BoringAnim->GetCompleteEvent(L"Boring Song Right Attack") = std::bind(&PlayerScript::BoringSongEffing, this);
 	}
 
 	void PlayerScript::Update()
 	{
 		if (!m_Animator)
 			m_Animator = GetOwner()->GetComponent<Animator>();
+
+		m_PlayerPos = GetOwner()->GetComponent<Transform>()->GetPostion();
 
 		switch (m_State)
 		{
@@ -123,38 +132,64 @@ namespace YH
 
 	void PlayerScript::FairyTurnEff()
 	{
-		Vector2 ownerPos = GetOwner()->GetComponent<Transform>()->GetPostion();
-
 		switch (m_Dir)
 		{
 		case YH::PlayerScript::Direction::Right:
-			m_RightEff[0]->GetComponent<Transform>()->SetPosition(Vector2(ownerPos.x + 150.0f, ownerPos.y));
+			m_FairyTurn->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x + 150.0f, m_PlayerPos.y));
 
-			m_RightEffAnim[0]->PlayAnimation(L"Fairy Turn Right Attack", false);
+			m_FairyAnim->PlayAnimation(L"Fairy Turn Right Attack", false);
 			break;
 		case YH::PlayerScript::Direction::Left:
-			m_LeftEff[0]->GetComponent<Transform>()->SetPosition(Vector2(ownerPos.x - 150.0f, ownerPos.y));
+			m_FairyTurn->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x - 150.0f, m_PlayerPos.y));
 
-			m_LeftEffAnim[0]->PlayAnimation(L"Fairy Turn Left Attack", false);
+			m_FairyAnim->PlayAnimation(L"Fairy Turn Left Attack", false);
 			break;
 		}
 	}
 
 	void PlayerScript::BoringSongEff()
 	{
-		Vector2 ownerPos = GetOwner()->GetComponent<Transform>()->GetPostion();
-
 		switch (m_Dir)
 		{
 		case YH::PlayerScript::Direction::Right:
-			m_RightEff[1]->GetComponent<Transform>()->SetPosition(Vector2(ownerPos.x, ownerPos.y));
+			m_BoringSong->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x, m_PlayerPos.y));
 
-			m_RightEffAnim[1]->PlayAnimation(L"Boring Song Right Attack");
+			m_BoringAnim->PlayAnimation(L"Boring Song Right Attack", false);
 			break;
 		case YH::PlayerScript::Direction::Left:
-			m_LeftEff[1]->GetComponent<Transform>()->SetPosition(Vector2(ownerPos.x, ownerPos.y));
+			m_BoringSong->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x, m_PlayerPos.y));
 
-			m_LeftEffAnim[1]->PlayAnimation(L"Boring Song Left Attack");
+			m_BoringAnim->PlayAnimation(L"Boring Song Left Attack", false);
+			break;
+		}
+	}
+
+	void PlayerScript::BoringSongEffing()
+	{
+		switch (m_Dir)
+		{
+		case YH::PlayerScript::Direction::Right:
+			m_BoringAnim->PlayAnimation(L"Boring Song Right Attaking");
+			break;
+		case YH::PlayerScript::Direction::Left:
+			m_BoringAnim->PlayAnimation(L"Boring Song Left Attaking");
+			break;
+		}
+	}
+
+	void PlayerScript::BoringSongEffend()
+	{
+		switch (m_Dir)
+		{
+		case YH::PlayerScript::Direction::Right:
+			m_BoringSong->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x + 85.0f, m_PlayerPos.y));
+
+			m_BoringAnim->PlayAnimation(L"Boring Song Right End", false);
+			break;
+		case YH::PlayerScript::Direction::Left:
+			m_BoringSong->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x - 85.0f, m_PlayerPos.y));
+
+			m_BoringAnim->PlayAnimation(L"Boring Song Left End", false);
 			break;
 		}
 	}
@@ -381,9 +416,11 @@ namespace YH
 			switch (m_Dir)
 			{
 			case YH::PlayerScript::Direction::Right:
+				BoringSongEffend();
 				m_Animator->PlayAnimation(L"Player Right Idle");
 				break;
 			case YH::PlayerScript::Direction::Left:
+				BoringSongEffend();
 				m_Animator->PlayAnimation(L"Player Left Idle");
 				break;
 			default:

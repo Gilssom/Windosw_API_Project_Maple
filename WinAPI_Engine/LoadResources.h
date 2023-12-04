@@ -19,7 +19,7 @@ namespace YH
 		// Skill
 		Resources::Load<graphics::Texture>(L"FairyTurn", L"..\\Resources\\FairyTurn.png");
 		Resources::Load<graphics::Texture>(L"BoringSong", L"..\\Resources\\BoringSong.png");
-		Resources::Load<graphics::Texture>(L"BoringSongEnd", L"..\\Resources\\BoringSongEnd.png");
+		//Resources::Load<graphics::Texture>(L"BoringSongEnd", L"..\\Resources\\BoringSongEnd.png");
 
 		// Map
 		Resources::Load<graphics::Texture>(L"Mapleisland_0", L"..\\Resources\\Mapleisland_0.png");

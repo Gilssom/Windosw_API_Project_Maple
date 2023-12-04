@@ -29,6 +29,8 @@ namespace YH
 		Update();
 		LateUpdate();
 		Render();
+
+		Destroy();
 	}
 
 	void Application::Update()
@@ -50,6 +52,11 @@ namespace YH
 		//Time::Render(m_BackHdc);
 
 		CopyRenderTarget(m_BackHdc, m_Hdc);
+	}
+
+	void Application::Destroy()
+	{
+		SceneManager::Destroy();
 	}
 
 	void Application::Release()

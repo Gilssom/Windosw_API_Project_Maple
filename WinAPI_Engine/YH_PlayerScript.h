@@ -33,6 +33,8 @@ namespace YH
 
 		void FairyTurnEff();
 		void BoringSongEff();
+		void BoringSongEffing();
+		void BoringSongEffend();
 
 	private:
 		void Idle();
@@ -47,10 +49,12 @@ namespace YH
 		State m_State;
 		Direction m_Dir;
 		class Animator* m_Animator;
-		GameObject* m_RightEff[50];
-		GameObject* m_LeftEff[50];
-		Animator* m_RightEffAnim[50];
-		Animator* m_LeftEffAnim[50];
+		Vector2 m_PlayerPos;
+
+		GameObject* m_BoringSong;
+		Animator* m_BoringAnim;
+		GameObject* m_FairyTurn;
+		Animator* m_FairyAnim;
 	};
 }
 

@@ -47,12 +47,18 @@ namespace YH
 		m_FairyAnim->CreateAnimation(L"Fairy Turn Left Attack", fairyTurn, Vector2(0.0f, 0.0f), Vector2(580.0f, 348.0f),
 			Vector2::Zero, 11, 0.02f);
 
+		m_FairyTurn->SetActive(false);
+
+		m_FairyAnim->GetCompleteEvent(L"Fairy Turn Left Attack") = std::bind(&PlayerScript::FairyEffOff, this);
+
 		//------------------------------------------------------
 
 		m_BoringSong = object::Instantiate<GameObject>(enums::LayerType::Effect);
 		graphics::Texture* boringSong = Resources::Find<graphics::Texture>(L"BoringSong");
 		m_BoringAnim = m_BoringSong->AddComponent<Animator>();
 		m_BoringSong->AddComponent<Transform>();
+
+		m_BoringSong->SetActive(false);
 
 		m_BoringAnim->CreateAnimation(L"Boring Song Left Attack", boringSong, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
 			Vector2::Zero, 17, 0.01f);
@@ -74,6 +80,8 @@ namespace YH
 
 		m_BoringAnim->GetCompleteEvent(L"Boring Song Left Attack") = std::bind(&PlayerScript::BoringSongEffing, this);
 		m_BoringAnim->GetCompleteEvent(L"Boring Song Right Attack") = std::bind(&PlayerScript::BoringSongEffing, this);
+
+		//m_BoringAnim->GetCompleteEvent(L"Boring Song Right End") = std::bind(BoringSongEffOnOff, this);
 	}
 
 	void PlayerScript::Update()
@@ -135,11 +143,15 @@ namespace YH
 		switch (m_Dir)
 		{
 		case YH::PlayerScript::Direction::Right:
+			m_FairyTurn->SetActive(true);
+
 			m_FairyTurn->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x + 150.0f, m_PlayerPos.y));
 
 			m_FairyAnim->PlayAnimation(L"Fairy Turn Right Attack", false);
 			break;
 		case YH::PlayerScript::Direction::Left:
+			m_FairyTurn->SetActive(true);
+
 			m_FairyTurn->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x - 150.0f, m_PlayerPos.y));
 
 			m_FairyAnim->PlayAnimation(L"Fairy Turn Left Attack", false);
@@ -192,6 +204,16 @@ namespace YH
 			m_BoringAnim->PlayAnimation(L"Boring Song Left End", false);
 			break;
 		}
+	}
+
+	void PlayerScript::FairyEffOff()
+	{
+		m_FairyTurn->SetActive(false);
+	}
+
+	void PlayerScript::BoringSongEffOnOff(bool OnOff)
+	{
+		m_BoringSong->SetActive(OnOff);
 	}
 
 	void PlayerScript::Idle()

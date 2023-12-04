@@ -29,7 +29,7 @@ namespace YH::graphics
 		TextureType GetTextureType() { return m_Type; }
 		Gdiplus::Image* GetImage() { return m_Image; }
 
-	private:
+	private:                                                                                  
 		TextureType m_Type;
 		Gdiplus::Image* m_Image;
 		HBITMAP m_Bitmap;

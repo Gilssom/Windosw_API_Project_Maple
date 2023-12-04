@@ -20,6 +20,7 @@ namespace YH
 					m_Event();
 			}
 
+			//void*(), int
 			std::function<void()> m_Event;
 		};
 

@@ -32,9 +32,13 @@ namespace YH
 		void Render(HDC hdc) override;
 
 		void FairyTurnEff();
+
 		void BoringSongEff();
 		void BoringSongEffing();
 		void BoringSongEffend();
+
+		void FairyEffOff();
+		void BoringSongEffOnOff(bool OnOff);
 
 	private:
 		void Idle();

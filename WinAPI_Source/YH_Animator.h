@@ -20,7 +20,19 @@ namespace YH
 					m_Event();
 			}
 
+			void operator=(std::function<void(bool)> func)
+			{
+				m_Event2 = std::move(func);
+			}
+
+			void operator()(bool ch)
+			{
+				if (m_Event2)
+					m_Event2(ch);
+			}
+
 			//void*(), int
+			std::function<void(bool)> m_Event2;
 			std::function<void()> m_Event;
 		};
 
@@ -56,6 +68,8 @@ namespace YH
 		std::function<void()>& GetStartEvent(const std::wstring& name);
 		std::function<void()>& GetCompleteEvent(const std::wstring& name);
 		std::function<void()>& GetEndEvent(const std::wstring& name);
+
+		std::function<void(bool)>& GetCompleteEvent2(const std::wstring& name);
 
 		bool IsComplete() { return m_ActiveAnimation->IsComplete(); }
 

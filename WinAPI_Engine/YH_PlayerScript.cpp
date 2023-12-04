@@ -15,73 +15,73 @@ namespace YH
 
 	PlayerScript::~PlayerScript()
 	{
-		/*for (GameObject* obj : m_LeftEff)
-		{
-			if (!obj)
-				continue;
-
-			delete obj;
-			obj = nullptr;
-		}*/
-
-		/*for (Animator* anim : m_LeftEffAnim, m_RightEffAnim)
-		{
-			if (!anim)
-				continue;
-
-			delete anim;
-			anim = nullptr;
-		}*/
+		object::Destroy(m_FairyTurn);
+		object::Destroy(m_BoringSong);
 	}
 
 	void PlayerScript::Initialize()
 	{
 		m_FairyTurn = object::Instantiate<GameObject>(enums::LayerType::Effect);
-		graphics::Texture* fairyTurn = Resources::Find<graphics::Texture>(L"FairyTurn");
+		graphics::Texture* leftFairyTurn = Resources::Find<graphics::Texture>(L"LeftFairyTurn");
+		graphics::Texture* rightFairyTurn = Resources::Find<graphics::Texture>(L"RightFairyTurn");
 		m_FairyAnim = m_FairyTurn->AddComponent<Animator>();
 		m_FairyTurn->AddComponent<Transform>();
 
-		m_FairyAnim->CreateAnimation(L"Fairy Turn Right Attack", fairyTurn, Vector2(0.0f, 348.0f), Vector2(580.0f, 348.0f),
-			Vector2::Zero, 11, 0.02f);
+		//m_FairyAnim->CreateAnimationByFolder(L"Fairy Turn Test", L"..\\Resources\\MapleResourceTest\\Fairy_Turn",
+			//Vector2::Zero, 0.02f);
 
-		m_FairyAnim->CreateAnimation(L"Fairy Turn Left Attack", fairyTurn, Vector2(0.0f, 0.0f), Vector2(580.0f, 348.0f),
-			Vector2::Zero, 11, 0.02f);
+		// ** 합쳐져 있는 Png 를 사용하면 속도가 급격하게 느려짐
+		//    하지만 따로 따로 작업을 해놓은 리소스는 정상적인 속도로 재생됨 ( ? )
+		m_FairyAnim->CreateAnimation(L"Fairy Turn Right Attack", rightFairyTurn, Vector2(0.0f, 0.0f), Vector2(580.0f, 348.0f),
+			Vector2::Zero, 11, 0.04f);
+
+		m_FairyAnim->CreateAnimation(L"Fairy Turn Left Attack", leftFairyTurn, Vector2(0.0f, 0.0f), Vector2(580.0f, 348.0f),
+			Vector2::Zero, 11, 0.04f);
 
 		m_FairyTurn->SetActive(false);
 
-		m_FairyAnim->GetCompleteEvent(L"Fairy Turn Left Attack") = std::bind(&PlayerScript::FairyEffOff, this);
+		m_FairyAnim->GetCompleteEvent(L"Fairy Turn Right Attack") = std::bind(&PlayerScript::Test, this);
+		m_FairyAnim->GetCompleteEvent(L"Fairy Turn Left Attack") = std::bind(&PlayerScript::Test, this);
+
+		// ** 내일 여쭤보기 **
+		//std::function<void(bool)> test2 = std::bind(&PlayerScript::FairyEffOff, this, false);
+		//m_FairyAnim->GetCompleteEvent2(L"Fairy Turn Left Attack") = std::bind(&PlayerScript::FairyEffOff, this, false);
 
 		//------------------------------------------------------
 
 		m_BoringSong = object::Instantiate<GameObject>(enums::LayerType::Effect);
 		graphics::Texture* boringSong = Resources::Find<graphics::Texture>(L"BoringSong");
+		graphics::Texture* LeftboringSongStart = Resources::Find<graphics::Texture>(L"LeftBoringSongStart");
+		graphics::Texture* LeftboringSonging = Resources::Find<graphics::Texture>(L"LeftBoringSonging");
+		graphics::Texture* LeftboringSongEnd = Resources::Find<graphics::Texture>(L"LeftBoringSongEnd");
 		m_BoringAnim = m_BoringSong->AddComponent<Animator>();
 		m_BoringSong->AddComponent<Transform>();
 
 		m_BoringSong->SetActive(false);
 
-		m_BoringAnim->CreateAnimation(L"Boring Song Left Attack", boringSong, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
-			Vector2::Zero, 17, 0.01f);
+		m_BoringAnim->CreateAnimation(L"Boring Song Left Attack", LeftboringSongStart, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
+			Vector2::Zero, 11, 0.01f);
 
 		m_BoringAnim->CreateAnimation(L"Boring Song Right Attack", boringSong, Vector2(0.0f, 494.0f), Vector2(604.0f, 494.0f),
 			Vector2::Zero, 17, 0.01f);
 
-		m_BoringAnim->CreateAnimation(L"Boring Song Left Attaking", boringSong, Vector2(0.0f, 988.0f), Vector2(604.0f, 494.0f),
-			Vector2::Zero, 5, 0.0003f);
+		m_BoringAnim->CreateAnimation(L"Boring Song Left Attaking", LeftboringSonging, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
+			Vector2::Zero, 6, 0.01f);
 
 		m_BoringAnim->CreateAnimation(L"Boring Song Right Attaking", boringSong, Vector2(3030.5f, 988.0f), Vector2(604.0f, 494.0f),
-			Vector2::Zero, 5, 0.0003f);
+			Vector2::Zero, 5, 0.01f);
 
-		m_BoringAnim->CreateAnimation(L"Boring Song Left End", boringSong, Vector2(0.0f, 1482.0f), Vector2(382.0f, 496.0f),
-			Vector2::Zero, 10, 0.005f);
+		m_BoringAnim->CreateAnimation(L"Boring Song Left End", LeftboringSongEnd, Vector2(0.0f, 0.0f), Vector2(382.0f, 408.0f),
+			Vector2::Zero, 10, 0.01f);
 
 		m_BoringAnim->CreateAnimation(L"Boring Song Right End", boringSong, Vector2(3820.0f, 1482.0f), Vector2(382.0f, 496.0f),
-			Vector2::Zero, 10, 0.005f);
+			Vector2::Zero, 10, 0.01f);
 
 		m_BoringAnim->GetCompleteEvent(L"Boring Song Left Attack") = std::bind(&PlayerScript::BoringSongEffing, this);
 		m_BoringAnim->GetCompleteEvent(L"Boring Song Right Attack") = std::bind(&PlayerScript::BoringSongEffing, this);
-
-		//m_BoringAnim->GetCompleteEvent(L"Boring Song Right End") = std::bind(BoringSongEffOnOff, this);
+		
+		m_BoringAnim->GetCompleteEvent(L"Boring Song Left End") = std::bind(&PlayerScript::BoringSongEffOnOff, this);
+		m_BoringAnim->GetCompleteEvent(L"Boring Song Right End") = std::bind(&PlayerScript::BoringSongEffOnOff, this);
 	}
 
 	void PlayerScript::Update()
@@ -206,14 +206,19 @@ namespace YH
 		}
 	}
 
-	void PlayerScript::FairyEffOff()
+	void PlayerScript::Test()
 	{
 		m_FairyTurn->SetActive(false);
 	}
 
-	void PlayerScript::BoringSongEffOnOff(bool OnOff)
+	void PlayerScript::FairyEffOff(bool OnOff)
 	{
-		m_BoringSong->SetActive(OnOff);
+		m_FairyTurn->SetActive(OnOff);
+	}
+
+	void PlayerScript::BoringSongEffOnOff()
+	{
+		m_BoringSong->SetActive(false);
 	}
 
 	void PlayerScript::Idle()
@@ -266,7 +271,7 @@ namespace YH
 			}
 		}
 
-		if (Input::GetKey(KeyCode::D))
+		if (Input::GetKeyDown(KeyCode::D))
 		{
 			m_State = PlayerScript::State::FairyTurn;
 
@@ -283,16 +288,22 @@ namespace YH
 			}
 		}
 
-		if (Input::GetKey(KeyCode::F))
+		if (Input::GetKeyDown(KeyCode::F))
 		{
 			m_State = PlayerScript::State::BoringSong;
 
 			switch (m_Dir)
 			{
 			case YH::PlayerScript::Direction::Right:
+				if(m_BoringSong->GetActive() == GameObject::State::Paused)
+					m_BoringSong->SetActive(true);
+
 				m_Animator->PlayAnimation(L"Player Boring Right Attack");
 				break;
 			case YH::PlayerScript::Direction::Left:
+				if (m_BoringSong->GetActive() == GameObject::State::Paused)
+					m_BoringSong->SetActive(true);
+
 				m_Animator->PlayAnimation(L"Player Boring Left Attack");
 				break;
 			default:

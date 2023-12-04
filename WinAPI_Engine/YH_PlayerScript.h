@@ -37,8 +37,9 @@ namespace YH
 		void BoringSongEffing();
 		void BoringSongEffend();
 
-		void FairyEffOff();
-		void BoringSongEffOnOff(bool OnOff);
+		void Test();
+		void FairyEffOff(bool OnOff);
+		void BoringSongEffOnOff();
 
 	private:
 		void Idle();
@@ -55,10 +56,8 @@ namespace YH
 		class Animator* m_Animator;
 		Vector2 m_PlayerPos;
 
-		GameObject* m_BoringSong;
-		Animator* m_BoringAnim;
-		GameObject* m_FairyTurn;
-		Animator* m_FairyAnim;
+		GameObject* m_BoringSong; GameObject* m_FairyTurn;
+		Animator* m_BoringAnim; Animator* m_FairyAnim;
 	};
 }
 

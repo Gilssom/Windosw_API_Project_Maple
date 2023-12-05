@@ -112,7 +112,7 @@ namespace YH
 				, images[i]->GetHdc(), 0, 0, SRCCOPY);
 		}
 
-		CreateAnimation(name, spriteSheet, Vector2::One, Vector2(imageWidth, imageHeight), offset, fileCount, duration);
+		CreateAnimation(name, spriteSheet, Vector2(0.0f, 0.0f), Vector2(imageWidth, imageHeight), offset, fileCount, duration);
 	}
 
 	Animation* Animator::FindAnimation(const std::wstring& name)

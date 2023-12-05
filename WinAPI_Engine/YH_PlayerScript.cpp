@@ -15,96 +15,113 @@ namespace YH
 
 	PlayerScript::~PlayerScript()
 	{
-		object::Destroy(m_FairyTurn);
+		//object::Destroy(m_FairyTurn);
 	}
 
 	void PlayerScript::Initialize()
 	{
-		m_FairyTurn = object::Instantiate<GameObject>(enums::LayerType::Effect);
-		graphics::Texture* leftFairyTurn = Resources::Find<graphics::Texture>(L"LeftFairyTurn");
-		graphics::Texture* rightFairyTurn = Resources::Find<graphics::Texture>(L"RightFairyTurn");
-		m_FairyAnim = m_FairyTurn->AddComponent<Animator>();
-		m_FairyTurn->AddComponent<Transform>();
-		m_FairyTurn->SetActive(false);
+		#pragma region Fairy Turn
+				m_FairyTurn = object::Instantiate<GameObject>(enums::LayerType::Effect);
+				graphics::Texture* leftFairyTurn = Resources::Find<graphics::Texture>(L"LeftFairyTurn");
+				graphics::Texture* rightFairyTurn = Resources::Find<graphics::Texture>(L"RightFairyTurn");
+				m_FairyAnim = m_FairyTurn->AddComponent<Animator>();
+				m_FairyTurn->AddComponent<Transform>();
+				m_FairyTurn->SetActive(false);
 
-		//m_FairyAnim->CreateAnimationByFolder(L"Fairy Turn Test", L"..\\Resources\\MapleResourceTest\\Fairy_Turn",
-			//Vector2::Zero, 0.02f);
+				//m_FairyAnim->CreateAnimationByFolder(L"Fairy Turn Test", L"..\\Resources\\MapleResourceTest\\Fairy_Turn",
+					//Vector2::Zero, 0.02f);
 
-		// ** 합쳐져 있는 Png 를 사용하면 속도가 급격하게 느려짐
-		//    하지만 따로 따로 작업을 해놓은 리소스는 정상적인 속도로 재생됨 ( ? )
-		m_FairyAnim->CreateAnimation(L"Fairy Turn Right Attack", rightFairyTurn, Vector2(0.0f, 0.0f), Vector2(580.0f, 348.0f),
-			Vector2::Zero, 11, 0.04f);
+				// ** 합쳐져 있는 Png 를 사용하면 속도가 급격하게 느려짐
+				//    하지만 따로 따로 작업을 해놓은 리소스는 정상적인 속도로 재생됨 ( ? )
+				m_FairyAnim->CreateAnimation(L"Fairy Turn Right Attack", rightFairyTurn, Vector2(0.0f, 0.0f), Vector2(580.0f, 348.0f),
+					Vector2::Zero, 11, 0.04f);
 
-		m_FairyAnim->CreateAnimation(L"Fairy Turn Left Attack", leftFairyTurn, Vector2(0.0f, 0.0f), Vector2(580.0f, 348.0f),
-			Vector2::Zero, 11, 0.04f);
+				m_FairyAnim->CreateAnimation(L"Fairy Turn Left Attack", leftFairyTurn, Vector2(0.0f, 0.0f), Vector2(580.0f, 348.0f),
+					Vector2::Zero, 11, 0.04f);
 
-		m_FairyAnim->GetCompleteEvent(L"Fairy Turn Right Attack") = std::bind(&PlayerScript::FairyTurnEffOff, this);
-		m_FairyAnim->GetCompleteEvent(L"Fairy Turn Left Attack") = std::bind(&PlayerScript::FairyTurnEffOff, this);
+				m_FairyAnim->GetCompleteEvent(L"Fairy Turn Right Attack") = std::bind(&PlayerScript::FairyTurnEffOff, this);
+				m_FairyAnim->GetCompleteEvent(L"Fairy Turn Left Attack") = std::bind(&PlayerScript::FairyTurnEffOff, this);
 
-		//delete leftFairyTurn;
-		//delete rightFairyTurn;
+				//delete leftFairyTurn;
+				//delete rightFairyTurn;
 
-		// ** 내일 여쭤보기 **
-		//std::function<void(bool)> test2 = std::bind(&PlayerScript::FairyEffOff, this, false);
-		//m_FairyAnim->GetCompleteEvent2(L"Fairy Turn Left Attack") = std::bind(&PlayerScript::FairyEffOff, this, false);
+				// ** 내일 여쭤보기 **
+				//std::function<void(bool)> test2 = std::bind(&PlayerScript::FairyEffOff, this, false);
+				//m_FairyAnim->GetCompleteEvent2(L"Fairy Turn Left Attack") = std::bind(&PlayerScript::FairyEffOff, this, false);
+		#pragma endregion
 
-		//------------------------------------------------------
+		#pragma region Boring Song
+				m_BoringSong = object::Instantiate<GameObject>(enums::LayerType::Effect);
+				graphics::Texture* LeftboringSongStart = Resources::Find<graphics::Texture>(L"LeftBoringSongStart");
+				graphics::Texture* LeftboringSonging = Resources::Find<graphics::Texture>(L"LeftBoringSonging");
+				graphics::Texture* LeftboringSongEnd = Resources::Find<graphics::Texture>(L"LeftBoringSongEnd");
+				graphics::Texture* RightboringSongStart = Resources::Find<graphics::Texture>(L"RightBoringSongStart");
+				graphics::Texture* RightboringSonging = Resources::Find<graphics::Texture>(L"RightBoringSonging");
+				graphics::Texture* RightboringSongEnd = Resources::Find<graphics::Texture>(L"RightBoringSongEnd");
+				m_BoringAnim = m_BoringSong->AddComponent<Animator>();
+				m_BoringSong->AddComponent<Transform>();
+				m_BoringSong->SetActive(false);
 
-		m_BoringSong = object::Instantiate<GameObject>(enums::LayerType::Effect);
-		graphics::Texture* LeftboringSongStart = Resources::Find<graphics::Texture>	(L"LeftBoringSongStart");
-		graphics::Texture* LeftboringSonging = Resources::Find<graphics::Texture>	(L"LeftBoringSonging");
-		graphics::Texture* LeftboringSongEnd = Resources::Find<graphics::Texture>	(L"LeftBoringSongEnd");
-		graphics::Texture* RightboringSongStart = Resources::Find<graphics::Texture>(L"RightBoringSongStart");
-		graphics::Texture* RightboringSonging = Resources::Find<graphics::Texture>	(L"RightBoringSonging");
-		graphics::Texture* RightboringSongEnd = Resources::Find<graphics::Texture>	(L"RightBoringSongEnd");
-		m_BoringAnim = m_BoringSong->AddComponent<Animator>();
-		m_BoringSong->AddComponent<Transform>();
-		m_BoringSong->SetActive(false);
+				m_BoringAnim->CreateAnimation(L"Boring Song Left Attack", LeftboringSongStart, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
+					Vector2::Zero, 11, 0.02f);
 
-		m_BoringAnim->CreateAnimation(L"Boring Song Left Attack", LeftboringSongStart, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
-			Vector2::Zero, 11, 0.02f);
+				m_BoringAnim->CreateAnimation(L"Boring Song Right Attack", RightboringSongStart, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
+					Vector2::Zero, 11, 0.02f);
 
-		m_BoringAnim->CreateAnimation(L"Boring Song Right Attack", RightboringSongStart, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
-			Vector2::Zero, 11, 0.02f);
+				m_BoringAnim->CreateAnimation(L"Boring Song Left Attaking", LeftboringSonging, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
+					Vector2::Zero, 6, 0.01f);
 
-		m_BoringAnim->CreateAnimation(L"Boring Song Left Attaking", LeftboringSonging, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
-			Vector2::Zero, 6, 0.01f);
+				m_BoringAnim->CreateAnimation(L"Boring Song Right Attaking", RightboringSonging, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
+					Vector2::Zero, 6, 0.01f);
 
-		m_BoringAnim->CreateAnimation(L"Boring Song Right Attaking", RightboringSonging, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
-			Vector2::Zero, 6, 0.01f);
+				m_BoringAnim->CreateAnimation(L"Boring Song Left End", LeftboringSongEnd, Vector2(0.0f, 0.0f), Vector2(382.0f, 408.0f),
+					Vector2::Zero, 10, 0.05f);
 
-		m_BoringAnim->CreateAnimation(L"Boring Song Left End", LeftboringSongEnd, Vector2(0.0f, 0.0f), Vector2(382.0f, 408.0f),
-			Vector2::Zero, 10, 0.05f);
+				m_BoringAnim->CreateAnimation(L"Boring Song Right End", RightboringSongEnd, Vector2(0.0f, 0.0f), Vector2(382.0f, 408.0f),
+					Vector2::Zero, 10, 0.05f);
 
-		m_BoringAnim->CreateAnimation(L"Boring Song Right End", RightboringSongEnd, Vector2(0.0f, 0.0f), Vector2(382.0f, 408.0f),
-			Vector2::Zero, 10, 0.05f);
+				m_BoringAnim->GetCompleteEvent(L"Boring Song Left Attack") = std::bind(&PlayerScript::BoringSongEffing, this);
+				m_BoringAnim->GetCompleteEvent(L"Boring Song Right Attack") = std::bind(&PlayerScript::BoringSongEffing, this);
 
-		m_BoringAnim->GetCompleteEvent(L"Boring Song Left Attack") = std::bind(&PlayerScript::BoringSongEffing, this);
-		m_BoringAnim->GetCompleteEvent(L"Boring Song Right Attack") = std::bind(&PlayerScript::BoringSongEffing, this);
-		
-		m_BoringAnim->GetCompleteEvent(L"Boring Song Left End") = std::bind(&PlayerScript::BoringSongEffOff, this);
-		m_BoringAnim->GetCompleteEvent(L"Boring Song Right End") = std::bind(&PlayerScript::BoringSongEffOff, this);
+				m_BoringAnim->GetCompleteEvent(L"Boring Song Left End") = std::bind(&PlayerScript::BoringSongEffOff, this);
+				m_BoringAnim->GetCompleteEvent(L"Boring Song Right End") = std::bind(&PlayerScript::BoringSongEffOff, this);
+		#pragma endregion
 
-		// Test ( 화살은 추후 동적할당 or 오브젝트 풀링으로 구현할 예정
-		GameObject* arrow = object::Instantiate<GameObject>(enums::LayerType::Effect ,Vector2(900.0f, 1120.0f));
-		graphics::Texture* boringArrow = Resources::Find<graphics::Texture>(L"BoringArrow");
-		Animator* arrowAnim = arrow->AddComponent<Animator>();
-		//arrow->AddComponent<Transform>();
-		arrow->SetActive(true);
+		#pragma region Boring Arrow
+				// Test ( 화살은 추후 동적할당 or 오브젝트 풀링으로 구현할 예정
+				GameObject* arrow = object::Instantiate<GameObject>(enums::LayerType::Effect, Vector2(900.0f, 1120.0f));
+				graphics::Texture* boringArrow = Resources::Find<graphics::Texture>(L"BoringArrow");
+				Animator* arrowAnim = arrow->AddComponent<Animator>();
+				//arrow->AddComponent<Transform>();
+				arrow->SetActive(false);
+				arrowAnim->CreateAnimation(L"Boring Arrow Left", boringArrow, Vector2(0.0f, 0.0f), Vector2(203.0f, 72.0f),
+					Vector2::Zero, 3, 0.035f);
+				arrowAnim->PlayAnimation(L"Boring Arrow Left");
+		#pragma endregion
 
-		arrowAnim->CreateAnimation(L"Boring Arrow Left", boringArrow, Vector2(0.0f, 0.0f), Vector2(203.0f, 72.0f),
-			Vector2::Zero, 3, 0.035f);
+		#pragma region Howling Gale
+				m_HowlingGale = object::Instantiate<GameObject>(enums::LayerType::Effect);
+				graphics::Texture* LefthowlingStart = Resources::Find<graphics::Texture>(L"LeftHowlingStart");
+				//graphics::Texture* RighthowlingStart = Resources::Find<graphics::Texture>(L"RightBoringSongStart");
+				graphics::Texture* howlingAttack = Resources::Find<graphics::Texture>(L"HowlingAttack");
+				graphics::Texture* howlingAttackEnd = Resources::Find<graphics::Texture>(L"HowlingAttackEnd");
+				m_HowlingAnim = m_HowlingGale->AddComponent<Animator>();
+				m_HowlingGale->AddComponent<Transform>();
+				m_HowlingGale->SetActive(false);
 
-		arrowAnim->PlayAnimation(L"Boring Arrow Left");
+				m_HowlingAnim->CreateAnimation(L"Howling Left Start", LefthowlingStart, Vector2(0.0f, 0.0f), Vector2(615.0f, 556.0f),
+					Vector2(-50.0f, -20.0f), 15, 0.05f);
 
-		m_Monsun = object::Instantiate<GameObject>(enums::LayerType::Effect, Vector2(900.0f, 1120.0f));
-		graphics::Texture* monSun = Resources::Find<graphics::Texture>(L"MonSun");
-		m_MonsunAnim = m_Monsun->AddComponent<Animator>();
-		m_Monsun->AddComponent<Transform>();
-		m_Monsun->SetActive(true);
+				m_HowlingAnim->CreateAnimation(L"Howling Attack", howlingAttack, Vector2(0.0f, 0.0f), Vector2(372.0f, 605.0f),
+					Vector2(-100.0f, -270.0f), 14, 0.07f);
 
-		m_MonsunAnim->CreateAnimation(L"MonSun Attack", monSun, Vector2(0.0f, 0.0f), Vector2(1869.0f, 976.0f),
-			Vector2::Zero, 14, 0.02f);
+				m_HowlingAnim->CreateAnimation(L"Howling Attack End", howlingAttackEnd, Vector2(0.0f, 0.0f), Vector2(360.0f, 615.0f),
+					Vector2(-100.0f, -270.0f), 5, 0.07f);
+
+				m_HowlingAnim->GetCompleteEvent(L"Howling Left Start") = std::bind(&PlayerScript::HowlingEffing, this);
+				m_HowlingAnim->GetCompleteEvent(L"Howling Attack") = std::bind(&PlayerScript::HowlingEffend, this);
+				m_HowlingAnim->GetCompleteEvent(L"Howling Attack End") = std::bind(&PlayerScript::HowlingEffOff, this);
+		#pragma endregion
 	}
 
 	void PlayerScript::Update()
@@ -140,8 +157,8 @@ namespace YH
 		case YH::PlayerScript::State::BoringSong:
 			BoringSong();
 			break;
-		case YH::PlayerScript::State::MonSun:
-			MonSun();
+		case YH::PlayerScript::State::HowlingGale:
+			HowlingGale();
 			break;
 		default:
 			break;
@@ -235,15 +252,55 @@ namespace YH
 		}
 	}
 
+	void PlayerScript::HowlingEff()
+	{
+		switch (m_Dir)
+		{
+		case YH::PlayerScript::Direction::Right:
+			m_HowlingGale->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x, m_PlayerPos.y));
+
+			m_HowlingAnim->PlayAnimation(L"Howling Right Start", false);
+			break;
+		case YH::PlayerScript::Direction::Left:
+			m_HowlingGale->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x, m_PlayerPos.y));
+
+			m_HowlingAnim->PlayAnimation(L"Howling Left Start", false);
+			break;
+		}
+	}
+
+	void PlayerScript::HowlingEffing()
+	{
+		switch (m_Dir)
+		{
+		case YH::PlayerScript::Direction::Right:
+			//m_HowlingGale->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x + 100.0f, m_PlayerPos.y));
+
+			m_HowlingAnim->PlayAnimation(L"Howling Attack", false);
+			break;
+		case YH::PlayerScript::Direction::Left:
+			//m_HowlingGale->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x - 100.0f, m_PlayerPos.y));
+
+			m_HowlingAnim->PlayAnimation(L"Howling Attack", false);
+			break;
+		}
+	}
+
+	void PlayerScript::HowlingEffend()
+	{
+		m_HowlingAnim->PlayAnimation(L"Howling Attack End", false);
+	}
+
+	void PlayerScript::HowlingEffOff()
+	{
+		if(m_HowlingAnim->IsComplete())
+			m_HowlingGale->SetActive(false);
+	}
+
 	void PlayerScript::FairyTurnEffOff()
 	{
 		m_FairyTurn->SetActive(false);
 	}
-
-	/*void PlayerScript::FairyEffOff(bool OnOff)
-	{
-		m_FairyTurn->SetActive(OnOff);
-	}*/
 
 	void PlayerScript::BoringSongEffOff()
 	{
@@ -252,122 +309,137 @@ namespace YH
 
 	void PlayerScript::Idle()
 	{
-		if (Input::GetKey(KeyCode::Right))
-		{
-			m_State = PlayerScript::State::Walk;
-			m_Dir = PlayerScript::Direction::Right;
-			m_Animator->PlayAnimation(L"Player Right Walk");
-		}
-		if (Input::GetKey(KeyCode::Left))
-		{
-			m_State = PlayerScript::State::Walk;
-			m_Dir = PlayerScript::Direction::Left;
-			m_Animator->PlayAnimation(L"Player Left Walk");
-		}
-		if (Input::GetKey(KeyCode::Up))
-		{
-			m_State = PlayerScript::State::Idle;
-		}
-		if (Input::GetKey(KeyCode::Down))
-		{
-			m_State = PlayerScript::State::Down;
+		#pragma region Player Normal State
+				if (Input::GetKey(KeyCode::Right))
+				{
+					m_State = PlayerScript::State::Walk;
+					m_Dir = PlayerScript::Direction::Right;
+					m_Animator->PlayAnimation(L"Player Right Walk");
+				}
+				if (Input::GetKey(KeyCode::Left))
+				{
+					m_State = PlayerScript::State::Walk;
+					m_Dir = PlayerScript::Direction::Left;
+					m_Animator->PlayAnimation(L"Player Left Walk");
+				}
+				if (Input::GetKey(KeyCode::Up))
+				{
+					m_State = PlayerScript::State::Idle;
+				}
+				if (Input::GetKey(KeyCode::Down))
+				{
+					m_State = PlayerScript::State::Down;
 
-			switch (m_Dir)
-			{
-			case YH::PlayerScript::Direction::Right:
-				m_Animator->PlayAnimation(L"Player Right Down");
-				break;
-			case YH::PlayerScript::Direction::Left:
-				m_Animator->PlayAnimation(L"Player Left Down");
-				break;
-			}
-		}
+					switch (m_Dir)
+					{
+					case YH::PlayerScript::Direction::Right:
+						m_Animator->PlayAnimation(L"Player Right Down");
+						break;
+					case YH::PlayerScript::Direction::Left:
+						m_Animator->PlayAnimation(L"Player Left Down");
+						break;
+					}
+				}
 
-		if (Input::GetKeyDown(KeyCode::LeftAlt))
-		{
-			m_State = PlayerScript::State::Jump;
+				if (Input::GetKeyDown(KeyCode::LeftAlt))
+				{
+					m_State = PlayerScript::State::Jump;
 
-			switch (m_Dir)
-			{
-			case YH::PlayerScript::Direction::Right:
-				m_Animator->PlayAnimation(L"Player Right Jump");
-				break;
-			case YH::PlayerScript::Direction::Left:
-				m_Animator->PlayAnimation(L"Player Left Jump");
-				break;
-			default:
-				break;
-			}
-		}
+					switch (m_Dir)
+					{
+					case YH::PlayerScript::Direction::Right:
+						m_Animator->PlayAnimation(L"Player Right Jump");
+						break;
+					case YH::PlayerScript::Direction::Left:
+						m_Animator->PlayAnimation(L"Player Left Jump");
+						break;
+					default:
+						break;
+					}
+				}
 
-		if (Input::GetKey(KeyCode::LeftCtrl))
-		{
-			m_State = PlayerScript::State::Attack;
-			
-			switch (m_Dir)
-			{
-			case YH::PlayerScript::Direction::Right:
-				m_Animator->PlayAnimation(L"Player Right Attack", false);
-				break;
-			case YH::PlayerScript::Direction::Left:
-				m_Animator->PlayAnimation(L"Player Left Attack", false);
-				break;
-			default:
-				break;
-			}
-		}
+				if (Input::GetKey(KeyCode::LeftCtrl))
+				{
+					m_State = PlayerScript::State::Attack;
 
-		if (Input::GetKeyDown(KeyCode::D))
-		{
-			m_State = PlayerScript::State::FairyTurn;
+					switch (m_Dir)
+					{
+					case YH::PlayerScript::Direction::Right:
+						m_Animator->PlayAnimation(L"Player Right Attack", false);
+						break;
+					case YH::PlayerScript::Direction::Left:
+						m_Animator->PlayAnimation(L"Player Left Attack", false);
+						break;
+					default:
+						break;
+					}
+				}
+		#pragma endregion
 
-			switch (m_Dir)
-			{
-			case YH::PlayerScript::Direction::Right:
-				m_Animator->PlayAnimation(L"Player Fairy Right Attack", false);
-				break;
-			case YH::PlayerScript::Direction::Left:
-				m_Animator->PlayAnimation(L"Player Fairy Left Attack", false);
-				break;
-			default:
-				break;
-			}
-		}
+		#pragma region Player Skill
+				if (Input::GetKeyDown(KeyCode::D))
+				{
+					m_State = PlayerScript::State::FairyTurn;
 
-		if (Input::GetKeyDown(KeyCode::F))
-		{
-			m_State = PlayerScript::State::BoringSong;
+					switch (m_Dir)
+					{
+					case YH::PlayerScript::Direction::Right:
+						m_Animator->PlayAnimation(L"Player Fairy Right Attack", false);
+						break;
+					case YH::PlayerScript::Direction::Left:
+						m_Animator->PlayAnimation(L"Player Fairy Left Attack", false);
+						break;
+					default:
+						break;
+					}
+				}
 
-			switch (m_Dir)
-			{
-			case YH::PlayerScript::Direction::Right:
-				if(m_BoringSong->GetState() == GameObject::State::Paused)
-					m_BoringSong->SetActive(true);
+				if (Input::GetKeyDown(KeyCode::F))
+				{
+					m_State = PlayerScript::State::BoringSong;
 
-				m_Animator->PlayAnimation(L"Player Boring Right Attack");
-				break;
-			case YH::PlayerScript::Direction::Left:
-				if (m_BoringSong->GetState() == GameObject::State::Paused)
-					m_BoringSong->SetActive(true);
+					switch (m_Dir)
+					{
+					case YH::PlayerScript::Direction::Right:
+						if (m_BoringSong->GetState() == GameObject::State::Paused)
+							m_BoringSong->SetActive(true);
 
-				m_Animator->PlayAnimation(L"Player Boring Left Attack");
-				break;
-			default:
-				break;
-			}
-		}
+						m_Animator->PlayAnimation(L"Player Boring Right Attack");
+						break;
+					case YH::PlayerScript::Direction::Left:
+						if (m_BoringSong->GetState() == GameObject::State::Paused)
+							m_BoringSong->SetActive(true);
 
-		if (Input::GetKeyDown(KeyCode::X))
-		{
-			m_State = PlayerScript::State::MonSun;
+						m_Animator->PlayAnimation(L"Player Boring Left Attack");
+						break;
+					default:
+						break;
+					}
+				}
 
-			if (m_Monsun->GetState() == GameObject::State::Paused)
-				m_Monsun->SetActive(true);
+				if (Input::GetKeyDown(KeyCode::X))
+				{
+					m_State = PlayerScript::State::HowlingGale;
 
-			m_Monsun->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x, m_PlayerPos.y));
+					switch (m_Dir)
+					{
+					case YH::PlayerScript::Direction::Right:
+						if (m_HowlingGale->GetState() == GameObject::State::Paused)
+							m_HowlingGale->SetActive(true);
 
-			m_MonsunAnim->PlayAnimation(L"MonSun Attack", false);
-		}
+						m_Animator->PlayAnimation(L"Player Howling Right Attack");
+						break;
+					case YH::PlayerScript::Direction::Left:
+						if (m_HowlingGale->GetState() == GameObject::State::Paused)
+							m_HowlingGale->SetActive(true);
+
+						m_Animator->PlayAnimation(L"Player Howling Left Attack");
+						break;
+					default:
+						break;
+					}
+				}
+		#pragma endregion
 	}
 
 	void PlayerScript::Move()
@@ -542,27 +614,20 @@ namespace YH
 		}
 	}
 
-	void PlayerScript::MonSun()
+	void PlayerScript::HowlingGale()
 	{
-		if (m_MonsunAnim->IsComplete())
+		m_State = PlayerScript::State::Idle;
+
+		switch (m_Dir)
 		{
-			m_State = PlayerScript::State::Idle;
-
-			switch (m_Dir)
-			{
-			case YH::PlayerScript::Direction::Right:
-				m_Monsun->SetActive(false);
-
-				m_Animator->PlayAnimation(L"Player Right Idle");
-				break;
-			case YH::PlayerScript::Direction::Left:
-				m_Monsun->SetActive(false);
-
-				m_Animator->PlayAnimation(L"Player Left Idle");
-				break;
-			default:
-				break;
-			}
+		case YH::PlayerScript::Direction::Right:
+			m_Animator->PlayAnimation(L"Player Right Idle");
+			break;
+		case YH::PlayerScript::Direction::Left:
+			m_Animator->PlayAnimation(L"Player Left Idle");
+			break;
+		default:
+			break;
 		}
 	}
 }

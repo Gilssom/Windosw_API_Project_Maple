@@ -9,6 +9,7 @@
 #include <map>
 #include <functional>
 #include <filesystem>
+#include <math.h>
 
 
 #pragma comment (lib, "x64/Debug/WinAPI_Engine.lib")

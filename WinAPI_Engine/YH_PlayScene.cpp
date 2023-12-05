@@ -108,6 +108,11 @@ namespace YH
 			Vector2::Zero, 1, 0.0f);
 		playerAnim->CreateAnimation(L"Player Boring Right Attack", player, Vector2(1190.0f, 510.0f), Vector2(170.0f, 170.0f),
 			Vector2::Zero, 1, 0.0f);
+
+		playerAnim->CreateAnimation(L"Player Howling Left Attack", player, Vector2(1020.0f, 510.0f), Vector2(170.0f, 170.0f),
+			Vector2::Zero, 1, 0.0f);
+		playerAnim->CreateAnimation(L"Player Howling Right Attack", player, Vector2(1190.0f, 510.0f), Vector2(170.0f, 170.0f),
+			Vector2::Zero, 1, 0.0f);
 		#pragma endregion
 
 		playerAnim->PlayAnimation(L"Player Left Idle");
@@ -117,6 +122,9 @@ namespace YH
 
 		playerAnim->GetStartEvent(L"Player Boring Left Attack") = std::bind(&PlayerScript::BoringSongEff, playerScript);
 		playerAnim->GetStartEvent(L"Player Boring Right Attack") = std::bind(&PlayerScript::BoringSongEff, playerScript);
+
+		playerAnim->GetStartEvent(L"Player Howling Left Attack") = std::bind(&PlayerScript::HowlingEff, playerScript);
+		playerAnim->GetStartEvent(L"Player Howling Right Attack") = std::bind(&PlayerScript::HowlingEff, playerScript);
 
 		//m_Player->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 100.0f));
 		#pragma endregion

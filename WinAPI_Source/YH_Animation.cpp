@@ -117,8 +117,8 @@ namespace YH
 
 			graphics.DrawImage(m_Texture->GetImage()
 				, Gdiplus::Rect(
-					  pos.x - (sprite.size.x / 2.0f)
-					, pos.y - (sprite.size.y / 2.0f)
+					  pos.x - (sprite.size.x / 2.0f) + sprite.offset.x
+					, pos.y - (sprite.size.y / 2.0f) + sprite.offset.y
 					, sprite.size.x * scale.x
 					, sprite.size.y * scale.y
 				)

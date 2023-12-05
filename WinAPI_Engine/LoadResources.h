@@ -12,7 +12,7 @@ namespace YH
 		// Lobby Scene
 		Resources::Load<graphics::Texture>(L"WorldSelect", L"..\\Resources\\WorldSelect.png");
 
-		// Play Scene
+		// Player
 		Resources::Load<graphics::Texture>(L"Player", L"..\\Resources\\Player_Sprite.png");
 		Resources::Load<graphics::Texture>(L"Mushroom", L"..\\Resources\\Mushroom_Sprite.png");
 
@@ -20,8 +20,6 @@ namespace YH
 		Resources::Load<graphics::Texture>(L"FairyTurn", L"..\\Resources\\FairyTurn.png");
 		Resources::Load<graphics::Texture>(L"LeftFairyTurn", L"..\\Resources\\LeftFairyTurn.png");
 		Resources::Load<graphics::Texture>(L"RightFairyTurn", L"..\\Resources\\RightFairyTurn.png");
-
-		Resources::Load<graphics::Texture>(L"BoringSong", L"..\\Resources\\BoringSong.png");
 
 		Resources::Load<graphics::Texture>(L"LeftBoringSongStart", L"..\\Resources\\LeftBoringSongStart.png");
 		Resources::Load<graphics::Texture>(L"LeftBoringSonging", L"..\\Resources\\LeftBoringSonging.png");
@@ -32,10 +30,12 @@ namespace YH
 
 		Resources::Load<graphics::Texture>(L"BoringArrow", L"..\\Resources\\BoringArrow.png");
 
-		Resources::Load<graphics::Texture>(L"MonSun", L"..\\Resources\\MonSun Skill Test Bmp.bmp");
-		//Resources::Load<graphics::Texture>(L"BoringSongEnd", L"..\\Resources\\BoringSongEnd.png");
+		Resources::Load<graphics::Texture>(L"LeftHowlingStart", L"..\\Resources\\LeftHowlingStart.png");
 
+		Resources::Load<graphics::Texture>(L"HowlingAttack", L"..\\Resources\\HowlingAttack.png");
+		Resources::Load<graphics::Texture>(L"HowlingAttackEnd", L"..\\Resources\\HowlingAttackEnd.png");
 		// Map
+
 		Resources::Load<graphics::Texture>(L"Mapleisland_0", L"..\\Resources\\Mapleisland_0.png");
 
 

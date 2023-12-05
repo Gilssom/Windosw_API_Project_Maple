@@ -16,7 +16,7 @@ namespace YH
 			Attack,
 			FairyTurn,
 			BoringSong,
-			MonSun,
+			HowlingGale,
 		};
 
 		enum class Direction
@@ -34,14 +34,19 @@ namespace YH
 		void Render(HDC hdc) override;
 
 		void FairyTurnEff();
+		void FairyTurnEffOff();
 
 		void BoringSongEff();
 		void BoringSongEffing();
 		void BoringSongEffend();
-
-		void FairyTurnEffOff();
-		//void FairyEffOff(bool OnOff);
 		void BoringSongEffOff();
+
+		void HowlingEff();
+		void HowlingEffing();
+		void HowlingEffend();
+		void HowlingEffOff();
+
+		//void FairyEffOff(bool OnOff);
 
 	private:
 		void Idle();
@@ -52,7 +57,7 @@ namespace YH
 		void Attack();
 		void FairyTurn();
 		void BoringSong();
-		void MonSun();
+		void HowlingGale();
 
 	private:
 		State m_State;
@@ -60,8 +65,8 @@ namespace YH
 		class Animator* m_Animator;
 		Vector2 m_PlayerPos;
 
-		GameObject* m_BoringSong; GameObject* m_FairyTurn; GameObject* m_Monsun;
-		Animator* m_BoringAnim; Animator* m_FairyAnim; Animator* m_MonsunAnim;
+		GameObject* m_BoringSong; GameObject* m_FairyTurn; GameObject* m_HowlingGale;
+		Animator* m_BoringAnim; Animator* m_FairyAnim; Animator* m_HowlingAnim;
 	};
 }
 

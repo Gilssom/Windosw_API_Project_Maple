@@ -39,6 +39,7 @@
 **5. 현재 정해진 직업은 윈드브레이커** <br>
 ![image](https://github.com/Gilssom/Windosw_API_Project_Maple/assets/83547233/b552803c-381a-4ab8-9702-bf2cf023320a) <br>
 <br>
+**~~몬순, 미스트랄 스프링 같은 전체 광역 스킬 포기~~**
 <br>
 
 :bookmark_tabs: **메이플 관련 리소스** <br>

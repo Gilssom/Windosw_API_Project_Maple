@@ -33,8 +33,11 @@ namespace YH::object
 		return gameObject;
 	}
 
-	static void Destroy(GameObject* obj)
+	/*static void Destroy(GameObject* gameObject)
 	{
-		obj->Death();
-	}
+		if (!gameObject)
+			return;
+
+		gameObject->Death();
+	}*/
 }

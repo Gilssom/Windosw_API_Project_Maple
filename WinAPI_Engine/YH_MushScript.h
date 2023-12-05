@@ -44,6 +44,7 @@ namespace YH
 		Direction m_Dir;
 		class Animator* m_Animator;
 		float m_Time;
+		float m_DeathTime;
 	};
 }
 

@@ -4,11 +4,12 @@
 #include "YH_Time.h"
 #include "YH_GameObject.h"
 #include "YH_Animator.h"
+#include "YH_Object.h"
 
 namespace YH
 {
 	MushScript::MushScript() : m_State(MushScript::State::Idle)
-		, m_Animator(nullptr), m_Dir(MushScript::Direction::Left), m_Time(0.0f)
+		, m_Animator(nullptr), m_Dir(MushScript::Direction::Left), m_Time(0.0f), m_DeathTime(0.0f)
 	{
 
 	}
@@ -25,6 +26,10 @@ namespace YH
 	{
 		if (!m_Animator)
 			m_Animator = GetOwner()->GetComponent<Animator>();
+
+		m_DeathTime += Time::DeltaTime();
+		if (m_DeathTime > 6.0f)
+			object::Destroy(GetOwner());
 
 		switch (m_State)
 		{

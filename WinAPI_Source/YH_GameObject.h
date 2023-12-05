@@ -4,6 +4,11 @@
 #include "YH_Input.h"
 //#include "YH_Object.h"
 
+namespace YH::object
+{
+	void Destroy(GameObject* gameObject);
+}
+
 namespace YH
 {
 	enum class Lookfor
@@ -14,7 +19,7 @@ namespace YH
 	class GameObject
 	{
 	public:
-		/*friend void object::Destroy(GameObject* obj);*/
+		friend void object::Destroy(GameObject* obj);
 
 		enum class State
 		{
@@ -61,7 +66,8 @@ namespace YH
 			return target;
 		}
 
-		State GetActive() { return m_State; }
+		//State GetActive() { return m_State; }
+		State GetState() { return m_State; }
 
 		void SetActive(bool power)
 		{
@@ -69,7 +75,10 @@ namespace YH
 			if (!power) m_State = State::Paused;
 		}
 
-		void Death() { m_State = State::Dead; }
+		bool IsActive() { return m_State == State::Active; }
+		bool IsDead() { return m_State == State::Dead; }
+
+		//std::vector<Component*> HaveComp() { return m_Components; }
 
 		void MonsterRender(HDC hdc);
 		void MonsterMoving();
@@ -81,6 +90,7 @@ namespace YH
 
 	private:
 		void InitTransform();
+		void Death() { m_State = State::Dead; }
 
 	private:
 		State m_State;

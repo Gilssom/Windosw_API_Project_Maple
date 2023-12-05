@@ -20,6 +20,11 @@ namespace YH
 		void AddGameObject(GameObject* gameObject);
 
 	private:
+		void FindDeadGameObjects(OUT std::vector<GameObject*>& gameObjs);
+		void DeleteGameObjects(std::vector<GameObject*> gameObj);
+		void EraseGameObject();
+
+	private:
 		enums::LayerType m_Type;
 
 		std::vector<GameObject*> m_GameObjects;

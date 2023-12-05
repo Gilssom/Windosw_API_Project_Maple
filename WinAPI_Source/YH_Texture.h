@@ -28,8 +28,10 @@ namespace YH::graphics
 		HDC GetHdc() { return m_Hdc; }
 		TextureType GetTextureType() { return m_Type; }
 		Gdiplus::Image* GetImage() { return m_Image; }
+		bool IsAlpha(){ return mbAlpha; }
 
-	private:                                                                                  
+	private:             
+		bool mbAlpha;
 		TextureType m_Type;
 		Gdiplus::Image* m_Image;
 		HBITMAP m_Bitmap;

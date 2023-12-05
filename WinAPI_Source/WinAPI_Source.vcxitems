@@ -18,6 +18,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Animation.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Animator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Camera.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Destroy.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Enums.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_GameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Input.h" />
@@ -43,6 +44,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Animation.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Animator.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Camera.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Destroy.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_GameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Input.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Layer.cpp" />

@@ -4,6 +4,15 @@
 #include "YH_Application.h"
 #include "YH_Transform.h"
 
+namespace YH::object
+{
+	void Destroy(GameObject* gameObject)
+	{
+		if (gameObject)
+			gameObject->Death();
+	}
+}
+
 namespace YH
 {
 	GameObject::GameObject() : m_LookState(Lookfor::None), m_State(State::Active)

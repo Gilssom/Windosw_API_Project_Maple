@@ -40,7 +40,7 @@ namespace YH
 		renderer->SetTexture(bg_1);
 
 		// 몬스터 애니메이션 적용
-		m_Mushroom = object::Instantiate<Mushroom>(enums::LayerType::Character, Vector2(2255.f, 1325.f));
+		m_Mushroom = object::Instantiate<Mushroom>(enums::LayerType::Character, Vector2(900.0f, 1120.0f));
 		m_Mushroom->AddComponent<MushScript>();
 
 		graphics::Texture* mushroomTex = Resources::Find<graphics::Texture>(L"Mushroom");
@@ -94,6 +94,11 @@ namespace YH
 		playerAnim->CreateAnimation(L"Player Right Down Attack", player, Vector2(1190.0f, 340.0f), Vector2(170.0f, 170.0f),
 			Vector2::Zero, 1, 0.3f);
 
+		playerAnim->CreateAnimation(L"Player Left Jump", player, Vector2(340.0f, 510.0f), Vector2(170.0f, 170.0f),
+			Vector2::Zero, 1, 0.0f);
+		playerAnim->CreateAnimation(L"Player Right Jump", player, Vector2(510.0f, 510.0f), Vector2(170.0f, 170.0f),
+			Vector2::Zero, 1, 0.0f);
+
 		playerAnim->CreateAnimation(L"Player Fairy Left Attack", player, Vector2(0.0f, 340.0f), Vector2(170.0f, 170.0f),
 			Vector2::Zero, 3, 0.15f);
 		playerAnim->CreateAnimation(L"Player Fairy Right Attack", player, Vector2(510.0f, 340.0f), Vector2(170.0f, 170.0f),
@@ -104,23 +109,6 @@ namespace YH
 		playerAnim->CreateAnimation(L"Player Boring Right Attack", player, Vector2(1190.0f, 510.0f), Vector2(170.0f, 170.0f),
 			Vector2::Zero, 1, 0.0f);
 		#pragma endregion
-
-		graphics::Texture* boringSong = Resources::Find<graphics::Texture>(L"BoringSong");
-
-		playerAnim->CreateAnimation(L"Boring Song Left Attack", boringSong, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
-			Vector2::Zero, 17, 0.05f);
-		playerAnim->CreateAnimation(L"Boring Song Right Attack", boringSong, Vector2(0.0f, 494.0f), Vector2(604.0f, 494.0f),
-			Vector2::Zero, 17, 0.05f);
-
-		playerAnim->CreateAnimation(L"Boring Song Left Attakcing", boringSong, Vector2(0.0f, 988.0f), Vector2(604.0f, 494.0f),
-			Vector2::Zero, 5, 0.05f);
-		playerAnim->CreateAnimation(L"Boring Song Right Attakcing", boringSong, Vector2(3030.5f, 988.0f), Vector2(604.0f, 494.0f),
-			Vector2::Zero, 5, 0.05f);
-
-		playerAnim->CreateAnimation(L"Boring Song Left End", boringSong, Vector2(0.0f, 1482.0f), Vector2(382.0f, 408.0f),
-			Vector2::Zero, 10, 0.05f);
-		playerAnim->CreateAnimation(L"Boring Song Right End", boringSong, Vector2(3820.0f, 1482.0f), Vector2(382.0f, 408.0f),
-			Vector2::Zero, 10, 0.05f);
 
 		playerAnim->PlayAnimation(L"Player Left Idle");
 

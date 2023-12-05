@@ -44,12 +44,37 @@ namespace YH
 
 		if (m_Texture->GetTextureType() == graphics::Texture::TextureType::Bmp)
 		{
-			TransparentBlt(hdc, pos.x, pos.y
-				, m_Texture->GetWidth() * m_Size.x * scale.x
-				, m_Texture->GetHeight() * m_Size.y * scale.y
-				, m_Texture->GetHdc(), 0, 0
-				, m_Texture->GetWidth()
-				, m_Texture->GetHeight(), RGB(255, 0, 255));
+			if (m_Texture->IsAlpha())
+			{
+				BLENDFUNCTION func = {};
+				func.BlendOp = AC_SRC_OVER;
+				func.BlendFlags = 0;
+				func.AlphaFormat = AC_SRC_ALPHA;
+				func.SourceConstantAlpha = 255; // 0(transparent) ~ 255(Opaque)
+
+				AlphaBlend(hdc
+					, pos.x
+					, pos.y
+					, m_Texture->GetWidth() * m_Size.x * scale.x
+					, m_Texture->GetHeight() * m_Size.y * scale.y
+					, m_Texture->GetHdc()
+					, 0, 0
+					, m_Texture->GetWidth()
+					, m_Texture->GetHeight()
+					, func);
+			}
+			else
+			{
+				TransparentBlt(hdc
+					, pos.x, pos.y
+					, m_Texture->GetWidth() * m_Size.x * scale.x
+					, m_Texture->GetHeight() * m_Size.y * scale.y
+					, m_Texture->GetHdc()
+					, 0, 0
+					, m_Texture->GetWidth()
+					, m_Texture->GetHeight()
+					, RGB(255, 0, 255));
+			}
 		}
 		else if (m_Texture->GetTextureType() == graphics::Texture::TextureType::Png)
 		{

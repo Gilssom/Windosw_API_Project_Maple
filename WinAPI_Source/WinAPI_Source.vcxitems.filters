@@ -64,6 +64,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Animation.cpp">
       <Filter>Resource</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Destroy.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Component.h">
@@ -137,6 +140,9 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Animation.h">
       <Filter>Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Destroy.h">
+      <Filter>GameObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

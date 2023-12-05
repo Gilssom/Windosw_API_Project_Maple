@@ -36,8 +36,7 @@ namespace YH
 			if (!gameObj)
 				continue;
 
-			GameObject::State state = gameObj->GetActive();
-			if (state == GameObject::State::Paused || state == GameObject::State::Dead)
+			if (gameObj->IsActive() == false)
 				continue;
 
 			gameObj->Update();
@@ -51,8 +50,7 @@ namespace YH
 			if (!gameObj)
 				continue;
 
-			GameObject::State state = gameObj->GetActive();
-			if (state == GameObject::State::Paused || state == GameObject::State::Dead)
+			if (gameObj->IsActive() == false)
 				continue;
 
 			gameObj->LateUpdate();
@@ -66,8 +64,7 @@ namespace YH
 			if (!gameObj)
 				continue;
 
-			GameObject::State state = gameObj->GetActive();
-			if (state == GameObject::State::Paused || state == GameObject::State::Dead)
+			if (gameObj->IsActive() == false)
 				continue;
 
 			gameObj->Render(hdc);
@@ -76,24 +73,10 @@ namespace YH
 
 	void Layer::Destroy()
 	{
-		for (GameObjectIter iter = m_GameObjects.begin();
-			iter != m_GameObjects.end();)
-		{
-			GameObject::State active = (*iter)->GetActive();
-
-			if (active == GameObject::State::Dead)
-			{
-				GameObject* deathObj = (*iter);
-				iter = m_GameObjects.erase(iter);
-
-				delete deathObj;
-				deathObj = nullptr;
-
-				continue;
-			}
-
-			iter++;
-		}
+		std::vector<GameObject*> deleteObjects = {};
+		FindDeadGameObjects(deleteObjects);
+		EraseGameObject();
+		DeleteGameObjects(deleteObjects);
 	}
 
 	void Layer::AddGameObject(GameObject* gameObject)
@@ -102,5 +85,34 @@ namespace YH
 			return;
 
 		m_GameObjects.push_back(gameObject);
+	}
+
+	void Layer::FindDeadGameObjects(OUT std::vector<GameObject*>& gameObjs)
+	{
+		for (GameObject* gameObj : m_GameObjects)
+		{
+			GameObject::State active = gameObj->GetState();
+
+			if (active == GameObject::State::Dead)
+				gameObjs.push_back(gameObj);
+		}
+	}
+
+	void Layer::DeleteGameObjects(std::vector<GameObject*> deleteObjs)
+	{
+		for (GameObject* obj : deleteObjs)
+		{
+			delete obj;
+			obj = nullptr;
+		}
+	}
+
+	void Layer::EraseGameObject()
+	{
+		std::erase_if(m_GameObjects,
+			[](GameObject* gameObj)
+			{
+				return (gameObj)->IsDead();
+			});
 	}
 }

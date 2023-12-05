@@ -61,6 +61,11 @@ namespace YH::graphics
 			m_Width = info.bmWidth;
 			m_Height = info.bmHeight;
 
+			if (info.bmBitsPixel == 32)
+				mbAlpha = true;
+			else if (info.bmBitsPixel == 24)
+				mbAlpha = false;
+
 			HDC mainDC = App.GetHdc();
 			m_Hdc = CreateCompatibleDC(mainDC);
 

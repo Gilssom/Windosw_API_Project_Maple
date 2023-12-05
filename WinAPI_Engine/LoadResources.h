@@ -20,11 +20,19 @@ namespace YH
 		Resources::Load<graphics::Texture>(L"FairyTurn", L"..\\Resources\\FairyTurn.png");
 		Resources::Load<graphics::Texture>(L"LeftFairyTurn", L"..\\Resources\\LeftFairyTurn.png");
 		Resources::Load<graphics::Texture>(L"RightFairyTurn", L"..\\Resources\\RightFairyTurn.png");
+
 		Resources::Load<graphics::Texture>(L"BoringSong", L"..\\Resources\\BoringSong.png");
 
 		Resources::Load<graphics::Texture>(L"LeftBoringSongStart", L"..\\Resources\\LeftBoringSongStart.png");
 		Resources::Load<graphics::Texture>(L"LeftBoringSonging", L"..\\Resources\\LeftBoringSonging.png");
 		Resources::Load<graphics::Texture>(L"LeftBoringSongEnd", L"..\\Resources\\LeftBoringSongEnd.png");
+		Resources::Load<graphics::Texture>(L"RightBoringSongStart", L"..\\Resources\\RightBoringSongStart.png");
+		Resources::Load<graphics::Texture>(L"RightBoringSonging", L"..\\Resources\\RightBoringSonging.png");
+		Resources::Load<graphics::Texture>(L"RightBoringSongEnd", L"..\\Resources\\RightBoringSongEnd.png");
+
+		Resources::Load<graphics::Texture>(L"BoringArrow", L"..\\Resources\\BoringArrow.png");
+
+		Resources::Load<graphics::Texture>(L"MonSun", L"..\\Resources\\MonSun Skill Test Bmp.bmp");
 		//Resources::Load<graphics::Texture>(L"BoringSongEnd", L"..\\Resources\\BoringSongEnd.png");
 
 		// Map

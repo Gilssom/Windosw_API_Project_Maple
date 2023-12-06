@@ -135,7 +135,7 @@ namespace YH
 	void Animation::CreateAnimation(const std::wstring& name
 		, graphics::Texture* spriteSheet
 		, Vector2 leftTop, Vector2 size, Vector2 offset
-		, UINT spriteLength, float duration)
+		, UINT spriteLength, float duration, bool flip)
 	{
 		m_Texture = spriteSheet;
 
@@ -150,6 +150,9 @@ namespace YH
 
 			m_AnimationSheet.push_back(sprite);
 		}
+
+		if (flip)
+			std::reverse(m_AnimationSheet.begin(), m_AnimationSheet.end());
 	}
 
 	void Animation::Reset()

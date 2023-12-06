@@ -10,7 +10,7 @@ namespace YH
 	Camera::Camera() 
 		: Component(enums::ComponentType::Camera)
 		, m_Distance(Vector2::Zero)
-		, m_Resolution(Vector2(1600.0f, 900.0f))
+		, m_Resolution(Vector2(1366.0f, 768.0f))
 		, m_LookPosition(Vector2::Zero)
 		, m_Target(nullptr)
 	{

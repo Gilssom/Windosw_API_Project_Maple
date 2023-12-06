@@ -34,7 +34,7 @@ namespace YH
 		void CreateAnimation(const std::wstring& name
 			, graphics::Texture* spriteSheet
 			, Vector2 leftTop, Vector2 size, Vector2 offset
-			, UINT spriteLength, float duration);
+			, UINT spriteLength, float duration, bool flip);
 
 		void Reset();
 

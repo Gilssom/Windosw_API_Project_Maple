@@ -58,7 +58,7 @@ namespace YH
 	void Animator::CreateAnimation(const std::wstring& name
 		, graphics::Texture* spriteSheet
 		, Vector2 leftTop, Vector2 size, Vector2 offset
-		, UINT spriteLength, float duration)
+		, UINT spriteLength, float duration, bool flip)
 	{
 		Animation* animation = nullptr;
 		animation = FindAnimation(name);
@@ -67,7 +67,7 @@ namespace YH
 
 		animation = new Animation();
 		animation->SetName(name);
-		animation->CreateAnimation(name, spriteSheet, leftTop, size, offset, spriteLength, duration);
+		animation->CreateAnimation(name, spriteSheet, leftTop, size, offset, spriteLength, duration, flip);
 
 		animation->SetAnimator(this);
 

@@ -20,7 +20,7 @@ namespace YH::enums
 		UI,
 		Tree,
 		Ground,
-		Character,
+		Boss,
 		Monster,
 		Player,
 		Effect,

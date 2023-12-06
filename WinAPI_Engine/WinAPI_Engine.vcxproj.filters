@@ -26,6 +26,15 @@
     <ClInclude Include="YH_Mushroom.h">
       <Filter>Monster</Filter>
     </ClInclude>
+    <ClInclude Include="YH_BossCygnusScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="YH_CygnusScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="YH_Cygnus.h">
+      <Filter>Boss</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scenes">
@@ -42,6 +51,9 @@
     </Filter>
     <Filter Include="Monster">
       <UniqueIdentifier>{9cc5b5d5-0f18-4edd-98ef-d7aadb0343bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Boss">
+      <UniqueIdentifier>{4f7ccefb-de85-4750-abf6-4a5f2a3b1981}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -65,6 +77,15 @@
     </ClCompile>
     <ClCompile Include="YH_Mushroom.cpp">
       <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="YH_BossCygnusScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="YH_CygnusScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="YH_Cygnus.cpp">
+      <Filter>Boss</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

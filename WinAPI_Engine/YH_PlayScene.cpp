@@ -40,7 +40,7 @@ namespace YH
 		renderer->SetTexture(bg_1);
 
 		// 몬스터 애니메이션 적용
-		m_Mushroom = object::Instantiate<Mushroom>(enums::LayerType::Character, Vector2(900.0f, 1120.0f));
+		m_Mushroom = object::Instantiate<Mushroom>(enums::LayerType::Monster, Vector2(900.0f, 1120.0f));
 		m_Mushroom->AddComponent<MushScript>();
 
 		graphics::Texture* mushroomTex = Resources::Find<graphics::Texture>(L"Mushroom");
@@ -145,7 +145,7 @@ namespace YH
 
 		if (Input::GetKeyDown(KeyCode::N))
 		{
-			SceneManager::LoadScene(L"TitleScene");
+			SceneManager::LoadScene(L"BossCygnusScene");
 		}
 	}
 

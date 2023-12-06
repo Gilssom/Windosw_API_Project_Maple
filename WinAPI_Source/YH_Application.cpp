@@ -49,7 +49,7 @@ namespace YH
 		ClearRenderTarget();
 
 		SceneManager::Render(m_BackHdc);
-		//Time::Render(m_BackHdc);
+		Time::Render(m_BackHdc);
 
 		CopyRenderTarget(m_BackHdc, m_Hdc);
 	}

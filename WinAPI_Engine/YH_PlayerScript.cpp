@@ -5,11 +5,14 @@
 #include "YH_GameObject.h"
 #include "YH_Animator.h"
 #include "YH_Object.h"
-#include "YH_Resources.h"
+#include "YH_Resources.h" 
+
+#include "YH_Arrow.h"
+#include "YH_ArrowScript.h"
 
 namespace YH
 {
-	PlayerScript::PlayerScript() : m_State(PlayerScript::State::Idle), m_Animator(nullptr), m_Dir(PlayerScript::Direction::Left)
+	PlayerScript::PlayerScript() : m_State(PlayerScript::State::Idle), m_Animator(nullptr), m_Dir(PlayerScript::Direction::Left), m_ReShootTime(0.0f)
 	{
 	}
 
@@ -63,46 +66,37 @@ namespace YH
 				m_BoringSong->SetActive(false);
 
 				m_BoringAnim->CreateAnimation(L"Boring Song Left Attack", LeftboringSongStart, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
-					Vector2::Zero, 11, 0.02f);
+					Vector2::Zero, 11, 0.01f);
 
 				m_BoringAnim->CreateAnimation(L"Boring Song Right Attack", RightboringSongStart, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
-					Vector2::Zero, 11, 0.02f);
+					Vector2::Zero, 11, 0.01f);
 
 				m_BoringAnim->CreateAnimation(L"Boring Song Left Attaking", LeftboringSonging, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
-					Vector2::Zero, 6, 0.01f);
+					Vector2::Zero, 6, 0.02f);
 
 				m_BoringAnim->CreateAnimation(L"Boring Song Right Attaking", RightboringSonging, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
-					Vector2::Zero, 6, 0.01f);
+					Vector2::Zero, 6, 0.02f);
 
 				m_BoringAnim->CreateAnimation(L"Boring Song Left End", LeftboringSongEnd, Vector2(0.0f, 0.0f), Vector2(382.0f, 408.0f),
-					Vector2::Zero, 10, 0.05f);
+					Vector2::Zero, 10, 0.02f);
 
 				m_BoringAnim->CreateAnimation(L"Boring Song Right End", RightboringSongEnd, Vector2(0.0f, 0.0f), Vector2(382.0f, 408.0f),
-					Vector2::Zero, 10, 0.05f);
+					Vector2::Zero, 10, 0.02f);
 
 				m_BoringAnim->GetCompleteEvent(L"Boring Song Left Attack") = std::bind(&PlayerScript::BoringSongEffing, this);
 				m_BoringAnim->GetCompleteEvent(L"Boring Song Right Attack") = std::bind(&PlayerScript::BoringSongEffing, this);
+
+				//m_BoringAnim->GetStartEvent(L"Boring Song Left Attaking") = std::bind(&PlayerScript::ArrowShoot, this);
+				//m_BoringAnim->GetStartEvent(L"Boring Song Right Attaking") = std::bind(&PlayerScript::ArrowShoot, this);
 
 				m_BoringAnim->GetCompleteEvent(L"Boring Song Left End") = std::bind(&PlayerScript::BoringSongEffOff, this);
 				m_BoringAnim->GetCompleteEvent(L"Boring Song Right End") = std::bind(&PlayerScript::BoringSongEffOff, this);
 		#pragma endregion
 
-		#pragma region Boring Arrow
-				// Test ( 화살은 추후 동적할당 or 오브젝트 풀링으로 구현할 예정
-				GameObject* arrow = object::Instantiate<GameObject>(enums::LayerType::Effect, Vector2(900.0f, 1120.0f));
-				graphics::Texture* boringArrow = Resources::Find<graphics::Texture>(L"BoringArrow");
-				Animator* arrowAnim = arrow->AddComponent<Animator>();
-				//arrow->AddComponent<Transform>();
-				arrow->SetActive(false);
-				arrowAnim->CreateAnimation(L"Boring Arrow Left", boringArrow, Vector2(0.0f, 0.0f), Vector2(203.0f, 72.0f),
-					Vector2::Zero, 3, 0.035f);
-				arrowAnim->PlayAnimation(L"Boring Arrow Left");
-		#pragma endregion
-
 		#pragma region Howling Gale
 				m_HowlingGale = object::Instantiate<GameObject>(enums::LayerType::Effect);
 				graphics::Texture* LefthowlingStart = Resources::Find<graphics::Texture>(L"LeftHowlingStart");
-				//graphics::Texture* RighthowlingStart = Resources::Find<graphics::Texture>(L"RightBoringSongStart");
+				graphics::Texture* RighthowlingStart = Resources::Find<graphics::Texture>(L"RightHowlingStart");
 				graphics::Texture* howlingAttack = Resources::Find<graphics::Texture>(L"HowlingAttack");
 				graphics::Texture* howlingAttackEnd = Resources::Find<graphics::Texture>(L"HowlingAttackEnd");
 				m_HowlingAnim = m_HowlingGale->AddComponent<Animator>();
@@ -112,13 +106,17 @@ namespace YH
 				m_HowlingAnim->CreateAnimation(L"Howling Left Start", LefthowlingStart, Vector2(0.0f, 0.0f), Vector2(615.0f, 556.0f),
 					Vector2(-50.0f, -20.0f), 15, 0.05f);
 
+				m_HowlingAnim->CreateAnimation(L"Howling Right Start", RighthowlingStart, Vector2(0.0f, 0.0f), Vector2(615.0f, 556.0f),
+					Vector2(50.0f, -20.0f), 15, 0.05f, true);
+
 				m_HowlingAnim->CreateAnimation(L"Howling Attack", howlingAttack, Vector2(0.0f, 0.0f), Vector2(372.0f, 605.0f),
-					Vector2(-100.0f, -270.0f), 14, 0.07f);
+					Vector2(0.0f, -270.0f), 14, 0.07f);
 
 				m_HowlingAnim->CreateAnimation(L"Howling Attack End", howlingAttackEnd, Vector2(0.0f, 0.0f), Vector2(360.0f, 615.0f),
-					Vector2(-100.0f, -270.0f), 5, 0.07f);
+					Vector2(0.0f, -270.0f), 5, 0.07f);
 
 				m_HowlingAnim->GetCompleteEvent(L"Howling Left Start") = std::bind(&PlayerScript::HowlingEffing, this);
+				m_HowlingAnim->GetCompleteEvent(L"Howling Right Start") = std::bind(&PlayerScript::HowlingEffing, this);
 				m_HowlingAnim->GetCompleteEvent(L"Howling Attack") = std::bind(&PlayerScript::HowlingEffend, this);
 				m_HowlingAnim->GetCompleteEvent(L"Howling Attack End") = std::bind(&PlayerScript::HowlingEffOff, this);
 		#pragma endregion
@@ -184,6 +182,7 @@ namespace YH
 
 	}
 
+	#pragma region Effect Control
 	void PlayerScript::FairyTurnEff()
 	{
 		switch (m_Dir)
@@ -203,6 +202,11 @@ namespace YH
 			m_FairyAnim->PlayAnimation(L"Fairy Turn Left Attack", false);
 			break;
 		}
+	}
+
+	void PlayerScript::FairyTurnEffOff()
+	{
+		m_FairyTurn->SetActive(false);
 	}
 
 	void PlayerScript::BoringSongEff()
@@ -252,6 +256,46 @@ namespace YH
 		}
 	}
 
+	void PlayerScript::BoringSongEffOff()
+	{
+		m_BoringSong->SetActive(false);
+	}
+
+	void PlayerScript::BoringArrow()
+	{
+		GameObject* arrow = object::Instantiate<GameObject>(enums::LayerType::Effect);
+		//arrow->SetActive(true);
+		ArrowScript* arrowScript = arrow->AddComponent<ArrowScript>();
+		arrowScript->SetPlayer(GetOwner());
+
+		graphics::Texture* boringArrow = Resources::Find<graphics::Texture>(L"BoringArrow");
+		Animator* arrowAnim = arrow->AddComponent<Animator>();
+
+		arrowAnim->CreateAnimation(L"Boring Arrow Left", boringArrow, Vector2(0.0f, 0.0f), Vector2(203.0f, 72.0f),
+			Vector2::Zero, 3, 0.035f);
+		arrowAnim->CreateAnimation(L"Boring Arrow Right", boringArrow, Vector2(609.0f, 0.0f), Vector2(203.0f, 72.0f),
+			Vector2::Zero, 3, 0.035f);
+
+		Transform* playerTf = GetOwner()->GetComponent<Transform>();
+
+		switch (m_Dir)
+		{
+		case YH::PlayerScript::Direction::Right:
+			arrowScript->m_Dest = Vector2::Right;
+
+			arrowAnim->PlayAnimation(L"Boring Arrow Right");
+			break;
+		case YH::PlayerScript::Direction::Left:
+			arrowScript->m_Dest = Vector2::Left;
+
+			arrowAnim->PlayAnimation(L"Boring Arrow Left");
+			break;
+		}
+
+		arrow->GetComponent<Transform>()->SetPosition(playerTf->GetPostion() + (arrowScript->m_Dest * 100.0f));
+		arrow->GetComponent<Transform>()->SetScale(Vector2(0.7f, 0.7f));
+	}
+
 	void PlayerScript::HowlingEff()
 	{
 		switch (m_Dir)
@@ -274,12 +318,12 @@ namespace YH
 		switch (m_Dir)
 		{
 		case YH::PlayerScript::Direction::Right:
-			//m_HowlingGale->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x + 100.0f, m_PlayerPos.y));
+			m_HowlingGale->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x + 100.0f, m_PlayerPos.y));
 
 			m_HowlingAnim->PlayAnimation(L"Howling Attack", false);
 			break;
 		case YH::PlayerScript::Direction::Left:
-			//m_HowlingGale->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x - 100.0f, m_PlayerPos.y));
+			m_HowlingGale->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x - 100.0f, m_PlayerPos.y));
 
 			m_HowlingAnim->PlayAnimation(L"Howling Attack", false);
 			break;
@@ -293,19 +337,10 @@ namespace YH
 
 	void PlayerScript::HowlingEffOff()
 	{
-		if(m_HowlingAnim->IsComplete())
+		if (m_HowlingAnim->IsComplete())
 			m_HowlingGale->SetActive(false);
 	}
-
-	void PlayerScript::FairyTurnEffOff()
-	{
-		m_FairyTurn->SetActive(false);
-	}
-
-	void PlayerScript::BoringSongEffOff()
-	{
-		m_BoringSong->SetActive(false);
-	}
+#pragma endregion
 
 	void PlayerScript::Idle()
 	{
@@ -415,6 +450,8 @@ namespace YH
 					default:
 						break;
 					}
+
+					//BoringArrow();
 				}
 
 				if (Input::GetKeyDown(KeyCode::X))
@@ -594,6 +631,14 @@ namespace YH
 
 	void PlayerScript::BoringSong()
 	{
+		m_ReShootTime += Time::DeltaTime();
+
+		if (m_ReShootTime > 0.12f)
+		{
+			BoringArrow();
+			m_ReShootTime = 0.0f;
+		}
+
 		if (Input::GetKeyUp(KeyCode::F))
 		{
 			m_State = PlayerScript::State::Idle;

@@ -75,10 +75,13 @@ namespace YH
 			if (!power) m_State = State::Paused;
 		}
 
-		bool IsActive() { return m_State == State::Active; }
-		bool IsDead() { return m_State == State::Dead; }
+		bool IsActive() 
+		{
 
-		//std::vector<Component*> HaveComp() { return m_Components; }
+
+			return m_State == State::Active; 
+		}
+		bool IsDead() { return m_State == State::Dead; }
 
 		void MonsterRender(HDC hdc);
 		void MonsterMoving();

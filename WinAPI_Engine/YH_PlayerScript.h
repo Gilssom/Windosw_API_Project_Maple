@@ -41,6 +41,8 @@ namespace YH
 		void BoringSongEffend();
 		void BoringSongEffOff();
 
+		void BoringArrow();
+
 		void HowlingEff();
 		void HowlingEffing();
 		void HowlingEffend();
@@ -64,6 +66,8 @@ namespace YH
 		Direction m_Dir;
 		class Animator* m_Animator;
 		Vector2 m_PlayerPos;
+
+		float m_ReShootTime;
 
 		GameObject* m_BoringSong; GameObject* m_FairyTurn; GameObject* m_HowlingGale;
 		Animator* m_BoringAnim; Animator* m_FairyAnim; Animator* m_HowlingAnim;

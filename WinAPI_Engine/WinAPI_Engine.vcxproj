@@ -137,6 +137,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="LoadResources.h" />
+    <ClInclude Include="YH_Arrow.h" />
+    <ClInclude Include="YH_ArrowScript.h" />
     <ClInclude Include="YH_BossCygnusScene.h" />
     <ClInclude Include="YH_Cygnus.h" />
     <ClInclude Include="YH_CygnusScript.h" />
@@ -150,6 +152,8 @@
     <ClInclude Include="YH_TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="YH_Arrow.cpp" />
+    <ClCompile Include="YH_ArrowScript.cpp" />
     <ClCompile Include="YH_BossCygnusScene.cpp" />
     <ClCompile Include="YH_Cygnus.cpp" />
     <ClCompile Include="YH_CygnusScript.cpp" />

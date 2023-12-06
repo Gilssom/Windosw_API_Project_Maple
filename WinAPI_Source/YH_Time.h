@@ -10,7 +10,7 @@ namespace YH
 		static void Update();
 		static void Render(HDC hdc);
 
-		static float DeltaTime() { return m_DeltaTime; }
+		__forceinline static float DeltaTime() { return m_DeltaTime; }
 
 	private:
 		static LARGE_INTEGER m_CpuFrequency;

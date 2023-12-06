@@ -35,10 +35,10 @@ namespace YH
 		static void Initailize();
 		static void Update();
 
-		static bool GetKeyDown(KeyCode keyCode) { return m_Keys[(UINT)keyCode].state == KeyState::Down; }
-		static bool GetKeyUp(KeyCode keyCode)	{ return m_Keys[(UINT)keyCode].state == KeyState::Up; }
-		static bool GetKey(KeyCode keyCode)		{ return m_Keys[(UINT)keyCode].state == KeyState::Pressed; }
-		static math::Vector2 GetMousePosition() { return m_MousePosition; }
+		__forceinline static bool GetKeyDown(KeyCode keyCode) { return m_Keys[(UINT)keyCode].state == KeyState::Down; }
+		__forceinline static bool GetKeyUp(KeyCode keyCode)	{ return m_Keys[(UINT)keyCode].state == KeyState::Up; }
+		__forceinline static bool GetKey(KeyCode keyCode)		{ return m_Keys[(UINT)keyCode].state == KeyState::Pressed; }
+		__forceinline static math::Vector2 GetMousePosition() { return m_MousePosition; }
 
 	private:
 		static void CreateKeys();

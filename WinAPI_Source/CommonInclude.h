@@ -9,7 +9,6 @@
 #include <map>
 #include <functional>
 #include <filesystem>
-#include <math.h>
 
 
 #pragma comment (lib, "x64/Debug/WinAPI_Engine.lib")
@@ -25,3 +24,4 @@
 #pragma comment(lib, "gdiplus.lib")
 
 #include "YH_Enums.h"
+#include "YH_Math.h"

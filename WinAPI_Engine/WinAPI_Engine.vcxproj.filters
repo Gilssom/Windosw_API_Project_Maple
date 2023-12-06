@@ -35,6 +35,12 @@
     <ClInclude Include="YH_Cygnus.h">
       <Filter>Boss</Filter>
     </ClInclude>
+    <ClInclude Include="YH_Arrow.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="YH_ArrowScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scenes">
@@ -86,6 +92,12 @@
     </ClCompile>
     <ClCompile Include="YH_Cygnus.cpp">
       <Filter>Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="YH_Arrow.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="YH_ArrowScript.cpp">
+      <Filter>Scripts</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

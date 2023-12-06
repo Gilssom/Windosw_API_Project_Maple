@@ -1,8 +1,11 @@
 #pragma once
+#include <cmath>
 
 namespace YH::math
 { 
 #define PI 3.141592f
+
+	static float ConvertDegree(float radian) { return (radian * (180 / PI)); }
 
 	struct Vector2
 	{

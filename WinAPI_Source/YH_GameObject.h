@@ -75,10 +75,7 @@ namespace YH
 			if (!power) m_State = State::Paused;
 		}
 
-		bool IsActive() 
-		{
-
-
+		bool IsActive(){
 			return m_State == State::Active; 
 		}
 		bool IsDead() { return m_State == State::Dead; }

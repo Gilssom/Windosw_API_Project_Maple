@@ -8,6 +8,8 @@
 #include "YH_Camera.h"
 #include "YH_Renderer.h"
 #include "YH_Animator.h"
+#include "YH_BoxCollider2D.h"
+#include "YH_CollisionManager.h"
 
 #include "YH_Player.h"
 #include "YH_PlayerScript.h"
@@ -26,6 +28,8 @@ namespace YH
 
 	void PlayScene::Initialize()
 	{
+		CollisionManager::CollisionLayerCheck(LayerType::Player, LayerType::Monster, true);
+
 		// main Camera
 		GameObject* camera = object::Instantiate<GameObject>(enums::LayerType::None, Vector2(800.0f, 400.0f));
 		Camera* cameraComp = camera->AddComponent<Camera>();
@@ -39,7 +43,7 @@ namespace YH
 		graphics::Texture* bg_1 = Resources::Find<graphics::Texture>(L"Mapleisland_0");
 		renderer->SetTexture(bg_1);
 
-		// 몬스터 애니메이션 적용
+		// 몬스터 적용
 		m_Mushroom = object::Instantiate<Mushroom>(enums::LayerType::Monster, Vector2(900.0f, 1120.0f));
 		m_Mushroom->AddComponent<MushScript>();
 
@@ -66,6 +70,9 @@ namespace YH
 
 		graphics::Texture* player = Resources::Find<graphics::Texture>(L"Player");
 		PlayerScript* playerScript = m_Player->AddComponent<PlayerScript>();
+
+		BoxCollider2D* collider = m_Player->AddComponent<BoxCollider2D>();
+		collider->SetOffset(Vector2(-50.0f, -50.0f));
 
 		Animator* playerAnim = m_Player->AddComponent<Animator>();
 		#pragma region Player Normal Animation

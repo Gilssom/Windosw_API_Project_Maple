@@ -25,6 +25,11 @@ namespace YH::graphics
 		image->m_Bitmap = CreateCompatibleBitmap(hdc, width, height);
 		image->m_Hdc = CreateCompatibleDC(hdc);
 
+		HBRUSH transparentBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
+		HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, transparentBrush);
+		Rectangle(image->m_Hdc, -1, -1, image->GetWidth() + 1, image->GetHeight() + 1);
+		SelectObject(hdc, oldBrush);
+
 		HBITMAP oldBitmap = (HBITMAP)SelectObject(image->m_Hdc, image->m_Bitmap);
 		DeleteObject(oldBitmap);
 

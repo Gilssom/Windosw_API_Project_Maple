@@ -4,6 +4,7 @@
 #include "YH_Rocket.h"
 #include "YH_SceneManager.h"
 #include "YH_Resources.h"
+#include "YH_CollisionManager.h"
 
 namespace YH
 {
@@ -22,6 +23,9 @@ namespace YH
 		AdJustWindowRect(hwnd, width, height);
 		CreateBuffer(width, height);
 		InitializeEtc();
+
+		CollisionManager::Initialize();
+		SceneManager::Initialize();
 	}
 
 	void Application::Run()
@@ -35,12 +39,14 @@ namespace YH
 
 	void Application::Update()
 	{
-		SceneManager::Update();
 		Input::Update();
 		Time::Update();
+		CollisionManager::Update();
+		SceneManager::Update();
 	}
 	void Application::LateUpdate()
 	{
+		CollisionManager::LateUpdate();
 		SceneManager::LateUpdate();
 	}
 
@@ -48,8 +54,9 @@ namespace YH
 	{
 		ClearRenderTarget();
 
-		SceneManager::Render(m_BackHdc);
 		Time::Render(m_BackHdc);
+		CollisionManager::Render(m_BackHdc);
+		SceneManager::Render(m_BackHdc);
 
 		CopyRenderTarget(m_BackHdc, m_Hdc);
 	}
@@ -67,7 +74,14 @@ namespace YH
 
 	void Application::ClearRenderTarget()
 	{
+		// 배경색 바꾸기
+		HBRUSH grayBrush = (HBRUSH)CreateSolidBrush(RGB(128, 128, 128));
+		HBRUSH oldBrush = (HBRUSH)SelectObject(m_BackHdc, grayBrush);
+
 		Rectangle(m_BackHdc, -1, -1, 1600, 900);
+
+		(HBRUSH)SelectObject(m_BackHdc, oldBrush);
+		DeleteObject(grayBrush);
 	}
 
 	void Application::CopyRenderTarget(HDC source, HDC dest)

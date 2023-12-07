@@ -6,11 +6,13 @@
 #include "YH_Object.h"
 #include "YH_Resources.h"
 
+#include "YH_ArrowScript.h"
+
 namespace YH
 {
 	CygnusScript::CygnusScript() : m_State(CygnusScript::State::Idle)
 		, m_Animator(nullptr), m_Dir(CygnusScript::Direction::Left)
-		, m_Time(0.0f), m_DeathTime(0.0f)
+		, m_Time(0.0f), m_DeathTime(0.0f), m_SkillDelay(0.0f), m_DoSkill(false)
 	{
 
 	}
@@ -63,6 +65,44 @@ namespace YH
 	{
 
 	}
+
+	#pragma region Skill Effect
+	void CygnusScript::Skill2Ball()
+	{
+		GameObject* ball = object::Instantiate<GameObject>(enums::LayerType::Effect);
+
+		Animator* ballAnim = ball->AddComponent<Animator>();
+		graphics::Texture* ballTexture = Resources::Find<graphics::Texture>(L"CygnusSkill2Ball");
+
+		ballAnim->CreateAnimation(L"Left Ball", ballTexture, Vector2(0.0f, 0.0f), Vector2(162.0f, 79.0f),
+			Vector2(0.0f, 38.0f), 1, 0.0f);
+		ballAnim->CreateAnimation(L"Right Ball", ballTexture, Vector2(162.0f, 0.0f), Vector2(162.0f, 79.0f),
+			Vector2(0.0f, 38.0f), 1, 0.0f);
+
+		ArrowScript* ballScript = ball->AddComponent<ArrowScript>();
+		ballScript->SetPlayer(GetOwner());
+		ballScript->SetSpeed(500.0f);
+
+		Transform* playerTf = GetOwner()->GetComponent<Transform>();
+
+		switch (m_Dir)
+		{
+		case YH::CygnusScript::Direction::Right:
+			ballAnim->PlayAnimation(L"Right Ball");
+
+			ballScript->m_Dest = Vector2::Right;
+			break;
+		case YH::CygnusScript::Direction::Left:
+			ballAnim->PlayAnimation(L"Left Ball");
+
+			ballScript->m_Dest = Vector2::Left;
+			break;
+		}
+
+		ball->GetComponent<Transform>()->SetPosition(playerTf->GetPostion()/* + (ballScript->m_Dest * 100.0f)*/);
+		//ball->GetComponent<Transform>()->SetScale(Vector2(0.7f, 0.7f));
+	}
+	#pragma endregion
 
 	void CygnusScript::Idle()
 	{
@@ -141,6 +181,17 @@ namespace YH
 
 	void CygnusScript::Skill2()
 	{
+		if (!m_DoSkill)
+		{
+			m_SkillDelay += Time::DeltaTime();
+
+			if (m_SkillDelay > 0.55f)
+			{
+				Skill2Ball();
+				m_DoSkill = true;
+			}
+		}
+
 		if (m_Animator->IsComplete())
 		{
 			m_State = State::Idle;
@@ -156,6 +207,9 @@ namespace YH
 			default:
 				break;
 			}
+
+			m_SkillDelay = 0.0f;
+			m_DoSkill = false;
 		}
 	}
 

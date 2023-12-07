@@ -30,6 +30,8 @@ namespace YH
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
+		void Skill2Ball();
+
 	private:
 		void Idle();
 		void Move();
@@ -48,6 +50,8 @@ namespace YH
 		class Animator* m_Animator;
 		Vector2 m_CygnusPos;
 		float m_Time;
+		float m_SkillDelay;
+		bool m_DoSkill;
 		float m_DeathTime;
 	};
 }

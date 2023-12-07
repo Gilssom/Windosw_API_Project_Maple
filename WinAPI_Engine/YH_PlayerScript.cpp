@@ -2,6 +2,7 @@
 #include "YH_Input.h"
 #include "YH_Transform.h"
 #include "YH_Time.h"
+#include "YH_SpriteRenderer.h"
 #include "YH_GameObject.h"
 #include "YH_Animator.h"
 #include "YH_Object.h"
@@ -107,7 +108,7 @@ namespace YH
 					Vector2(-50.0f, -20.0f), 15, 0.05f);
 
 				m_HowlingAnim->CreateAnimation(L"Howling Right Start", RighthowlingStart, Vector2(0.0f, 0.0f), Vector2(615.0f, 556.0f),
-					Vector2(50.0f, -20.0f), 15, 0.05f, true);
+					Vector2(50.0f, -20.0f), 15, 0.03f, true);
 
 				m_HowlingAnim->CreateAnimation(L"Howling Attack", howlingAttack, Vector2(0.0f, 0.0f), Vector2(372.0f, 605.0f),
 					Vector2(0.0f, -270.0f), 14, 0.07f);
@@ -264,35 +265,32 @@ namespace YH
 	void PlayerScript::BoringArrow()
 	{
 		GameObject* arrow = object::Instantiate<GameObject>(enums::LayerType::Effect);
-		//arrow->SetActive(true);
+
+		SpriteRenderer* arrowRender = arrow->AddComponent<SpriteRenderer>();
+		graphics::Texture* R_boringArrow = Resources::Find<graphics::Texture>(L"R_BoringArrow");
+		graphics::Texture* L_boringArrow = Resources::Find<graphics::Texture>(L"L_BoringArrow");
+
 		ArrowScript* arrowScript = arrow->AddComponent<ArrowScript>();
 		arrowScript->SetPlayer(GetOwner());
-
-		graphics::Texture* boringArrow = Resources::Find<graphics::Texture>(L"BoringArrow");
-		Animator* arrowAnim = arrow->AddComponent<Animator>();
-
-		arrowAnim->CreateAnimation(L"Boring Arrow Left", boringArrow, Vector2(0.0f, 0.0f), Vector2(203.0f, 72.0f),
-			Vector2::Zero, 3, 0.035f);
-		arrowAnim->CreateAnimation(L"Boring Arrow Right", boringArrow, Vector2(609.0f, 0.0f), Vector2(203.0f, 72.0f),
-			Vector2::Zero, 3, 0.035f);
+		arrowScript->SetSpeed(800.0f);
 
 		Transform* playerTf = GetOwner()->GetComponent<Transform>();
 
 		switch (m_Dir)
 		{
 		case YH::PlayerScript::Direction::Right:
-			arrowScript->m_Dest = Vector2::Right;
+			arrowRender->SetTexture(R_boringArrow);
 
-			arrowAnim->PlayAnimation(L"Boring Arrow Right");
+			arrowScript->m_Dest = Vector2::Right;
 			break;
 		case YH::PlayerScript::Direction::Left:
-			arrowScript->m_Dest = Vector2::Left;
+			arrowRender->SetTexture(L_boringArrow);
 
-			arrowAnim->PlayAnimation(L"Boring Arrow Left");
+			arrowScript->m_Dest = Vector2::Left;
 			break;
 		}
 
-		arrow->GetComponent<Transform>()->SetPosition(playerTf->GetPostion() + (arrowScript->m_Dest * 100.0f));
+		arrow->GetComponent<Transform>()->SetPosition(playerTf->GetPostion() + (arrowScript->m_Dest * 100.0f) + Vector2(0.0f, -20.0f));
 		arrow->GetComponent<Transform>()->SetScale(Vector2(0.7f, 0.7f));
 	}
 

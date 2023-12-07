@@ -17,7 +17,11 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Animation.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Animator.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_BoxCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Camera.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_CircleCollider2D.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Collider.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_CollisionManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Enums.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_GameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Input.h" />
@@ -42,7 +46,11 @@
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Animation.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Animator.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_BoxCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Camera.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_CircleCollider2D.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Collider.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_CollisionManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_GameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Input.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Layer.cpp" />

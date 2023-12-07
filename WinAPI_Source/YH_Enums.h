@@ -5,9 +5,10 @@ namespace YH::enums
 	enum class ComponentType
 	{
 		Transform,
+		Collider,
+		Script,
 		SpriteRenderer,
 		Animator,
-		Script,
 		Camera,
 		End,
 	};

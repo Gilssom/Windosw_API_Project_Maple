@@ -64,6 +64,16 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Animation.cpp">
       <Filter>Resource</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Collider.cpp">
+      <Filter>Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_BoxCollider2D.cpp">
+      <Filter>Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_CircleCollider2D.cpp">
+      <Filter>Component\Collider</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_CollisionManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Component.h">
@@ -138,6 +148,16 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Animation.h">
       <Filter>Resource</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Collider.h">
+      <Filter>Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_BoxCollider2D.h">
+      <Filter>Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_CircleCollider2D.h">
+      <Filter>Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_CollisionManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Component">
@@ -184,6 +204,9 @@
     </Filter>
     <Filter Include="Renderer">
       <UniqueIdentifier>{59a5fc84-38fe-4fa1-823d-d6c2b8c78b06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Collider">
+      <UniqueIdentifier>{b6d6b144-8263-47eb-91ab-a2e14b37bc64}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

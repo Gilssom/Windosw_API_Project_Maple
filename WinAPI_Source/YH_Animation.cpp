@@ -129,6 +129,8 @@ namespace YH
 				, Gdiplus::UnitPixel
 				, nullptr
 			);
+
+			Rectangle(hdc, pos.x, pos.y, pos.x + 10, pos.y + 10);
 		}
 	}
 

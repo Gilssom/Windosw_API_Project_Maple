@@ -10,7 +10,7 @@ namespace YH
 	ArrowScript::ArrowScript() 
 		: m_Direction(ArrowScript::Direction::Left)
 		, m_Animator(nullptr), m_Player(nullptr)
-		, m_Time(0.0f), m_DeathTime(0.0f), m_Speed(800.0f)
+		, m_Time(0.0f), m_DeathTime(0.0f), m_Speed(0.0f)
 		, m_Dest(Vector2::Zero), m_Radian(0.0f)
 	{
 

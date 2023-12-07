@@ -27,19 +27,24 @@ namespace YH
 		Resources::Load<graphics::Texture>(L"RightBoringSonging",	L"..\\Resources\\Skill\\RightBoringSonging.png");
 		Resources::Load<graphics::Texture>(L"RightBoringSongEnd",	L"..\\Resources\\Skill\\RightBoringSongEnd.png");
 																					
-		Resources::Load<graphics::Texture>(L"BoringArrow",			L"..\\Resources\\Skill\\BoringArrow.png");
+		Resources::Load<graphics::Texture>(L"R_BoringArrow",		L"..\\Resources\\Skill\\RightBoringArrow.png");
+		Resources::Load<graphics::Texture>(L"L_BoringArrow",		L"..\\Resources\\Skill\\LeftBoringArrow.png");
 																					 
 		Resources::Load<graphics::Texture>(L"LeftHowlingStart",		L"..\\Resources\\Skill\\LeftHowlingStart.png");
 		Resources::Load<graphics::Texture>(L"RightHowlingStart",	L"..\\Resources\\Skill\\RightHowlingStart.png");																				
 		Resources::Load<graphics::Texture>(L"HowlingAttack",		L"..\\Resources\\Skill\\HowlingAttack.png");
 		Resources::Load<graphics::Texture>(L"HowlingAttackEnd",		L"..\\Resources\\Skill\\HowlingAttackEnd.png");
 
-		// Boss & Monster
+		// Monster
 		Resources::Load<graphics::Texture>(L"Mushroom",				L"..\\Resources\\Monster\\Mushroom_Sprite.png");
 
+		// Boss_Cygnus
 		Resources::Load<graphics::Texture>(L"Cygnus",				L"..\\Resources\\Boss\\CygnusCommon.png");
+
 		Resources::Load<graphics::Texture>(L"LeftCygnusSkill2",		L"..\\Resources\\Boss\\LeftCygnusSkill2.png");
 		Resources::Load<graphics::Texture>(L"RightCygnusSkill2",	L"..\\Resources\\Boss\\RightCygnusSkill2.png");
+		Resources::Load<graphics::Texture>(L"CygnusSkill2Ball",		L"..\\Resources\\Boss\\Skill2Ball.png");
+
 
 		// Map
 		Resources::Load<graphics::Texture>(L"Mapleisland_0",		L"..\\Resources\\Map\\Mapleisland_0.png");

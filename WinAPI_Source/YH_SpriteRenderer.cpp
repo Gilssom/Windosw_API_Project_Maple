@@ -81,7 +81,7 @@ namespace YH
 			Gdiplus::ImageAttributes imgAtt = {};
 
 			// 투명화 시킬 픽셀의 색 범위
-			imgAtt.SetColorKey(Gdiplus::Color(100, 100, 100), Gdiplus::Color(255, 255, 255));
+			//imgAtt.SetColorKey(Gdiplus::Color(100, 100, 100), Gdiplus::Color(255, 255, 255));
 
 			Gdiplus::Graphics graphics(hdc);
 

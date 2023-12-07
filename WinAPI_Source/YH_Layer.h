@@ -19,6 +19,8 @@ namespace YH
 
 		void AddGameObject(GameObject* gameObject);
 
+		const std::vector<GameObject*> GetGameObjects() { return m_GameObjects; }
+
 	private:
 		void FindDeadGameObjects(OUT std::vector<GameObject*>& gameObjs);
 		void DeleteGameObjects(std::vector<GameObject*> gameObj);

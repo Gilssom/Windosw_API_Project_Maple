@@ -50,6 +50,10 @@ namespace YH
 
 		//void FairyEffOff(bool OnOff);
 
+		void OnCollisionEnter(Collider* other) override;
+		void OnCollisionStay(Collider* other) override;
+		void OnCollisionExit(Collider* other) override;
+
 	private:
 		void Idle();
 		void Move();

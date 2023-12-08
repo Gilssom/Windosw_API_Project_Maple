@@ -29,7 +29,7 @@ namespace YH
 
 		m_DeathTime += Time::DeltaTime();
 		if (m_DeathTime > 6.0f)
-			object::Destroy(GetOwner());
+			//object::Destroy(GetOwner());
 
 		switch (m_State)
 		{

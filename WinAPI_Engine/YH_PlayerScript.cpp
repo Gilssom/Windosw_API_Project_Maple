@@ -340,6 +340,26 @@ namespace YH
 	}
 #pragma endregion
 
+#pragma region Collision Check
+	void PlayerScript::OnCollisionEnter(Collider* other)
+	{
+		// other 과 충돌했을 때 Player 의 상태 변화
+		int a = 0;
+	}
+
+	void PlayerScript::OnCollisionStay(Collider* other)
+	{
+		// other 과 충돌 중일 때 Player 의 상태 변화
+		int a = 0;
+	}
+
+	void PlayerScript::OnCollisionExit(Collider* other)
+	{
+		// other 과 충돌을 빠져나왔을 때 Player 의 상태 변화
+		int a = 0;
+	}
+#pragma endregion
+
 	void PlayerScript::Idle()
 	{
 		#pragma region Player Normal State

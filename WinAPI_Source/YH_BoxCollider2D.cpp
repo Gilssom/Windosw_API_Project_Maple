@@ -26,7 +26,7 @@ namespace YH
 		Vector2 pos = transform->GetPostion();
 
 		Vector2 offset = GetOffset();
-
+		
 		HBRUSH transparentBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
 		HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, transparentBrush);
 
@@ -36,8 +36,12 @@ namespace YH
 		Rectangle(hdc
 			, pos.x + offset.x
 			, pos.y + offset.y
-			, pos.x + offset.x + 100
-			, pos.y + offset.y + 100);
+			, pos.x + offset.x + 120 * GetSize().x
+			, pos.y + offset.y + 120 * GetSize().y);
+
+		Rectangle(hdc, pos.x, pos.y, pos.x + 10, pos.y + 10);
+
+		Vector2 a = GetSize();
 
 		SelectObject(hdc, oldBrush);
 		SelectObject(hdc, oldPen);

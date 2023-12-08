@@ -36,18 +36,22 @@ namespace YH
 		renderer::mainCamera = cameraComp;
 
 		#pragma region BackGround Settings
-		bg[0] = object::Instantiate<GameObject>(enums::LayerType::BackGround/*, Vector2(-1135.0f, -903.5f)*/);
+		//bg[0] = object::Instantiate<GameObject>(enums::LayerType::BackGround/*, Vector2(-1135.0f, -903.5f)*/);
 
-		SpriteRenderer* renderer = bg[0]->AddComponent<SpriteRenderer>();
-		renderer->SetName(L"Back Ground");
-		graphics::Texture* bg_1 = Resources::Find<graphics::Texture>(L"Mapleisland_0");
-		renderer->SetTexture(bg_1);
+		//SpriteRenderer* renderer = bg[0]->AddComponent<SpriteRenderer>();
+		//renderer->SetName(L"Back Ground");
+		//graphics::Texture* bg_1 = Resources::Find<graphics::Texture>(L"Mapleisland_0");
+		//renderer->SetTexture(bg_1);
 
 		// 몬스터 적용
-		m_Mushroom = object::Instantiate<Mushroom>(enums::LayerType::Monster, Vector2(900.0f, 1120.0f));
+		m_Mushroom = object::Instantiate<Mushroom>(enums::LayerType::Monster, Vector2(700.0f, 1120.0f));
 		m_Mushroom->AddComponent<MushScript>();
 
 		graphics::Texture* mushroomTex = Resources::Find<graphics::Texture>(L"Mushroom");
+
+		BoxCollider2D* collider = m_Mushroom->AddComponent<BoxCollider2D>();
+		collider->SetOffset(Vector2::Zero);
+		collider->SetSize(Vector2(2.0f, 2.0f));
 
 		Animator* mushAnim = m_Mushroom->AddComponent<Animator>();
 		mushAnim->CreateAnimation(L"Mush Left Idle", mushroomTex, Vector2(0.0f, 0.0f), Vector2(60.0f, 60.0f),
@@ -71,8 +75,8 @@ namespace YH
 		graphics::Texture* player = Resources::Find<graphics::Texture>(L"Player");
 		PlayerScript* playerScript = m_Player->AddComponent<PlayerScript>();
 
-		BoxCollider2D* collider = m_Player->AddComponent<BoxCollider2D>();
-		collider->SetOffset(Vector2(-50.0f, -50.0f));
+		BoxCollider2D* m_collider = m_Player->AddComponent<BoxCollider2D>();
+		m_collider->SetOffset(Vector2(-50.0f, -50.0f));
 
 		Animator* playerAnim = m_Player->AddComponent<Animator>();
 		#pragma region Player Normal Animation

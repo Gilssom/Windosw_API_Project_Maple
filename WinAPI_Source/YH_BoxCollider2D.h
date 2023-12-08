@@ -15,7 +15,6 @@ namespace YH
 		virtual void Render(HDC hdc);
 
 	private:
-		Vector2 m_Size;
 	};
 }
 

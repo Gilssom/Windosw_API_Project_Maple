@@ -130,7 +130,18 @@ namespace YH
 				, nullptr
 			);
 
+			HBRUSH transparentBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
+			HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, transparentBrush);
+
+			HPEN greenPen = CreatePen(PS_SOLID, 2, RGB(0, 255, 0));
+			HPEN oldPen = (HPEN)SelectObject(hdc, greenPen);
+
 			Rectangle(hdc, pos.x, pos.y, pos.x + 10, pos.y + 10);
+
+			SelectObject(hdc, oldBrush);
+			SelectObject(hdc, oldPen);
+
+			DeleteObject(greenPen);
 		}
 	}
 

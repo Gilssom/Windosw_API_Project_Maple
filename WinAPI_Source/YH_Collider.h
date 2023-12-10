@@ -1,6 +1,8 @@
 #pragma once
 #include "YH_Component.h"
 
+#include "YH_Transform.h"
+
 namespace YH
 {
 	class Collider : public Component
@@ -23,6 +25,8 @@ namespace YH
 		UINT32 GetID() { return m_ID; }
 		Vector2 GetSize() { return m_Size; }
 		void SetSize(Vector2 size) { m_Size = size; }
+
+		//Vector2 GetPos() { return GetOwner()->GetComponent<Transform>()->GetPostion(); }
 
 	private:
 		static UINT CollisionID;

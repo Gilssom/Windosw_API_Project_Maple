@@ -76,7 +76,7 @@ namespace YH
 		PlayerScript* playerScript = m_Player->AddComponent<PlayerScript>();
 
 		BoxCollider2D* m_collider = m_Player->AddComponent<BoxCollider2D>();
-		m_collider->SetOffset(Vector2(-50.0f, -50.0f));
+		m_collider->SetOffset(Vector2(10.0f, 10.0f));
 
 		Animator* playerAnim = m_Player->AddComponent<Animator>();
 		#pragma region Player Normal Animation

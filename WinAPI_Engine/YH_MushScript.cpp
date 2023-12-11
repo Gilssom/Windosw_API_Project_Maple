@@ -5,6 +5,9 @@
 #include "YH_GameObject.h"
 #include "YH_Animator.h"
 #include "YH_Object.h"
+#include "YH_HitEffect.h"
+
+#include "YH_Resources.h"
 
 namespace YH
 {
@@ -54,6 +57,55 @@ namespace YH
 
 	}
 	void MushScript::Render(HDC hdc)
+	{
+
+	}
+
+	void MushScript::OnCollisionEnter(Collider* other)
+	{
+		enums::ColliderType type = other->GetCollType();
+
+		switch (type)
+		{
+		case enums::ColliderType::FairyTurn:
+			{
+				GameObject* fariyHit = object::Instantiate<GameObject>(enums::LayerType::Effect, GetOwner()->GetComponent<Transform>()->GetPostion());
+
+				graphics::Texture* fariyHiteff = Resources::Find<graphics::Texture>(L"FairyTurnHit");
+				Animator* FHanim = fariyHit->AddComponent<Animator>();
+				FHanim->CreateAnimation(L"Fairy Hit Effect", fariyHiteff, Vector2(0.0f, 0.0f), Vector2(169.0f, 176.0f),
+					Vector2::Zero, 6, 0.1f);
+				FHanim->PlayAnimation(L"Fairy Hit Effect", false);
+
+				fariyHit->AddComponent<HitEffect>();
+				break;
+			}
+		case enums::ColliderType::HowlingGale:
+			break;
+		case enums::ColliderType::BoringArrow:
+			{
+				GameObject* arrowHit = object::Instantiate<GameObject>(enums::LayerType::Effect, GetOwner()->GetComponent<Transform>()->GetPostion());
+
+				graphics::Texture* arrowHiteff = Resources::Find<graphics::Texture>(L"BoringHit");
+				Animator* AHanim = arrowHit->AddComponent<Animator>();
+				AHanim->CreateAnimation(L"Boring Hit Effect", arrowHiteff, Vector2(0.0f, 0.0f), Vector2(149.0f, 136.0f),
+					Vector2::Zero, 7, 0.03f);
+				AHanim->PlayAnimation(L"Boring Hit Effect", false);
+
+				arrowHit->AddComponent<HitEffect>();
+
+				object::Destroy(other->GetOwner());
+				break;
+			}
+		}
+	}
+
+	void MushScript::OnCollisionStay(Collider* other)
+	{
+
+	}
+
+	void MushScript::OnCollisionExit(Collider* other)
 	{
 
 	}

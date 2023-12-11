@@ -1,6 +1,7 @@
 #include "YH_BoxCollider2D.h"
 #include "YH_Transform.h"
 #include "YH_GameObject.h"
+#include "YH_Renderer.h"
 
 namespace YH
 {
@@ -25,6 +26,10 @@ namespace YH
 		Transform* transform = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = transform->GetPostion();
 
+		// 카메라 위치값 가져와서 더해주기
+		if (renderer::mainCamera)
+			pos = renderer::mainCamera->CaluatePosition(pos);
+
 		Vector2 offset = GetOffset();
 
 		Vector2 size = GetSize();
@@ -38,11 +43,8 @@ namespace YH
 		Rectangle(hdc
 			, pos.x + offset.x
 			, pos.y + offset.y
-			, pos.x + offset.x + 120 * GetSize().x
-			, pos.y + offset.y + 120 * GetSize().y);
-
-		//Rectangle(hdc, pos.x, pos.y, pos.x + 10, pos.y + 10);
-
+			, pos.x + offset.x + 100 * GetSize().x
+			, pos.y + offset.y + 100 * GetSize().y);
 
 		SelectObject(hdc, oldBrush);
 		SelectObject(hdc, oldPen);

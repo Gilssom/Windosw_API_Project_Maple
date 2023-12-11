@@ -37,4 +37,14 @@ namespace YH::enums
 		Prefab,
 		End,
 	};
+
+	enum class ColliderType
+	{
+		None,
+		FairyTurn,
+		HowlingGale,
+		BoringArrow,
+		DarknessBall,
+	};
+
 }

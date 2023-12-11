@@ -35,6 +35,10 @@ namespace YH
 		Resources::Load<graphics::Texture>(L"HowlingAttack",		L"..\\Resources\\Skill\\HowlingAttack.png");
 		Resources::Load<graphics::Texture>(L"HowlingAttackEnd",		L"..\\Resources\\Skill\\HowlingAttackEnd.png");
 
+		// Hit Effect
+		Resources::Load<graphics::Texture>(L"BoringHit",			L"..\\Resources\\Hit\\BoringHit.png");
+		Resources::Load<graphics::Texture>(L"FairyTurnHit",			L"..\\Resources\\Hit\\FairyTurnHit.png");
+
 		// Monster
 		Resources::Load<graphics::Texture>(L"Mushroom",				L"..\\Resources\\Monster\\Mushroom_Sprite.png");
 

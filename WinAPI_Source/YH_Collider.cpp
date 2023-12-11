@@ -10,6 +10,7 @@ namespace YH
 		: Component(enums::ComponentType::Collider)
 		, m_ID(CollisionID++)
 		, m_Size(Vector2::One)
+		, m_CollType(enums::ColliderType::None)
 	{
 
 	}

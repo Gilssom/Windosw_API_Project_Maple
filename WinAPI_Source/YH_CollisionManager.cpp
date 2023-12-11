@@ -54,7 +54,7 @@ namespace YH
 		else
 		{
 			row = (UINT)right;
-			row = (UINT)left;
+			col = (UINT)left;
 		}
 
 		m_CollisionLayerMatrix[row][col] = enable;

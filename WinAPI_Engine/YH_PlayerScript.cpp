@@ -10,6 +10,7 @@
 
 #include "YH_Arrow.h"
 #include "YH_ArrowScript.h"
+#include "YH_BoxCollider2D.h"
 
 namespace YH
 {
@@ -30,6 +31,14 @@ namespace YH
 				graphics::Texture* rightFairyTurn = Resources::Find<graphics::Texture>(L"RightFairyTurn");
 				m_FairyAnim = m_FairyTurn->AddComponent<Animator>();
 				m_FairyTurn->AddComponent<Transform>();
+
+				m_FairyTurn->AddComponent<Script>();
+
+				/*BoxCollider2D* fairyColl = m_FairyTurn->AddComponent<BoxCollider2D>();
+				fairyColl->SetCollType(enums::ColliderType::FairyTurn);
+				fairyColl->SetOffset(Vector2(-125.0f, -100.0f));
+				fairyColl->SetSize(Vector2(2.5f, 1.5f));*/
+
 				m_FairyTurn->SetActive(false);
 
 				//m_FairyAnim->CreateAnimationByFolder(L"Fairy Turn Test", L"..\\Resources\\MapleResourceTest\\Fairy_Turn",
@@ -203,10 +212,16 @@ namespace YH
 			m_FairyAnim->PlayAnimation(L"Fairy Turn Left Attack", false);
 			break;
 		}
+
+		m_FairyColl = m_FairyTurn->AddComponent<BoxCollider2D>();
+		m_FairyColl->SetCollType(enums::ColliderType::FairyTurn);
+		m_FairyColl->SetOffset(Vector2(-125.0f, -100.0f));
+		m_FairyColl->SetSize(Vector2(2.5f, 1.5f));
 	}
 
 	void PlayerScript::FairyTurnEffOff()
 	{
+		m_FairyColl = nullptr;
 		m_FairyTurn->SetActive(false);
 	}
 
@@ -265,6 +280,7 @@ namespace YH
 	void PlayerScript::BoringArrow()
 	{
 		GameObject* arrow = object::Instantiate<GameObject>(enums::LayerType::Effect);
+		arrow->AddComponent<Transform>();
 
 		SpriteRenderer* arrowRender = arrow->AddComponent<SpriteRenderer>();
 		graphics::Texture* R_boringArrow = Resources::Find<graphics::Texture>(L"R_BoringArrow");
@@ -274,17 +290,23 @@ namespace YH
 		arrowScript->SetPlayer(GetOwner());
 		arrowScript->SetSpeed(800.0f);
 
+		BoxCollider2D* arrowColl = arrow->AddComponent<BoxCollider2D>();
+		arrowColl->SetCollType(enums::ColliderType::BoringArrow);
+		arrowColl->SetSize(Vector2(0.5f, 0.2f));
+
 		Transform* playerTf = GetOwner()->GetComponent<Transform>();
 
 		switch (m_Dir)
 		{
 		case YH::PlayerScript::Direction::Right:
 			arrowRender->SetTexture(R_boringArrow);
+			arrowColl->SetOffset(Vector2(50.0f, 10.0f));
 
 			arrowScript->m_Dest = Vector2::Right;
 			break;
 		case YH::PlayerScript::Direction::Left:
 			arrowRender->SetTexture(L_boringArrow);
+			arrowColl->SetOffset(Vector2(0.0f, 10.0f));
 
 			arrowScript->m_Dest = Vector2::Left;
 			break;
@@ -343,20 +365,17 @@ namespace YH
 #pragma region Collision Check
 	void PlayerScript::OnCollisionEnter(Collider* other)
 	{
-		// other 과 충돌했을 때 Player 의 상태 변화
-		int a = 0;
+
 	}
 
 	void PlayerScript::OnCollisionStay(Collider* other)
 	{
-		// other 과 충돌 중일 때 Player 의 상태 변화
-		int a = 0;
+
 	}
 
 	void PlayerScript::OnCollisionExit(Collider* other)
 	{
-		// other 과 충돌을 빠져나왔을 때 Player 의 상태 변화
-		int a = 0;
+
 	}
 #pragma endregion
 

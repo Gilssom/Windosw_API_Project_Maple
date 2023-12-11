@@ -1,6 +1,5 @@
 #pragma once
 #include "YH_Component.h"
-
 #include "YH_Transform.h"
 
 namespace YH
@@ -25,12 +24,15 @@ namespace YH
 		UINT32 GetID() { return m_ID; }
 		Vector2 GetSize() { return m_Size; }
 		void SetSize(Vector2 size) { m_Size = size; }
+		enums::ColliderType GetCollType() { return m_CollType; }
+		void SetCollType(enums::ColliderType type) { m_CollType = type; }
 
 		//Vector2 GetPos() { return GetOwner()->GetComponent<Transform>()->GetPostion(); }
 
 	private:
 		static UINT CollisionID;
 
+		enums::ColliderType m_CollType;
 		UINT32 m_ID;
 		Vector2 m_Offset;
 		Vector2 m_Size;

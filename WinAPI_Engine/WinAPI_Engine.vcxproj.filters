@@ -41,6 +41,9 @@
     <ClInclude Include="YH_ArrowScript.h">
       <Filter>Scripts</Filter>
     </ClInclude>
+    <ClInclude Include="YH_HitEffect.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scenes">
@@ -97,6 +100,9 @@
       <Filter>Player</Filter>
     </ClCompile>
     <ClCompile Include="YH_ArrowScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="YH_HitEffect.cpp">
       <Filter>Scripts</Filter>
     </ClCompile>
   </ItemGroup>

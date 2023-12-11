@@ -75,6 +75,7 @@ namespace YH
 
 		GameObject* m_BoringSong; GameObject* m_FairyTurn; GameObject* m_HowlingGale;
 		Animator* m_BoringAnim; Animator* m_FairyAnim; Animator* m_HowlingAnim;
+		class BoxCollider2D* m_FairyColl;
 	};
 }
 

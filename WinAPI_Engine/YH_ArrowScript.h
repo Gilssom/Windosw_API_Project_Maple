@@ -23,6 +23,7 @@ namespace YH
 
 		void SetPlayer(GameObject* player) { m_Player = player; }
 		void SetSpeed(float speed) { m_Speed = speed; }
+
 		Vector2 m_Dest;
 
 	private:

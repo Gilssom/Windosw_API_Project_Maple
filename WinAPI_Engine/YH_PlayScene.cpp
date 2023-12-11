@@ -29,6 +29,7 @@ namespace YH
 	void PlayScene::Initialize()
 	{
 		CollisionManager::CollisionLayerCheck(LayerType::Player, LayerType::Monster, true);
+		CollisionManager::CollisionLayerCheck(LayerType::Effect, LayerType::Monster, true);
 
 		// main Camera
 		GameObject* camera = object::Instantiate<GameObject>(enums::LayerType::None, Vector2(800.0f, 400.0f));
@@ -36,22 +37,23 @@ namespace YH
 		renderer::mainCamera = cameraComp;
 
 		#pragma region BackGround Settings
-		//bg[0] = object::Instantiate<GameObject>(enums::LayerType::BackGround/*, Vector2(-1135.0f, -903.5f)*/);
+		bg[0] = object::Instantiate<GameObject>(enums::LayerType::BackGround/*, Vector2(-1135.0f, -903.5f)*/);
 
-		//SpriteRenderer* renderer = bg[0]->AddComponent<SpriteRenderer>();
-		//renderer->SetName(L"Back Ground");
-		//graphics::Texture* bg_1 = Resources::Find<graphics::Texture>(L"Mapleisland_0");
-		//renderer->SetTexture(bg_1);
+		SpriteRenderer* renderer = bg[0]->AddComponent<SpriteRenderer>();
+		renderer->SetName(L"Back Ground");
+		graphics::Texture* bg_1 = Resources::Find<graphics::Texture>(L"Mapleisland_0");
+		renderer->SetTexture(bg_1);
 
 		// 몬스터 적용
 		m_Mushroom = object::Instantiate<Mushroom>(enums::LayerType::Monster, Vector2(700.0f, 1120.0f));
 		m_Mushroom->AddComponent<MushScript>();
+		m_Mushroom->GetComponent<Transform>()->SetScale(Vector2(1.2f, 1.2f));
 
 		graphics::Texture* mushroomTex = Resources::Find<graphics::Texture>(L"Mushroom");
 
-		BoxCollider2D* collider = m_Mushroom->AddComponent<BoxCollider2D>();
-		collider->SetOffset(Vector2::Zero);
-		collider->SetSize(Vector2(2.0f, 2.0f));
+		BoxCollider2D* mushColl = m_Mushroom->AddComponent<BoxCollider2D>();
+		mushColl->SetOffset(Vector2(-22.5f, -10.0f));
+		mushColl->SetSize(Vector2(0.5f, 0.5f));
 
 		Animator* mushAnim = m_Mushroom->AddComponent<Animator>();
 		mushAnim->CreateAnimation(L"Mush Left Idle", mushroomTex, Vector2(0.0f, 0.0f), Vector2(60.0f, 60.0f),
@@ -75,8 +77,9 @@ namespace YH
 		graphics::Texture* player = Resources::Find<graphics::Texture>(L"Player");
 		PlayerScript* playerScript = m_Player->AddComponent<PlayerScript>();
 
-		BoxCollider2D* m_collider = m_Player->AddComponent<BoxCollider2D>();
-		m_collider->SetOffset(Vector2(10.0f, 10.0f));
+		BoxCollider2D* playerColl = m_Player->AddComponent<BoxCollider2D>();
+		playerColl->SetOffset(Vector2(-20.0f, -32.5f));
+		playerColl->SetSize(Vector2(0.4f, 0.5f));
 
 		Animator* playerAnim = m_Player->AddComponent<Animator>();
 		#pragma region Player Normal Animation
@@ -128,6 +131,7 @@ namespace YH
 
 		playerAnim->PlayAnimation(L"Player Left Idle");
 
+		#pragma region Player Anim Event
 		playerAnim->GetStartEvent(L"Player Fairy Left Attack") = std::bind(&PlayerScript::FairyTurnEff, playerScript);
 		playerAnim->GetStartEvent(L"Player Fairy Right Attack") = std::bind(&PlayerScript::FairyTurnEff, playerScript);
 
@@ -136,6 +140,7 @@ namespace YH
 
 		playerAnim->GetStartEvent(L"Player Howling Left Attack") = std::bind(&PlayerScript::HowlingEff, playerScript);
 		playerAnim->GetStartEvent(L"Player Howling Right Attack") = std::bind(&PlayerScript::HowlingEff, playerScript);
+#pragma endregion
 
 		//m_Player->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 100.0f));
 		#pragma endregion

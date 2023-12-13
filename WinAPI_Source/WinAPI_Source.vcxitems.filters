@@ -74,6 +74,9 @@
       <Filter>Component\Collider</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_CollisionManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Object.cpp">
+      <Filter>Application</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Component.h">

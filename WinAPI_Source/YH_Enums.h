@@ -47,4 +47,10 @@ namespace YH::enums
 		DarknessBall,
 	};
 
+	enum class ColliderShapeType
+	{
+		Circle2D,
+		Rect2D,
+		End,
+	};
 }

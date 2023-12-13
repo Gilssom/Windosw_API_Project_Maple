@@ -1,1 +1,123 @@
-﻿  Editor_Window.vcxproj -> C:\Users\gil52\OneDrive\문서\GitHub\Windosw_API_Project_Terraria\Editor_Window\x64\Debug\Editor_Window.exe
+﻿  YH_Animation.cpp
+  YH_Animator.cpp
+  YH_BoxCollider2D.cpp
+  YH_Camera.cpp
+  YH_CircleCollider2D.cpp
+  YH_Collider.cpp
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(87,34): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(87,19): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(86,48): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(86,30): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(85,22): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(84,22): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(83,39): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(82,39): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(100,19): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(99,19): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(98,22): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(97,22): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(95,22): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(94,22): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(93,39): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(92,39): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(128,18): warning C4244: '인수': 'float'에서 'INT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(127,18): warning C4244: '인수': 'float'에서 'INT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(126,21): warning C4244: '인수': 'float'에서 'INT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(125,21): warning C4244: '인수': 'float'에서 'INT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(123,22): warning C4244: '인수': 'float'에서 'INT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(122,22): warning C4244: '인수': 'float'에서 'INT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(121,39): warning C4244: '인수': 'float'에서 'INT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animation.cpp(120,39): warning C4244: '인수': 'float'에서 'INT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_BoxCollider2D.cpp(45,23): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_BoxCollider2D.cpp(44,23): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_BoxCollider2D.cpp(43,12): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_BoxCollider2D.cpp(42,12): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animator.cpp(110,36): warning C4267: '인수': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animator.cpp(115,79): warning C4244: '인수': 'UINT'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Animator.cpp(115,67): warning C4244: '인수': 'UINT'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_CircleCollider2D.cpp(59,17): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_CircleCollider2D.cpp(58,17): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_CircleCollider2D.cpp(57,12): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_CircleCollider2D.cpp(56,12): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  YH_CollisionManager.cpp
+  YH_GameObject.cpp
+  YH_Input.cpp
+  YH_Layer.cpp
+  YH_Object.cpp
+  YH_Renderer.cpp
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Input.cpp(102,31): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Input.cpp(103,31): warning C4244: '=': 'LONG'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  YH_Resource.cpp
+  YH_Resources.cpp
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  YH_Rocket.cpp
+  YH_Script.cpp
+  YH_Texture.cpp
+  YH_Time.cpp
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Rocket.cpp(52,50): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Rocket.cpp(52,40): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Rocket.cpp(52,30): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Rocket.cpp(52,20): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  YH_Application.cpp
+  YH_Component.cpp
+  YH_Entity.cpp
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Time.cpp(41,11): warning C4267: '초기화 중': 'size_t'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  YH_Scene.cpp
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  YH_SceneManager.cpp
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Application.cpp(98,23): warning C4838: 'UINT'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Application.cpp(98,30): warning C4838: 'UINT'에서 'LONG'(으)로의 변환에는 축소 변환이 필요합니다.
+  YH_SpriteRenderer.cpp
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  YH_Transform.cpp
+  Editor_Window.cpp
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\Editor_Window\Editor_Window.cpp(162,10): warning C4311: '형식 캐스트': 'int *'에서 'unsigned int'(으)로 포인터가 잘립니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\Editor_Window\Editor_Window.cpp(162,10): warning C4302: '형식 캐스트': 'int *'에서 'unsigned int'(으)로 잘립니다.
+  C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_SpriteRenderer.cpp(59,42): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_SpriteRenderer.cpp(58,41): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_SpriteRenderer.cpp(57,11): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_SpriteRenderer.cpp(56,11): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_SpriteRenderer.cpp(71,42): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_SpriteRenderer.cpp(70,41): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_SpriteRenderer.cpp(69,18): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_SpriteRenderer.cpp(69,11): warning C4244: '인수': 'float'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_SpriteRenderer.cpp(96,42): warning C4244: '인수': 'float'에서 'INT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_SpriteRenderer.cpp(95,41): warning C4244: '인수': 'float'에서 'INT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_SpriteRenderer.cpp(94,16): warning C4244: '인수': 'float'에서 'INT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_SpriteRenderer.cpp(94,9): warning C4244: '인수': 'float'에서 'INT'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+WinAPI_Engine.lib(YH_TitleScene.obj) : warning LNK4099: '' PDB를 'WinAPI_Engine.lib(YH_TitleScene.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+WinAPI_Engine.lib(YH_LobbyScene.obj) : warning LNK4099: '' PDB를 'WinAPI_Engine.lib(YH_LobbyScene.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+WinAPI_Engine.lib(YH_PlayScene.obj) : warning LNK4099: '' PDB를 'WinAPI_Engine.lib(YH_PlayScene.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+WinAPI_Engine.lib(YH_BossCygnusScene.obj) : warning LNK4099: '' PDB를 'WinAPI_Engine.lib(YH_BossCygnusScene.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+WinAPI_Engine.lib(YH_Player.obj) : warning LNK4099: '' PDB를 'WinAPI_Engine.lib(YH_Player.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+WinAPI_Engine.lib(YH_PlayerScript.obj) : warning LNK4099: '' PDB를 'WinAPI_Engine.lib(YH_PlayerScript.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+WinAPI_Engine.lib(YH_Mushroom.obj) : warning LNK4099: '' PDB를 'WinAPI_Engine.lib(YH_Mushroom.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+WinAPI_Engine.lib(YH_MushScript.obj) : warning LNK4099: '' PDB를 'WinAPI_Engine.lib(YH_MushScript.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+WinAPI_Engine.lib(YH_Cygnus.obj) : warning LNK4099: '' PDB를 'WinAPI_Engine.lib(YH_Cygnus.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+WinAPI_Engine.lib(YH_CygnusScript.obj) : warning LNK4099: '' PDB를 'WinAPI_Engine.lib(YH_CygnusScript.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+WinAPI_Engine.lib(YH_ArrowScript.obj) : warning LNK4099: '' PDB를 'WinAPI_Engine.lib(YH_ArrowScript.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+WinAPI_Engine.lib(YH_HitEffect.obj) : warning LNK4099: '' PDB를 'WinAPI_Engine.lib(YH_HitEffect.obj)' 또는 ''에서 찾을 수 없습니다. 디버그 정보가 없는 것처럼 개체를 링크합니다.
+  Editor_Window.vcxproj -> C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\Editor_Window\x64\Debug\Editor_Window.exe

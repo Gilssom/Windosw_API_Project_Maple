@@ -7,7 +7,7 @@ namespace YH
 	class Collider : public Component
 	{
 	public:
-		Collider();
+		Collider(ColliderShapeType type);
 		~Collider();
 
 		virtual void Initialize();
@@ -24,15 +24,17 @@ namespace YH
 		UINT32 GetID() { return m_ID; }
 		Vector2 GetSize() { return m_Size; }
 		void SetSize(Vector2 size) { m_Size = size; }
-		enums::ColliderType GetCollType() { return m_CollType; }
-		void SetCollType(enums::ColliderType type) { m_CollType = type; }
+		ColliderType GetCollType() { return m_CollType; }
+		void SetCollType(ColliderType type) { m_CollType = type; }
+		ColliderShapeType GetCollShapeType() { return m_CollShapeType; }
 
 		//Vector2 GetPos() { return GetOwner()->GetComponent<Transform>()->GetPostion(); }
 
 	private:
 		static UINT CollisionID;
 
-		enums::ColliderType m_CollType;
+		ColliderType m_CollType;
+		ColliderShapeType m_CollShapeType;
 		UINT32 m_ID;
 		Vector2 m_Offset;
 		Vector2 m_Size;

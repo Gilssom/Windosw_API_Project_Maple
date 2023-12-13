@@ -152,10 +152,37 @@ namespace YH
 		Vector2 leftSize = left->GetSize() * 100.0f;
 		Vector2 rightSize = right->GetSize() * 100.0f;
 
-		// AABB 面倒
-		if (fabs(leftPos.x - rightPos.x) < fabs(leftSize.x / 2.0f + rightSize.x / 2.0f)
-			&& fabs(leftPos.y - rightPos.y) < fabs(leftSize.y / 2.0f + rightSize.y / 2.0f))
+		enums::ColliderShapeType leftType = left->GetCollShapeType();
+		enums::ColliderShapeType rightType = right->GetCollShapeType();
+
+		if (leftType == enums::ColliderShapeType::Rect2D
+			&& rightType == enums::ColliderShapeType::Rect2D)
 		{
+			// AABB 面倒
+			if (fabs(leftPos.x - rightPos.x) < fabs(leftSize.x / 2.0f + rightSize.x / 2.0f)
+				&& fabs(leftPos.y - rightPos.y) < fabs(leftSize.y / 2.0f + rightSize.y / 2.0f))
+			{
+				return true;
+			}
+		}
+
+		if (leftType == enums::ColliderShapeType::Circle2D
+			&& rightType == enums::ColliderShapeType::Circle2D)
+		{
+			// Circle 面倒
+			Vector2 leftCirclePos = leftPos + (leftSize / 2.0f);
+			Vector2 rightCirclePos = rightPos + (rightSize / 2.0f);
+
+			float distance = (leftCirclePos - rightCirclePos).length();
+
+			if (distance <= (leftSize.x / 2.0f + rightSize.x / 2.0f))
+				return true;
+		}
+
+		if (leftType == enums::ColliderShapeType::Rect2D && rightType == enums::ColliderShapeType::Circle2D
+			|| leftType == enums::ColliderShapeType::Circle2D && rightType == enums::ColliderShapeType::Rect2D)
+		{
+			// Box - Circle 面倒
 			return true;
 		}
 

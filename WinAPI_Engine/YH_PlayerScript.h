@@ -17,6 +17,7 @@ namespace YH
 			FairyTurn,
 			BoringSong,
 			HowlingGale,
+			Buff,
 		};
 
 		enum class Direction
@@ -64,6 +65,7 @@ namespace YH
 		void FairyTurn();
 		void BoringSong();
 		void HowlingGale();
+		void Buff();
 
 	private:
 		State m_State;
@@ -72,10 +74,14 @@ namespace YH
 		Vector2 m_PlayerPos;
 
 		float m_ReShootTime;
+		bool isBuff;
 
-		GameObject* m_BoringSong; GameObject* m_FairyTurn; GameObject* m_HowlingGale;
-		Animator* m_BoringAnim; Animator* m_FairyAnim; Animator* m_HowlingAnim;
-		class BoxCollider2D* m_FairyColl;
+		GameObject* m_BoringSong; 
+		GameObject* m_FairyTurn; 
+		GameObject* m_HowlingGale; 
+		GameObject* m_SharpEyes;
+		class BoxCollider2D* m_FairyColl; 
+		class BoxCollider2D* m_HowlingColl;
 	};
 }
 

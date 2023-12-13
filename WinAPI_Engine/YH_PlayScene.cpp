@@ -176,11 +176,12 @@ namespace YH
 
 	void PlayScene::OnEnter()
 	{
-
+		Scene::OnEnter();
 	}
 
 	void PlayScene::OnExit()
 	{
+		Scene::OnExit();
 		/*Transform* transform = bg->GetComponent<Transform>();
 		transform->SetPosition(Vector2(0, 0));*/
 	}

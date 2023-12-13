@@ -55,6 +55,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Input.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Layer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Math.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Object.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Renderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Resource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Resources.cpp" />

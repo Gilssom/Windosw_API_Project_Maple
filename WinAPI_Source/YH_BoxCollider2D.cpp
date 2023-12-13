@@ -5,7 +5,7 @@
 
 namespace YH
 {
-	BoxCollider2D::BoxCollider2D() : Collider()
+	BoxCollider2D::BoxCollider2D() : Collider(ColliderShapeType::Rect2D)
 	{
 	}
 	BoxCollider2D::~BoxCollider2D()
@@ -31,8 +31,6 @@ namespace YH
 			pos = renderer::mainCamera->CaluatePosition(pos);
 
 		Vector2 offset = GetOffset();
-
-		Vector2 size = GetSize();
 		
 		HBRUSH transparentBrush = (HBRUSH)GetStockObject(NULL_BRUSH);
 		HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, transparentBrush);

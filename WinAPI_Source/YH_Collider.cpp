@@ -6,11 +6,12 @@ namespace YH
 {
 	UINT Collider::CollisionID = 1;
 
-	Collider::Collider() 
-		: Component(enums::ComponentType::Collider)
+	Collider::Collider(ColliderShapeType type) 
+		: Component(ComponentType::Collider)
 		, m_ID(CollisionID++)
 		, m_Size(Vector2::One)
-		, m_CollType(enums::ColliderType::None)
+		, m_CollType(ColliderType::None)
+		, m_CollShapeType(type)
 	{
 
 	}

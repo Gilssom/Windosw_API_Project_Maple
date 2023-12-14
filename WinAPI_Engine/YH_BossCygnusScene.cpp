@@ -37,7 +37,7 @@ namespace YH
 		#pragma endregion
 
 		#pragma region Cygnus Settings
-		m_Cygnus = object::Instantiate<Cygnus>(enums::LayerType::Boss, Vector2(800.0f, 400.0f));
+		m_Cygnus = object::Instantiate<Cygnus>(enums::LayerType::Boss, Vector2(800.0f, 600.0f));
 		m_Cygnus->AddComponent<CygnusScript>();
 		graphics::Texture* cygnusTex = Resources::Find<graphics::Texture>(L"Cygnus");
 		graphics::Texture* cygnusLeftSkill2Tex = Resources::Find<graphics::Texture>(L"LeftCygnusSkill2");

@@ -132,10 +132,10 @@ namespace YH
 		#pragma endregion			
 
 		#pragma region DontDestroyObject
-				object::DontDestroyOnLoad(m_FairyTurn);
-				object::DontDestroyOnLoad(m_BoringSong);
-				object::DontDestroyOnLoad(m_HowlingGale);
-				object::DontDestroyOnLoad(m_SharpEyes);
+				//object::DontDestroyOnLoad(m_FairyTurn);
+				//object::DontDestroyOnLoad(m_BoringSong);
+				//object::DontDestroyOnLoad(m_HowlingGale);
+				//object::DontDestroyOnLoad(m_SharpEyes);
 		#pragma endregion
 	}
 
@@ -346,17 +346,18 @@ namespace YH
 	{
 		m_HowlingColl = m_HowlingGale->AddComponent<BoxCollider2D>();
 		m_HowlingColl->SetCollType(enums::ColliderType::HowlingGale);
+		m_HowlingColl->SetOffset(Vector2(-70.0f, 0.0f));
 		m_HowlingColl->SetSize(Vector2(1.0f, -5.0f));
 
 		switch (m_Dir)
 		{
 		case YH::PlayerScript::Direction::Right:
-			m_HowlingGale->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x + 100.0f, m_PlayerPos.y));
+			m_HowlingGale->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x + 300.0f, m_PlayerPos.y));
 
 			m_HowlingGale->GetComponent<Animator>()->PlayAnimation(L"Howling Attack", false);
 			break;
 		case YH::PlayerScript::Direction::Left:
-			m_HowlingGale->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x - 100.0f, m_PlayerPos.y));
+			m_HowlingGale->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x - 300.0f, m_PlayerPos.y));
 
 			m_HowlingGale->GetComponent<Animator>()->PlayAnimation(L"Howling Attack", false);
 			break;
@@ -571,6 +572,79 @@ namespace YH
 			default:
 				break;
 			}
+		}
+
+		if (Input::GetKeyDown(KeyCode::D))
+		{
+			m_State = PlayerScript::State::FairyTurn;
+
+			switch (m_Dir)
+			{
+			case YH::PlayerScript::Direction::Right:
+				m_Animator->PlayAnimation(L"Player Fairy Right Attack", false);
+				break;
+			case YH::PlayerScript::Direction::Left:
+				m_Animator->PlayAnimation(L"Player Fairy Left Attack", false);
+				break;
+			default:
+				break;
+			}
+		}
+
+		if (Input::GetKeyDown(KeyCode::F))
+		{
+			m_State = PlayerScript::State::BoringSong;
+
+			switch (m_Dir)
+			{
+			case YH::PlayerScript::Direction::Right:
+				if (m_BoringSong->GetState() == GameObject::State::Paused)
+					m_BoringSong->SetActive(true);
+
+				m_Animator->PlayAnimation(L"Player Boring Right Attack");
+				break;
+			case YH::PlayerScript::Direction::Left:
+				if (m_BoringSong->GetState() == GameObject::State::Paused)
+					m_BoringSong->SetActive(true);
+
+				m_Animator->PlayAnimation(L"Player Boring Left Attack");
+				break;
+			default:
+				break;
+			}
+		}
+
+		if (Input::GetKeyDown(KeyCode::X))
+		{
+			m_State = PlayerScript::State::HowlingGale;
+
+			switch (m_Dir)
+			{
+			case YH::PlayerScript::Direction::Right:
+				if (m_HowlingGale->GetState() == GameObject::State::Paused)
+					m_HowlingGale->SetActive(true);
+
+				m_Animator->PlayAnimation(L"Player Howling Right Attack");
+				break;
+			case YH::PlayerScript::Direction::Left:
+				if (m_HowlingGale->GetState() == GameObject::State::Paused)
+					m_HowlingGale->SetActive(true);
+
+				m_Animator->PlayAnimation(L"Player Howling Left Attack");
+				break;
+			default:
+				break;
+			}
+		}
+
+		if (Input::GetKeyDown(KeyCode::A) && !isBuff)
+		{
+			m_State = PlayerScript::State::Buff;
+
+			m_SharpEyes->SetActive(true);
+			m_SharpEyes->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x, m_PlayerPos.y - 100.0f));
+			isBuff = true;
+			m_SharpEyes->GetComponent<Animator>()->PlayAnimation(L"Sharp Eyes", false);
 		}
 	}
 

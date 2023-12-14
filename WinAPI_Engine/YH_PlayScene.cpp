@@ -184,7 +184,7 @@ namespace YH
 
 	void PlayScene::OnExit()
 	{
-		m_Player->GetComponent<Transform>()->SetPosition(Vector2(900.0f, 500.0f));
+		m_Player->GetComponent<Transform>()->SetPosition(Vector2(900.0f, 700.0f));
 
 		Scene::OnExit();
 		/*Transform* transform = bg->GetComponent<Transform>();

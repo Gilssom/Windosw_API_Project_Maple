@@ -34,9 +34,9 @@ namespace YH
 		graphics::Texture* bg_0 = Resources::Find<graphics::Texture>(L"BossCygnusArena");
 		renderer->SetTexture(bg_0);
 		renderer->SetSize(Vector2(1.2f, 1.2f));
-#pragma endregion
+		#pragma endregion
 
-#pragma region Cygnus Settings
+		#pragma region Cygnus Settings
 		m_Cygnus = object::Instantiate<Cygnus>(enums::LayerType::Boss, Vector2(800.0f, 400.0f));
 		m_Cygnus->AddComponent<CygnusScript>();
 		graphics::Texture* cygnusTex = Resources::Find<graphics::Texture>(L"Cygnus");
@@ -58,8 +58,7 @@ namespace YH
 			Vector2(45.0f, -70.0f), 19, 0.05f, true);
 
 		cygnusAnim->PlayAnimation(L"Cygnus Left Idle");
-#pragma endregion
-
+		#pragma endregion
 
 		Scene::Initialize();
 	}
@@ -81,12 +80,13 @@ namespace YH
 
 	void BossCygnusScene::OnEnter()
 	{
-		GameObject* camera = object::Instantiate<GameObject>(enums::LayerType::None, Vector2(800.0f, 400.0f));
+		Scene::OnEnter();
+		/*ameObject* camera = object::Instantiate<GameObject>(enums::LayerType::None, Vector2(800.0f, 400.0f));
 		Camera* cameraComp = camera->AddComponent<Camera>();
-		renderer::mainCamera = cameraComp;
+		renderer::mainCamera = cameraComp;*/
 	}
 	void BossCygnusScene::OnExit()
 	{
-
+		Scene::OnExit();
 	}
 }

@@ -74,6 +74,12 @@ namespace YH
 		m_Layers[(UINT)layerType]->AddGameObject(gameObj);
 	}
 
+	void Scene::EraseGameObject(GameObject* gameObj)
+	{
+		LayerType layerType = gameObj->GetLayerType();
+		m_Layers[(UINT)layerType]->EraseGameObject(gameObj);
+	}
+
 	void Scene::CreateLayers()
 	{
 		m_Layers.resize((UINT)enums::LayerType::Max);

@@ -82,6 +82,8 @@ namespace YH
 
 		bool IsActive() { return m_State == State::Active; }
 		bool IsDead() { return m_State == State::Dead; }
+		void SetLayerType(LayerType layer) { m_LayerType = layer; }
+		LayerType GetLayerType() { return m_LayerType; }
 
 		// 미사일 발사
 		bool isAttack() { return Input::GetKeyDown(KeyCode::Space); }
@@ -96,6 +98,7 @@ namespace YH
 		State m_State;
 
 		std::vector<Component*> m_Components;
+		LayerType m_LayerType;
 
 		// 몬스터 움직임 좌표 및 속도
 		float dir[3] = { -0.5f, 0, 0.5f };

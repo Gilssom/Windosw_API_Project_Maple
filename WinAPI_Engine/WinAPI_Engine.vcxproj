@@ -150,7 +150,9 @@
     <ClInclude Include="YH_Player.h" />
     <ClInclude Include="YH_PlayerScript.h" />
     <ClInclude Include="YH_PlayScene.h" />
+    <ClInclude Include="YH_Tile.h" />
     <ClInclude Include="YH_TitleScene.h" />
+    <ClInclude Include="YH_ToolScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="YH_Arrow.cpp" />
@@ -165,7 +167,9 @@
     <ClCompile Include="YH_Player.cpp" />
     <ClCompile Include="YH_PlayerScript.cpp" />
     <ClCompile Include="YH_PlayScene.cpp" />
+    <ClCompile Include="YH_Tile.cpp" />
     <ClCompile Include="YH_TitleScene.cpp" />
+    <ClCompile Include="YH_ToolScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

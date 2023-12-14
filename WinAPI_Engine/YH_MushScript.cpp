@@ -30,8 +30,8 @@ namespace YH
 		if (!m_Animator)
 			m_Animator = GetOwner()->GetComponent<Animator>();
 
-		m_DeathTime += Time::DeltaTime();
-		if (m_DeathTime > 6.0f)
+		//m_DeathTime += Time::DeltaTime();
+		//if (m_DeathTime > 6.0f)
 			//object::Destroy(GetOwner());
 
 		switch (m_State)
@@ -81,19 +81,18 @@ namespace YH
 				break;
 			}
 		case enums::ColliderType::HowlingGale:
-		{
-			GameObject* howlingHit = object::Instantiate<GameObject>(enums::LayerType::Effect, GetOwner()->GetComponent<Transform>()->GetPostion());
+			{
+				GameObject* howlingHit = object::Instantiate<GameObject>(enums::LayerType::Effect, GetOwner()->GetComponent<Transform>()->GetPostion());
 
-			graphics::Texture* howlingHiteff = Resources::Find<graphics::Texture>(L"HowlingHit");
-			Animator* HHanim = howlingHit->AddComponent<Animator>();
-			HHanim->CreateAnimation(L"Howling Hit Effect", howlingHiteff, Vector2(0.0f, 0.0f), Vector2(272.0f, 252.0f),
-				Vector2::Zero, 6, 0.1f);
-			HHanim->PlayAnimation(L"Howling Hit Effect", false);
+				graphics::Texture* howlingHiteff = Resources::Find<graphics::Texture>(L"HowlingHit");
+				Animator* HHanim = howlingHit->AddComponent<Animator>();
+				HHanim->CreateAnimation(L"Howling Hit Effect", howlingHiteff, Vector2(0.0f, 0.0f), Vector2(272.0f, 252.0f),
+					Vector2::Zero, 6, 0.1f);
+				HHanim->PlayAnimation(L"Howling Hit Effect", false);
 
-			howlingHit->AddComponent<HitEffect>();
-			break;
-		}
-			break;
+				howlingHit->AddComponent<HitEffect>();
+				break;
+			}
 		case enums::ColliderType::BoringArrow:
 			{
 				GameObject* arrowHit = object::Instantiate<GameObject>(enums::LayerType::Effect, GetOwner()->GetComponent<Transform>()->GetPostion());

@@ -12,6 +12,7 @@ namespace YH::object
 	static T* Instantiate(YH::enums::LayerType type)
 	{
 		T* gameObject = new T();
+		gameObject->SetLayerType(type);
 		Scene* activeScene = SceneManager::GetScene();
 		Layer* layer = activeScene->GetLayer(type);
 		layer->AddGameObject(gameObject);
@@ -23,6 +24,7 @@ namespace YH::object
 	static T* Instantiate(YH::enums::LayerType type, math::Vector2 position)
 	{
 		T* gameObject = new T();
+		gameObject->SetLayerType(type);
 		Scene* activeScene = SceneManager::GetScene();
 		Layer* layer = activeScene->GetLayer(type);
 		layer->AddGameObject(gameObject);
@@ -33,11 +35,14 @@ namespace YH::object
 		return gameObject;
 	}
 
-	/*static void Destroy(GameObject* gameObject)
+	static void DontDestroyOnLoad(GameObject* gameObject)
 	{
-		if (!gameObject)
-			return;
+		Scene* activeScene = SceneManager::GetScene();
+		// 현재 씬에서 게임오브젝트를 지워준다.
+		activeScene->EraseGameObject(gameObject);
 
-		gameObject->Death();
-	}*/
+		// 해당 게임 오브젝트 -> DontDestroyScene 으로 넣어준다.
+		Scene* dontDestroyOnLoad = SceneManager::GetDontDestroyOnLoad();
+		dontDestroyOnLoad->AddGameObject(gameObject, gameObject->GetLayerType());
+	}
 }

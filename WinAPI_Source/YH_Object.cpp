@@ -2,5 +2,5 @@
 
 namespace YH::object
 {
-	static std::vector<GameObject*> DontDestroyGameObjects = {};
+
 }

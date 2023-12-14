@@ -9,6 +9,7 @@
 #include "YH_Renderer.h"
 #include "YH_Animator.h"
 #include "YH_BoxCollider2D.h"
+#include "YH_CircleCollider2D.h"
 #include "YH_CollisionManager.h"
 
 #include "YH_Player.h"
@@ -32,9 +33,10 @@ namespace YH
 		CollisionManager::CollisionLayerCheck(LayerType::Effect, LayerType::Monster, true);
 
 		// main Camera
-		GameObject* camera = object::Instantiate<GameObject>(enums::LayerType::None, Vector2(800.0f, 400.0f));
+		GameObject* camera = object::Instantiate<GameObject>(enums::LayerType::None/*, Vector2(800.0f, 400.0f)*/);
 		Camera* cameraComp = camera->AddComponent<Camera>();
 		renderer::mainCamera = cameraComp;
+		object::DontDestroyOnLoad(camera);
 
 		#pragma region BackGround Settings
 		bg[0] = object::Instantiate<GameObject>(enums::LayerType::BackGround/*, Vector2(-1135.0f, -903.5f)*/);
@@ -73,6 +75,7 @@ namespace YH
 		#pragma region Player Setting
 		// 플레이어 적용
 		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(900.0f, 1120.0f));
+		object::DontDestroyOnLoad(m_Player);
 
 		graphics::Texture* player = Resources::Find<graphics::Texture>(L"Player");
 		PlayerScript* playerScript = m_Player->AddComponent<PlayerScript>();
@@ -181,6 +184,8 @@ namespace YH
 
 	void PlayScene::OnExit()
 	{
+		m_Player->GetComponent<Transform>()->SetPosition(Vector2(900.0f, 500.0f));
+
 		Scene::OnExit();
 		/*Transform* transform = bg->GetComponent<Transform>();
 		transform->SetPosition(Vector2(0, 0));*/

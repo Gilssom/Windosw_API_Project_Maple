@@ -75,7 +75,7 @@ namespace YH
 	{
 		std::vector<GameObject*> deleteObjects = {};
 		FindDeadGameObjects(deleteObjects);
-		EraseGameObject();
+		EraseDeadGameObject();
 		DeleteGameObjects(deleteObjects);
 	}
 
@@ -85,6 +85,20 @@ namespace YH
 			return;
 
 		m_GameObjects.push_back(gameObject);
+	}
+
+	void Layer::EraseGameObject(GameObject* eraseGameObj)
+	{
+		// std::erase() iter 를 넣어줘서 해당 iter 과 같은 객체를 삭제해준다.
+		// 람다식 에서는 원래 외부 변수를 받아서 사용할 수 없다.
+		// 하지만 캡처 기능을 사용하여 받을 수 있다.
+		// [=] : 값 복사 , [&] : 값 참조
+
+		std::erase_if(m_GameObjects,
+			[=](GameObject* gameObj)
+			{
+				return gameObj == eraseGameObj;
+			});
 	}
 
 	void Layer::FindDeadGameObjects(OUT std::vector<GameObject*>& gameObjs)
@@ -107,7 +121,7 @@ namespace YH
 		}
 	}
 
-	void Layer::EraseGameObject()
+	void Layer::EraseDeadGameObject()
 	{
 		std::erase_if(m_GameObjects,
 			[](GameObject* gameObj)

@@ -130,6 +130,13 @@ namespace YH
 				sharpAnim->CreateAnimation(L"Sharp Eyes", sharpEyesEff, Vector2(0.0f, 0.0f), Vector2(476.0f, 244.0f),
 					Vector2(0.0f, 0.0f), 21, 0.05f);
 		#pragma endregion			
+
+		#pragma region DontDestroyObject
+				object::DontDestroyOnLoad(m_FairyTurn);
+				object::DontDestroyOnLoad(m_BoringSong);
+				object::DontDestroyOnLoad(m_HowlingGale);
+				object::DontDestroyOnLoad(m_SharpEyes);
+		#pragma endregion
 	}
 
 	void PlayerScript::Update()

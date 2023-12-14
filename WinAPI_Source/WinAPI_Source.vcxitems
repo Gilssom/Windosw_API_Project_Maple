@@ -22,6 +22,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_CircleCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Collider.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_CollisionManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_DontDestroyOnLoad.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Enums.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_GameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Input.h" />
@@ -34,6 +35,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Rocket.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Script.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Texture.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_TilemapRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Time.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Application.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Component.h" />
@@ -51,6 +53,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_CircleCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Collider.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_CollisionManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_DontDestroyOnLoad.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_GameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Input.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Layer.cpp" />
@@ -62,6 +65,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Rocket.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Script.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Texture.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_TilemapRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Time.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Application.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Component.cpp" />

@@ -18,13 +18,14 @@ namespace YH
 		virtual void Destroy();
 
 		void AddGameObject(GameObject* gameObject);
+		void EraseGameObject(GameObject* eraseGameObj);
 
 		const std::vector<GameObject*> GetGameObjects() { return m_GameObjects; }
 
 	private:
 		void FindDeadGameObjects(OUT std::vector<GameObject*>& gameObjs);
 		void DeleteGameObjects(std::vector<GameObject*> gameObj);
-		void EraseGameObject();
+		void EraseDeadGameObject();
 
 	private:
 		enums::LayerType m_Type;

@@ -55,6 +55,8 @@ namespace YH
 		void OnCollisionStay(Collider* other) override;
 		void OnCollisionExit(Collider* other) override;
 
+		Vector2 GetPlayerPos() { return m_PlayerPos; }
+
 	private:
 		void Idle();
 		void Move();

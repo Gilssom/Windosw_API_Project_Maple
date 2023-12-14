@@ -21,6 +21,7 @@ namespace YH
 		virtual void OnExit();
 
 		void AddGameObject(GameObject* gameObj, const enums::LayerType layerType);
+		void EraseGameObject(GameObject* gameObj);
 		Layer* GetLayer(enums::LayerType layerType) { return m_Layers[(UINT)layerType]; };
 
 	private:

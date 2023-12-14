@@ -21,6 +21,7 @@ namespace YH
 
 		static Scene* LoadScene(const std::wstring& name);
 		static Scene* GetScene() { return m_ActiveScene; }
+		static Scene* GetDontDestroyOnLoad() { return m_DontDestroyOnLoad; }
 
 		static void Initialize();
 		static void Update();
@@ -30,9 +31,9 @@ namespace YH
 		static void Release();
 
 	private:
-		//static std::vector<Scene*> m_Scene;
 		// 트리구조 map
 		static std::map<std::wstring, Scene*> m_Scene;
 		static Scene* m_ActiveScene;
+		static Scene* m_DontDestroyOnLoad;
 	};
 }

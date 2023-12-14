@@ -18,6 +18,7 @@ namespace YH::enums
 		None,
 		Sky,
 		BackGround,
+		Tile,
 		UI,
 		Tree,
 		Ground,

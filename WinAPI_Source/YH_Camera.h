@@ -18,7 +18,13 @@ namespace YH
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
+		bool CameraAreaCheck();
+		void CameraSettings();
+
 		void SetTarget(GameObject* target) { m_Target = target; }
+
+		void GetBackWidth(float width) { m_BackWidth = width; }
+		void GetBackHeight(float height) { m_BackHeight = height; }
 
 	private:
 		//std::vector<GameObject*> m_GameObjects;
@@ -26,6 +32,10 @@ namespace YH
 		Vector2 m_Distance;
 		Vector2 m_Resolution;
 		Vector2 m_LookPosition;
+
+		bool isSetting;
+		float m_BackWidth;
+		float m_BackHeight;
 	};
 }
 

@@ -13,6 +13,9 @@ namespace YH
 		, m_Resolution(Vector2(1366.0f, 768.0f))
 		, m_LookPosition(Vector2::Zero)
 		, m_Target(nullptr)
+		, m_BackWidth(0.0f)
+		, m_BackHeight(0.0f)
+		, isSetting(false)
 	{
 	}
 
@@ -28,25 +31,56 @@ namespace YH
 
 	void Camera::Update()
 	{
-		if (m_Target)
+		if (!isSetting)
 		{
-			Transform* transform = m_Target->GetComponent<Transform>();
-			m_LookPosition = transform->GetPostion();
+			if (!CameraAreaCheck())
+				m_LookPosition = Vector2(m_BackWidth - (m_Resolution.x / 2.0f), m_BackHeight - (m_Resolution.y / 2.0f));
+			else
+				CameraSettings();
+
+			isSetting = true;
 		}
-		else
-		{
-			Transform* cameraTr = GetOwner()->GetComponent<Transform>();
-			m_LookPosition = cameraTr->GetPostion();
-		}
+
+		if (CameraAreaCheck())
+			CameraSettings();
 
 		m_Distance = m_LookPosition - (m_Resolution / 2.0f);
 	}
 
 	void Camera::LateUpdate()
 	{
+		
 	}
 
 	void Camera::Render(HDC hdc)
 	{
+	}
+
+	bool Camera::CameraAreaCheck()
+	{
+		Transform* playerTf = m_Target->GetComponent<Transform>();
+
+		if (playerTf->GetPostion().x < m_BackWidth - (m_Resolution.x / 2.0f)
+			&& playerTf->GetPostion().x > 0.0f + (m_Resolution.x / 2.0f))
+			return true;
+
+		return false;
+	}
+
+	void Camera::CameraSettings()
+	{
+		if (m_Target)
+		{
+			Transform* transform = m_Target->GetComponent<Transform>();
+			m_LookPosition = transform->GetPostion();
+
+			if (transform->GetPostion().y > m_BackHeight - (m_Resolution.y / 2.0f))
+				m_LookPosition.y = m_BackHeight - (m_Resolution.y / 2.0f);
+		}
+		else
+		{
+			Transform* cameraTr = GetOwner()->GetComponent<Transform>();
+			m_LookPosition = cameraTr->GetPostion();
+		}
 	}
 }

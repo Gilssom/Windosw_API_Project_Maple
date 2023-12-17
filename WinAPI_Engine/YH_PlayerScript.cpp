@@ -382,12 +382,15 @@ namespace YH
 #pragma region Collision Check
 	void PlayerScript::OnCollisionEnter(Collider* other)
 	{
-
+		
 	}
 
 	void PlayerScript::OnCollisionStay(Collider* other)
 	{
-
+		if (other->GetCollType() == ColliderType::Portal)
+		{
+			SceneManager::LoadScene(L"BossCygnusScene");
+		}
 	}
 
 	void PlayerScript::OnCollisionExit(Collider* other)

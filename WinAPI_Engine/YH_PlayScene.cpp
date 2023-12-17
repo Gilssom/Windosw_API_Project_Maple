@@ -30,24 +30,34 @@ namespace YH
 	void PlayScene::Initialize()
 	{
 		CollisionManager::CollisionLayerCheck(LayerType::Player, LayerType::Monster, true);
+		CollisionManager::CollisionLayerCheck(LayerType::Monster, LayerType::Player, true);
+		CollisionManager::CollisionLayerCheck(LayerType::Portal, LayerType::Player, true);
 		CollisionManager::CollisionLayerCheck(LayerType::Effect, LayerType::Monster, true);
 
 		// main Camera
-		GameObject* camera = object::Instantiate<GameObject>(enums::LayerType::None/*, Vector2(800.0f, 400.0f)*/);
+		GameObject* camera = object::Instantiate<GameObject>(enums::LayerType::None);
 		Camera* cameraComp = camera->AddComponent<Camera>();
 		renderer::mainCamera = cameraComp;
 		object::DontDestroyOnLoad(camera);
 
 		#pragma region BackGround Settings
-		bg[0] = object::Instantiate<GameObject>(enums::LayerType::BackGround/*, Vector2(-1135.0f, -903.5f)*/);
+		bg[0] = object::Instantiate<GameObject>(enums::LayerType::BackGround);
 
-		SpriteRenderer* renderer = bg[0]->AddComponent<SpriteRenderer>();
-		renderer->SetName(L"Back Ground");
-		graphics::Texture* bg_1 = Resources::Find<graphics::Texture>(L"Mapleisland_0");
-		renderer->SetTexture(bg_1);
+		SpriteRenderer* renderer0 = bg[0]->AddComponent<SpriteRenderer>();
+		renderer0->SetName(L"Back Ground");
+		graphics::Texture* bg_0 = Resources::Find<graphics::Texture>(L"QueensRoad");
+		renderer0->SetTexture(bg_0);
 
+		GameObject* portal = object::Instantiate<GameObject>(enums::LayerType::Portal, Vector2(2800.0f, 760.0f));
+		BoxCollider2D* portal_0 = portal->AddComponent<BoxCollider2D>();
+		portal_0->SetOffset(Vector2(-50.0f, -50.0f));
+		portal_0->SetSize(Vector2(0.75f, 1.0f));
+		portal_0->SetCollType(ColliderType::Portal);
+		#pragma endregion
+
+		#pragma region Monster
 		// 몬스터 적용
-		m_Mushroom = object::Instantiate<Mushroom>(enums::LayerType::Monster, Vector2(700.0f, 1120.0f));
+		m_Mushroom = object::Instantiate<Mushroom>(enums::LayerType::Monster, Vector2(2650.0f, 760.0f));
 		m_Mushroom->AddComponent<MushScript>();
 		m_Mushroom->GetComponent<Transform>()->SetScale(Vector2(1.2f, 1.2f));
 
@@ -74,8 +84,8 @@ namespace YH
 		
 		#pragma region Player Setting
 		// 플레이어 적용
-		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(900.0f, 1120.0f));
-		object::DontDestroyOnLoad(m_Player);
+		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(2768.0f, 760.0f));
+		//object::DontDestroyOnLoad(m_Player);
 
 		graphics::Texture* player = Resources::Find<graphics::Texture>(L"Player");
 		PlayerScript* playerScript = m_Player->AddComponent<PlayerScript>();
@@ -148,6 +158,8 @@ namespace YH
 		//m_Player->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 100.0f));
 		#pragma endregion
 
+		cameraComp->GetBackWidth(bg_0->GetWidth());
+		cameraComp->GetBackHeight(bg_0->GetHeight());
 		cameraComp->SetTarget(m_Player);
 		
 		Scene::Initialize();

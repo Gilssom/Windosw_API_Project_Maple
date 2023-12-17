@@ -25,6 +25,7 @@ namespace YH::enums
 		Boss,
 		Monster,
 		Player,
+		Portal,
 		Effect,
 		Max = 20,
 		// ...
@@ -46,6 +47,7 @@ namespace YH::enums
 		HowlingGale,
 		BoringArrow,
 		DarknessBall,
+		Portal,
 	};
 
 	enum class ColliderShapeType

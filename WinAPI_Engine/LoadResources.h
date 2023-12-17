@@ -52,10 +52,12 @@ namespace YH
 		Resources::Load<graphics::Texture>(L"RightCygnusSkill2",	L"..\\Resources\\Boss\\RightCygnusSkill2.png");
 		Resources::Load<graphics::Texture>(L"CygnusSkill2Ball",		L"..\\Resources\\Boss\\Skill2Ball.png");
 
-
 		// Map
-		Resources::Load<graphics::Texture>(L"Mapleisland_0",		L"..\\Resources\\Map\\Mapleisland_0.png");
+		Resources::Load<graphics::Texture>(L"QueensRoad",			L"..\\Resources\\Map\\QueensRoad.png");
+		Resources::Load<graphics::Texture>(L"ErebVillage",			L"..\\Resources\\Map\\ErebVillage.png");
+		Resources::Load<graphics::Texture>(L"RainDropFlower",		L"..\\Resources\\Map\\RainDropFlower.png");
 
+		Resources::Load<graphics::Texture>(L"BossArenaReady",		L"..\\Resources\\Map\\BossArenaReady.png");
 		Resources::Load<graphics::Texture>(L"BossCygnusArena",		L"..\\Resources\\Map\\BossArena.png");
 
 		// 단풍나무의 숲 -> ... -> 시그너스의 전당 ( 여제 레이드 )

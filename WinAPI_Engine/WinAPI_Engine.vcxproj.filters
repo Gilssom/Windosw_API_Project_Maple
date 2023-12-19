@@ -50,6 +50,12 @@
     <ClInclude Include="YH_Tile.h">
       <Filter>Contents</Filter>
     </ClInclude>
+    <ClInclude Include="YH_Ground.h">
+      <Filter>Contents</Filter>
+    </ClInclude>
+    <ClInclude Include="YH_GroundScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scenes">
@@ -116,6 +122,12 @@
     </ClCompile>
     <ClCompile Include="YH_Tile.cpp">
       <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="YH_Ground.cpp">
+      <Filter>Contents</Filter>
+    </ClCompile>
+    <ClCompile Include="YH_GroundScript.cpp">
+      <Filter>Scripts</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

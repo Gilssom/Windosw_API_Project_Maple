@@ -32,6 +32,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Renderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Resource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Resources.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Rigidbody.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Rocket.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Script.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Texture.h" />
@@ -62,6 +63,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Renderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Resource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Resources.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Rigidbody.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Rocket.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Script.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Texture.cpp" />

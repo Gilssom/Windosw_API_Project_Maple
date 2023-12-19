@@ -85,6 +85,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_TilemapRenderer.cpp">
       <Filter>Component\TileMapRenderer</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Rigidbody.cpp">
+      <Filter>Component\Rigidbody</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Component.h">
@@ -177,6 +180,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_TilemapRenderer.h">
       <Filter>Component\TileMapRenderer</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Rigidbody.h">
+      <Filter>Component\Rigidbody</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Component">
@@ -229,6 +235,9 @@
     </Filter>
     <Filter Include="Component\TileMapRenderer">
       <UniqueIdentifier>{b9fb2dec-85b9-4f15-bd2e-1711c91cb324}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Rigidbody">
+      <UniqueIdentifier>{c009b01d-f0e7-4cd1-b1b6-168281357526}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -73,6 +73,7 @@ namespace YH
 		State m_State;
 		Direction m_Dir;
 		class Animator* m_Animator;
+		class Rigidbody* m_Rigidbody;
 		Vector2 m_PlayerPos;
 
 		float m_ReShootTime;

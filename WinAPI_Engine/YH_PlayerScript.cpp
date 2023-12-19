@@ -8,6 +8,7 @@
 #include "YH_Object.h"
 #include "YH_Resources.h" 
 #include "YH_Renderer.h"
+#include "YH_Rigidbody.h"
 
 #include "YH_Arrow.h"
 #include "YH_ArrowScript.h"
@@ -404,6 +405,8 @@ namespace YH
 
 	void PlayerScript::Idle()
 	{
+		m_Rigidbody = GetOwner()->GetComponent<Rigidbody>();
+
 		#pragma region Player Normal State
 			if (Input::GetKey(KeyCode::Right))
 			{

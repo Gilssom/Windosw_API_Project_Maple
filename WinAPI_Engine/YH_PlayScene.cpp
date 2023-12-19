@@ -11,11 +11,14 @@
 #include "YH_BoxCollider2D.h"
 #include "YH_CircleCollider2D.h"
 #include "YH_CollisionManager.h"
+#include "YH_Rigidbody.h"
 
 #include "YH_Player.h"
 #include "YH_PlayerScript.h"
 #include "YH_Mushroom.h"
 #include "YH_MushScript.h"
+#include "YH_Ground.h"
+#include "YH_GroundScript.h"
 
 namespace YH
 {
@@ -30,6 +33,10 @@ namespace YH
 	void PlayScene::Initialize()
 	{
 		CollisionManager::CollisionLayerCheck(LayerType::Player, LayerType::Monster, true);
+
+		CollisionManager::CollisionLayerCheck(LayerType::Player, LayerType::Ground, true);
+		CollisionManager::CollisionLayerCheck(LayerType::Monster, LayerType::Ground, true);
+
 		CollisionManager::CollisionLayerCheck(LayerType::Monster, LayerType::Player, true);
 		CollisionManager::CollisionLayerCheck(LayerType::Portal, LayerType::Player, true);
 		CollisionManager::CollisionLayerCheck(LayerType::Effect, LayerType::Monster, true);
@@ -47,6 +54,12 @@ namespace YH
 		renderer0->SetName(L"Back Ground");
 		graphics::Texture* bg_0 = Resources::Find<graphics::Texture>(L"QueensRoad");
 		renderer0->SetTexture(bg_0);
+
+		Ground* ground = object::Instantiate<Ground>(LayerType::Ground, Vector2(10.0f, 780.0f));
+		//ground->SetName(L"Ground");
+		BoxCollider2D* groundColl = ground->AddComponent<BoxCollider2D>();
+		groundColl->SetSize(Vector2(30.0f, 5.0f));
+		ground->AddComponent<GroundScript>();
 
 		GameObject* portal = object::Instantiate<GameObject>(enums::LayerType::Portal, Vector2(2800.0f, 760.0f));
 		portal->AddComponent<Script>();
@@ -85,8 +98,10 @@ namespace YH
 		
 		#pragma region Player Setting
 		// 플레이어 적용
-		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(2768.0f, 760.0f));
+		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(2768.0f, 660.0f));
 		object::DontDestroyOnLoad(m_Player);
+
+		m_Player->AddComponent<Rigidbody>();
 
 		graphics::Texture* player = Resources::Find<graphics::Texture>(L"Player");
 		PlayerScript* playerScript = m_Player->AddComponent<PlayerScript>();

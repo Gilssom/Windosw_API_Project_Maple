@@ -142,6 +142,8 @@
     <ClInclude Include="YH_BossCygnusScene.h" />
     <ClInclude Include="YH_Cygnus.h" />
     <ClInclude Include="YH_CygnusScript.h" />
+    <ClInclude Include="YH_Ground.h" />
+    <ClInclude Include="YH_GroundScript.h" />
     <ClInclude Include="YH_HitEffect.h" />
     <ClInclude Include="YH_LoadScenes.h" />
     <ClInclude Include="YH_LobbyScene.h" />
@@ -160,6 +162,8 @@
     <ClCompile Include="YH_BossCygnusScene.cpp" />
     <ClCompile Include="YH_Cygnus.cpp" />
     <ClCompile Include="YH_CygnusScript.cpp" />
+    <ClCompile Include="YH_Ground.cpp" />
+    <ClCompile Include="YH_GroundScript.cpp" />
     <ClCompile Include="YH_HitEffect.cpp" />
     <ClCompile Include="YH_LobbyScene.cpp" />
     <ClCompile Include="YH_Mushroom.cpp" />

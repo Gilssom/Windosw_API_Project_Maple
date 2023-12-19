@@ -1,4 +1,5 @@
 #include "YH_Scene.h"
+#include "YH_CollisionManager.h"
 
 namespace YH
 {
@@ -97,6 +98,6 @@ namespace YH
 
 	void Scene::OnExit()
 	{
-
+		CollisionManager::Clear();
 	}
 }

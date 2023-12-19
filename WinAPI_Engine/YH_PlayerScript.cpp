@@ -132,10 +132,10 @@ namespace YH
 		#pragma endregion			
 
 		#pragma region DontDestroyObject
-				//object::DontDestroyOnLoad(m_FairyTurn);
-				//object::DontDestroyOnLoad(m_BoringSong);
-				//object::DontDestroyOnLoad(m_HowlingGale);
-				//object::DontDestroyOnLoad(m_SharpEyes);
+				object::DontDestroyOnLoad(m_FairyTurn);
+				object::DontDestroyOnLoad(m_BoringSong);
+				object::DontDestroyOnLoad(m_HowlingGale);
+				object::DontDestroyOnLoad(m_SharpEyes);
 		#pragma endregion
 	}
 
@@ -389,7 +389,10 @@ namespace YH
 	{
 		if (other->GetCollType() == ColliderType::Portal)
 		{
-			SceneManager::LoadScene(L"BossCygnusScene");
+			if (Input::GetKeyDown(KeyCode::Up))
+			{
+				SceneManager::LoadScene(L"BossCygnusScene");
+			}
 		}
 	}
 

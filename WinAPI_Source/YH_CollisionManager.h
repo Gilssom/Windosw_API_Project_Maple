@@ -25,6 +25,7 @@ namespace YH
 		static void Update();
 		static void LateUpdate();
 		static void Render(HDC hdc);
+		static void Clear();
 
 		static void CollisionLayerCheck(LayerType left, LayerType right, bool enable);
 		static void LayerCollision(class Scene* scene, LayerType left, LayerType right);

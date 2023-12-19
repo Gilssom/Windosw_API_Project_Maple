@@ -49,6 +49,7 @@ namespace YH
 		renderer0->SetTexture(bg_0);
 
 		GameObject* portal = object::Instantiate<GameObject>(enums::LayerType::Portal, Vector2(2800.0f, 760.0f));
+		portal->AddComponent<Script>();
 		BoxCollider2D* portal_0 = portal->AddComponent<BoxCollider2D>();
 		portal_0->SetOffset(Vector2(-50.0f, -50.0f));
 		portal_0->SetSize(Vector2(0.75f, 1.0f));
@@ -85,7 +86,7 @@ namespace YH
 		#pragma region Player Setting
 		// 플레이어 적용
 		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(2768.0f, 760.0f));
-		//object::DontDestroyOnLoad(m_Player);
+		object::DontDestroyOnLoad(m_Player);
 
 		graphics::Texture* player = Resources::Find<graphics::Texture>(L"Player");
 		PlayerScript* playerScript = m_Player->AddComponent<PlayerScript>();

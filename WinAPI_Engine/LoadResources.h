@@ -60,6 +60,11 @@ namespace YH
 		Resources::Load<graphics::Texture>(L"BossArenaReady",		L"..\\Resources\\Map\\BossArenaReady.png");
 		Resources::Load<graphics::Texture>(L"BossCygnusArena",		L"..\\Resources\\Map\\BossArena.png");
 
+		// UI
+		Resources::Load<graphics::Texture>(L"StatusBar",			L"..\\Resources\\UI\\StatusBar.png");
+		Resources::Load<graphics::Texture>(L"HpBar",				L"..\\Resources\\UI\\HpBar.png");
+		Resources::Load<graphics::Texture>(L"MpBar",				L"..\\Resources\\UI\\MpBar.png");
+
 		// 단풍나무의 숲 -> ... -> 시그너스의 전당 ( 여제 레이드 )
 	}
 }

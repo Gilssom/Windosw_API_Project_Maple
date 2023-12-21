@@ -58,9 +58,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Renderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Animator.cpp">
-      <Filter>Component</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Animation.cpp">
       <Filter>Resource</Filter>
     </ClCompile>
@@ -87,6 +84,21 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Rigidbody.cpp">
       <Filter>Component\Rigidbody</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Animator.cpp">
+      <Filter>Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIManager.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIBase.cpp">
+      <Filter>UI</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIHUD.cpp">
+      <Filter>UI\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIButton.cpp">
+      <Filter>UI\Button</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -156,9 +168,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Renderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Animator.h">
-      <Filter>Component</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Animation.h">
       <Filter>Resource</Filter>
     </ClInclude>
@@ -182,6 +191,21 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Rigidbody.h">
       <Filter>Component\Rigidbody</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Animator.h">
+      <Filter>Component\Animator</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIManager.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIBase.h">
+      <Filter>UI</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIHUD.h">
+      <Filter>UI\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIButton.h">
+      <Filter>UI\Button</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -238,6 +262,18 @@
     </Filter>
     <Filter Include="Component\Rigidbody">
       <UniqueIdentifier>{c009b01d-f0e7-4cd1-b1b6-168281357526}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Animator">
+      <UniqueIdentifier>{2973ec3f-4c87-48be-9cd3-ee0b17c2a680}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{766e0650-3d94-4167-bdb9-e5aebf190f72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\HUD">
+      <UniqueIdentifier>{d8fd25a0-7ac3-4ad7-9d7f-bec054e3f6f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Button">
+      <UniqueIdentifier>{4ed6ea8b-27eb-4317-9532-26064335acc8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

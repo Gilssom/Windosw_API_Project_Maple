@@ -45,6 +45,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_SceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_SpriteRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Transform.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIBase.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIButton.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIHUD.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Animation.cpp" />
@@ -76,5 +80,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_SceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_SpriteRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Transform.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIBase.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIButton.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIHUD.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIManager.cpp" />
   </ItemGroup>
 </Project>

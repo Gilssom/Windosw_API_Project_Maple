@@ -1,5 +1,6 @@
 #include "YH_PlayScene.h"
 #include "YH_GameObject.h"
+#include "YH_UIManager.h"
 #include "YH_Transform.h"
 #include "YH_SpriteRenderer.h"
 #include "YH_Object.h"
@@ -33,9 +34,7 @@ namespace YH
 	void PlayScene::Initialize()
 	{
 		CollisionManager::CollisionLayerCheck(LayerType::Player, LayerType::Monster, true);
-
 		CollisionManager::CollisionLayerCheck(LayerType::Player, LayerType::Ground, true);
-		CollisionManager::CollisionLayerCheck(LayerType::Monster, LayerType::Ground, true);
 
 		CollisionManager::CollisionLayerCheck(LayerType::Monster, LayerType::Player, true);
 		CollisionManager::CollisionLayerCheck(LayerType::Portal, LayerType::Player, true);
@@ -55,17 +54,16 @@ namespace YH
 		graphics::Texture* bg_0 = Resources::Find<graphics::Texture>(L"QueensRoad");
 		renderer0->SetTexture(bg_0);
 
-		Ground* ground = object::Instantiate<Ground>(LayerType::Ground, Vector2(10.0f, 780.0f));
-		//ground->SetName(L"Ground");
+		Ground* ground = object::Instantiate<Ground>(LayerType::Ground, Vector2(10.0f, 800.0f));
 		BoxCollider2D* groundColl = ground->AddComponent<BoxCollider2D>();
-		groundColl->SetSize(Vector2(30.0f, 5.0f));
+		groundColl->SetSize(Vector2(-70.0f, 1.0f));
 		ground->AddComponent<GroundScript>();
 
 		GameObject* portal = object::Instantiate<GameObject>(enums::LayerType::Portal, Vector2(2800.0f, 760.0f));
-		portal->AddComponent<Script>();
 		BoxCollider2D* portal_0 = portal->AddComponent<BoxCollider2D>();
 		portal_0->SetOffset(Vector2(-50.0f, -50.0f));
 		portal_0->SetSize(Vector2(0.75f, 1.0f));
+		portal->AddComponent<Script>();
 		portal_0->SetCollType(ColliderType::Portal);
 		#pragma endregion
 
@@ -98,7 +96,7 @@ namespace YH
 		
 		#pragma region Player Setting
 		// 플레이어 적용
-		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(2768.0f, 660.0f));
+		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(2768.0f, 760.0f));
 		object::DontDestroyOnLoad(m_Player);
 
 		m_Player->AddComponent<Rigidbody>();
@@ -199,15 +197,13 @@ namespace YH
 	void PlayScene::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
-
-		/*wchar_t str[50] = L"Play Scene";
-
-		TextOut(hdc, 0, 0, str, 10);*/
 	}
 
 	void PlayScene::OnEnter()
 	{
 		Scene::OnEnter();
+
+		UIManager::Push(UIType::HpBar);
 	}
 
 	void PlayScene::OnExit()
@@ -215,7 +211,5 @@ namespace YH
 		m_Player->GetComponent<Transform>()->SetPosition(Vector2(900.0f, 700.0f));
 
 		Scene::OnExit();
-		/*Transform* transform = bg->GetComponent<Transform>();
-		transform->SetPosition(Vector2(0, 0));*/
 	}
 }

@@ -20,7 +20,6 @@ namespace YH::enums
 		Sky,
 		BackGround,
 		Tile,
-		UI,
 		Tree,
 		Boss,
 		Monster,
@@ -28,6 +27,7 @@ namespace YH::enums
 		Ground,
 		Portal,
 		Effect,
+		UI,
 		Max = 20,
 		// ...
 	};
@@ -55,6 +55,13 @@ namespace YH::enums
 	{
 		Circle2D,
 		Rect2D,
+		End,
+	};
+
+	enum class UIType
+	{
+		HpBar,
+		Button,
 		End,
 	};
 }

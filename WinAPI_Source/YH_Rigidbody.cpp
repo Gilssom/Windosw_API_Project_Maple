@@ -11,8 +11,8 @@ namespace YH
 		, m_Friction(10.0f)
 		, m_Force(Vector2::Zero)
 		, m_Velocity(Vector2::Zero)
-		, m_LimitedVelocity(Vector2(200.0f, 1000.0f))
-		, m_Gravity(Vector2(0.0f, 100.0f))
+		, m_LimitedVelocity(Vector2(1000.0f, 1000.0f))
+		, m_Gravity(Vector2(0.0f, 600.0f))
 		, m_Accelation(Vector2::Zero)
 	{
 
@@ -95,7 +95,8 @@ namespace YH
 
 	void Rigidbody::LateUpdate()
 	{
-
+		if(GetOwner()->GetComponent<Rigidbody>()->GetGround())
+			m_Velocity = Vector2::Zero;
 	}
 
 	void Rigidbody::Render(HDC hdc)

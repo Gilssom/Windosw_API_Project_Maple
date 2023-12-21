@@ -27,6 +27,10 @@ C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Sce
 C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_SceneManager.cpp;C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Engine\x64\Debug\YH_SceneManager.obj
 C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_SpriteRenderer.cpp;C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Engine\x64\Debug\YH_SpriteRenderer.obj
 C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_Transform.cpp;C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Engine\x64\Debug\YH_Transform.obj
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_UIBase.cpp;C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Engine\x64\Debug\YH_UIBase.obj
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_UIButton.cpp;C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Engine\x64\Debug\YH_UIButton.obj
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_UIHUD.cpp;C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Engine\x64\Debug\YH_UIHUD.obj
+C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Source\YH_UIManager.cpp;C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Engine\x64\Debug\YH_UIManager.obj
 C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Engine\YH_Arrow.cpp;C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Engine\x64\Debug\YH_Arrow.obj
 C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Engine\YH_ArrowScript.cpp;C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Engine\x64\Debug\YH_ArrowScript.obj
 C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Engine\YH_BossCygnusScene.cpp;C:\Users\user\Documents\GitHub\Windosw_API_Project_Terraria\WinAPI_Engine\x64\Debug\YH_BossCygnusScene.obj

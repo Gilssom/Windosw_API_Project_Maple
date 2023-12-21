@@ -5,6 +5,7 @@
 #include "YH_SceneManager.h"
 #include "YH_Resources.h"
 #include "YH_CollisionManager.h"
+#include "YH_UIManager.h"
 
 namespace YH
 {
@@ -25,6 +26,7 @@ namespace YH
 		InitializeEtc();
 
 		CollisionManager::Initialize();
+		UIManager::Initialize();
 		SceneManager::Initialize();
 	}
 
@@ -42,11 +44,13 @@ namespace YH
 		Input::Update();
 		Time::Update();
 		CollisionManager::Update();
+		UIManager::Update();
 		SceneManager::Update();
 	}
 	void Application::LateUpdate()
 	{
 		CollisionManager::LateUpdate();
+		UIManager::LateUpdate();
 		SceneManager::LateUpdate();
 	}
 
@@ -56,6 +60,7 @@ namespace YH
 
 		Time::Render(m_BackHdc);
 		CollisionManager::Render(m_BackHdc);
+		UIManager::Render(m_BackHdc);
 		SceneManager::Render(m_BackHdc);
 
 		CopyRenderTarget(m_BackHdc, m_Hdc);
@@ -69,6 +74,7 @@ namespace YH
 	void Application::Release()
 	{
 		SceneManager::Release();
+		UIManager::Release();
 		Resources::Release();
 	}
 

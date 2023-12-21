@@ -442,7 +442,7 @@ namespace YH
 				}
 			}
 
-			if (Input::GetKeyDown(KeyCode::LeftAlt))
+			if (Input::GetKey(KeyCode::C))
 			{
 				m_State = PlayerScript::State::Jump;
 
@@ -456,6 +456,14 @@ namespace YH
 					break;
 				default:
 					break;
+				}
+
+				if (m_Rigidbody->GetGround())
+				{
+					Vector2 velocity = m_Rigidbody->GetVelocity();
+					velocity.y = -250.0f;
+					m_Rigidbody->SetVelocity(velocity);
+					m_Rigidbody->SetGround(false);
 				}
 			}
 
@@ -560,9 +568,43 @@ namespace YH
 		Vector2 pos = transform->GetPostion();
 
 		if (Input::GetKey(KeyCode::Right))
+		{
 			pos.x += 100.f * Time::DeltaTime();
+
+			if (Input::GetKey(KeyCode::C))
+			{
+				m_Rigidbody->AddForce(Vector2(3000.0f, 0.0f));
+				m_State = PlayerScript::State::Jump;
+				m_Animator->PlayAnimation(L"Player Right Jump");
+
+				if (m_Rigidbody->GetGround())
+				{
+					Vector2 velocity = m_Rigidbody->GetVelocity();
+					velocity.y = -250.0f;
+					m_Rigidbody->SetVelocity(velocity);
+					m_Rigidbody->SetGround(false);
+				}
+			}
+		}
 		if (Input::GetKey(KeyCode::Left))
+		{
 			pos.x -= 100.f * Time::DeltaTime();
+
+			if (Input::GetKey(KeyCode::C))
+			{
+				m_Rigidbody->AddForce(Vector2(-2000.0f, 0.0f));
+				m_State = PlayerScript::State::Jump;
+				m_Animator->PlayAnimation(L"Player Left Jump");
+
+				if (m_Rigidbody->GetGround())
+				{
+					Vector2 velocity = m_Rigidbody->GetVelocity();
+					velocity.y = -250.0f;
+					m_Rigidbody->SetVelocity(velocity);
+					m_Rigidbody->SetGround(false);
+				}
+			}
+		}
 
 		transform->SetPosition(pos);
 
@@ -659,9 +701,24 @@ namespace YH
 
 	void PlayerScript::Jump()
 	{
-		// Anim Test > 이후 Ground Check 해서 풀 예정
-		// GetKey 가 지금 이상함 눌렀다 떼도 Up 이 안됨
-		if (Input::GetKeyUp(KeyCode::LeftAlt))
+		if (Input::GetKeyDown(KeyCode::D))
+		{
+			m_State = PlayerScript::State::FairyTurn;
+
+			switch (m_Dir)
+			{
+			case YH::PlayerScript::Direction::Right:
+				m_Animator->PlayAnimation(L"Player Fairy Right Attack", false);
+				break;
+			case YH::PlayerScript::Direction::Left:
+				m_Animator->PlayAnimation(L"Player Fairy Left Attack", false);
+				break;
+			default:
+				break;
+			}
+		}
+
+		if (m_Rigidbody->GetGround())
 		{
 			m_State = PlayerScript::State::Idle;
 

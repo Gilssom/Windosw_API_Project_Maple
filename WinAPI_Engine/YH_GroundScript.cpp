@@ -70,6 +70,8 @@ namespace YH
 
 	void GroundScript::OnCollisionExit(Collider* other)
 	{
+		Rigidbody* playerRigid = other->GetOwner()->GetComponent<Rigidbody>();
 
+		playerRigid->SetGround(false);
 	}
 }

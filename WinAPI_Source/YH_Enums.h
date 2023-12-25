@@ -17,6 +17,7 @@ namespace YH::enums
 	enum class LayerType
 	{
 		None,
+		Camera,
 		Sky,
 		BackGround,
 		Tile,
@@ -25,6 +26,7 @@ namespace YH::enums
 		Monster,
 		Player,
 		Ground,
+		Rope,
 		Portal,
 		Effect,
 		UI,
@@ -49,6 +51,7 @@ namespace YH::enums
 		BoringArrow,
 		DarknessBall,
 		Portal,
+		Rope,
 	};
 
 	enum class ColliderShapeType

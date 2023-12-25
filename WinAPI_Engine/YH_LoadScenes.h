@@ -3,6 +3,7 @@
 #include "YH_TitleScene.h"
 #include "YH_LobbyScene.h"
 #include "YH_PlayScene.h"
+#include "YH_FlowerScene.h"
 #include "YH_BossCygnusScene.h"
 #include "YH_ToolScene.h"
 
@@ -13,6 +14,7 @@ namespace YH
 		SceneManager::CreateScene<TitleScene>(L"TitleScene");
 		SceneManager::CreateScene<LobbyScene>(L"LobbyScene");
 		SceneManager::CreateScene<PlayScene>(L"PlayScene");
+		SceneManager::CreateScene<FlowerScene>(L"FlowerScene");
 		SceneManager::CreateScene<BossCygnusScene>(L"BossCygnusScene");
 
 		//SceneManager::CreateScene<ToolScene>(L"ToolScene");

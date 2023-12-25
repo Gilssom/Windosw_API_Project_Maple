@@ -44,6 +44,8 @@ namespace YH
 
 		// Monster
 		Resources::Load<graphics::Texture>(L"Mushroom",				L"..\\Resources\\Monster\\Mushroom_Sprite.png");
+		Resources::Load<graphics::Texture>(L"Tigurue",				L"..\\Resources\\Monster\\Tigurue_Sprite.png");
+		Resources::Load<graphics::Texture>(L"Tirue",				L"..\\Resources\\Monster\\Tiru_Sprite.png");
 
 		// Boss_Cygnus
 		Resources::Load<graphics::Texture>(L"Cygnus",				L"..\\Resources\\Boss\\CygnusCommon.png");
@@ -64,6 +66,8 @@ namespace YH
 		Resources::Load<graphics::Texture>(L"StatusBar",			L"..\\Resources\\UI\\StatusBar.png");
 		Resources::Load<graphics::Texture>(L"HpBar",				L"..\\Resources\\UI\\HpBar.png");
 		Resources::Load<graphics::Texture>(L"MpBar",				L"..\\Resources\\UI\\MpBar.png");
+
+		Resources::Load<graphics::Texture>(L"Test",					L"..\\Resources\\UI\\Test.bmp");
 
 		// 단풍나무의 숲 -> ... -> 시그너스의 전당 ( 여제 레이드 )
 	}

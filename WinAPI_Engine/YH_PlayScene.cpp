@@ -18,6 +18,8 @@
 #include "YH_PlayerScript.h"
 #include "YH_Mushroom.h"
 #include "YH_MushScript.h"
+#include "YH_TigurueScript.h"
+#include "YH_TirueScript.h"
 #include "YH_Ground.h"
 #include "YH_GroundScript.h"
 
@@ -35,16 +37,12 @@ namespace YH
 	{
 		CollisionManager::CollisionLayerCheck(LayerType::Player, LayerType::Monster, true);
 		CollisionManager::CollisionLayerCheck(LayerType::Player, LayerType::Ground, true);
+		CollisionManager::CollisionLayerCheck(LayerType::Player, LayerType::Rope, true);
 
 		CollisionManager::CollisionLayerCheck(LayerType::Monster, LayerType::Player, true);
 		CollisionManager::CollisionLayerCheck(LayerType::Portal, LayerType::Player, true);
+		CollisionManager::CollisionLayerCheck(LayerType::Rope, LayerType::Player, true);
 		CollisionManager::CollisionLayerCheck(LayerType::Effect, LayerType::Monster, true);
-
-		// main Camera
-		GameObject* camera = object::Instantiate<GameObject>(enums::LayerType::None);
-		Camera* cameraComp = camera->AddComponent<Camera>();
-		renderer::mainCamera = cameraComp;
-		object::DontDestroyOnLoad(camera);
 
 		#pragma region BackGround Settings
 		bg[0] = object::Instantiate<GameObject>(enums::LayerType::BackGround);
@@ -53,6 +51,9 @@ namespace YH
 		renderer0->SetName(L"Back Ground");
 		graphics::Texture* bg_0 = Resources::Find<graphics::Texture>(L"QueensRoad");
 		renderer0->SetTexture(bg_0);
+
+		m_Width = bg_0->GetWidth();
+		m_Height = bg_0->GetHeight();
 
 		Ground* ground = object::Instantiate<Ground>(LayerType::Ground, Vector2(10.0f, 800.0f));
 		BoxCollider2D* groundColl = ground->AddComponent<BoxCollider2D>();
@@ -68,30 +69,54 @@ namespace YH
 		#pragma endregion
 
 		#pragma region Monster
-		// 몬스터 적용
-		m_Mushroom = object::Instantiate<Mushroom>(enums::LayerType::Monster, Vector2(2650.0f, 760.0f));
-		m_Mushroom->AddComponent<MushScript>();
-		m_Mushroom->GetComponent<Transform>()->SetScale(Vector2(1.2f, 1.2f));
+		//// 몬스터 적용
+		//m_Mushroom = object::Instantiate<Mushroom>(enums::LayerType::Monster, Vector2(2650.0f, 760.0f));
+		//m_Mushroom->AddComponent<TigurueScript>();
+		////m_Mushroom->GetComponent<Transform>()->SetScale(Vector2(1.2f, 1.2f));
 
-		graphics::Texture* mushroomTex = Resources::Find<graphics::Texture>(L"Mushroom");
+		//graphics::Texture* tigurueTex = Resources::Find<graphics::Texture>(L"Tigurue");
 
-		BoxCollider2D* mushColl = m_Mushroom->AddComponent<BoxCollider2D>();
-		mushColl->SetOffset(Vector2(-22.5f, -10.0f));
-		mushColl->SetSize(Vector2(0.5f, 0.5f));
+		//BoxCollider2D* tigurueColl = m_Mushroom->AddComponent<BoxCollider2D>();
+		//tigurueColl->SetOffset(Vector2(-30.0f, -30.0f));
+		//tigurueColl->SetSize(Vector2(0.6f, 0.8f));
 
-		Animator* mushAnim = m_Mushroom->AddComponent<Animator>();
-		mushAnim->CreateAnimation(L"Mush Left Idle", mushroomTex, Vector2(0.0f, 0.0f), Vector2(60.0f, 60.0f),
-			Vector2::Zero, 2, 0.2f);
-		mushAnim->CreateAnimation(L"Mush Left Move", mushroomTex, Vector2(0.0f, 60.0f), Vector2(60.0f, 60.0f),
-			Vector2::Zero, 3, 0.2f);
-		mushAnim->CreateAnimation(L"Mush Right Idle", mushroomTex, Vector2(120.0f, 0.0f), Vector2(60.0f, 60.0f),
-			Vector2::Zero, 2, 0.2f);
-		mushAnim->CreateAnimation(L"Mush Right Move", mushroomTex, Vector2(180.0f, 60.0f), Vector2(60.0f, 60.0f),
-			Vector2::Zero, 3, 0.2f);
-		mushAnim->CreateAnimation(L"Mush Die", mushroomTex, Vector2(0.0f, 120.0f), Vector2(60.0f, 60.0f),
-			Vector2::Zero, 12, 0.1f);
+		//Animator* tigurueAnim = m_Mushroom->AddComponent<Animator>();
+		//tigurueAnim->CreateAnimation(L"Tigurue Left Idle", tigurueTex, Vector2(0.0f, 0.0f), Vector2(60.0f, 82.0f),
+		//	Vector2::Zero, 6, 0.1f);
+		//tigurueAnim->CreateAnimation(L"Tigurue Left Move", tigurueTex, Vector2(0.0f, 82.0f), Vector2(65.0f, 91.0f),
+		//	Vector2::Zero, 6, 0.1f);
+		//tigurueAnim->CreateAnimation(L"Tigurue Right Idle", tigurueTex, Vector2(360.0f, 0.0f), Vector2(60.0f, 82.0f),
+		//	Vector2::Zero, 6, 0.1f);
+		//tigurueAnim->CreateAnimation(L"Tigurue Right Move", tigurueTex, Vector2(390.0f, 82.0f), Vector2(65.0f, 91.0f),
+		//	Vector2::Zero, 6, 0.1f);
+		//tigurueAnim->CreateAnimation(L"Tigurue Die", tigurueTex, Vector2(0.0f, 173.0f), Vector2(93.0f, 93.0f),
+		//	Vector2::Zero, 12, 0.1f);
 
-		mushAnim->PlayAnimation(L"Mush Left Idle");
+		//tigurueAnim->PlayAnimation(L"Tigurue Left Idle");
+
+		//m_Mushroom2 = object::Instantiate<Mushroom>(enums::LayerType::Monster, Vector2(2600.0f, 760.0f));
+		//m_Mushroom2->AddComponent<TirueScript>();
+		////m_Mushroom->GetComponent<Transform>()->SetScale(Vector2(1.2f, 1.2f));
+
+		//graphics::Texture* tirueTex = Resources::Find<graphics::Texture>(L"Tirue");
+
+		//BoxCollider2D* tirueColl = m_Mushroom2->AddComponent<BoxCollider2D>();
+		//tirueColl->SetOffset(Vector2(-30.0f, -30.0f));
+		//tirueColl->SetSize(Vector2(0.6f, 0.8f));
+
+		//Animator* tirueAnim = m_Mushroom2->AddComponent<Animator>();
+		//tirueAnim->CreateAnimation(L"Tirue Left Idle", tirueTex, Vector2(0.0f, 0.0f), Vector2(57.0f, 70.0f),
+		//	Vector2::Zero, 6, 0.1f);
+		//tirueAnim->CreateAnimation(L"Tirue Left Move", tirueTex, Vector2(0.0f, 70.0f), Vector2(61.0f, 82.0f),
+		//	Vector2::Zero, 6, 0.1f);
+		//tirueAnim->CreateAnimation(L"Tirue Right Idle", tirueTex, Vector2(342.0f, 0.0f), Vector2(57.0f, 70.0f),
+		//	Vector2::Zero, 6, 0.1f);
+		//tirueAnim->CreateAnimation(L"Tirue Right Move", tirueTex, Vector2(366.0f, 70.0f), Vector2(61.0f, 82.0f),
+		//	Vector2::Zero, 6, 0.1f);
+		//tirueAnim->CreateAnimation(L"Tirue Die", tirueTex, Vector2(0.0f, 152.0f), Vector2(82.0f, 93.0f),
+		//	Vector2::Zero, 12, 0.1f);
+
+		//tirueAnim->PlayAnimation(L"Tirue Left Idle");
 		#pragma endregion
 		
 		#pragma region Player Setting
@@ -171,10 +196,6 @@ namespace YH
 
 		//m_Player->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 100.0f));
 		#pragma endregion
-
-		cameraComp->GetBackWidth(bg_0->GetWidth());
-		cameraComp->GetBackHeight(bg_0->GetHeight());
-		cameraComp->SetTarget(m_Player);
 		
 		Scene::Initialize();
 	}
@@ -201,14 +222,24 @@ namespace YH
 
 	void PlayScene::OnEnter()
 	{
-		Scene::OnEnter();
+		GameObject* camera = object::Instantiate<GameObject>(enums::LayerType::Camera);
+		Camera* cameraComp = camera->AddComponent<Camera>();
+		renderer::mainCamera = cameraComp;
+
+		const std::vector<GameObject*>& player = SceneManager::GetGameObjects(LayerType::Player);
+
+		cameraComp->GetBackWidth(m_Width);
+		cameraComp->GetBackHeight(m_Height);
+		cameraComp->SetTarget(player.front());
 
 		UIManager::Push(UIType::HpBar);
+
+		Scene::OnEnter();
 	}
 
 	void PlayScene::OnExit()
 	{
-		m_Player->GetComponent<Transform>()->SetPosition(Vector2(900.0f, 700.0f));
+		m_Player->GetComponent<Transform>()->SetPosition(Vector2(1829.0f, 1465.0f));
 
 		Scene::OnExit();
 	}

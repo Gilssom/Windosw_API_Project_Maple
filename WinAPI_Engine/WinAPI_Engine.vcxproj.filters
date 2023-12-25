@@ -56,6 +56,21 @@
     <ClInclude Include="YH_GroundScript.h">
       <Filter>Scripts</Filter>
     </ClInclude>
+    <ClInclude Include="YH_Tigurue.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="YH_TigurueScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="YH_TirueScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="YH_FlowerScene.h">
+      <Filter>Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="YH_Monster.h">
+      <Filter>Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scenes">
@@ -128,6 +143,21 @@
     </ClCompile>
     <ClCompile Include="YH_GroundScript.cpp">
       <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="YH_Tigurue.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="YH_TigurueScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="YH_TirueScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="YH_FlowerScene.cpp">
+      <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="YH_Monster.cpp">
+      <Filter>Monster</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

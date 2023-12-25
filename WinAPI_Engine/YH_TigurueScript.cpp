@@ -1,0 +1,212 @@
+#include "YH_TigurueScript.h"
+#include "YH_Input.h"
+#include "YH_Transform.h"
+#include "YH_Time.h"
+#include "YH_GameObject.h"
+#include "YH_Animator.h"
+#include "YH_Object.h"
+#include "YH_HitEffect.h"
+
+#include "YH_Resources.h"
+
+namespace YH
+{
+	TigurueScript::TigurueScript() : m_State(TigurueScript::State::Idle)
+		, m_Animator(nullptr), m_Dir(TigurueScript::Direction::Left), m_Time(0.0f), m_DeathTime(0.0f)
+	{
+
+	}
+
+	TigurueScript::~TigurueScript()
+	{
+
+	}
+
+	void TigurueScript::Initialize()
+	{
+
+	}
+
+	void TigurueScript::Update()
+	{
+		if (!m_Animator)
+			m_Animator = GetOwner()->GetComponent<Animator>();
+
+		switch (m_State)
+		{
+		case YH::TigurueScript::State::Idle:
+			Idle();
+			break;
+		case YH::TigurueScript::State::Walk:
+			Move();
+			break;
+		case YH::TigurueScript::State::Attack:
+			Attack();
+			break;
+		case YH::TigurueScript::State::Death:
+			Death();
+			break;
+		default:
+			break;
+		}
+	}
+
+	void TigurueScript::LateUpdate()
+	{
+
+	}
+
+	void TigurueScript::Render(HDC hdc)
+	{
+
+	}
+
+	void TigurueScript::OnCollisionEnter(Collider* other)
+	{
+		enums::ColliderType type = other->GetCollType();
+
+		switch (type)
+		{
+		case enums::ColliderType::FairyTurn:
+		{
+			GameObject* fariyHit = object::Instantiate<GameObject>(enums::LayerType::Effect, GetOwner()->GetComponent<Transform>()->GetPostion());
+
+			graphics::Texture* fariyHiteff = Resources::Find<graphics::Texture>(L"FairyTurnHit");
+			Animator* FHanim = fariyHit->AddComponent<Animator>();
+			FHanim->CreateAnimation(L"Fairy Hit Effect", fariyHiteff, Vector2(0.0f, 0.0f), Vector2(169.0f, 176.0f),
+				Vector2::Zero, 6, 0.1f);
+			FHanim->PlayAnimation(L"Fairy Hit Effect", false);
+
+			fariyHit->AddComponent<HitEffect>();
+			break;
+		}
+		case enums::ColliderType::HowlingGale:
+		{
+			GameObject* howlingHit = object::Instantiate<GameObject>(enums::LayerType::Effect, GetOwner()->GetComponent<Transform>()->GetPostion());
+
+			graphics::Texture* howlingHiteff = Resources::Find<graphics::Texture>(L"HowlingHit");
+			Animator* HHanim = howlingHit->AddComponent<Animator>();
+			HHanim->CreateAnimation(L"Howling Hit Effect", howlingHiteff, Vector2(0.0f, 0.0f), Vector2(272.0f, 252.0f),
+				Vector2::Zero, 6, 0.1f);
+			HHanim->PlayAnimation(L"Howling Hit Effect", false);
+
+			howlingHit->AddComponent<HitEffect>();
+			break;
+		}
+		case enums::ColliderType::BoringArrow:
+		{
+			GameObject* arrowHit = object::Instantiate<GameObject>(enums::LayerType::Effect, GetOwner()->GetComponent<Transform>()->GetPostion());
+
+			graphics::Texture* arrowHiteff = Resources::Find<graphics::Texture>(L"BoringHit");
+			Animator* AHanim = arrowHit->AddComponent<Animator>();
+			AHanim->CreateAnimation(L"Boring Hit Effect", arrowHiteff, Vector2(0.0f, 0.0f), Vector2(149.0f, 136.0f),
+				Vector2::Zero, 7, 0.03f);
+			AHanim->PlayAnimation(L"Boring Hit Effect", false);
+
+			arrowHit->AddComponent<HitEffect>();
+
+			object::Destroy(other->GetOwner());
+			break;
+		}
+		}
+	}
+
+	void TigurueScript::OnCollisionStay(Collider* other)
+	{
+
+	}
+
+	void TigurueScript::OnCollisionExit(Collider* other)
+	{
+
+	}
+
+	void TigurueScript::Idle()
+	{
+		m_Time += Time::DeltaTime();
+
+		if (m_Time > 7.0f)
+		{
+			m_State = TigurueScript::State::Walk;
+
+			int direction = (rand() % 2);
+			m_Dir = (Direction)direction;
+			PlayWalkAnimationByDirection(m_Dir);
+			m_Time = 0.0f;
+		}
+	}
+
+	void TigurueScript::Move()
+	{
+		m_Time += Time::DeltaTime();
+
+		if (m_Time > 2.0f)
+		{
+			int isLayDown = rand() % 2;
+			if (isLayDown)
+			{
+				m_State = State::Idle;
+
+				switch (m_Dir)
+				{
+				case YH::TigurueScript::Direction::Right:
+					m_Animator->PlayAnimation(L"Tigurue Right Idle");
+					break;
+				case YH::TigurueScript::Direction::Left:
+					m_Animator->PlayAnimation(L"Tigurue Left Idle");
+					break;
+				default:
+					break;
+				}
+			}
+		}
+
+		Transform* tr = GetOwner()->GetComponent<Transform>();
+		Translate(tr);
+	}
+
+	void TigurueScript::Attack()
+	{
+
+	}
+
+	void TigurueScript::Death()
+	{
+		m_Animator->PlayAnimation(L"Tigurue Die");
+	}
+
+	void TigurueScript::PlayWalkAnimationByDirection(Direction dir)
+	{
+		switch (dir)
+		{
+		case YH::TigurueScript::Direction::Right:
+			m_Animator->PlayAnimation(L"Tigurue Right Move");
+			break;
+		case YH::TigurueScript::Direction::Left:
+			m_Animator->PlayAnimation(L"Tigurue Left Move");
+			break;
+		default:
+			break;
+		}
+	}
+
+	void TigurueScript::Translate(Transform* transform)
+	{
+		Vector2 pos = transform->GetPostion();
+
+		switch (m_Dir)
+		{
+		case YH::TigurueScript::Direction::Right:
+			pos.x += 80.f * Time::DeltaTime();
+			break;
+		case YH::TigurueScript::Direction::Left:
+			pos.x -= 80.f * Time::DeltaTime();
+			break;
+		default:
+			assert(false);
+			break;
+		}
+
+		transform->SetPosition(pos);
+	}
+}

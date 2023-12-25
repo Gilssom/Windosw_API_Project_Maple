@@ -383,7 +383,7 @@ namespace YH
 #pragma region Collision Check
 	void PlayerScript::OnCollisionEnter(Collider* other)
 	{
-		
+		//if (other->GetCollType() == ColliderType::Rope)
 	}
 
 	void PlayerScript::OnCollisionStay(Collider* other)
@@ -392,7 +392,7 @@ namespace YH
 		{
 			if (Input::GetKeyDown(KeyCode::Up))
 			{
-				SceneManager::LoadScene(L"BossCygnusScene");
+				SceneManager::LoadScene(L"FlowerScene");
 			}
 		}
 	}

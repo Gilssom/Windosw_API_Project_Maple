@@ -147,12 +147,17 @@
     <ClInclude Include="YH_HitEffect.h" />
     <ClInclude Include="YH_LoadScenes.h" />
     <ClInclude Include="YH_LobbyScene.h" />
+    <ClInclude Include="YH_Monster.h" />
     <ClInclude Include="YH_Mushroom.h" />
     <ClInclude Include="YH_MushScript.h" />
     <ClInclude Include="YH_Player.h" />
     <ClInclude Include="YH_PlayerScript.h" />
     <ClInclude Include="YH_PlayScene.h" />
+    <ClInclude Include="YH_FlowerScene.h" />
+    <ClInclude Include="YH_Tigurue.h" />
+    <ClInclude Include="YH_TigurueScript.h" />
     <ClInclude Include="YH_Tile.h" />
+    <ClInclude Include="YH_TirueScript.h" />
     <ClInclude Include="YH_TitleScene.h" />
     <ClInclude Include="YH_ToolScene.h" />
   </ItemGroup>
@@ -166,12 +171,17 @@
     <ClCompile Include="YH_GroundScript.cpp" />
     <ClCompile Include="YH_HitEffect.cpp" />
     <ClCompile Include="YH_LobbyScene.cpp" />
+    <ClCompile Include="YH_Monster.cpp" />
     <ClCompile Include="YH_Mushroom.cpp" />
     <ClCompile Include="YH_MushScript.cpp" />
     <ClCompile Include="YH_Player.cpp" />
     <ClCompile Include="YH_PlayerScript.cpp" />
     <ClCompile Include="YH_PlayScene.cpp" />
+    <ClCompile Include="YH_FlowerScene.cpp" />
+    <ClCompile Include="YH_Tigurue.cpp" />
+    <ClCompile Include="YH_TigurueScript.cpp" />
     <ClCompile Include="YH_Tile.cpp" />
+    <ClCompile Include="YH_TirueScript.cpp" />
     <ClCompile Include="YH_TitleScene.cpp" />
     <ClCompile Include="YH_ToolScene.cpp" />
   </ItemGroup>

@@ -21,7 +21,10 @@ namespace YH
 		class GameObject* bg[50];
 		class GameObject* m_Monster[50];
 		class Mushroom* m_Mushroom;
+		class Mushroom* m_Mushroom2;
 		class GameObject* m_Effect[50];
 		class Player* m_Player;
+
+		float m_Width, m_Height;
 	};
 }

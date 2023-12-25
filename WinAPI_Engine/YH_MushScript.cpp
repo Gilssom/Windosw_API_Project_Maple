@@ -150,10 +150,10 @@ namespace YH
 				switch (m_Dir)
 				{
 				case YH::MushScript::Direction::Right:
-					m_Animator->PlayAnimation(L"Mush Right Idle");
+					m_Animator->PlayAnimation(L"Tigurue Right Idle");
 					break;
 				case YH::MushScript::Direction::Left:
-					m_Animator->PlayAnimation(L"Mush Left Idle");
+					m_Animator->PlayAnimation(L"Tigurue Left Idle");
 					break;
 				default:
 					break;
@@ -172,7 +172,7 @@ namespace YH
 
 	void MushScript::Death()
 	{
-		m_Animator->PlayAnimation(L"Mush Die");
+		m_Animator->PlayAnimation(L"Tigurue Die");
 	}
 
 	void MushScript::PlayWalkAnimationByDirection(Direction dir)
@@ -180,10 +180,10 @@ namespace YH
 		switch (dir)
 		{
 		case YH::MushScript::Direction::Right:
-			m_Animator->PlayAnimation(L"Mush Right Move");
+			m_Animator->PlayAnimation(L"Tigurue Right Move");
 			break;
 		case YH::MushScript::Direction::Left:
-			m_Animator->PlayAnimation(L"Mush Left Move");
+			m_Animator->PlayAnimation(L"Tigurue Left Move");
 			break;
 		default:
 			break;
@@ -197,10 +197,10 @@ namespace YH
 		switch (m_Dir)
 		{
 		case YH::MushScript::Direction::Right:
-			pos.x += 50.f * Time::DeltaTime();
+			pos.x += 80.f * Time::DeltaTime();
 			break;
 		case YH::MushScript::Direction::Left:
-			pos.x -= 50.f * Time::DeltaTime();
+			pos.x -= 80.f * Time::DeltaTime();
 			break;
 		default:
 			assert(false);

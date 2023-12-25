@@ -33,7 +33,6 @@ namespace YH
 		renderer->SetName(L"Back Ground");
 		graphics::Texture* bg_0 = Resources::Find<graphics::Texture>(L"BossCygnusArena");
 		renderer->SetTexture(bg_0);
-		renderer->SetSize(Vector2(1.2f, 1.2f));
 		#pragma endregion
 
 		#pragma region Cygnus Settings

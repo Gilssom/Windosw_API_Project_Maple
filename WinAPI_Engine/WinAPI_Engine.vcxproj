@@ -154,6 +154,7 @@
     <ClInclude Include="YH_PlayerScript.h" />
     <ClInclude Include="YH_PlayScene.h" />
     <ClInclude Include="YH_FlowerScene.h" />
+    <ClInclude Include="YH_RopeScript.h" />
     <ClInclude Include="YH_Tigurue.h" />
     <ClInclude Include="YH_TigurueScript.h" />
     <ClInclude Include="YH_Tile.h" />
@@ -178,6 +179,7 @@
     <ClCompile Include="YH_PlayerScript.cpp" />
     <ClCompile Include="YH_PlayScene.cpp" />
     <ClCompile Include="YH_FlowerScene.cpp" />
+    <ClCompile Include="YH_RopeScript.cpp" />
     <ClCompile Include="YH_Tigurue.cpp" />
     <ClCompile Include="YH_TigurueScript.cpp" />
     <ClCompile Include="YH_Tile.cpp" />

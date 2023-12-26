@@ -23,6 +23,7 @@
 #include "YH_TirueScript.h"
 #include "YH_Ground.h"
 #include "YH_GroundScript.h"
+#include "YH_RopeScript.h"
 
 namespace YH
 {
@@ -56,9 +57,9 @@ namespace YH
 
 		GameObject* rope = object::Instantiate<GameObject>(LayerType::Rope, Vector2(1407.0f, 1246.0f));
 		BoxCollider2D* ropeColl = rope->AddComponent<BoxCollider2D>();
-		rope->AddComponent<Script>();
+		rope->AddComponent<RopeScript>();
 		ropeColl->SetOffset(Vector2(-12.0f, -135.0f));
-		ropeColl->SetSize(Vector2(0.2f, 3.2f));
+		ropeColl->SetSize(Vector2(0.2f, 5.4f));
 		ropeColl->SetCollType(ColliderType::Rope);
 		#pragma endregion
 
@@ -88,7 +89,7 @@ namespace YH
 
 		tigurueAnim->PlayAnimation(L"Tigurue Left Idle");
 
-		m_Monster[1] = object::Instantiate<Monster>(enums::LayerType::Monster, Vector2(1265.0f, 1455.0f));
+		m_Monster[1] = object::Instantiate<Monster>(enums::LayerType::Monster, Vector2(1265.0f, 1255.0f));
 		m_Monster[1]->AddComponent<TirueScript>();
 		//m_Mushroom->GetComponent<Transform>()->SetScale(Vector2(1.2f, 1.2f));
 

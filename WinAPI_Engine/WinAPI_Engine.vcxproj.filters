@@ -71,6 +71,9 @@
     <ClInclude Include="YH_Monster.h">
       <Filter>Monster</Filter>
     </ClInclude>
+    <ClInclude Include="YH_RopeScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scenes">
@@ -158,6 +161,9 @@
     </ClCompile>
     <ClCompile Include="YH_Monster.cpp">
       <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="YH_RopeScript.cpp">
+      <Filter>Scripts</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

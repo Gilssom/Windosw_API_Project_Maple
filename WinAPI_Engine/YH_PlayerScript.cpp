@@ -383,7 +383,8 @@ namespace YH
 #pragma region Collision Check
 	void PlayerScript::OnCollisionEnter(Collider* other)
 	{
-		//if (other->GetCollType() == ColliderType::Rope)
+		if (other->GetCollType() == ColliderType::Rope)
+			int a = 0;
 	}
 
 	void PlayerScript::OnCollisionStay(Collider* other)
@@ -592,7 +593,7 @@ namespace YH
 
 			if (Input::GetKey(KeyCode::C))
 			{
-				m_Rigidbody->AddForce(Vector2(-2000.0f, 0.0f));
+				m_Rigidbody->AddForce(Vector2(-3000.0f, 0.0f));
 				m_State = PlayerScript::State::Jump;
 				m_Animator->PlayAnimation(L"Player Left Jump");
 
@@ -701,6 +702,19 @@ namespace YH
 
 	void PlayerScript::Jump()
 	{
+		if (Input::GetKeyDown(KeyCode::C))
+		{
+			switch (m_Dir)
+			{
+			case YH::PlayerScript::Direction::Right:
+				m_Rigidbody->AddForce(Vector2(6000.0f, -1500.0f));
+				break;
+			case YH::PlayerScript::Direction::Left:
+				m_Rigidbody->AddForce(Vector2(-6000.0f, -1500.0f));
+				break;
+			}
+		}
+
 		if (Input::GetKeyDown(KeyCode::D))
 		{
 			m_State = PlayerScript::State::FairyTurn;

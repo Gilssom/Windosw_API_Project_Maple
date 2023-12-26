@@ -4,6 +4,7 @@
 #include "YH_GameObject.h"
 #include "YH_Collider.h"
 #include "YH_Transform.h"
+#include "YH_Renderer.h"
 
 namespace YH
 {
@@ -156,6 +157,12 @@ namespace YH
 
 		Vector2 leftPos = leftTr->GetPostion() + left->GetOffset();
 		Vector2 rightPos = rightTr->GetPostion() + right->GetOffset();
+
+		if (renderer::mainCamera)
+			leftPos = renderer::mainCamera->CaluatePosition(leftPos);
+
+		if (renderer::mainCamera)
+			rightPos = renderer::mainCamera->CaluatePosition(rightPos);
 
 		// Size 1, 1 일때, 기본 크기는 100 * 100
 		Vector2 leftSize = left->GetSize() * 100.0f;

@@ -21,6 +21,7 @@ namespace YH
 		bool CameraAreaCheck();
 		void CameraSettings();
 
+		Vector2 GetPosition() { return m_LookPosition; }
 		void SetTarget(GameObject* target) { m_Target = target; }
 
 		void GetBackWidth(float width) { m_BackWidth = width; }

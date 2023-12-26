@@ -60,8 +60,8 @@ namespace YH
 
 		Time::Render(m_BackHdc);
 		CollisionManager::Render(m_BackHdc);
-		UIManager::Render(m_BackHdc);
 		SceneManager::Render(m_BackHdc);
+		UIManager::Render(m_BackHdc);
 
 		CopyRenderTarget(m_BackHdc, m_Hdc);
 	}

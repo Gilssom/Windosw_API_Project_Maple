@@ -22,6 +22,7 @@
 #include "YH_TirueScript.h"
 #include "YH_Ground.h"
 #include "YH_GroundScript.h"
+#include "YH_RopeScript.h"
 
 namespace YH
 {
@@ -35,6 +36,7 @@ namespace YH
 
 	void PlayScene::Initialize()
 	{
+		#pragma region Collision Settings
 		CollisionManager::CollisionLayerCheck(LayerType::Player, LayerType::Monster, true);
 		CollisionManager::CollisionLayerCheck(LayerType::Player, LayerType::Ground, true);
 		CollisionManager::CollisionLayerCheck(LayerType::Player, LayerType::Rope, true);
@@ -43,6 +45,7 @@ namespace YH
 		CollisionManager::CollisionLayerCheck(LayerType::Portal, LayerType::Player, true);
 		CollisionManager::CollisionLayerCheck(LayerType::Rope, LayerType::Player, true);
 		CollisionManager::CollisionLayerCheck(LayerType::Effect, LayerType::Monster, true);
+		#pragma endregion
 
 		#pragma region BackGround Settings
 		bg[0] = object::Instantiate<GameObject>(enums::LayerType::BackGround);
@@ -57,7 +60,8 @@ namespace YH
 
 		Ground* ground = object::Instantiate<Ground>(LayerType::Ground, Vector2(10.0f, 800.0f));
 		BoxCollider2D* groundColl = ground->AddComponent<BoxCollider2D>();
-		groundColl->SetSize(Vector2(-70.0f, 1.0f));
+		//groundColl->SetSize(Vector2(-70.0f, 1.0f));
+		groundColl->SetSize(Vector2(70.0f, 1.0f));
 		ground->AddComponent<GroundScript>();
 
 		GameObject* portal = object::Instantiate<GameObject>(enums::LayerType::Portal, Vector2(2800.0f, 760.0f));
@@ -192,7 +196,7 @@ namespace YH
 
 		playerAnim->GetStartEvent(L"Player Howling Left Attack") = std::bind(&PlayerScript::HowlingEff, playerScript);
 		playerAnim->GetStartEvent(L"Player Howling Right Attack") = std::bind(&PlayerScript::HowlingEff, playerScript);
-#pragma endregion
+		#pragma endregion
 
 		//m_Player->GetComponent<Transform>()->SetPosition(Vector2(100.0f, 100.0f));
 		#pragma endregion

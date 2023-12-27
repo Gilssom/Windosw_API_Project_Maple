@@ -11,6 +11,8 @@ namespace YH::enums
 		SpriteRenderer,
 		Animator,
 		Camera,
+		AudioListener,
+		AudioSource,
 		End,
 	};
 

@@ -13,6 +13,8 @@
 #include "YH_Arrow.h"
 #include "YH_ArrowScript.h"
 #include "YH_BoxCollider2D.h"
+#include "YH_AudioSource.h"
+#include "YH_AudioClip.h"
 
 namespace YH
 {
@@ -209,6 +211,11 @@ namespace YH
 		m_FairyColl = m_FairyTurn->AddComponent<BoxCollider2D>();
 		m_FairyColl->SetCollType(enums::ColliderType::FairyTurn);
 		m_FairyColl->SetSize(Vector2(2.5f, 1.5f));
+
+		AudioSource* as = GetOwner()->GetComponent<AudioSource>();
+		AudioClip* ac = Resources::Load<AudioClip>(L"Fairy Turn Sound", L"..\\Resources\\SoundResource\\FairyTurnUse.mp3");
+		as->SetClip(ac);
+		as->Play();
 
 		switch (m_Dir)
 		{

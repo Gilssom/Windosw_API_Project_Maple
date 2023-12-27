@@ -17,6 +17,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Animation.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Animator.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_AudioClip.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_AudioListener.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_AudioSource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_BoxCollider2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Camera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_CircleCollider2D.h" />
@@ -24,6 +27,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_CollisionManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_DontDestroyOnLoad.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Enums.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Fmod.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_GameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Input.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Layer.h" />
@@ -53,12 +57,16 @@
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Animation.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Animator.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_AudioClip.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_AudioListener.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_AudioSource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_BoxCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Camera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_CircleCollider2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Collider.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_CollisionManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_DontDestroyOnLoad.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Fmod.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_GameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Input.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Layer.cpp" />

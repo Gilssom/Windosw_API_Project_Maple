@@ -8,6 +8,7 @@
 #include "YH_HitEffect.h"
 
 #include "YH_Resources.h"
+#include "YH_AudioSource.h"
 
 namespace YH
 {
@@ -78,6 +79,11 @@ namespace YH
 			FHanim->PlayAnimation(L"Fairy Hit Effect", false);
 
 			fariyHit->AddComponent<HitEffect>();
+
+			AudioSource* as = GetOwner()->GetComponent<AudioSource>();
+			AudioClip* ac = Resources::Load<AudioClip>(L"Fairy Turn Sound", L"..\\Resources\\SoundResource\\FairyTurnHit.mp3");
+			as->SetClip(ac);
+			as->Play();
 			break;
 		}
 		case enums::ColliderType::HowlingGale:

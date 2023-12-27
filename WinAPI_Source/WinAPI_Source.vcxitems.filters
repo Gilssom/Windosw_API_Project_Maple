@@ -58,9 +58,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Renderer.cpp">
       <Filter>Renderer</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Animation.cpp">
-      <Filter>Resource</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Collider.cpp">
       <Filter>Component\Collider</Filter>
     </ClCompile>
@@ -99,6 +96,21 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIButton.cpp">
       <Filter>UI\Button</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Fmod.cpp">
+      <Filter>Fmod</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_AudioSource.cpp">
+      <Filter>Component\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_AudioListener.cpp">
+      <Filter>Component\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_AudioClip.cpp">
+      <Filter>Resource\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_Animation.cpp">
+      <Filter>Resource\Animation</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -168,9 +180,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Renderer.h">
       <Filter>Renderer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Animation.h">
-      <Filter>Resource</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Collider.h">
       <Filter>Component\Collider</Filter>
     </ClInclude>
@@ -206,6 +215,21 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIButton.h">
       <Filter>UI\Button</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Fmod.h">
+      <Filter>Fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_AudioSource.h">
+      <Filter>Component\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_AudioListener.h">
+      <Filter>Component\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_AudioClip.h">
+      <Filter>Resource\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_Animation.h">
+      <Filter>Resource\Animation</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -274,6 +298,18 @@
     </Filter>
     <Filter Include="UI\Button">
       <UniqueIdentifier>{4ed6ea8b-27eb-4317-9532-26064335acc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fmod">
+      <UniqueIdentifier>{afcb909f-10dc-440f-89ac-da15b1536efb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Audio">
+      <UniqueIdentifier>{2c42563d-d96d-4b77-a0e2-0ee1baac3c67}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Audio">
+      <UniqueIdentifier>{8098991b-09e8-4eb0-a2f0-0dc38c64a2b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Animation">
+      <UniqueIdentifier>{8fc2e0f6-51b6-43e8-8afc-2700153bb091}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

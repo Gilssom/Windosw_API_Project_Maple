@@ -6,6 +6,7 @@
 #include "YH_Resources.h"
 #include "YH_CollisionManager.h"
 #include "YH_UIManager.h"
+#include "YH_Fmod.h"
 
 namespace YH
 {
@@ -25,6 +26,7 @@ namespace YH
 		CreateBuffer(width, height);
 		InitializeEtc();
 
+		Fmod::Initialize();
 		CollisionManager::Initialize();
 		UIManager::Initialize();
 		SceneManager::Initialize();

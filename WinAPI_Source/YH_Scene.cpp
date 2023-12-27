@@ -3,7 +3,7 @@
 
 namespace YH
 {
-	Scene::Scene() : m_Layers { }
+	Scene::Scene() : m_Layers { }, m_AudioSource(nullptr), m_BgSound(nullptr)
 	{
 		CreateLayers();
 	}

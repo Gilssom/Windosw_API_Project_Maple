@@ -25,6 +25,10 @@
 #include "YH_GroundScript.h"
 #include "YH_RopeScript.h"
 
+#include "YH_AudioClip.h"
+#include "YH_AudioListener.h"
+#include "YH_AudioSource.h"
+
 namespace YH
 {
 	FlowerScene::FlowerScene() : m_Monster{}, bg(nullptr)
@@ -40,6 +44,8 @@ namespace YH
 	void FlowerScene::Initialize()
 	{
 		bg = object::Instantiate<GameObject>(enums::LayerType::BackGround);
+
+		SetAudioSource(bg->AddComponent<AudioSource>());
 
 		SpriteRenderer* renderer = bg->AddComponent<SpriteRenderer>();
 		renderer->SetName(L"Back Ground");
@@ -67,6 +73,7 @@ namespace YH
 		// 몬스터 적용
 		m_Monster[0] = object::Instantiate<Monster>(enums::LayerType::Monster, Vector2(1240.0f, 1445.0f));
 		m_Monster[0]->AddComponent<TigurueScript>();
+		m_Monster[0]->AddComponent<AudioSource>();
 		//m_Mushroom->GetComponent<Transform>()->SetScale(Vector2(1.2f, 1.2f));
 
 		graphics::Texture* tigurueTex = Resources::Find<graphics::Texture>(L"Tigurue");
@@ -91,6 +98,7 @@ namespace YH
 
 		m_Monster[1] = object::Instantiate<Monster>(enums::LayerType::Monster, Vector2(1265.0f, 1255.0f));
 		m_Monster[1]->AddComponent<TirueScript>();
+		m_Monster[1]->AddComponent<AudioSource>();
 		//m_Mushroom->GetComponent<Transform>()->SetScale(Vector2(1.2f, 1.2f));
 
 		graphics::Texture* tirueTex = Resources::Find<graphics::Texture>(L"Tirue");
@@ -113,6 +121,9 @@ namespace YH
 
 		tirueAnim->PlayAnimation(L"Tirue Left Idle");
 		#pragma endregion
+
+		SetAudioClip(Resources::Load<AudioClip>(L"RaindropFlower", L"..\\\Resources\\SoundResource\\RaindropFlower.mp3"));
+		GetAudioClip()->SetLoop(true);
 
 		Scene::Initialize();
 	}
@@ -145,14 +156,16 @@ namespace YH
 		cameraComp->GetBackHeight(m_Height);
 		cameraComp->SetTarget(player.front());
 
-		//camera.front()->GetComponent<Camera>()->GetBackWidth(m_Width);
-		//camera.front()->GetComponent<Camera>()->GetBackHeight(m_Height);
+		GetAudioSource()->SetClip(GetAudioClip());
+		GetAudioSource()->Play();
 
 		Scene::OnEnter();
 	}
 
 	void FlowerScene::OnExit()
 	{
+		GetAudioSource()->Stop();
+
 		Scene::OnExit();
 	}
 }

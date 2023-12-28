@@ -24,6 +24,7 @@
 #include "YH_Ground.h"
 #include "YH_GroundScript.h"
 #include "YH_RopeScript.h"
+#include "YH_PortalScript.h"
 
 #include "YH_AudioClip.h"
 #include "YH_AudioListener.h"
@@ -67,6 +68,28 @@ namespace YH
 		ropeColl->SetOffset(Vector2(-12.0f, -135.0f));
 		ropeColl->SetSize(Vector2(0.2f, 5.4f));
 		ropeColl->SetCollType(ColliderType::Rope);
+		#pragma endregion
+
+		#pragma region Portal
+		GameObject* portal_0 = object::Instantiate<GameObject>(enums::LayerType::Portal, Vector2(1829.0f, 1465.0f));
+		BoxCollider2D* portal_0_Coll = portal_0->AddComponent<BoxCollider2D>();
+		portal_0_Coll->SetOffset(Vector2(-50.0f, -50.0f));
+		portal_0_Coll->SetSize(Vector2(0.75f, 1.0f));
+		portal_0_Coll->SetCollType(ColliderType::Portal);
+
+		PortalScript* portalSc_0 = portal_0->AddComponent<PortalScript>();
+		portalSc_0->SetNextScene(L"PlayScene");
+		portalSc_0->SetSpawnPos(Vector2(160.0f, 760.0f));
+
+		GameObject* portal_1 = object::Instantiate<GameObject>(enums::LayerType::Portal, Vector2(160.0f, 1465.0f));
+		BoxCollider2D* portal_1_Coll = portal_1->AddComponent<BoxCollider2D>();
+		portal_1_Coll->SetOffset(Vector2(-50.0f, -50.0f));
+		portal_1_Coll->SetSize(Vector2(0.75f, 1.0f));
+		portal_1_Coll->SetCollType(ColliderType::Portal);
+
+		PortalScript* portalSc_1 = portal_1->AddComponent<PortalScript>();
+		portalSc_1->SetNextScene(L"BossReadyArena");
+		portalSc_1->SetSpawnPos(Vector2(226.0f, 566.0f));
 		#pragma endregion
 
 		#pragma region Monster

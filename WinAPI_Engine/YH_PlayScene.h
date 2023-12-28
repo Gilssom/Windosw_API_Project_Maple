@@ -27,6 +27,7 @@ namespace YH
 		class Mushroom* m_Mushroom2;
 		class GameObject* m_Effect[50];
 		class Player* m_Player;
+		class GameObject* m_Camera;
 
 		float m_Width, m_Height;
 	};

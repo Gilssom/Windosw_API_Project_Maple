@@ -396,13 +396,7 @@ namespace YH
 
 	void PlayerScript::OnCollisionStay(Collider* other)
 	{
-		if (other->GetCollType() == ColliderType::Portal)
-		{
-			if (Input::GetKeyDown(KeyCode::Up))
-			{
-				SceneManager::LoadScene(L"FlowerScene");
-			}
-		}
+		
 	}
 
 	void PlayerScript::OnCollisionExit(Collider* other)
@@ -714,10 +708,10 @@ namespace YH
 			switch (m_Dir)
 			{
 			case YH::PlayerScript::Direction::Right:
-				m_Rigidbody->AddForce(Vector2(6000.0f, -1500.0f));
+				m_Rigidbody->AddForce(Vector2(4000.0f, -500.0f));
 				break;
 			case YH::PlayerScript::Direction::Left:
-				m_Rigidbody->AddForce(Vector2(-6000.0f, -1500.0f));
+				m_Rigidbody->AddForce(Vector2(-4000.0f, -500.0f));
 				break;
 			}
 		}

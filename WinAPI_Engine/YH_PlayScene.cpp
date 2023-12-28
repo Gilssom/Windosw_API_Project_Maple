@@ -23,6 +23,7 @@
 #include "YH_Ground.h"
 #include "YH_GroundScript.h"
 #include "YH_RopeScript.h"
+#include "YH_PortalScript.h"
 
 #include "YH_AudioClip.h"
 #include "YH_AudioListener.h"
@@ -69,12 +70,16 @@ namespace YH
 		groundColl->SetSize(Vector2(70.0f, 1.0f));
 		ground->AddComponent<GroundScript>();
 
-		GameObject* portal = object::Instantiate<GameObject>(enums::LayerType::Portal, Vector2(2800.0f, 760.0f));
+		GameObject* portal = object::Instantiate<GameObject>(enums::LayerType::Portal, Vector2(160.0f, 760.0f));
 		BoxCollider2D* portal_0 = portal->AddComponent<BoxCollider2D>();
 		portal_0->SetOffset(Vector2(-50.0f, -50.0f));
 		portal_0->SetSize(Vector2(0.75f, 1.0f));
 		portal->AddComponent<Script>();
 		portal_0->SetCollType(ColliderType::Portal);
+
+		PortalScript* portalSc = portal->AddComponent<PortalScript>();
+		portalSc->SetNextScene(L"FlowerScene");
+		portalSc->SetSpawnPos(Vector2(1829.0f, 1465.0f));
 		#pragma endregion
 		
 		#pragma region Player Setting
@@ -183,8 +188,8 @@ namespace YH
 
 	void PlayScene::OnEnter()
 	{
-		GameObject* camera = object::Instantiate<GameObject>(enums::LayerType::Camera);
-		Camera* cameraComp = camera->AddComponent<Camera>();
+		m_Camera = object::Instantiate<GameObject>(enums::LayerType::Camera);
+		Camera* cameraComp = m_Camera->AddComponent<Camera>();
 		renderer::mainCamera = cameraComp;
 
 		const std::vector<GameObject*>& player = SceneManager::GetGameObjects(LayerType::Player);
@@ -204,8 +209,6 @@ namespace YH
 	void PlayScene::OnExit()
 	{
 		GetAudioSource()->Stop();
-
-		m_Player->GetComponent<Transform>()->SetPosition(Vector2(1829.0f, 1465.0f));
 
 		Scene::OnExit();
 	}

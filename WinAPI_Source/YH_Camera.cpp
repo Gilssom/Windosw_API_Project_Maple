@@ -34,7 +34,14 @@ namespace YH
 		if (!isSetting)
 		{
 			if (!CameraAreaCheck())
-				m_LookPosition = Vector2(m_BackWidth - (m_Resolution.x / 2.0f), m_BackHeight - (m_Resolution.y / 2.0f));
+			{
+				Transform* playerTf = m_Target->GetComponent<Transform>();
+
+				if(playerTf->GetPostion().x < (m_Resolution.x / 2.0f))
+					m_LookPosition = Vector2(m_Resolution.x / 2.0f, m_BackHeight - (m_Resolution.y / 2.0f));
+				else
+					m_LookPosition = Vector2(m_BackWidth - (m_Resolution.x / 2.0f), m_BackHeight - (m_Resolution.y / 2.0f));
+			}
 			else
 				CameraSettings();
 

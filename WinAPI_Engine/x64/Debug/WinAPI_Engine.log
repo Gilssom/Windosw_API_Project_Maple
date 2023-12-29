@@ -1,8 +1,8 @@
-﻿  YH_BossReadyScene.cpp
+﻿  YH_BossCygnusScene.cpp
   C:\Program Files (x86)\Windows Kits\10\Include\10.0.22621.0\um\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-C:\Users\gil52\OneDrive\문서\GitHub\Windosw_API_Project_Terraria\WinAPI_Engine\YH_BossReadyScene.cpp(49,25): warning C4244: '=': 'UINT'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\gil52\OneDrive\문서\GitHub\Windosw_API_Project_Terraria\WinAPI_Engine\YH_BossReadyScene.cpp(50,27): warning C4244: '=': 'UINT'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\gil52\OneDrive\문서\GitHub\Windosw_API_Project_Terraria\WinAPI_Engine\YH_BossReadyScene.cpp(82,62): warning C4129: 'R': 문자 이스케이프 시퀀스를 인식할 수 없습니다.
+C:\Users\gil52\OneDrive\문서\GitHub\Windosw_API_Project_Terraria\WinAPI_Engine\YH_BossCygnusScene.cpp(51,25): warning C4244: '=': 'UINT'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\gil52\OneDrive\문서\GitHub\Windosw_API_Project_Terraria\WinAPI_Engine\YH_BossCygnusScene.cpp(52,27): warning C4244: '=': 'UINT'에서 'float'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+C:\Users\gil52\OneDrive\문서\GitHub\Windosw_API_Project_Terraria\WinAPI_Engine\YH_BossCygnusScene.cpp(91,60): warning C4129: 'R': 문자 이스케이프 시퀀스를 인식할 수 없습니다.
   WinAPI_Engine.vcxproj -> C:\Users\gil52\OneDrive\문서\GitHub\Windosw_API_Project_Terraria\Editor_Window\x64\Debug\WinAPI_Engine.lib
           1개 파일이 복사되었습니다.
           1개 파일이 복사되었습니다.

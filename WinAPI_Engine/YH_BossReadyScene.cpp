@@ -76,7 +76,7 @@ namespace YH
 
 		PortalScript* portalSc_1 = portal_1->AddComponent<PortalScript>();
 		portalSc_1->SetNextScene(L"BossCygnusScene");
-		portalSc_1->SetSpawnPos(Vector2(226.0f, 566.0f));
+		portalSc_1->SetSpawnPos(Vector2(153.0f, 586.0f));
 		#pragma endregion
 
 		SetAudioClip(Resources::Load<AudioClip>(L"BossReadyArena", L"..\\\Resources\\SoundResource\\CygnusReadyBgm.mp3"));

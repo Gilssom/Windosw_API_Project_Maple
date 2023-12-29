@@ -45,11 +45,13 @@ namespace YH
 		CollisionManager::CollisionLayerCheck(LayerType::Player, LayerType::Monster, true);
 		CollisionManager::CollisionLayerCheck(LayerType::Player, LayerType::Ground, true);
 		CollisionManager::CollisionLayerCheck(LayerType::Player, LayerType::Rope, true);
+		CollisionManager::CollisionLayerCheck(LayerType::Player, LayerType::Boss, true);
 
 		CollisionManager::CollisionLayerCheck(LayerType::Monster, LayerType::Player, true);
 		CollisionManager::CollisionLayerCheck(LayerType::Portal, LayerType::Player, true);
 		CollisionManager::CollisionLayerCheck(LayerType::Rope, LayerType::Player, true);
 		CollisionManager::CollisionLayerCheck(LayerType::Effect, LayerType::Monster, true);
+		CollisionManager::CollisionLayerCheck(LayerType::Effect, LayerType::Boss, true);
 		#pragma endregion
 
 		#pragma region BackGround Settings
@@ -177,6 +179,7 @@ namespace YH
 
 		if (Input::GetKeyDown(KeyCode::N))
 		{
+			m_Player->GetComponent<Transform>()->SetPosition(Vector2(153.0f, 586.0f));
 			SceneManager::LoadScene(L"BossCygnusScene");
 		}
 	}

@@ -18,10 +18,12 @@ namespace YH
 		void OnExit() override;
 
 	private:
-		class GameObject* bg[50];
+		class GameObject* m_Bg;
 		class GameObject* m_Monster[50];
 		class Cygnus* m_Cygnus;
 		class GameObject* m_Effect[50];
 		class Player* m_Player;
+
+		float m_Width, m_Height;
 	};
 }

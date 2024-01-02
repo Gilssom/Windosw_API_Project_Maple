@@ -85,7 +85,7 @@ namespace YH
 		#pragma endregion
 		
 		#pragma region Player Setting
-		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(2768.0f, 760.0f));
+		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(1384.0f, 760.0f));
 		object::DontDestroyOnLoad(m_Player);
 
 		m_Player->AddComponent<Rigidbody>();
@@ -130,6 +130,9 @@ namespace YH
 			Vector2::Zero, 1, 0.0f);
 		playerAnim->CreateAnimation(L"Player Right Jump", player, Vector2(510.0f, 510.0f), Vector2(170.0f, 170.0f),
 			Vector2::Zero, 1, 0.0f);
+
+		playerAnim->CreateAnimation(L"Player Rope", player, Vector2(680.0f, 510.0f), Vector2(170.0f, 170.0f),
+			Vector2::Zero, 2, 0.5f);
 
 		playerAnim->CreateAnimation(L"Player Fairy Left Attack", player, Vector2(0.0f, 340.0f), Vector2(170.0f, 170.0f),
 			Vector2::Zero, 3, 0.15f);

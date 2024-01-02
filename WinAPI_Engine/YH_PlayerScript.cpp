@@ -30,11 +30,15 @@ namespace YH
 		object::Destroy(m_BoringSong);
 		object::Destroy(m_HowlingGale);
 		object::Destroy(m_SharpEyes);
+		object::Destroy(m_DoubleJump);
+		object::Destroy(m_HighJump);
 
 		m_FairyTurn = nullptr;
 		m_BoringSong = nullptr;
 		m_HowlingGale = nullptr;
 		m_SharpEyes = nullptr;
+		m_DoubleJump = nullptr;
+		m_HighJump = nullptr;
 	}
 
 	void PlayerScript::Initialize()
@@ -132,13 +136,37 @@ namespace YH
 				m_SharpEyes->SetActive(false);
 				sharpAnim->CreateAnimation(L"Sharp Eyes", sharpEyesEff, Vector2(0.0f, 0.0f), Vector2(476.0f, 244.0f),
 					Vector2(0.0f, 0.0f), 21, 0.05f);
-		#pragma endregion			
+		#pragma endregion
+
+		#pragma region Double Jump
+				m_DoubleJump = object::Instantiate<GameObject>(enums::LayerType::Effect);
+				graphics::Texture* doubleJumpEff = Resources::Find<graphics::Texture>(L"DoubleJump");
+				Animator* jumpAnim = m_DoubleJump->AddComponent<Animator>();
+				m_DoubleJump->AddComponent<Transform>();
+				m_DoubleJump->SetActive(false);
+				jumpAnim->CreateAnimation(L"Left Double Jump", doubleJumpEff, Vector2(0.0f, 0.0f), Vector2(273.0f, 137.0f),
+					Vector2(0.0f, 0.0f), 8, 0.05f);
+
+				jumpAnim->CreateAnimation(L"Right Double Jump", doubleJumpEff, Vector2(0.0f, 137.0f), Vector2(273.0f, 137.0f),
+					Vector2(0.0f, 0.0f), 8, 0.05f, true);
+
+				m_HighJump = object::Instantiate<GameObject>(enums::LayerType::Effect);
+				graphics::Texture* highJumpEff = Resources::Find<graphics::Texture>(L"HighJump");
+				Animator* highJumpAnim = m_HighJump->AddComponent<Animator>();
+				m_HighJump->AddComponent<Transform>();
+				m_HighJump->SetActive(false);
+				highJumpAnim->CreateAnimation(L"High Jump", highJumpEff, Vector2(0.0f, 0.0f), Vector2(137.0f, 273.0f),
+					Vector2(0.0f, 0.0f), 8, 0.05f);
+		#pragma endregion
+
 
 		#pragma region DontDestroyObject
 				object::DontDestroyOnLoad(m_FairyTurn);
 				object::DontDestroyOnLoad(m_BoringSong);
 				object::DontDestroyOnLoad(m_HowlingGale);
 				object::DontDestroyOnLoad(m_SharpEyes);
+				object::DontDestroyOnLoad(m_DoubleJump);
+				object::DontDestroyOnLoad(m_HighJump);
 		#pragma endregion
 	}
 
@@ -146,6 +174,9 @@ namespace YH
 	{
 		if (!m_Animator)
 			m_Animator = GetOwner()->GetComponent<Animator>();
+
+		if (!m_AudioSource)
+			m_AudioSource = GetOwner()->GetComponent<AudioSource>();
 
 		m_PlayerPos = GetOwner()->GetComponent<Transform>()->GetPostion();
 
@@ -159,6 +190,9 @@ namespace YH
 			break;
 		case YH::PlayerScript::State::Jump:
 			Jump();
+			break;
+		case YH::PlayerScript::State::Rope:
+			Rope();
 			break;
 		case YH::PlayerScript::State::Down:
 			SitDown();
@@ -212,10 +246,9 @@ namespace YH
 		m_FairyColl->SetCollType(enums::ColliderType::FairyTurn);
 		m_FairyColl->SetSize(Vector2(2.5f, 1.5f));
 
-		AudioSource* as = GetOwner()->GetComponent<AudioSource>();
 		AudioClip* ac = Resources::Load<AudioClip>(L"Fairy Turn Sound", L"..\\Resources\\SoundResource\\FairyTurnUse.mp3");
-		as->SetClip(ac);
-		as->Play();
+		m_AudioSource->SetClip(ac);
+		m_AudioSource->Play();
 
 		switch (m_Dir)
 		{
@@ -244,6 +277,10 @@ namespace YH
 
 	void PlayerScript::BoringSongEff()
 	{
+		AudioClip* ac = Resources::Load<AudioClip>(L"Boring Start Sound", L"..\\Resources\\SoundResource\\BoringSongUse.mp3");
+		m_AudioSource->SetClip(ac);
+		m_AudioSource->Play();
+
 		switch (m_Dir)
 		{
 		case YH::PlayerScript::Direction::Right:
@@ -261,6 +298,11 @@ namespace YH
 
 	void PlayerScript::BoringSongEffing()
 	{
+		AudioClip* ac = Resources::Load<AudioClip>(L"Boring Sound", L"..\\Resources\\SoundResource\\BoringSongLoop.mp3");
+		m_AudioSource->SetClip(ac);
+		m_AudioSource->SetLoop(true);
+		m_AudioSource->Play();
+
 		switch (m_Dir)
 		{
 		case YH::PlayerScript::Direction::Right:
@@ -274,6 +316,11 @@ namespace YH
 
 	void PlayerScript::BoringSongEffend()
 	{
+		m_AudioSource->Stop();
+		AudioClip* ac = Resources::Load<AudioClip>(L"Boring End Sound", L"..\\Resources\\SoundResource\\BoringSongEnd.mp3");
+		m_AudioSource->SetClip(ac);
+		m_AudioSource->Play();
+
 		switch (m_Dir)
 		{
 		case YH::PlayerScript::Direction::Right:
@@ -335,6 +382,10 @@ namespace YH
 
 	void PlayerScript::HowlingEff()
 	{
+		AudioClip* ac = Resources::Load<AudioClip>(L"Howling Start Sound", L"..\\Resources\\SoundResource\\HowlingGaleUse.mp3");
+		m_AudioSource->SetClip(ac);
+		m_AudioSource->Play();
+
 		switch (m_Dir)
 		{
 		case YH::PlayerScript::Direction::Right:
@@ -352,6 +403,10 @@ namespace YH
 
 	void PlayerScript::HowlingEffing()
 	{
+		AudioClip* ac = Resources::Load<AudioClip>(L"Howling Sound", L"..\\Resources\\SoundResource\\HowlingGaleLoop.mp3");
+		m_AudioSource->SetClip(ac);
+		m_AudioSource->Play();
+
 		m_HowlingColl = m_HowlingGale->AddComponent<BoxCollider2D>();
 		m_HowlingColl->SetCollType(enums::ColliderType::HowlingGale);
 		m_HowlingColl->SetOffset(Vector2(-70.0f, 0.0f));
@@ -374,6 +429,11 @@ namespace YH
 
 	void PlayerScript::HowlingEffend()
 	{
+		m_AudioSource->Stop();
+		AudioClip* ac = Resources::Load<AudioClip>(L"Howling End Sound", L"..\\Resources\\SoundResource\\HowlingGaleDie.mp3");
+		m_AudioSource->SetClip(ac);
+		m_AudioSource->Play();
+
 		m_HowlingColl = nullptr;
 		m_HowlingGale->GetComponent<Animator>()->PlayAnimation(L"Howling Attack End", false);
 	}
@@ -391,7 +451,7 @@ namespace YH
 	void PlayerScript::OnCollisionEnter(Collider* other)
 	{
 		if (other->GetCollType() == ColliderType::Rope)
-			int a = 0;
+			isRope = true;
 	}
 
 	void PlayerScript::OnCollisionStay(Collider* other)
@@ -401,7 +461,8 @@ namespace YH
 
 	void PlayerScript::OnCollisionExit(Collider* other)
 	{
-
+		if (other->GetCollType() == ColliderType::Rope)
+			isRope = false;
 	}
 #pragma endregion
 
@@ -447,6 +508,10 @@ namespace YH
 			if (Input::GetKey(KeyCode::C))
 			{
 				m_State = PlayerScript::State::Jump;
+
+				AudioClip* ac = Resources::Load<AudioClip>(L"Jump Sound", L"..\\Resources\\SoundResource\\Jump.mp3");
+				m_AudioSource->SetClip(ac);
+				m_AudioSource->Play();
 
 				switch (m_Dir)
 				{
@@ -555,6 +620,10 @@ namespace YH
 			{
 				m_State = PlayerScript::State::Buff;
 
+				AudioClip* ac = Resources::Load<AudioClip>(L"Sharp Eyes Sound", L"..\\Resources\\SoundResource\\SharpEyesUse.mp3");
+				m_AudioSource->SetClip(ac);
+				m_AudioSource->Play();
+
 				m_SharpEyes->SetActive(true);
 				m_SharpEyes->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x, m_PlayerPos.y - 100.0f));
 				isBuff = true;
@@ -575,6 +644,10 @@ namespace YH
 
 			if (Input::GetKey(KeyCode::C))
 			{
+				AudioClip* ac = Resources::Load<AudioClip>(L"Jump Sound", L"..\\Resources\\SoundResource\\Jump.mp3");
+				m_AudioSource->SetClip(ac);
+				m_AudioSource->Play();
+
 				m_Rigidbody->AddForce(Vector2(3000.0f, 0.0f));
 				m_State = PlayerScript::State::Jump;
 				m_Animator->PlayAnimation(L"Player Right Jump");
@@ -594,6 +667,10 @@ namespace YH
 
 			if (Input::GetKey(KeyCode::C))
 			{
+				AudioClip* ac = Resources::Load<AudioClip>(L"Jump Sound", L"..\\Resources\\SoundResource\\Jump.mp3");
+				m_AudioSource->SetClip(ac);
+				m_AudioSource->Play();
+
 				m_Rigidbody->AddForce(Vector2(-3000.0f, 0.0f));
 				m_State = PlayerScript::State::Jump;
 				m_Animator->PlayAnimation(L"Player Left Jump");
@@ -694,6 +771,10 @@ namespace YH
 		{
 			m_State = PlayerScript::State::Buff;
 
+			AudioClip* ac = Resources::Load<AudioClip>(L"Sharp Eyes Sound", L"..\\Resources\\SoundResource\\SharpEyesUse.mp3");
+			m_AudioSource->SetClip(ac);
+			m_AudioSource->Play();
+
 			m_SharpEyes->SetActive(true);
 			m_SharpEyes->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x, m_PlayerPos.y - 100.0f));
 			isBuff = true;
@@ -703,16 +784,56 @@ namespace YH
 
 	void PlayerScript::Jump()
 	{
-		if (Input::GetKeyDown(KeyCode::C))
+		if (Input::GetKeyDown(KeyCode::Up) && isRope)
 		{
-			switch (m_Dir)
+			m_State = PlayerScript::State::Rope;
+
+			m_Animator->PlayAnimation(L"Player Rope", false);
+
+			m_Rigidbody->SetGround(true);
+		}
+
+		if (Input::GetKeyDown(KeyCode::C) && !isJump)
+		{
+			AudioClip* ac = Resources::Load<AudioClip>(L"Double Jump Sound", L"..\\Resources\\SoundResource\\DoubleJump.mp3");
+			m_AudioSource->SetClip(ac);
+			m_AudioSource->Play();
+
+			isJump = true;
+
+			if (Input::GetKey(KeyCode::Up))
 			{
-			case YH::PlayerScript::Direction::Right:
-				m_Rigidbody->AddForce(Vector2(4000.0f, -500.0f));
-				break;
-			case YH::PlayerScript::Direction::Left:
-				m_Rigidbody->AddForce(Vector2(-4000.0f, -500.0f));
-				break;
+				m_HighJump->SetActive(true);
+
+				m_HighJump->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x, m_PlayerPos.y + 50.0f));
+
+				m_HighJump->GetComponent<Animator>()->PlayAnimation(L"High Jump", false);
+
+				m_Rigidbody->AddForce(Vector2(0.0f, -6000.0f));
+			}
+			else
+			{
+				switch (m_Dir)
+				{
+				case YH::PlayerScript::Direction::Right:
+					m_DoubleJump->SetActive(true);
+
+					m_DoubleJump->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x, m_PlayerPos.y));
+
+					m_DoubleJump->GetComponent<Animator>()->PlayAnimation(L"Right Double Jump", false);
+
+					m_Rigidbody->AddForce(Vector2(4000.0f, -500.0f));
+					break;
+				case YH::PlayerScript::Direction::Left:
+					m_DoubleJump->SetActive(true);
+
+					m_DoubleJump->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x, m_PlayerPos.y));
+
+					m_DoubleJump->GetComponent<Animator>()->PlayAnimation(L"Left Double Jump", false);
+
+					m_Rigidbody->AddForce(Vector2(-4000.0f, -500.0f));
+					break;
+				}
 			}
 		}
 
@@ -733,9 +854,14 @@ namespace YH
 			}
 		}
 
-		if (m_Rigidbody->GetGround())
+		if (m_Rigidbody->GetGround() && !isRope)
 		{
 			m_State = PlayerScript::State::Idle;
+
+			m_DoubleJump->SetActive(false);
+			m_DoubleJump->SetActive(false);
+
+			isJump = false;
 
 			switch (m_Dir)
 			{
@@ -748,6 +874,22 @@ namespace YH
 			default:
 				break;
 			}
+		}
+	}
+
+	void PlayerScript::Rope()
+	{
+		if (Input::GetKey(KeyCode::Up))
+		{
+			m_Animator->PlayAnimation(L"Player Rope", false);
+
+			Transform* transform = GetOwner()->GetComponent<Transform>();
+
+			Vector2 pos = transform->GetPostion();
+
+			pos.y -= 100.f * Time::DeltaTime();
+
+			transform->SetPosition(pos);
 		}
 	}
 

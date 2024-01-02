@@ -37,6 +37,9 @@ namespace YH
 
 		Resources::Load<graphics::Texture>(L"SharpEyes",			L"..\\Resources\\Buff\\SharpEyes.png");
 
+		Resources::Load<graphics::Texture>(L"DoubleJump",			L"..\\Resources\\Skill\\DoubleJump.png");
+		Resources::Load<graphics::Texture>(L"HighJump",				L"..\\Resources\\Skill\\HighJump.png");
+
 		// Hit Effect
 		Resources::Load<graphics::Texture>(L"BoringHit",			L"..\\Resources\\Hit\\BoringHit.png");
 		Resources::Load<graphics::Texture>(L"FairyTurnHit",			L"..\\Resources\\Hit\\FairyTurnHit.png");

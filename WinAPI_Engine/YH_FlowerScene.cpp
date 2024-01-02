@@ -119,7 +119,7 @@ namespace YH
 
 		tigurueAnim->PlayAnimation(L"Tigurue Left Idle");
 
-		m_Monster[1] = object::Instantiate<Monster>(enums::LayerType::Monster, Vector2(1265.0f, 1255.0f));
+		m_Monster[1] = object::Instantiate<Monster>(enums::LayerType::Monster, Vector2(1140.0f, 1445.0f));
 		m_Monster[1]->AddComponent<TirueScript>();
 		m_Monster[1]->AddComponent<AudioSource>();
 		//m_Mushroom->GetComponent<Transform>()->SetScale(Vector2(1.2f, 1.2f));

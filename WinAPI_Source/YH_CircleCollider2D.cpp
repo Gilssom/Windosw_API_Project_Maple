@@ -32,11 +32,11 @@ namespace YH
 
 	void CircleCollider2D::Render(HDC hdc)
 	{
-		// Collider ±×¸®±â
+		// Collider ï¿½×¸ï¿½ï¿½ï¿½
 		Transform* transform = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = transform->GetPostion();
 
-		// Ä«¸Þ¶ó À§Ä¡°ª °¡Á®¿Í¼­ ´õÇØÁÖ±â
+		// Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½
 		if (renderer::mainCamera)
 			pos = renderer::mainCamera->CaluatePosition(pos);
 

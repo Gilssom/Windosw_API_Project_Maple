@@ -18,7 +18,7 @@ namespace YH::graphics
 		Texture();
 		~Texture();
 
-		// ºÎ¸ð¿¡ ¼ø¼ö °¡»ó ÇÔ¼ö°¡ ÀÖÀ¸¸é ¹«Á¶°Ç °¡Á®¿Í¾ß ÇÔ
+		// ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¾ï¿½ ï¿½ï¿½
 		virtual bool Load(const std::wstring& path) override;
 
 		UINT GetWidth() { return m_Width; }

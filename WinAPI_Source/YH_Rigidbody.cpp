@@ -9,7 +9,7 @@ namespace YH
 		, isGrounded(false)
 		, m_Mass(1.0f)
 		, m_Friction(10.0f)
-		, m_Force(Vector2::Zero)
+		//, m_Force(Vector2::Zero)
 		, m_Velocity(Vector2::Zero)
 		, m_LimitedVelocity(Vector2(1000.0f, 1000.0f))
 		, m_Gravity(Vector2(0.0f, 600.0f))
@@ -30,15 +30,15 @@ namespace YH
 
 	void Rigidbody::Update()
 	{
-		// f (Èû) = m (Áú·®) x a (°¡¼Óµµ)
+		// f (ï¿½ï¿½) = m (ï¿½ï¿½ï¿½ï¿½) x a (ï¿½ï¿½ï¿½Óµï¿½)
 		m_Accelation = m_Force / m_Mass;
 
-		// ¼Óµµ¿¡ °¡¼Óµµ ´õÇÏ±â
+		// ï¿½Óµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Óµï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
 		m_Velocity += m_Accelation * Time::DeltaTime();
 
 		if (isGrounded)
 		{
-			// ¶¥ À§¿¡ ÀÖÀ» ¶§
+			// ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 			Vector2 gravity = m_Gravity;
 			gravity.normalize();
 
@@ -47,11 +47,11 @@ namespace YH
 		}
 		else
 		{
-			// °øÁß¿¡ ÀÖÀ» ¶§
+			// ï¿½ï¿½ï¿½ß¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 			m_Velocity += m_Gravity * Time::DeltaTime();
 		}
 
-		// ÃÖ´ë ¼Óµµ Á¦ÇÑ
+		// ï¿½Ö´ï¿½ ï¿½Óµï¿½ ï¿½ï¿½ï¿½ï¿½
 		Vector2 gravity = m_Gravity;
 		gravity.normalize();
 		float dot = Vector2::Dot(m_Velocity, gravity);
@@ -78,7 +78,7 @@ namespace YH
 			Vector2 friction = -m_Velocity;
 			friction = friction.normalize() * m_Friction * m_Mass * Time::DeltaTime();
 
-			// ¸¶Âû·ÂÀ¸·Î ÀÎÇÑ ¼Óµµ °¨¼Ò·®ÀÌ ÇöÀç ¼Óµµº¸´Ù Å¬ °æ¿ì
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ ï¿½ï¿½ï¿½Ò·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Óµï¿½ï¿½ï¿½ï¿½ï¿½ Å¬ ï¿½ï¿½ï¿½
 			if (m_Velocity.length() <= friction.length())
 				m_Velocity = Vector2::Zero;
 			else

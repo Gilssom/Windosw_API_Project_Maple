@@ -22,11 +22,11 @@ namespace YH
 	}
 	void BoxCollider2D::Render(HDC hdc)
 	{
-		// Collider ±×¸®±â
+		// Collider ï¿½×¸ï¿½ï¿½ï¿½
 		Transform* transform = GetOwner()->GetComponent<Transform>();
 		Vector2 pos = transform->GetPostion();
 
-		// Ä«¸Þ¶ó À§Ä¡°ª °¡Á®¿Í¼­ ´õÇØÁÖ±â
+		// Ä«ï¿½Þ¶ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½
 		if (renderer::mainCamera)
 			pos = renderer::mainCamera->CaluatePosition(pos);
 
@@ -38,11 +38,17 @@ namespace YH
 		HPEN greenPen = CreatePen(PS_SOLID, 2, RGB(0, 255, 0));
 		HPEN oldPen = (HPEN)SelectObject(hdc, greenPen);
 
-		Rectangle(hdc
+		/*Rectangle(hdc
 			, pos.x + offset.x
 			, pos.y + offset.y
 			, pos.x + offset.x + 100 * GetSize().x
-			, pos.y + offset.y + 100 * GetSize().y);
+			, pos.y + offset.y + 100 * GetSize().y);*/
+
+		Rectangle(hdc
+			, (pos.x + offset.x) - ((100 * GetSize().x) / 2.0f)
+			, (pos.y + offset.y) - ((100 * GetSize().y) / 2.0f)
+			, (pos.x + offset.x) + ((100 * GetSize().x) / 2.0f)
+			, (pos.y + offset.y) + ((100 * GetSize().y) / 2.0f));
 
 		SelectObject(hdc, oldBrush);
 		SelectObject(hdc, oldPen);

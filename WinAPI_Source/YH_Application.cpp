@@ -60,10 +60,10 @@ namespace YH
 	{
 		ClearRenderTarget();
 
-		Time::Render(m_BackHdc);
 		CollisionManager::Render(m_BackHdc);
 		SceneManager::Render(m_BackHdc);
 		UIManager::Render(m_BackHdc);
+		Time::Render(m_BackHdc);
 
 		CopyRenderTarget(m_BackHdc, m_Hdc);
 	}
@@ -82,7 +82,7 @@ namespace YH
 
 	void Application::ClearRenderTarget()
 	{
-		// ¹è°æ»ö ¹Ù²Ù±â
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½Ù²Ù±ï¿½
 		HBRUSH grayBrush = (HBRUSH)CreateSolidBrush(RGB(128, 128, 128));
 		HBRUSH oldBrush = (HBRUSH)SelectObject(m_BackHdc, grayBrush);
 
@@ -94,7 +94,7 @@ namespace YH
 
 	void Application::CopyRenderTarget(HDC source, HDC dest)
 	{
-		// BackBuffer ¿¡ ÀÖ´Â Á¤º¸µéÀ» ¿øº» Buffer ¿¡ º¹»ç ( ±×·ÁÁØ´Ù )
+		// BackBuffer ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Buffer ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ( ï¿½×·ï¿½ï¿½Ø´ï¿½ )
 		BitBlt(dest, 0, 0, m_Width, m_Height, source, 0, 0, SRCCOPY);
 	}
 
@@ -115,10 +115,10 @@ namespace YH
 
 	void Application::CreateBuffer(UINT width, UINT height)
 	{
-		// À©µµ¿ì ÇØ»óµµ¿¡ ¸Â´Â ¹é¹öÆÛ(µµÈ­Áö) »ý¼º
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø»óµµ¿ï¿½ ï¿½Â´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½È­ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½
 		m_BackBitmap = CreateCompatibleBitmap(m_Hdc, width, height);
 
-		// ¹é¹öÆÛ¸¦ °¡¸£Å³ DC »ý¼º
+		// ï¿½ï¿½ï¿½ï¿½Û¸ï¿½ ï¿½ï¿½ï¿½ï¿½Å³ DC ï¿½ï¿½ï¿½ï¿½
 		m_BackHdc = CreateCompatibleDC(m_Hdc);
 
 		HBITMAP oldBitmap = (HBITMAP)SelectObject(m_BackHdc, m_BackBitmap);

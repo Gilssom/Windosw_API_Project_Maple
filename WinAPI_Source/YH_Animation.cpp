@@ -48,7 +48,7 @@ namespace YH
 
 	void Animation::Render(HDC hdc)
 	{
-		// ¾ËÆÄºí·»µå¸¦ ¾µ ¼ö ÀÖ´Â Á¶°Ç : ÇØ´ç ÀÌ¹ÌÁö¿¡ ¾ËÆÄÃ¤³ÎÀÌ Á¸ÀçÇØ¾ß ÇÑ´Ù.
+		// ï¿½ï¿½ï¿½Äºï¿½ï¿½ï¿½å¸¦ ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ : ï¿½Ø´ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã¤ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½Ñ´ï¿½.
 		//AlphaBlend()
 
 		if (m_Texture == nullptr)
@@ -103,32 +103,55 @@ namespace YH
 		}
 		else if (type == graphics::Texture::TextureType::Png)
 		{
-			// ³»°¡ ¿øÇÏ´Â ÇÈ¼¿À» Åõ¸íÈ­ ½ÃÅ³ ¶§ »ç¿ë
 			Gdiplus::ImageAttributes imgAtt = {};
 
-			// Åõ¸íÈ­ ½ÃÅ³ ÇÈ¼¿ÀÇ »ö ¹üÀ§
-			imgAtt.SetColorKey(Gdiplus::Color(230, 230, 230), Gdiplus::Color(255, 255, 255));
+			// ï¿½ï¿½ï¿½ï¿½È­ ï¿½ï¿½Å³ ï¿½È¼ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			//imgAtt.SetColorKey(Gdiplus::Color(100, 100, 100), Gdiplus::Color(255, 255, 255));
+			BLENDFUNCTION blend = {};
+			blend.BlendOp = AC_SRC_OVER;
+			blend.BlendFlags = 0;
 
-			Gdiplus::Graphics graphics(hdc);
+			blend.SourceConstantAlpha = 255; // 0 ~ 255
+			blend.AlphaFormat = AC_SRC_ALPHA; // 0
 
-			graphics.TranslateTransform(pos.x, pos.y);
-			graphics.RotateTransform(rot);
-			graphics.TranslateTransform(-pos.x, -pos.y);
-
-			graphics.DrawImage(m_Texture->GetImage()
-				, Gdiplus::Rect(
-					  pos.x - (sprite.size.x / 2.0f) + sprite.offset.x
-					, pos.y - (sprite.size.y / 2.0f) + sprite.offset.y
-					, sprite.size.x * scale.x
-					, sprite.size.y * scale.y
-				)
-				, sprite.leftTop.x 
-				, sprite.leftTop.y 
-				, sprite.size.x 
+			AlphaBlend(hdc
+				, pos.x - (sprite.size.x / 2.0f) + sprite.offset.x
+				, pos.y - (sprite.size.y / 2.0f) + sprite.offset.y
+				, sprite.size.x * scale.x
+				, sprite.size.y * scale.y
+				, m_Texture->GetHdc()
+				, sprite.leftTop.x
+				, sprite.leftTop.y
+				, sprite.size.x
 				, sprite.size.y
-				, Gdiplus::UnitPixel
-				, nullptr
-			);
+				, blend);
+
+			//// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½È¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½È­ ï¿½ï¿½Å³ ï¿½ï¿½ ï¿½ï¿½ï¿½
+			//Gdiplus::ImageAttributes imgAtt = {};
+
+			//// ï¿½ï¿½ï¿½ï¿½È­ ï¿½ï¿½Å³ ï¿½È¼ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+			//imgAtt.SetColorKey(Gdiplus::Color(230, 230, 230), Gdiplus::Color(255, 255, 255));
+
+			//Gdiplus::Graphics graphics(hdc);
+
+			//graphics.TranslateTransform(pos.x, pos.y);
+			//graphics.RotateTransform(rot);
+			//graphics.TranslateTransform(-pos.x, -pos.y);
+
+			//graphics.DrawImage(m_Texture->GetImage()
+			//	, Gdiplus::Rect(
+			//		  pos.x - (sprite.size.x / 2.0f) + sprite.offset.x
+			//		, pos.y - (sprite.size.y / 2.0f) + sprite.offset.y
+			//		, sprite.size.x * scale.x
+			//		, sprite.size.y * scale.y
+			//	)
+			//	, sprite.leftTop.x 
+			//	, sprite.leftTop.y 
+			//	, sprite.size.x 
+			//	, sprite.size.y
+			//	, Gdiplus::UnitPixel
+			//	, nullptr
+			//);
 		}
 	}
 

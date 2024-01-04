@@ -114,7 +114,7 @@ namespace YH
 					Vector2(-50.0f, -20.0f), 15, 0.05f);
 
 				howlingAnim->CreateAnimation(L"Howling Right Start", RighthowlingStart, Vector2(0.0f, 0.0f), Vector2(615.0f, 556.0f),
-					Vector2(50.0f, -20.0f), 15, 0.03f, true);
+					Vector2(50.0f, -20.0f), 15, 0.05f, true);
 
 				howlingAnim->CreateAnimation(L"Howling Attack", howlingAttack, Vector2(0.0f, 0.0f), Vector2(372.0f, 605.0f),
 					Vector2(0.0f, -270.0f), 14, 0.07f);
@@ -219,7 +219,7 @@ namespace YH
 			break;
 		}
 
-		// ¸¶¿ì½º ÁÂÇ¥ °¡Á®¿À´Â ·ÎÁ÷
+		// ï¿½ï¿½ï¿½ì½º ï¿½ï¿½Ç¥ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		if (Input::GetKey(KeyCode::LeftMouse))
 		{
 			//m_State = PlayerScript::State::FairyTurn;
@@ -648,7 +648,7 @@ namespace YH
 				m_AudioSource->SetClip(ac);
 				m_AudioSource->Play();
 
-				m_Rigidbody->AddForce(Vector2(3000.0f, 0.0f));
+				m_Rigidbody->AddForce(Vector2(33000.0f, 0.0f));
 				m_State = PlayerScript::State::Jump;
 				m_Animator->PlayAnimation(L"Player Right Jump");
 
@@ -671,7 +671,7 @@ namespace YH
 				m_AudioSource->SetClip(ac);
 				m_AudioSource->Play();
 
-				m_Rigidbody->AddForce(Vector2(-3000.0f, 0.0f));
+				m_Rigidbody->AddForce(Vector2(-33000.0f, 0.0f));
 				m_State = PlayerScript::State::Jump;
 				m_Animator->PlayAnimation(L"Player Left Jump");
 
@@ -809,7 +809,7 @@ namespace YH
 
 				m_HighJump->GetComponent<Animator>()->PlayAnimation(L"High Jump", false);
 
-				m_Rigidbody->AddForce(Vector2(0.0f, -6000.0f));
+				m_Rigidbody->AddForce(Vector2(0.0f, -100000.0f));
 			}
 			else
 			{
@@ -822,7 +822,7 @@ namespace YH
 
 					m_DoubleJump->GetComponent<Animator>()->PlayAnimation(L"Right Double Jump", false);
 
-					m_Rigidbody->AddForce(Vector2(4000.0f, -500.0f));
+					m_Rigidbody->AddForce(Vector2(70000.0f, -500.0f));
 					break;
 				case YH::PlayerScript::Direction::Left:
 					m_DoubleJump->SetActive(true);
@@ -831,7 +831,7 @@ namespace YH
 
 					m_DoubleJump->GetComponent<Animator>()->PlayAnimation(L"Left Double Jump", false);
 
-					m_Rigidbody->AddForce(Vector2(-4000.0f, -500.0f));
+					m_Rigidbody->AddForce(Vector2(-70000.0f, -500.0f));
 					break;
 				}
 			}

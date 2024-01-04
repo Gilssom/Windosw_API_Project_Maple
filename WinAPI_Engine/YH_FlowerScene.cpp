@@ -93,7 +93,7 @@ namespace YH
 		#pragma endregion
 
 		#pragma region Monster
-		// ¸ó½ºÅÍ Àû¿ë
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		m_Monster[0] = object::Instantiate<Monster>(enums::LayerType::Monster, Vector2(1240.0f, 1445.0f));
 		m_Monster[0]->AddComponent<TigurueScript>();
 		m_Monster[0]->AddComponent<AudioSource>();

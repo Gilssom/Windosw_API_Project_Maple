@@ -67,7 +67,7 @@ namespace YH
 		m_Width = bg_0->GetWidth();
 		m_Height = bg_0->GetHeight();
 
-		Ground* ground = object::Instantiate<Ground>(LayerType::Ground, Vector2(10.0f, 800.0f));
+		Ground* ground = object::Instantiate<Ground>(LayerType::Ground, Vector2(10.0f, 830.0f));
 		BoxCollider2D* groundColl = ground->AddComponent<BoxCollider2D>();
 		groundColl->SetSize(Vector2(70.0f, 1.0f));
 		ground->AddComponent<GroundScript>();
@@ -82,10 +82,17 @@ namespace YH
 		PortalScript* portalSc = portal->AddComponent<PortalScript>();
 		portalSc->SetNextScene(L"FlowerScene");
 		portalSc->SetSpawnPos(Vector2(1829.0f, 1465.0f));
+
+		GameObject* rope = object::Instantiate<GameObject>(LayerType::Rope, Vector2(1184.0f, 500.0f));
+		BoxCollider2D* ropeColl = rope->AddComponent<BoxCollider2D>();
+		rope->AddComponent<RopeScript>();
+		//ropeColl->SetOffset(Vector2(-12.0f, -135.0f));
+		ropeColl->SetSize(Vector2(0.2f, 2.4f));
+		ropeColl->SetCollType(ColliderType::Rope);
 		#pragma endregion
 		
 		#pragma region Player Setting
-		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(1384.0f, 760.0f));
+		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(1384.0f, 780.0f));
 		object::DontDestroyOnLoad(m_Player);
 
 		m_Player->AddComponent<Rigidbody>();
@@ -96,7 +103,7 @@ namespace YH
 		PlayerScript* playerScript = m_Player->AddComponent<PlayerScript>();
 
 		BoxCollider2D* playerColl = m_Player->AddComponent<BoxCollider2D>();
-		playerColl->SetOffset(Vector2(-20.0f, -32.5f));
+		playerColl->SetOffset(Vector2(0.0f, -10.0f));
 		playerColl->SetSize(Vector2(0.4f, 0.5f));
 
 		Animator* playerAnim = m_Player->AddComponent<Animator>();

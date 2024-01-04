@@ -73,7 +73,7 @@ namespace YH
 
 		bool IsComplete() { return m_ActiveAnimation->IsComplete(); }
 
-		// ¹æÇâ ÀüÈ¯ (Å×½ºÆ®) -> m_ActiveAnimation ÀÇ AnimFlip ÇÔ¼ö È£Ãâ
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ (ï¿½×½ï¿½Æ®) -> m_ActiveAnimation ï¿½ï¿½ AnimFlip ï¿½Ô¼ï¿½ È£ï¿½ï¿½
 		void ImageFlip();
 
 	private:

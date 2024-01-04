@@ -2,7 +2,7 @@
 #include "YH_Application.h"
 #include "YH_Resources.h"
 
-// ÇØ´ç Àü¿ªº¯¼ö°¡ Á¸ÀçÇÔÀ» ¾Ë¸®´Â Å°¿öµå
+// ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¸ï¿½ï¿½ï¿½ Å°ï¿½ï¿½ï¿½ï¿½
 extern YH::Application App; 
 
 namespace YH::graphics
@@ -80,13 +80,26 @@ namespace YH::graphics
 		else if (ext == L"png")
 		{
 			m_Type = TextureType::Png;
-			m_Image = Gdiplus::Image::FromFile(path.c_str());
 
-			if (!m_Image)
-				return false;
+			ULONG_PTR gdiplusToken = 0;
+			GdiplusStartupInput gidstartupInput = {};
+			GdiplusStartup(&gdiplusToken, &gidstartupInput, nullptr);
+			Image* pImg = Image::FromFile(path.c_str(), false);
 
-			m_Width = m_Image->GetWidth();
-			m_Height = m_Image->GetHeight();
+			Bitmap* pBitmap = (Bitmap*)pImg->Clone();
+			Status stat = pBitmap->GetHBITMAP(Color(0, 0, 0, 0), &m_Bitmap);
+
+			BITMAP info = {};
+			GetObject(m_Bitmap, sizeof(BITMAP), &info);
+
+			m_Width = info.bmWidth;
+			m_Height = info.bmHeight;
+
+			HDC mainDC = App.GetHdc();
+			m_Hdc = CreateCompatibleDC(mainDC);
+
+			HBITMAP oldBitmap = (HBITMAP)SelectObject(m_Hdc, m_Bitmap);
+			DeleteObject(oldBitmap);
 		}
 
 		return true;

@@ -41,7 +41,7 @@ namespace YH
 		bool IsComplete() { return m_Complete; }
 		void SetAnimator(class Animator* animator) { m_Animator = animator; }
 
-		// ¹æÇâ ÀüÈ¯ (Å×½ºÆ®)
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ (ï¿½×½ï¿½Æ®)
 		void AnimFlip();
 
 	private:

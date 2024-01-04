@@ -163,28 +163,28 @@ namespace YH
 
 	std::function<void()>& Animator::GetStartEvent(const std::wstring& name)
 	{
-		// TODO: ¿©±â¿¡ return ¹®À» »ðÀÔÇÕ´Ï´Ù.
+		// TODO: ï¿½ï¿½ï¿½â¿¡ return ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 		Events* events = FindEvents(name);
 		return events->startEvent.m_Event;
 	}
 
 	std::function<void()>& Animator::GetCompleteEvent(const std::wstring& name)
 	{
-		// TODO: ¿©±â¿¡ return ¹®À» »ðÀÔÇÕ´Ï´Ù.
+		// TODO: ï¿½ï¿½ï¿½â¿¡ return ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 		Events* events = FindEvents(name);
 		return events->completeEvent.m_Event;
 	}
 
 	std::function<void(bool)>& Animator::GetCompleteEvent2(const std::wstring& name)
 	{
-		// TODO: ¿©±â¿¡ return ¹®À» »ðÀÔÇÕ´Ï´Ù.
+		// TODO: ï¿½ï¿½ï¿½â¿¡ return ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 		Events* events = FindEvents(name);
 		return events->completeEvent.m_Event2;
 	}
 
 	std::function<void()>& Animator::GetEndEvent(const std::wstring& name)
 	{
-		// TODO: ¿©±â¿¡ return ¹®À» »ðÀÔÇÕ´Ï´Ù.
+		// TODO: ï¿½ï¿½ï¿½â¿¡ return ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ´Ï´ï¿½.
 		Events* events = FindEvents(name);
 		return events->endEvent.m_Event;
 	}

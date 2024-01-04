@@ -9,10 +9,10 @@ namespace YH
 
 	void Time::Initailize()
 	{
-		// Cpu ÀÇ °íÀ¯ Áøµ¿ ¼ö
+		// Cpu ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 		QueryPerformanceFrequency(&m_CpuFrequency);
 
-		// ÇÁ·Î±×·¥ÀÌ ½ÃÀÛ ÇßÀ» ¶§ ÇöÀç Áøµ¿ ¼ö
+		// ï¿½ï¿½ï¿½Î±×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 		QueryPerformanceCounter(&m_PrevFrequency);
 	}
 
@@ -35,7 +35,7 @@ namespace YH
 		time += m_DeltaTime;
 		float fps = 1.0f / m_DeltaTime;
 
-		// wchar ÃÊ±âÈ­ ¹æ¹ý
+		// wchar ï¿½Ê±ï¿½È­ ï¿½ï¿½ï¿½
 		wchar_t str[50] = L"";
 		swprintf_s(str, 50, L"Time : %d", (int)fps);
 		int len = wcsnlen_s(str, 50);

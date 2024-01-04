@@ -23,8 +23,11 @@
 #pragma comment(lib, "Msimg32.lib")
 #pragma comment(lib, "winmm.lib")
 
+
+#include <objidl.h>
 #include <gdiplus.h>
-#pragma comment(lib, "gdiplus.lib")
+#pragma comment(lib, "Gdiplus.lib")
+using namespace::Gdiplus;
 
 #include "YH_Enums.h"
 #include "YH_Math.h"

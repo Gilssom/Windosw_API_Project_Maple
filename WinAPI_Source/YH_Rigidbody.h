@@ -15,7 +15,7 @@ namespace YH
 		virtual void Render(HDC hdc);
 
 		void SetMass(float mass) { m_Mass = mass; }
-		void AddForce(Vector2 force) { m_Force = force; }
+		void AddForce(Vector2 force) { m_Force += force; }
 		void SetGround(bool ground) { isGrounded = ground; }
 		bool GetGround() { return isGrounded; }
 		void SetVelocity(Vector2 velocity) { m_Velocity = velocity; }

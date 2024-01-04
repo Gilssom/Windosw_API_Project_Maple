@@ -105,24 +105,24 @@ namespace YH
 
 	void CollisionManager::ColliderCollision(Collider* left, Collider* right)
 	{
-		// Ãæµ¹Ã¼Å©·ÎÁ÷ ÀÛ¼º
-		// µÎ Ãæµ¹Ã¼ÀÇ °íÀ¯ ¹øÈ£·Î °¡Á®¿Â ID ¸¦ È®ÀÎÇÏ¿© CollisionID Setting
+		// ï¿½æµ¹Ã¼Å©ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½
+		// ï¿½ï¿½ ï¿½æµ¹Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ID ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï¿ï¿½ CollisionID Setting
 		CollisionID id = {};
 		id.left = left->GetID();
 		id.right = right->GetID();
 
-		// ÀÌÀü Ãæµ¹ Á¤º¸¸¦ È®ÀÎ
-		// 1-1. ¸¸¾à Ãæµ¹Á¤º¸°¡ ¾ø´Â »óÅÂ¶ó¸é Ãæµ¹Á¤º¸¸¦ »ý¼º
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
+		// 1-1. ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â¶ï¿½ï¿½ ï¿½æµ¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		auto iter = m_CollisiononMap.find(id.id);
 		if (iter == m_CollisiononMap.end())
 		{
 			m_CollisiononMap.insert(std::make_pair(id.id, false));
 			iter = m_CollisiononMap.find(id.id);
 		}
-		// 1-2. Ãæµ¹ Ã¼Å© ½ÇÇà
+		// 1-2. ï¿½æµ¹ Ã¼Å© ï¿½ï¿½ï¿½ï¿½
 		if (Intersect(left, right))
 		{
-			// 2-1. ÃÖÃÊ Ãæµ¹
+			// 2-1. ï¿½ï¿½ï¿½ï¿½ ï¿½æµ¹
 			if (iter->second == false)
 			{
 				left->OnCollisionEnter(right);
@@ -130,7 +130,7 @@ namespace YH
 
 				iter->second = true;
 			}
-			// 2-2. ÀÌ¹Ì Ãæµ¹ Áß
+			// 2-2. ï¿½Ì¹ï¿½ ï¿½æµ¹ ï¿½ï¿½
 			else
 			{
 				left->OnCollisionStay(right);
@@ -139,7 +139,7 @@ namespace YH
 		}
 		else
 		{
-			// 2-3. Ãæµ¹À» ºüÁ® ³ª°£ »óÅÂ
+			// 2-3. ï¿½æµ¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			if (iter->second == true)
 			{
 				left->OnCollisionExit(right);
@@ -158,15 +158,14 @@ namespace YH
 		Vector2 leftPos = leftTr->GetPostion() + left->GetOffset();
 		Vector2 rightPos = rightTr->GetPostion() + right->GetOffset();
 
-		if (renderer::mainCamera)
-			leftPos = renderer::mainCamera->CaluatePosition(leftPos);
+		// Size 1, 1 ï¿½Ï¶ï¿½, ï¿½âº» Å©ï¿½ï¿½ï¿½ 100 * 100
+		Vector2 leftSize = left->GetSize() * 100.0f;
+		Vector2 rightSize = right->GetSize() * 100.0f;
 
 		if (renderer::mainCamera)
 			rightPos = renderer::mainCamera->CaluatePosition(rightPos);
-
-		// Size 1, 1 ÀÏ¶§, ±âº» Å©±â´Â 100 * 100
-		Vector2 leftSize = left->GetSize() * 100.0f;
-		Vector2 rightSize = right->GetSize() * 100.0f;
+		if (renderer::mainCamera)
+			leftPos = renderer::mainCamera->CaluatePosition(leftPos);
 
 		enums::ColliderShapeType leftType = left->GetCollShapeType();
 		enums::ColliderShapeType rightType = right->GetCollShapeType();
@@ -174,9 +173,11 @@ namespace YH
 		if (leftType == enums::ColliderShapeType::Rect2D
 			&& rightType == enums::ColliderShapeType::Rect2D)
 		{
-			// AABB Ãæµ¹
-			if (fabs(leftPos.x - rightPos.x) < fabs(leftSize.x / 2.0f + rightSize.x / 2.0f)
-				&& fabs(leftPos.y - rightPos.y) < fabs(leftSize.y / 2.0f + rightSize.y / 2.0f))
+			// AABB ï¿½æµ¹
+			/*if (fabs(leftPos.x - rightPos.x) < fabs(leftSize.x / 2.0f + rightSize.x / 2.0f)
+				&& fabs(leftPos.y - rightPos.y) < fabs(leftSize.y / 2.0f + rightSize.y / 2.0f))*/
+			if (fabs(leftSize.x / 2.0f + rightSize.x / 2.0f) >= fabs(leftPos.x - rightPos.x)
+				&& fabs(leftSize.y / 2.0f + rightSize.y / 2.0f) >= fabs(leftPos.y - rightPos.y))
 			{
 				return true;
 			}
@@ -185,7 +186,7 @@ namespace YH
 		if (leftType == enums::ColliderShapeType::Circle2D
 			&& rightType == enums::ColliderShapeType::Circle2D)
 		{
-			// Circle Ãæµ¹
+			// Circle ï¿½æµ¹
 			Vector2 leftCirclePos = leftPos + (leftSize / 2.0f);
 			Vector2 rightCirclePos = rightPos + (rightSize / 2.0f);
 
@@ -198,7 +199,7 @@ namespace YH
 		if (leftType == enums::ColliderShapeType::Rect2D && rightType == enums::ColliderShapeType::Circle2D
 			|| leftType == enums::ColliderShapeType::Circle2D && rightType == enums::ColliderShapeType::Rect2D)
 		{
-			// Box - Circle Ãæµ¹
+			// Box - Circle ï¿½æµ¹
 			return true;
 		}
 

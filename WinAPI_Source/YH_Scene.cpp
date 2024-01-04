@@ -29,7 +29,7 @@ namespace YH
 	}
 	void Scene::Update()
 	{
-		// ¹üÀ§ ±â¹Ý for ¹®
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ for ï¿½ï¿½
 		for (Layer* layer : m_Layers)
 		{
 			if (!layer)

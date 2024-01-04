@@ -80,27 +80,43 @@ namespace YH
 		{
 			Gdiplus::ImageAttributes imgAtt = {};
 
-			// Åõ¸íÈ­ ½ÃÅ³ ÇÈ¼¿ÀÇ »ö ¹üÀ§
+			// ï¿½ï¿½ï¿½ï¿½È­ ï¿½ï¿½Å³ ï¿½È¼ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 			//imgAtt.SetColorKey(Gdiplus::Color(100, 100, 100), Gdiplus::Color(255, 255, 255));
+			BLENDFUNCTION blend = {};
+			blend.BlendOp = AC_SRC_OVER;
+			blend.BlendFlags = 0;
 
-			Gdiplus::Graphics graphics(hdc);
+			blend.SourceConstantAlpha = 255; // 0 ~ 255
+			blend.AlphaFormat = AC_SRC_ALPHA; // 0
 
-			graphics.TranslateTransform(pos.x, pos.y);
-			graphics.RotateTransform(rot);
-			graphics.TranslateTransform(-pos.x, -pos.y);
-
-			graphics.DrawImage(m_Texture->GetImage()
-				, Gdiplus::Rect(
-					pos.x, pos.y
-					, m_Texture->GetWidth() * m_Size.x * scale.x
-					, m_Texture->GetHeight() * m_Size.y * scale.y
-				)
+			AlphaBlend(hdc
+				, pos.x, pos.y				
+				, m_Texture->GetWidth() * m_Size.x * scale.x
+				, m_Texture->GetHeight() * m_Size.y * scale.y
+				, m_Texture->GetHdc()
 				, 0, 0
 				, m_Texture->GetWidth()
 				, m_Texture->GetHeight()
-				, Gdiplus::UnitPixel
-				, nullptr
-			);
+				, blend);
+
+			//Gdiplus::Graphics graphics(hdc);
+
+			//graphics.TranslateTransform(pos.x, pos.y);
+			//graphics.RotateTransform(rot);
+			//graphics.TranslateTransform(-pos.x, -pos.y);
+
+			//graphics.DrawImage(m_Texture->GetImage()
+			//	, Gdiplus::Rect(
+			//		pos.x, pos.y
+			//		, m_Texture->GetWidth() * m_Size.x * scale.x
+			//		, m_Texture->GetHeight() * m_Size.y * scale.y
+			//	)
+			//	, 0, 0
+			//	, m_Texture->GetWidth()
+			//	, m_Texture->GetHeight()
+			//	, Gdiplus::UnitPixel
+			//	, nullptr
+			//);
 		}
 	}
 }

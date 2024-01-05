@@ -57,23 +57,36 @@ namespace YH
 		m_Height = bgTex->GetHeight();
 
 		#pragma region Ground Collilder
-		Ground* ground = object::Instantiate<Ground>(LayerType::Ground, Vector2(10.0f, 1508.0f));
-		BoxCollider2D* groundColl = ground->AddComponent<BoxCollider2D>();
+		m_Ground[0] = object::Instantiate<Ground>(LayerType::Ground, Vector2(10.0f, 1540.0f));
+		BoxCollider2D* groundColl = m_Ground[0]->AddComponent<BoxCollider2D>();
 		groundColl->SetSize(Vector2(70.0f, 1.0f));
-		ground->AddComponent<GroundScript>();
+		m_Ground[0]->AddComponent<GroundScript>();
 
-		GameObject* rope = object::Instantiate<GameObject>(LayerType::Rope, Vector2(1407.0f, 1246.0f));
+		m_Ground[1] = object::Instantiate<Ground>(LayerType::Ground, Vector2(959.5f, 1156.0f));
+		BoxCollider2D* groundColl1 = m_Ground[1]->AddComponent<BoxCollider2D>();
+		groundColl1->SetSize(Vector2(12.0f, 0.6f));
+		m_Ground[1]->AddComponent<GroundScript>();
+
+		m_Ground[2] = object::Instantiate<Ground>(LayerType::Ground, Vector2(1570.5f, 1333.0f));
+		BoxCollider2D* groundColl2 = m_Ground[2]->AddComponent<BoxCollider2D>();
+		groundColl2->SetSize(Vector2(1.5f, 0.4f));
+		m_Ground[2]->AddComponent<GroundScript>();
+
+		m_Ground[3] = object::Instantiate<Ground>(LayerType::Ground, Vector2(1710.0f, 1215.0f));
+		BoxCollider2D* groundColl3 = m_Ground[3]->AddComponent<BoxCollider2D>();
+		groundColl3->SetSize(Vector2(2.0f, 0.4f));
+		m_Ground[3]->AddComponent<GroundScript>();
+
+		GameObject* rope = object::Instantiate<GameObject>(LayerType::Rope, Vector2(1407.0f, 1276.0f));
 		BoxCollider2D* ropeColl = rope->AddComponent<BoxCollider2D>();
 		rope->AddComponent<RopeScript>();
-		ropeColl->SetOffset(Vector2(-12.0f, -135.0f));
-		ropeColl->SetSize(Vector2(0.2f, 5.4f));
+		ropeColl->SetSize(Vector2(0.2f, 3.0f));
 		ropeColl->SetCollType(ColliderType::Rope);
 		#pragma endregion
 
 		#pragma region Portal
 		GameObject* portal_0 = object::Instantiate<GameObject>(enums::LayerType::Portal, Vector2(1829.0f, 1465.0f));
 		BoxCollider2D* portal_0_Coll = portal_0->AddComponent<BoxCollider2D>();
-		portal_0_Coll->SetOffset(Vector2(-50.0f, -50.0f));
 		portal_0_Coll->SetSize(Vector2(0.75f, 1.0f));
 		portal_0_Coll->SetCollType(ColliderType::Portal);
 
@@ -83,7 +96,6 @@ namespace YH
 
 		GameObject* portal_1 = object::Instantiate<GameObject>(enums::LayerType::Portal, Vector2(160.0f, 1465.0f));
 		BoxCollider2D* portal_1_Coll = portal_1->AddComponent<BoxCollider2D>();
-		portal_1_Coll->SetOffset(Vector2(-50.0f, -50.0f));
 		portal_1_Coll->SetSize(Vector2(0.75f, 1.0f));
 		portal_1_Coll->SetCollType(ColliderType::Portal);
 
@@ -93,7 +105,6 @@ namespace YH
 		#pragma endregion
 
 		#pragma region Monster
-		// ���� ����
 		m_Monster[0] = object::Instantiate<Monster>(enums::LayerType::Monster, Vector2(1240.0f, 1445.0f));
 		m_Monster[0]->AddComponent<TigurueScript>();
 		m_Monster[0]->AddComponent<AudioSource>();
@@ -102,7 +113,7 @@ namespace YH
 		graphics::Texture* tigurueTex = Resources::Find<graphics::Texture>(L"Tigurue");
 
 		BoxCollider2D* tigurueColl = m_Monster[0]->AddComponent<BoxCollider2D>();
-		tigurueColl->SetOffset(Vector2(-30.0f, -30.0f));
+		//tigurueColl->SetOffset(Vector2(-30.0f, -30.0f));
 		tigurueColl->SetSize(Vector2(0.6f, 0.8f));
 
 		Animator* tigurueAnim = m_Monster[0]->AddComponent<Animator>();
@@ -127,7 +138,7 @@ namespace YH
 		graphics::Texture* tirueTex = Resources::Find<graphics::Texture>(L"Tirue");
 
 		BoxCollider2D* tirueColl = m_Monster[1]->AddComponent<BoxCollider2D>();
-		tirueColl->SetOffset(Vector2(-30.0f, -30.0f));
+		//tirueColl->SetOffset(Vector2(-30.0f, -30.0f));
 		tirueColl->SetSize(Vector2(0.6f, 0.8f));
 
 		Animator* tirueAnim = m_Monster[1]->AddComponent<Animator>();
@@ -172,7 +183,6 @@ namespace YH
 		Camera* cameraComp = camera->AddComponent<Camera>();
 		renderer::mainCamera = cameraComp;
 
-		//const std::vector<GameObject*>& camera = SceneManager::GetGameObjects(LayerType::Camera);
 		const std::vector<GameObject*>& player = SceneManager::GetGameObjects(LayerType::Player);
 
 		cameraComp->GetBackWidth(m_Width);

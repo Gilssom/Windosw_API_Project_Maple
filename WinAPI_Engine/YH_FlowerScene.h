@@ -20,6 +20,7 @@ namespace YH
 	private:
 		class GameObject* bg;
 		class Monster* m_Monster[50];
+		class Ground* m_Ground[10];
 
 		float m_Width, m_Height;
 	};

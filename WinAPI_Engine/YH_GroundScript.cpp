@@ -6,6 +6,7 @@
 #include "YH_Animator.h"
 #include "YH_Object.h"
 #include "YH_Rigidbody.h"
+#include "YH_PlayerScript.h"
 
 namespace YH
 {
@@ -41,26 +42,29 @@ namespace YH
 
 	void GroundScript::OnCollisionEnter(Collider* other)
 	{
-		Rigidbody* playerRigid = other->GetOwner()->GetComponent<Rigidbody>();
-		Transform* playerTr = other->GetOwner()->GetComponent<Transform>();
-		Collider* playerColl = other;
-
-		Rigidbody* groundRigid = this->GetOwner()->GetComponent<Rigidbody>();
-		Transform* groundTr = this->GetOwner()->GetComponent<Transform>();
-		Collider* groundColl = this->GetOwner()->GetComponent<Collider>();
-
-		float len = fabs(playerTr->GetPostion().y - groundTr->GetPostion().y);
-		float scale = fabs(playerColl->GetSize().y * 100 / 2.0f - groundColl->GetSize().y * 100 / 2.0f);
-
-		if (len < scale)
+		if (!other->GetOwner()->GetComponent<PlayerScript>()->GetisJumpUp())
 		{
-			Vector2 playerPos = playerTr->GetPostion();
-			playerPos.y -= (scale - len) - 1.0f;
+			Rigidbody* playerRigid = other->GetOwner()->GetComponent<Rigidbody>();
+			Transform* playerTr = other->GetOwner()->GetComponent<Transform>();
+			Collider* playerColl = other;
 
-			playerTr->SetPosition(playerPos);
+			Rigidbody* groundRigid = this->GetOwner()->GetComponent<Rigidbody>();
+			Transform* groundTr = this->GetOwner()->GetComponent<Transform>();
+			Collider* groundColl = this->GetOwner()->GetComponent<Collider>();
+
+			float len = fabs(playerTr->GetPostion().y - groundTr->GetPostion().y);
+			float scale = fabs(playerColl->GetSize().y * 100 / 2.0f - groundColl->GetSize().y * 100 / 2.0f);
+
+			if (len < scale)
+			{
+				Vector2 playerPos = playerTr->GetPostion();
+				playerPos.y -= (scale - len) - 1.0f;
+
+				playerTr->SetPosition(playerPos);
+			}
+
+			playerRigid->SetGround(true);
 		}
-
-		playerRigid->SetGround(true);
 	}
 
 	void GroundScript::OnCollisionStay(Collider* other)
@@ -72,6 +76,7 @@ namespace YH
 	{
 		Rigidbody* playerRigid = other->GetOwner()->GetComponent<Rigidbody>();
 
-		playerRigid->SetGround(false);
+		if(!(other->GetOwner()->GetComponent<PlayerScript>()->GetPlayerisRope()))
+			playerRigid->SetGround(false);
 	}
 }

@@ -74,7 +74,6 @@ namespace YH
 
 		GameObject* portal = object::Instantiate<GameObject>(enums::LayerType::Portal, Vector2(160.0f, 760.0f));
 		BoxCollider2D* portal_0 = portal->AddComponent<BoxCollider2D>();
-		portal_0->SetOffset(Vector2(-50.0f, -50.0f));
 		portal_0->SetSize(Vector2(0.75f, 1.0f));
 		portal->AddComponent<Script>();
 		portal_0->SetCollType(ColliderType::Portal);
@@ -92,7 +91,7 @@ namespace YH
 		#pragma endregion
 		
 		#pragma region Player Setting
-		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(1384.0f, 780.0f));
+		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(1384.0f, 770.0f));
 		object::DontDestroyOnLoad(m_Player);
 
 		m_Player->AddComponent<Rigidbody>();

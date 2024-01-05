@@ -2,6 +2,7 @@
 #include "YH_Time.h"
 #include "YH_Transform.h"
 #include "YH_GameObject.h"
+#include "..\\WinAPI_Engine\\YH_PlayerScript.h"
 
 namespace YH
 {
@@ -12,7 +13,7 @@ namespace YH
 		//, m_Force(Vector2::Zero)
 		, m_Velocity(Vector2::Zero)
 		, m_LimitedVelocity(Vector2(1000.0f, 1000.0f))
-		, m_Gravity(Vector2(0.0f, 600.0f))
+		, m_Gravity(Vector2(0.0f, 800.0f))
 		, m_Accelation(Vector2::Zero)
 	{
 
@@ -77,6 +78,11 @@ namespace YH
 		{
 			Vector2 friction = -m_Velocity;
 			friction = friction.normalize() * m_Friction * m_Mass * Time::DeltaTime();
+
+			if (friction.y <= 0.0f)
+				GetOwner()->GetComponent<PlayerScript>()->SetisJumpUp(false);
+			else
+				GetOwner()->GetComponent<PlayerScript>()->SetisJumpUp(true);
 
 			// ���������� ���� �ӵ� ���ҷ��� ���� �ӵ����� Ŭ ���
 			if (m_Velocity.length() <= friction.length())

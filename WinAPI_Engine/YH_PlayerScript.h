@@ -57,6 +57,9 @@ namespace YH
 		void OnCollisionExit(Collider* other) override;
 
 		Vector2 GetPlayerPos() { return m_PlayerPos; }
+		bool GetPlayerisRope() { return isRope; }
+		void SetisJumpUp(bool jumpUp) { isJumpUp = jumpUp; }
+		bool GetisJumpUp() { return isJumpUp; }
 
 	private:
 		void Idle();
@@ -83,6 +86,7 @@ namespace YH
 		bool isBuff;
 		bool isJump;
 		bool isRope;
+		bool isJumpUp;
 
 		GameObject* m_BoringSong; 
 		GameObject* m_FairyTurn; 

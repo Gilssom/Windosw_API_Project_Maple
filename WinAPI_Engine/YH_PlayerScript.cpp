@@ -364,13 +364,13 @@ namespace YH
 		{
 		case YH::PlayerScript::Direction::Right:
 			arrowRender->SetTexture(R_boringArrow);
-			arrowColl->SetOffset(Vector2(50.0f, 10.0f));
+			arrowColl->SetOffset(Vector2(100.0f, 25.0f));
 
 			arrowScript->m_Dest = Vector2::Right;
 			break;
 		case YH::PlayerScript::Direction::Left:
 			arrowRender->SetTexture(L_boringArrow);
-			arrowColl->SetOffset(Vector2(0.0f, 10.0f));
+			arrowColl->SetOffset(Vector2(50.0f, 25.0f));
 
 			arrowScript->m_Dest = Vector2::Left;
 			break;
@@ -409,8 +409,8 @@ namespace YH
 
 		m_HowlingColl = m_HowlingGale->AddComponent<BoxCollider2D>();
 		m_HowlingColl->SetCollType(enums::ColliderType::HowlingGale);
-		m_HowlingColl->SetOffset(Vector2(-70.0f, 0.0f));
-		m_HowlingColl->SetSize(Vector2(1.0f, -5.0f));
+		m_HowlingColl->SetOffset(Vector2(0.0f, -250.0f));
+		m_HowlingColl->SetSize(Vector2(1.0f, 5.0f));
 
 		switch (m_Dir)
 		{
@@ -461,8 +461,24 @@ namespace YH
 
 	void PlayerScript::OnCollisionExit(Collider* other)
 	{
-		if (other->GetCollType() == ColliderType::Rope)
+		if (other->GetCollType() == ColliderType::Rope && isRope)
+		{
 			isRope = false;
+
+			m_State = PlayerScript::State::Idle;
+
+			switch (m_Dir)
+			{
+			case YH::PlayerScript::Direction::Right:
+				m_Animator->PlayAnimation(L"Player Right Idle");
+				break;
+			case YH::PlayerScript::Direction::Left:
+				m_Animator->PlayAnimation(L"Player Left Idle");
+				break;
+			default:
+				break;
+			}
+		}
 	}
 #pragma endregion
 
@@ -492,17 +508,28 @@ namespace YH
 
 			if (Input::GetKey(KeyCode::Down))
 			{
-				m_State = PlayerScript::State::Down;
-
-				switch (m_Dir)
+				if (isRope)
 				{
-				case YH::PlayerScript::Direction::Right:
-					m_Animator->PlayAnimation(L"Player Right Down");
-					break;
-				case YH::PlayerScript::Direction::Left:
-					m_Animator->PlayAnimation(L"Player Left Down");
-					break;
+					m_State = PlayerScript::State::Rope;
+
+					m_Animator->PlayAnimation(L"Player Rope", false);
+
+					m_Rigidbody->SetGround(true);
 				}
+				else
+				{
+					m_State = PlayerScript::State::Down;
+
+					switch (m_Dir)
+					{
+					case YH::PlayerScript::Direction::Right:
+						m_Animator->PlayAnimation(L"Player Right Down");
+						break;
+					case YH::PlayerScript::Direction::Left:
+						m_Animator->PlayAnimation(L"Player Left Down");
+						break;
+					}
+				}		
 			}
 
 			if (Input::GetKey(KeyCode::C))
@@ -822,7 +849,7 @@ namespace YH
 
 					m_DoubleJump->GetComponent<Animator>()->PlayAnimation(L"Right Double Jump", false);
 
-					m_Rigidbody->AddForce(Vector2(70000.0f, -500.0f));
+					m_Rigidbody->AddForce(Vector2(60000.0f, -5500.0f));
 					break;
 				case YH::PlayerScript::Direction::Left:
 					m_DoubleJump->SetActive(true);
@@ -831,7 +858,7 @@ namespace YH
 
 					m_DoubleJump->GetComponent<Animator>()->PlayAnimation(L"Left Double Jump", false);
 
-					m_Rigidbody->AddForce(Vector2(-70000.0f, -500.0f));
+					m_Rigidbody->AddForce(Vector2(-60000.0f, -5500.0f));
 					break;
 				}
 			}
@@ -840,6 +867,10 @@ namespace YH
 		if (Input::GetKeyDown(KeyCode::D))
 		{
 			m_State = PlayerScript::State::FairyTurn;
+
+			m_DoubleJump->SetActive(false);
+
+			isJump = false;
 
 			switch (m_Dir)
 			{
@@ -858,7 +889,6 @@ namespace YH
 		{
 			m_State = PlayerScript::State::Idle;
 
-			m_DoubleJump->SetActive(false);
 			m_DoubleJump->SetActive(false);
 
 			isJump = false;
@@ -890,6 +920,57 @@ namespace YH
 			pos.y -= 100.f * Time::DeltaTime();
 
 			transform->SetPosition(pos);
+		}
+
+		if (Input::GetKey(KeyCode::Down))
+		{
+			m_Animator->PlayAnimation(L"Player Rope", false);
+
+			Transform* transform = GetOwner()->GetComponent<Transform>();
+
+			Vector2 pos = transform->GetPostion();
+
+			pos.y += 100.f * Time::DeltaTime();
+
+			transform->SetPosition(pos);
+		}
+
+		if (Input::GetKey(KeyCode::Left) && Input::GetKey(KeyCode::C))
+		{
+			AudioClip* ac = Resources::Load<AudioClip>(L"Jump Sound", L"..\\Resources\\SoundResource\\Jump.mp3");
+			m_AudioSource->SetClip(ac);
+			m_AudioSource->Play();
+
+			m_Rigidbody->AddForce(Vector2(-33000.0f, 0.0f));
+			m_State = PlayerScript::State::Jump;
+			m_Animator->PlayAnimation(L"Player Left Jump");
+
+			if (m_Rigidbody->GetGround())
+			{
+				Vector2 velocity = m_Rigidbody->GetVelocity();
+				velocity.y = -250.0f;
+				m_Rigidbody->SetVelocity(velocity);
+				m_Rigidbody->SetGround(false);
+			}
+		}
+
+		if (Input::GetKey(KeyCode::Right) && Input::GetKey(KeyCode::C))
+		{
+			AudioClip* ac = Resources::Load<AudioClip>(L"Jump Sound", L"..\\Resources\\SoundResource\\Jump.mp3");
+			m_AudioSource->SetClip(ac);
+			m_AudioSource->Play();
+
+			m_Rigidbody->AddForce(Vector2(33000.0f, 0.0f));
+			m_State = PlayerScript::State::Jump;
+			m_Animator->PlayAnimation(L"Player Left Jump");
+
+			if (m_Rigidbody->GetGround())
+			{
+				Vector2 velocity = m_Rigidbody->GetVelocity();
+				velocity.y = -250.0f;
+				m_Rigidbody->SetVelocity(velocity);
+				m_Rigidbody->SetGround(false);
+			}
 		}
 	}
 

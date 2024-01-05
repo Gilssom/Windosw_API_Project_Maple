@@ -70,6 +70,9 @@ namespace YH
 		if (playerTf->GetPostion().x < m_BackWidth - (m_Resolution.x / 2.0f)
 			&& playerTf->GetPostion().x > 0.0f + (m_Resolution.x / 2.0f))
 			return true;
+		else if (playerTf->GetPostion().y < m_BackHeight - (m_Resolution.y / 2.0f)
+			&& playerTf->GetPostion().y > 0.0f + (m_Resolution.y / 2.0f))
+			return true;
 
 		return false;
 	}
@@ -80,6 +83,9 @@ namespace YH
 		{
 			Transform* transform = m_Target->GetComponent<Transform>();
 			m_LookPosition = transform->GetPostion();
+
+			if (transform->GetPostion().x > m_BackWidth - (m_Resolution.x / 2.0f))
+				m_LookPosition.x = m_BackWidth - (m_Resolution.x / 2.0f);
 
 			if (transform->GetPostion().y > m_BackHeight - (m_Resolution.y / 2.0f))
 				m_LookPosition.y = m_BackHeight - (m_Resolution.y / 2.0f);

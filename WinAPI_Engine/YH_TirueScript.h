@@ -33,6 +33,10 @@ namespace YH
 		void OnCollisionStay(Collider* other) override;
 		void OnCollisionExit(Collider* other) override;
 
+		void SetSpawnPos(Vector2 spawnPos) { m_SpawnPos = spawnPos; }
+		void DeathEvent();
+		void ReSpawn();
+
 	private:
 		void Idle();
 		void Move();
@@ -46,8 +50,11 @@ namespace YH
 	private:
 		State m_State;
 		Direction m_Dir;
+		Vector2 m_SpawnPos;
 		class Animator* m_Animator;
 		float m_Time;
+		float m_NextFsmTime;
 		float m_DeathTime;
+		bool isDeath;
 	};
 }

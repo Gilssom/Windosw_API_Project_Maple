@@ -29,6 +29,7 @@ namespace YH::enums
 		Player,
 		Ground,
 		Rope,
+		RimitGround,
 		Portal,
 		Effect,
 		UI,
@@ -54,6 +55,7 @@ namespace YH::enums
 		DarknessBall,
 		Portal,
 		Rope,
+		RimitGround,
 	};
 
 	enum class ColliderShapeType

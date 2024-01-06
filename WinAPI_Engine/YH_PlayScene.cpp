@@ -48,6 +48,7 @@ namespace YH
 		CollisionManager::CollisionLayerCheck(LayerType::Player, LayerType::Boss, true);
 
 		CollisionManager::CollisionLayerCheck(LayerType::Monster, LayerType::Player, true);
+		CollisionManager::CollisionLayerCheck(LayerType::Monster, LayerType::RimitGround, true);
 		CollisionManager::CollisionLayerCheck(LayerType::Portal, LayerType::Player, true);
 		CollisionManager::CollisionLayerCheck(LayerType::Rope, LayerType::Player, true);
 		CollisionManager::CollisionLayerCheck(LayerType::Effect, LayerType::Monster, true);
@@ -81,13 +82,6 @@ namespace YH
 		PortalScript* portalSc = portal->AddComponent<PortalScript>();
 		portalSc->SetNextScene(L"FlowerScene");
 		portalSc->SetSpawnPos(Vector2(1829.0f, 1465.0f));
-
-		GameObject* rope = object::Instantiate<GameObject>(LayerType::Rope, Vector2(1184.0f, 500.0f));
-		BoxCollider2D* ropeColl = rope->AddComponent<BoxCollider2D>();
-		rope->AddComponent<RopeScript>();
-		//ropeColl->SetOffset(Vector2(-12.0f, -135.0f));
-		ropeColl->SetSize(Vector2(0.2f, 2.4f));
-		ropeColl->SetCollType(ColliderType::Rope);
 		#pragma endregion
 		
 		#pragma region Player Setting

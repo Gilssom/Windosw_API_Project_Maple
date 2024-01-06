@@ -82,6 +82,19 @@ namespace YH
 		rope->AddComponent<RopeScript>();
 		ropeColl->SetSize(Vector2(0.2f, 3.0f));
 		ropeColl->SetCollType(ColliderType::Rope);
+
+		m_RimitGround[0] = object::Instantiate<GameObject>(LayerType::RimitGround, Vector2(1525.0f, 1090.0f));
+		m_RimitGround[1] = object::Instantiate<GameObject>(LayerType::RimitGround, Vector2(359.5f, 1090.0f));
+		m_RimitGround[2] = object::Instantiate<GameObject>(LayerType::RimitGround, Vector2(1979.0f, 1490.0f));
+		m_RimitGround[3] = object::Instantiate<GameObject>(LayerType::RimitGround, Vector2(10.0f, 1490.0f));
+
+		for (int i = 0; i < 4; i++)
+		{
+			BoxCollider2D* rimitColl = m_RimitGround[i]->AddComponent<BoxCollider2D>();
+			m_RimitGround[i]->AddComponent<Script>();
+			rimitColl->SetSize(Vector2(0.5f, 2.0f));
+			rimitColl->SetCollType(ColliderType::RimitGround);
+		}
 		#pragma endregion
 
 		#pragma region Portal
@@ -105,55 +118,73 @@ namespace YH
 		#pragma endregion
 
 		#pragma region Monster
-		m_Monster[0] = object::Instantiate<Monster>(enums::LayerType::Monster, Vector2(1240.0f, 1445.0f));
-		m_Monster[0]->AddComponent<TigurueScript>();
-		m_Monster[0]->AddComponent<AudioSource>();
-		//m_Mushroom->GetComponent<Transform>()->SetScale(Vector2(1.2f, 1.2f));
+		m_Monster[0] = object::Instantiate<Monster>(enums::LayerType::Monster, Vector2(1340.0f, 1445.0f));
+		m_Monster[1] = object::Instantiate<Monster>(enums::LayerType::Monster, Vector2(1040.0f, 1445.0f));
+		m_Monster[2] = object::Instantiate<Monster>(enums::LayerType::Monster, Vector2(740.0f, 1445.0f));
+		m_Monster[3] = object::Instantiate<Monster>(enums::LayerType::Monster, Vector2(440.0f, 1445.0f));
 
 		graphics::Texture* tigurueTex = Resources::Find<graphics::Texture>(L"Tigurue");
 
-		BoxCollider2D* tigurueColl = m_Monster[0]->AddComponent<BoxCollider2D>();
-		//tigurueColl->SetOffset(Vector2(-30.0f, -30.0f));
-		tigurueColl->SetSize(Vector2(0.6f, 0.8f));
+		for (int i = 0; i < 4; i++)
+		{
+			TigurueScript* tigurueScript = m_Monster[i]->AddComponent<TigurueScript>();
+			m_Monster[i]->AddComponent<AudioSource>();
 
-		Animator* tigurueAnim = m_Monster[0]->AddComponent<Animator>();
-		tigurueAnim->CreateAnimation(L"Tigurue Left Idle", tigurueTex, Vector2(0.0f, 0.0f), Vector2(60.0f, 82.0f),
-			Vector2::Zero, 6, 0.1f);
-		tigurueAnim->CreateAnimation(L"Tigurue Left Move", tigurueTex, Vector2(0.0f, 82.0f), Vector2(65.0f, 91.0f),
-			Vector2::Zero, 6, 0.1f);
-		tigurueAnim->CreateAnimation(L"Tigurue Right Idle", tigurueTex, Vector2(360.0f, 0.0f), Vector2(60.0f, 82.0f),
-			Vector2::Zero, 6, 0.1f);
-		tigurueAnim->CreateAnimation(L"Tigurue Right Move", tigurueTex, Vector2(390.0f, 82.0f), Vector2(65.0f, 91.0f),
-			Vector2::Zero, 6, 0.1f);
-		tigurueAnim->CreateAnimation(L"Tigurue Die", tigurueTex, Vector2(0.0f, 173.0f), Vector2(93.0f, 93.0f),
-			Vector2::Zero, 12, 0.1f);
+			tigurueScript->SetSpawnPos(m_Monster[i]->GetComponent<Transform>()->GetPostion());
 
-		tigurueAnim->PlayAnimation(L"Tigurue Left Idle");
+			BoxCollider2D* tigurueColl = m_Monster[i]->AddComponent<BoxCollider2D>();
+			tigurueColl->SetSize(Vector2(0.6f, 0.8f));
 
-		m_Monster[1] = object::Instantiate<Monster>(enums::LayerType::Monster, Vector2(1140.0f, 1445.0f));
-		m_Monster[1]->AddComponent<TirueScript>();
-		m_Monster[1]->AddComponent<AudioSource>();
-		//m_Mushroom->GetComponent<Transform>()->SetScale(Vector2(1.2f, 1.2f));
+			Animator* tigurueAnim = m_Monster[i]->AddComponent<Animator>();
+			tigurueAnim->CreateAnimation(L"Tigurue Left Idle", tigurueTex, Vector2(0.0f, 0.0f), Vector2(60.0f, 82.0f),
+				Vector2::Zero, 6, 0.1f);
+			tigurueAnim->CreateAnimation(L"Tigurue Left Move", tigurueTex, Vector2(0.0f, 82.0f), Vector2(65.0f, 91.0f),
+				Vector2::Zero, 6, 0.1f);
+			tigurueAnim->CreateAnimation(L"Tigurue Right Idle", tigurueTex, Vector2(360.0f, 0.0f), Vector2(60.0f, 82.0f),
+				Vector2::Zero, 6, 0.1f);
+			tigurueAnim->CreateAnimation(L"Tigurue Right Move", tigurueTex, Vector2(390.0f, 82.0f), Vector2(65.0f, 91.0f),
+				Vector2::Zero, 6, 0.1f);
+			tigurueAnim->CreateAnimation(L"Tigurue Die", tigurueTex, Vector2(0.0f, 173.0f), Vector2(93.0f, 93.0f),
+				Vector2::Zero, 12, 0.1f);
+
+			tigurueAnim->PlayAnimation(L"Tigurue Left Idle");
+
+			tigurueAnim->GetCompleteEvent(L"Tigurue Die") = std::bind(&TigurueScript::DeathEvent, tigurueScript);
+		}
+
+		m_Monster[4] = object::Instantiate<Monster>(enums::LayerType::Monster, Vector2(1140.0f, 1090.0f));
+		m_Monster[5] = object::Instantiate<Monster>(enums::LayerType::Monster, Vector2(940.0f, 1090.0f));
+		m_Monster[6] = object::Instantiate<Monster>(enums::LayerType::Monster, Vector2(740.0f, 1090.0f));
+		m_Monster[7] = object::Instantiate<Monster>(enums::LayerType::Monster, Vector2(540.0f, 1090.0f));
 
 		graphics::Texture* tirueTex = Resources::Find<graphics::Texture>(L"Tirue");
 
-		BoxCollider2D* tirueColl = m_Monster[1]->AddComponent<BoxCollider2D>();
-		//tirueColl->SetOffset(Vector2(-30.0f, -30.0f));
-		tirueColl->SetSize(Vector2(0.6f, 0.8f));
+		for (int i = 4; i < 8; i++)
+		{
+			TirueScript* tirueScript = m_Monster[i]->AddComponent<TirueScript>();
+			m_Monster[i]->AddComponent<AudioSource>();
 
-		Animator* tirueAnim = m_Monster[1]->AddComponent<Animator>();
-		tirueAnim->CreateAnimation(L"Tirue Left Idle", tirueTex, Vector2(0.0f, 0.0f), Vector2(57.0f, 70.0f),
-			Vector2::Zero, 6, 0.1f);
-		tirueAnim->CreateAnimation(L"Tirue Left Move", tirueTex, Vector2(0.0f, 70.0f), Vector2(61.0f, 82.0f),
-			Vector2::Zero, 6, 0.1f);
-		tirueAnim->CreateAnimation(L"Tirue Right Idle", tirueTex, Vector2(342.0f, 0.0f), Vector2(57.0f, 70.0f),
-			Vector2::Zero, 6, 0.1f);
-		tirueAnim->CreateAnimation(L"Tirue Right Move", tirueTex, Vector2(366.0f, 70.0f), Vector2(61.0f, 82.0f),
-			Vector2::Zero, 6, 0.1f);
-		tirueAnim->CreateAnimation(L"Tirue Die", tirueTex, Vector2(0.0f, 152.0f), Vector2(82.0f, 93.0f),
-			Vector2::Zero, 12, 0.1f);
+			tirueScript->SetSpawnPos(m_Monster[i]->GetComponent<Transform>()->GetPostion());
 
-		tirueAnim->PlayAnimation(L"Tirue Left Idle");
+			BoxCollider2D* tigurueColl = m_Monster[i]->AddComponent<BoxCollider2D>();
+			tigurueColl->SetSize(Vector2(0.6f, 0.8f));
+
+			Animator* tirueAnim = m_Monster[i]->AddComponent<Animator>();
+			tirueAnim->CreateAnimation(L"Tirue Left Idle", tirueTex, Vector2(0.0f, 0.0f), Vector2(57.0f, 70.0f),
+				Vector2::Zero, 6, 0.1f);
+			tirueAnim->CreateAnimation(L"Tirue Left Move", tirueTex, Vector2(0.0f, 70.0f), Vector2(61.0f, 82.0f),
+				Vector2::Zero, 6, 0.1f);
+			tirueAnim->CreateAnimation(L"Tirue Right Idle", tirueTex, Vector2(342.0f, 0.0f), Vector2(57.0f, 70.0f),
+				Vector2::Zero, 6, 0.1f);
+			tirueAnim->CreateAnimation(L"Tirue Right Move", tirueTex, Vector2(366.0f, 70.0f), Vector2(61.0f, 82.0f),
+				Vector2::Zero, 6, 0.1f);
+			tirueAnim->CreateAnimation(L"Tirue Die", tirueTex, Vector2(0.0f, 152.0f), Vector2(82.0f, 93.0f),
+				Vector2::Zero, 12, 0.1f);
+
+			tirueAnim->PlayAnimation(L"Tirue Left Idle");
+
+			tirueAnim->GetCompleteEvent(L"Tirue Die") = std::bind(&TirueScript::DeathEvent, tirueScript);
+		}
 		#pragma endregion
 
 		SetAudioClip(Resources::Load<AudioClip>(L"RaindropFlower", L"..\\\Resources\\SoundResource\\RaindropFlower.mp3"));
@@ -164,6 +195,8 @@ namespace YH
 
 	void FlowerScene::Update()
 	{
+		ReSpawnCheck();
+
 		Scene::Update();
 	}
 
@@ -200,5 +233,26 @@ namespace YH
 		GetAudioSource()->Stop();
 
 		Scene::OnExit();
+	}
+
+	void FlowerScene::ReSpawnCheck()
+	{
+		for (int i = 0; i < 8; i++)
+		{
+			if (i / 4 == 0)
+			{
+				if (m_Monster[i]->GetState() == GameObject::State::Paused)
+				{
+					m_Monster[i]->GetComponent<TigurueScript>()->ReSpawn();
+				}
+			}
+			else
+			{
+				if (m_Monster[i]->GetState() == GameObject::State::Paused)
+				{
+					m_Monster[i]->GetComponent<TirueScript>()->ReSpawn();
+				}
+			}
+		}
 	}
 }

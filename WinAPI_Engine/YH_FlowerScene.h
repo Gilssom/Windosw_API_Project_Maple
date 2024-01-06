@@ -17,10 +17,13 @@ namespace YH
 		void OnEnter() override;
 		void OnExit() override;
 
+		void ReSpawnCheck();
+
 	private:
 		class GameObject* bg;
 		class Monster* m_Monster[50];
 		class Ground* m_Ground[10];
+		class GameObject* m_RimitGround[5];
 
 		float m_Width, m_Height;
 	};

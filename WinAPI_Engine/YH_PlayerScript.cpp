@@ -53,10 +53,10 @@ namespace YH
 				m_FairyTurn->SetActive(false);
 
 				fairyAnim->CreateAnimation(L"Fairy Turn Right Attack", rightFairyTurn, Vector2(0.0f, 0.0f), Vector2(580.0f, 348.0f),
-					Vector2::Zero, 11, 0.04f);
+					Vector2::Zero, 11, 0.07f);
 
 				fairyAnim->CreateAnimation(L"Fairy Turn Left Attack", leftFairyTurn, Vector2(0.0f, 0.0f), Vector2(580.0f, 348.0f),
-					Vector2::Zero, 11, 0.04f);
+					Vector2::Zero, 11, 0.07f);
 
 				fairyAnim->GetCompleteEvent(L"Fairy Turn Right Attack") = std::bind(&PlayerScript::FairyTurnEffOff, this);
 				fairyAnim->GetCompleteEvent(L"Fairy Turn Left Attack") = std::bind(&PlayerScript::FairyTurnEffOff, this);
@@ -75,22 +75,22 @@ namespace YH
 				m_BoringSong->SetActive(false);
 
 				boringAnim->CreateAnimation(L"Boring Song Left Attack", LeftboringSongStart, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
-					Vector2::Zero, 11, 0.01f);
+					Vector2::Zero, 11, 0.06f);
 
 				boringAnim->CreateAnimation(L"Boring Song Right Attack", RightboringSongStart, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
-					Vector2::Zero, 11, 0.01f);
+					Vector2::Zero, 11, 0.06f);
 
 				boringAnim->CreateAnimation(L"Boring Song Left Attaking", LeftboringSonging, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
-					Vector2::Zero, 6, 0.02f);
+					Vector2::Zero, 6, 0.06f);
 
 				boringAnim->CreateAnimation(L"Boring Song Right Attaking", RightboringSonging, Vector2(0.0f, 0.0f), Vector2(604.0f, 494.0f),
-					Vector2::Zero, 6, 0.02f);
+					Vector2::Zero, 6, 0.06f);
 
 				boringAnim->CreateAnimation(L"Boring Song Left End", LeftboringSongEnd, Vector2(0.0f, 0.0f), Vector2(382.0f, 408.0f),
-					Vector2::Zero, 10, 0.02f);
+					Vector2::Zero, 10, 0.06f);
 
 				boringAnim->CreateAnimation(L"Boring Song Right End", RightboringSongEnd, Vector2(0.0f, 0.0f), Vector2(382.0f, 408.0f),
-					Vector2::Zero, 10, 0.02f);
+					Vector2::Zero, 10, 0.06f);
 
 				boringAnim->GetCompleteEvent(L"Boring Song Left Attack") = std::bind(&PlayerScript::BoringSongEffing, this);
 				boringAnim->GetCompleteEvent(L"Boring Song Right Attack") = std::bind(&PlayerScript::BoringSongEffing, this);
@@ -111,16 +111,16 @@ namespace YH
 				m_HowlingGale->SetActive(false);
 
 				howlingAnim->CreateAnimation(L"Howling Left Start", LefthowlingStart, Vector2(0.0f, 0.0f), Vector2(615.0f, 556.0f),
-					Vector2(-50.0f, -20.0f), 15, 0.05f);
+					Vector2(-50.0f, -20.0f), 15, 0.07f);
 
 				howlingAnim->CreateAnimation(L"Howling Right Start", RighthowlingStart, Vector2(0.0f, 0.0f), Vector2(615.0f, 556.0f),
-					Vector2(50.0f, -20.0f), 15, 0.05f, true);
+					Vector2(50.0f, -20.0f), 15, 0.07f, true);
 
 				howlingAnim->CreateAnimation(L"Howling Attack", howlingAttack, Vector2(0.0f, 0.0f), Vector2(372.0f, 605.0f),
-					Vector2(0.0f, -270.0f), 14, 0.07f);
+					Vector2(0.0f, -270.0f), 14, 0.12f);
 
 				howlingAnim->CreateAnimation(L"Howling Attack End", howlingAttackEnd, Vector2(0.0f, 0.0f), Vector2(360.0f, 615.0f),
-					Vector2(0.0f, -270.0f), 5, 0.07f);
+					Vector2(0.0f, -270.0f), 5, 0.12f);
 
 				howlingAnim->GetCompleteEvent(L"Howling Left Start") = std::bind(&PlayerScript::HowlingEffing, this);
 				howlingAnim->GetCompleteEvent(L"Howling Right Start") = std::bind(&PlayerScript::HowlingEffing, this);
@@ -135,7 +135,7 @@ namespace YH
 				m_SharpEyes->AddComponent<Transform>();
 				m_SharpEyes->SetActive(false);
 				sharpAnim->CreateAnimation(L"Sharp Eyes", sharpEyesEff, Vector2(0.0f, 0.0f), Vector2(476.0f, 244.0f),
-					Vector2(0.0f, 0.0f), 21, 0.05f);
+					Vector2(0.0f, 0.0f), 21, 0.07f);
 		#pragma endregion
 
 		#pragma region Double Jump

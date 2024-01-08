@@ -51,16 +51,15 @@ namespace YH
 		#pragma endregion
 
 		#pragma region Collider Settings
-		Ground* ground = object::Instantiate<Ground>(LayerType::Ground, Vector2(10.0f, 612.0f));
+		Ground* ground = object::Instantiate<Ground>(LayerType::Ground, Vector2(10.0f, 637.0f));
 		BoxCollider2D* groundColl = ground->AddComponent<BoxCollider2D>();
 		groundColl->SetSize(Vector2(70.0f, 1.0f));
 		ground->AddComponent<GroundScript>();
 		#pragma endregion
 
 		#pragma region Portal
-		GameObject* portal_0 = object::Instantiate<GameObject>(enums::LayerType::Portal, Vector2(226.0f, 582.0f));
+		GameObject* portal_0 = object::Instantiate<GameObject>(enums::LayerType::Portal, Vector2(226.0f, 542.0f));
 		BoxCollider2D* portal_0_Coll = portal_0->AddComponent<BoxCollider2D>();
-		portal_0_Coll->SetOffset(Vector2(-50.0f, -50.0f));
 		portal_0_Coll->SetSize(Vector2(0.75f, 1.0f));
 		portal_0_Coll->SetCollType(ColliderType::Portal);
 
@@ -68,10 +67,8 @@ namespace YH
 		portalSc_0->SetNextScene(L"FlowerScene");
 		portalSc_0->SetSpawnPos(Vector2(160.0f, 760.0f));
 
-		GameObject* portal_1 = object::Instantiate<GameObject>(enums::LayerType::Portal, Vector2(1500.0f, 582.0f));
+		GameObject* portal_1 = object::Instantiate<GameObject>(enums::LayerType::Portal, Vector2(1500.0f, 542.0f));
 		BoxCollider2D* portal_1_Coll = portal_1->AddComponent<BoxCollider2D>();
-		portal_1_Coll->SetOffset(Vector2(-50.0f, -50.0f));
-		portal_1_Coll->SetSize(Vector2(0.75f, 1.0f));
 		portal_1_Coll->SetCollType(ColliderType::Portal);
 
 		PortalScript* portalSc_1 = portal_1->AddComponent<PortalScript>();

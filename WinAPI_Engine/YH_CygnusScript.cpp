@@ -7,7 +7,10 @@
 #include "YH_HitEffect.h"
 #include "YH_Resources.h"
 
+#include "YH_BoxCollider2D.h"
+
 #include "YH_ArrowScript.h"
+#include "YH_DarkGenesis.h"
 
 namespace YH
 {
@@ -52,6 +55,9 @@ namespace YH
 		case YH::CygnusScript::State::Skill3:
 			Skill3();
 			break;
+		case YH::CygnusScript::State::Death:
+			Death();
+			break;
 		default:
 			break;
 		}
@@ -84,6 +90,8 @@ namespace YH
 			FHanim->PlayAnimation(L"Fairy Hit Effect", false);
 
 			fariyHit->AddComponent<HitEffect>();
+
+			DeathCheck();
 			break;
 		}
 		case enums::ColliderType::HowlingGale:
@@ -128,6 +136,28 @@ namespace YH
 	}
 
 	#pragma region Skill Effect
+	void CygnusScript::Skill1Ball()
+	{
+		graphics::Texture* genesisTexture = Resources::Find<graphics::Texture>(L"CygnusSkill1Ball");
+
+		for (int i = 0; i < 6; i++)
+		{
+			GameObject* genesis = object::Instantiate<GameObject>(enums::LayerType::Effect, m_GPos[i]);
+
+			DarkGenesis* skillSc = genesis->AddComponent<DarkGenesis>();
+			skillSc->SetSkillDelay(3.85f);
+			skillSc->SetSkillSize(Vector2(2.3f, 5.5f));
+			skillSc->SetSkillOffset(Vector2(-20.0f, 0.0f));
+
+			Animator* genesisAnim = genesis->AddComponent<Animator>();
+
+			genesisAnim->CreateAnimation(L"Dark Genesis", genesisTexture, Vector2(0.0f, 0.0f), Vector2(300.0f, 558.0f),
+				Vector2(0.0f, 0.0f), 39, 0.15f);
+
+			genesisAnim->PlayAnimation(L"Dark Genesis", false);
+		}	
+	}
+
 	void CygnusScript::Skill2Ball()
 	{
 		GameObject* ball = object::Instantiate<GameObject>(enums::LayerType::Effect);
@@ -144,7 +174,7 @@ namespace YH
 		ballScript->SetPlayer(GetOwner());
 		ballScript->SetSpeed(500.0f);
 
-		Transform* playerTf = GetOwner()->GetComponent<Transform>();
+		Transform* cygnusTf = GetOwner()->GetComponent<Transform>();
 
 		switch (m_Dir)
 		{
@@ -160,10 +190,42 @@ namespace YH
 			break;
 		}
 
-		ball->GetComponent<Transform>()->SetPosition(playerTf->GetPostion()/* + (ballScript->m_Dest * 100.0f)*/);
-		//ball->GetComponent<Transform>()->SetScale(Vector2(0.7f, 0.7f));
+		ball->GetComponent<Transform>()->SetPosition(cygnusTf->GetPostion());
+	}
+
+	void CygnusScript::Skill3Ball()
+	{
+		GameObject* fireArea = object::Instantiate<GameObject>(enums::LayerType::Effect, Vector2(300.0f, 430.0f));
+
+		DarkGenesis* skillSc = fireArea->AddComponent<DarkGenesis>();
+		skillSc->SetSkillDelay(2.65f);
+		skillSc->SetSkillSize(Vector2(4.5f, 2.0f));
+		skillSc->SetSkillOffset(Vector2(0.0f, 50.0f));
+
+		Animator* fireAreaAnim = fireArea->AddComponent<Animator>();
+		graphics::Texture* fireAreaTexture = Resources::Find<graphics::Texture>(L"CygnusSkill3Ball");
+
+		fireAreaAnim->CreateAnimation(L"Fire Area", fireAreaTexture, Vector2(0.0f, 0.0f), Vector2(625.0f, 345.0f),
+			Vector2(0.0f, 0.0f), 26, 0.15f);
+
+		fireAreaAnim->PlayAnimation(L"Fire Area", false);
 	}
 	#pragma endregion
+
+	void CygnusScript::DeathCheck()
+	{
+		m_State = CygnusScript::State::Death;
+
+		switch (m_Dir)
+		{
+		case YH::CygnusScript::Direction::Right:
+			m_Animator->PlayAnimation(L"Cygnus Right Death", false);
+			break;
+		case YH::CygnusScript::Direction::Left:
+			m_Animator->PlayAnimation(L"Cygnus Left Death", false);
+			break;
+		}
+	}
 
 	void CygnusScript::Idle()
 	{
@@ -172,6 +234,8 @@ namespace YH
 		if (m_Time > 5.0f)
 		{
 			int pattern = (rand() % 2);
+
+			pattern = 3;
 
 			if (pattern == 0)
 			{
@@ -184,6 +248,22 @@ namespace YH
 			}
 			else if (pattern == 1)
 			{
+				m_State = CygnusScript::State::Skill1;
+
+				switch (m_Dir)
+				{
+				case YH::CygnusScript::Direction::Right:
+					m_Animator->PlayAnimation(L"Cygnus Right Skill1", false);
+					break;
+				case YH::CygnusScript::Direction::Left:
+					m_Animator->PlayAnimation(L"Cygnus Left Skill1", false);
+					break;
+				default:
+					break;
+				}
+			}
+			else if (pattern == 2)
+			{
 				m_State = CygnusScript::State::Skill2;
 
 				switch (m_Dir)
@@ -193,6 +273,22 @@ namespace YH
 					break;
 				case YH::CygnusScript::Direction::Left:
 					m_Animator->PlayAnimation(L"Cygnus Left Skill2", false);
+					break;
+				default:
+					break;
+				}
+			}
+			else if (pattern == 3)
+			{
+				m_State = CygnusScript::State::Skill3;
+
+				switch (m_Dir)
+				{
+				case YH::CygnusScript::Direction::Right:
+					m_Animator->PlayAnimation(L"Cygnus Right Skill3", false);
+					break;
+				case YH::CygnusScript::Direction::Left:
+					m_Animator->PlayAnimation(L"Cygnus Left Skill3", false);
 					break;
 				default:
 					break;
@@ -238,6 +334,36 @@ namespace YH
 
 	void CygnusScript::Skill1()
 	{
+		if (!m_DoSkill)
+		{
+			m_SkillDelay += Time::DeltaTime();
+
+			if (m_SkillDelay > 0.55f)
+			{
+				Skill1Ball();
+				m_DoSkill = true;
+			}
+		}
+
+		if (m_Animator->IsComplete())
+		{
+			m_State = State::Idle;
+
+			switch (m_Dir)
+			{
+			case YH::CygnusScript::Direction::Right:
+				m_Animator->PlayAnimation(L"Cygnus Right Idle");
+				break;
+			case YH::CygnusScript::Direction::Left:
+				m_Animator->PlayAnimation(L"Cygnus Left Idle");
+				break;
+			default:
+				break;
+			}
+
+			m_SkillDelay = 0.0f;
+			m_DoSkill = false;
+		}
 	}
 
 	void CygnusScript::Skill2()
@@ -246,7 +372,7 @@ namespace YH
 		{
 			m_SkillDelay += Time::DeltaTime();
 
-			if (m_SkillDelay > 0.55f)
+			if (m_SkillDelay > 0.85f)
 			{
 				Skill2Ball();
 				m_DoSkill = true;
@@ -276,12 +402,42 @@ namespace YH
 
 	void CygnusScript::Skill3()
 	{
+		if (!m_DoSkill)
+		{
+			m_SkillDelay += Time::DeltaTime();
 
+			if (m_SkillDelay > 0.55f)
+			{
+				Skill3Ball();
+				m_DoSkill = true;
+			}
+		}
+
+		if (m_Animator->IsComplete())
+		{
+			m_State = State::Idle;
+
+			switch (m_Dir)
+			{
+			case YH::CygnusScript::Direction::Right:
+				m_Animator->PlayAnimation(L"Cygnus Right Idle");
+				break;
+			case YH::CygnusScript::Direction::Left:
+				m_Animator->PlayAnimation(L"Cygnus Left Idle");
+				break;
+			default:
+				break;
+			}
+
+			m_SkillDelay = 0.0f;
+			m_DoSkill = false;
+		}
 	}
 
 	void CygnusScript::Death()
 	{
-
+		if (m_Animator->IsComplete())
+			object::Destroy(GetOwner());
 	}
 
 	void CygnusScript::PlayWalkAnimationByDirection(Direction dir)

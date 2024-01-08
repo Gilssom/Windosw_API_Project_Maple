@@ -80,6 +80,9 @@
     <ClInclude Include="YH_BossReadyScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="YH_DarkGenesis.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scenes">
@@ -176,6 +179,9 @@
     </ClCompile>
     <ClCompile Include="YH_BossReadyScene.cpp">
       <Filter>Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="YH_DarkGenesis.cpp">
+      <Filter>Scripts</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

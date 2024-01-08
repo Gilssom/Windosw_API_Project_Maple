@@ -53,9 +53,20 @@ namespace YH
 		// Boss_Cygnus
 		Resources::Load<graphics::Texture>(L"Cygnus",				L"..\\Resources\\Boss\\CygnusCommon.png");
 
+		Resources::Load<graphics::Texture>(L"LeftCygnusSkill1",		L"..\\Resources\\Boss\\LeftCygnusSkill1.png");
+		Resources::Load<graphics::Texture>(L"RightCygnusSkill1",	L"..\\Resources\\Boss\\RightCygnusSkill1.png");
+		Resources::Load<graphics::Texture>(L"CygnusSkill1Ball",		L"..\\Resources\\Boss\\Skill1Ball.png");
+
 		Resources::Load<graphics::Texture>(L"LeftCygnusSkill2",		L"..\\Resources\\Boss\\LeftCygnusSkill2.png");
 		Resources::Load<graphics::Texture>(L"RightCygnusSkill2",	L"..\\Resources\\Boss\\RightCygnusSkill2.png");
 		Resources::Load<graphics::Texture>(L"CygnusSkill2Ball",		L"..\\Resources\\Boss\\Skill2Ball.png");
+
+		Resources::Load<graphics::Texture>(L"LeftCygnusSkill3",		L"..\\Resources\\Boss\\LeftCygnusSkill3.png");
+		Resources::Load<graphics::Texture>(L"RightCygnusSkill3",	L"..\\Resources\\Boss\\RightCygnusSkill3.png");
+		Resources::Load<graphics::Texture>(L"CygnusSkill3Ball",		L"..\\Resources\\Boss\\Skill3Ball.png");
+		
+		Resources::Load<graphics::Texture>(L"LeftCygnusDeath",		L"..\\Resources\\Boss\\LeftCygnusDeath.png");
+		Resources::Load<graphics::Texture>(L"RightCygnusDeath",		L"..\\Resources\\Boss\\RightCygnusDeath.png");
 
 		// Map
 		Resources::Load<graphics::Texture>(L"QueensRoad",			L"..\\Resources\\Map\\QueensRoad.png");

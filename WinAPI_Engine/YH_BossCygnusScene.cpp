@@ -145,6 +145,8 @@ namespace YH
 		GetAudioSource()->SetClip(GetAudioClip());
 		GetAudioSource()->Play();
 
+		m_Cygnus->GetComponent<CygnusScript>()->SetTarget(cameraComp->GetPlayer());
+
 		Scene::OnEnter();
 	}
 

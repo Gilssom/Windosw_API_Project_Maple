@@ -80,6 +80,7 @@ namespace YH
 		class Animator* m_Animator;
 		class Rigidbody* m_Rigidbody;
 		class AudioSource* m_AudioSource;
+		class BoxCollider2D* m_PlayerColl;
 		Vector2 m_PlayerPos;
 
 		float m_ReShootTime;

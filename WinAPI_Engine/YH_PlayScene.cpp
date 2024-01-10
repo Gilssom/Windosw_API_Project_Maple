@@ -73,15 +73,15 @@ namespace YH
 		groundColl->SetSize(Vector2(70.0f, 1.0f));
 		ground->AddComponent<GroundScript>();
 
-		GameObject* portal = object::Instantiate<GameObject>(enums::LayerType::Portal, /*Origin :: Vector2(160.0f, 760.0f)*/ Vector2(1184.0f, 760.0f));
+		GameObject* portal = object::Instantiate<GameObject>(enums::LayerType::Portal, Vector2(160.0f, 760.0f) /*Vector2(1184.0f, 760.0f)*/);
 		BoxCollider2D* portal_0 = portal->AddComponent<BoxCollider2D>();
 		portal_0->SetSize(Vector2(0.75f, 1.0f));
 		portal->AddComponent<Script>();
 		portal_0->SetCollType(ColliderType::Portal);
 
 		PortalScript* portalSc = portal->AddComponent<PortalScript>();
-		//portalSc->SetNextScene(L"FlowerScene");
-		//portalSc->SetSpawnPos(Vector2(1829.0f, 1465.0f));
+		/*portalSc->SetNextScene(L"FlowerScene");
+		portalSc->SetSpawnPos(Vector2(1829.0f, 1465.0f));*/
 		// Test
 		portalSc->SetNextScene(L"BossCygnusScene");
 		portalSc->SetSpawnPos(Vector2(153.0f, 586.0f));

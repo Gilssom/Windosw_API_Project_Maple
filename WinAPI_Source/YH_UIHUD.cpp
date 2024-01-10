@@ -50,24 +50,23 @@ namespace YH
 
 		Gdiplus::ImageAttributes imgAtt = {};
 
-		Gdiplus::Graphics graphics(hdc);
+		BLENDFUNCTION blend = {};
+		blend.BlendOp = AC_SRC_OVER;
+		blend.BlendFlags = 0;
 
-		graphics.TranslateTransform(pos.x, pos.y);
-		graphics.TranslateTransform(-pos.x, -pos.y);
+		blend.SourceConstantAlpha = 255; // 0 ~ 255
+		blend.AlphaFormat = AC_SRC_ALPHA; // 0
 
-		graphics.DrawImage(m_Texture->GetImage()
-			, Gdiplus::Rect(
-				pos.x + offset.x
-				, pos.y + offset.y
-				, m_Texture->GetWidth() 
-				, m_Texture->GetHeight()
-			)
+		AlphaBlend(hdc
+			, pos.x + offset.x
+			, pos.y + offset.y
+			, m_Texture->GetWidth()
+			, m_Texture->GetHeight()
+			, m_Texture->GetHdc()
 			, 0, 0
 			, m_Texture->GetWidth()
 			, m_Texture->GetHeight()
-			, Gdiplus::UnitPixel
-			, nullptr
-		);
+			, blend);
 	}
 
 	void UIHUD::OnClear()

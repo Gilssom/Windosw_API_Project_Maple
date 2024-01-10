@@ -174,6 +174,10 @@ namespace YH
 		ballScript->SetPlayer(GetOwner());
 		ballScript->SetSpeed(500.0f);
 
+		BoxCollider2D* ballColl = ball->AddComponent<BoxCollider2D>();
+		//ballColl->SetCollType(enums::ColliderType::BoringArrow);
+		ballColl->SetSize(Vector2(1.f, 0.5f));
+
 		Transform* cygnusTf = GetOwner()->GetComponent<Transform>();
 
 		switch (m_Dir)
@@ -182,11 +186,13 @@ namespace YH
 			ballAnim->PlayAnimation(L"Right Ball");
 
 			ballScript->m_Dest = Vector2::Right;
+			ballColl->SetOffset(Vector2(20.0f, 35.0f));
 			break;
 		case YH::CygnusScript::Direction::Left:
 			ballAnim->PlayAnimation(L"Left Ball");
 
 			ballScript->m_Dest = Vector2::Left;
+			ballColl->SetOffset(Vector2(-20.0f, 35.0f));
 			break;
 		}
 
@@ -195,7 +201,7 @@ namespace YH
 
 	void CygnusScript::Skill3Ball()
 	{
-		GameObject* fireArea = object::Instantiate<GameObject>(enums::LayerType::Effect, Vector2(300.0f, 430.0f));
+		GameObject* fireArea = object::Instantiate<GameObject>(enums::LayerType::Effect, Vector2(m_TargetPos.x, 430.0f));
 
 		DarkGenesis* skillSc = fireArea->AddComponent<DarkGenesis>();
 		skillSc->SetSkillDelay(2.65f);
@@ -233,9 +239,16 @@ namespace YH
 
 		if (m_Time > 5.0f)
 		{
-			int pattern = (rand() % 2);
+			m_TargetPos = m_Target->GetComponent<Transform>()->GetPostion();
 
-			pattern = 3;
+			if (m_CygnusPos.x >= m_TargetPos.x)
+				m_Dir = Direction::Left;
+			else
+				m_Dir = Direction::Right;
+
+			int pattern = (rand() % 4);
+
+			pattern = 2;
 
 			if (pattern == 0)
 			{

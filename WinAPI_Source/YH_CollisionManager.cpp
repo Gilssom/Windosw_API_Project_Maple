@@ -173,7 +173,7 @@ namespace YH
 		if (leftType == enums::ColliderShapeType::Rect2D
 			&& rightType == enums::ColliderShapeType::Rect2D)
 		{
-			// AABB �浹
+			// AABB
 			/*if (fabs(leftPos.x - rightPos.x) < fabs(leftSize.x / 2.0f + rightSize.x / 2.0f)
 				&& fabs(leftPos.y - rightPos.y) < fabs(leftSize.y / 2.0f + rightSize.y / 2.0f))*/
 			if (fabs(leftSize.x / 2.0f + rightSize.x / 2.0f) >= fabs(leftPos.x - rightPos.x)

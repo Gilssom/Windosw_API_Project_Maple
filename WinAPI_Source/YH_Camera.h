@@ -22,6 +22,7 @@ namespace YH
 		void CameraSettings();
 
 		Vector2 GetPosition() { return m_LookPosition; }
+		GameObject* GetPlayer() { return m_Target; }
 		void SetTarget(GameObject* target) { m_Target = target; }
 
 		void GetBackWidth(float width) { m_BackWidth = width; }

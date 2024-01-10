@@ -178,6 +178,9 @@ namespace YH
 		if (!m_AudioSource)
 			m_AudioSource = GetOwner()->GetComponent<AudioSource>();
 
+		if (!m_PlayerColl)
+			m_PlayerColl = GetOwner()->GetComponent<BoxCollider2D>();
+
 		m_PlayerPos = GetOwner()->GetComponent<Transform>()->GetPostion();
 
 		switch (m_State)
@@ -519,6 +522,9 @@ namespace YH
 				else
 				{
 					m_State = PlayerScript::State::Down;
+
+					m_PlayerColl->SetOffset(Vector2(0.0f, 7.5f));
+					m_PlayerColl->SetSize(Vector2(0.4f, 0.2f));
 
 					switch (m_Dir)
 					{
@@ -996,6 +1002,9 @@ namespace YH
 		if (Input::GetKeyUp(KeyCode::Down))
 		{
 			m_State = PlayerScript::State::Idle;
+
+			m_PlayerColl->SetOffset(Vector2(0.0f, -10.0f));
+			m_PlayerColl->SetSize(Vector2(0.4f, 0.5f));
 
 			switch (m_Dir)
 			{

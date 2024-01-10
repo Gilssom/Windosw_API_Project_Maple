@@ -31,6 +31,8 @@ namespace YH
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
+		void SetTarget(GameObject* target) { m_Target = target; }
+
 		void OnCollisionEnter(Collider* other) override;
 		void OnCollisionStay(Collider* other) override;
 		void OnCollisionExit(Collider* other) override;
@@ -56,7 +58,9 @@ namespace YH
 		State m_State;
 		Direction m_Dir;
 		class Animator* m_Animator;
+		class GameObject* m_Target;
 		Vector2 m_CygnusPos;
+		Vector2 m_TargetPos;
 		float m_Time;
 		float m_SkillDelay;
 		bool m_DoSkill;

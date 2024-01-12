@@ -10,6 +10,8 @@
 
 #include "YH_Resources.h"
 #include "YH_AudioSource.h"
+#include "YH_PlayerScript.h"
+#include "YH_DamageFont.h"
 
 namespace YH
 {
@@ -88,8 +90,16 @@ namespace YH
 					as->SetClip(ac);
 					as->Play();
 
+					//DamageFont* damageFont = GetOwner()->GetComponent<DamageFont>();
+					//damageFont->SetDamage(4520);
+					//damageFont->ViewDamageFont();
+
 					m_State = TigurueScript::State::Death;
 					m_Animator->PlayAnimation(L"Tigurue Die");
+
+					const std::vector<GameObject*>& player = SceneManager::GetGameObjects(LayerType::Player);
+					PlayerScript* playerSc = player.front()->GetComponent<PlayerScript>();
+					playerSc->ExpUp(5000);
 
 					break;
 				}

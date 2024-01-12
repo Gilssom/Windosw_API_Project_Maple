@@ -171,6 +171,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClInclude Include="YH_BossReadyScene.h" />
     <ClInclude Include="YH_Cygnus.h" />
     <ClInclude Include="YH_CygnusScript.h" />
+    <ClInclude Include="YH_DamageFont.h" />
     <ClInclude Include="YH_DarkGenesis.h" />
     <ClInclude Include="YH_Ground.h" />
     <ClInclude Include="YH_GroundScript.h" />
@@ -200,6 +201,7 @@ copy "$(SolutionDir)\External\Library\Fmod\Release\fmodstudio.dll" "$(SolutionDi
     <ClCompile Include="YH_BossReadyScene.cpp" />
     <ClCompile Include="YH_Cygnus.cpp" />
     <ClCompile Include="YH_CygnusScript.cpp" />
+    <ClCompile Include="YH_DamageFont.cpp" />
     <ClCompile Include="YH_DarkGenesis.cpp" />
     <ClCompile Include="YH_Ground.cpp" />
     <ClCompile Include="YH_GroundScript.cpp" />

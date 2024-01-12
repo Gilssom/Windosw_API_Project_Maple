@@ -6,7 +6,7 @@
 namespace YH
 {
 	UIHUD::UIHUD()
-		: UIBase(UIType::HpBar)
+		: UIBase(UIType::MainUI)
 	{
 
 	}
@@ -18,7 +18,7 @@ namespace YH
 
 	void UIHUD::OnInit()
 	{
-		m_Texture = Resources::Find<graphics::Texture>(L"StatusBar");
+		m_Texture = Resources::Find<graphics::Texture>(L"PlayMainUI");
 	}
 
 	void UIHUD::OnActive()
@@ -44,8 +44,11 @@ namespace YH
 	void UIHUD::OnRender(HDC hdc)
 	{
 		const std::vector<GameObject*>& camera = SceneManager::GetGameObjects(LayerType::Camera);
+		// = Vector2::Zero;
+		//pos = camera.front()->GetComponent<Camera>()->CaluatePosition(pos);
 		Vector2 pos = camera.front()->GetComponent<Camera>()->GetPosition();
-		Vector2 offset = Vector2(-100.0f, 300.0f);
+		//Vector2 offset = Vector2::Zero;
+		Vector2 offset = Vector2(-683.0f, -384.0f);
 		pos = renderer::mainCamera->CaluatePosition(pos);
 
 		Gdiplus::ImageAttributes imgAtt = {};

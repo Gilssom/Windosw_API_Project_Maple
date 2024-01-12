@@ -1,5 +1,8 @@
 #include "YH_UIManager.h"
 #include "YH_UIHUD.h"
+#include "YH_UIExp.h"
+#include "YH_UIHpBar.h"
+#include "YH_UIMpBar.h"
 #include "YH_UIButton.h"
 
 namespace YH
@@ -12,7 +15,13 @@ namespace YH
 	void UIManager::Initialize()
 	{
 		UIHUD* hud = new UIHUD();
-		m_UIs.insert(std::make_pair(UIType::HpBar, hud));
+		UIExp* exp = new UIExp();
+		UIHpBar* hpbar = new UIHpBar();
+		UIMpBar* mpbar = new UIMpBar();
+		m_UIs.insert(std::make_pair(UIType::MainUI, hud));
+		m_UIs.insert(std::make_pair(UIType::ExpBar, exp));
+		m_UIs.insert(std::make_pair(UIType::HpBar, hpbar));
+		m_UIs.insert(std::make_pair(UIType::MpBar, mpbar));
 
 		UIButton* button = new UIButton();
 		m_UIs.insert(std::make_pair(UIType::Button, button));

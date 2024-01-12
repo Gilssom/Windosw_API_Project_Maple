@@ -83,6 +83,9 @@
     <ClInclude Include="YH_DarkGenesis.h">
       <Filter>Scripts</Filter>
     </ClInclude>
+    <ClInclude Include="YH_DamageFont.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Scenes">
@@ -181,6 +184,9 @@
       <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="YH_DarkGenesis.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="YH_DamageFont.cpp">
       <Filter>Scripts</Filter>
     </ClCompile>
   </ItemGroup>

@@ -67,7 +67,10 @@ namespace YH::enums
 
 	enum class UIType
 	{
+		MainUI,
 		HpBar,
+		MpBar,
+		ExpBar,
 		Button,
 		End,
 	};

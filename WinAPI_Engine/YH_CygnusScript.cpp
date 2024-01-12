@@ -248,7 +248,7 @@ namespace YH
 
 			int pattern = (rand() % 4);
 
-			pattern = 2;
+			//pattern = 2;
 
 			if (pattern == 0)
 			{
@@ -318,12 +318,6 @@ namespace YH
 
 		if (m_Time > 5.0f)
 		{
-			/*int isLayDown = rand() % 2;
-			if (isLayDown)
-			{
-				
-			}*/
-
 			m_State = State::Idle;
 
 			switch (m_Dir)

@@ -21,6 +21,9 @@ namespace YH
 	PlayerScript::PlayerScript() : m_State(PlayerScript::State::Idle)
 		, m_Animator(nullptr), m_Dir(PlayerScript::Direction::Left)
 		, m_ReShootTime(0.0f), isBuff(false)
+		, m_MaxHp(25000), m_Hp(25000)
+		, m_MaxMp(20000), m_Mp(20000)
+		, m_MaxExp(100000), m_Exp(0)
 	{
 	}
 

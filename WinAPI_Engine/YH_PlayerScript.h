@@ -61,6 +61,13 @@ namespace YH
 		void SetisJumpUp(bool jumpUp) { isJumpUp = jumpUp; }
 		bool GetisJumpUp() { return isJumpUp; }
 
+		// Status
+		float GetHpPercent() { return (float)m_Hp / (float)m_MaxHp; }
+		float GetMpPercent() { return (float)m_Mp / (float)m_MaxMp; }
+		float GetExpPercent() { return (float)m_Exp / (float)m_MaxExp; }
+
+		void ExpUp(int exp) { m_Exp += exp; }
+
 	private:
 		void Idle();
 		void Move();
@@ -82,6 +89,10 @@ namespace YH
 		class AudioSource* m_AudioSource;
 		class BoxCollider2D* m_PlayerColl;
 		Vector2 m_PlayerPos;
+
+		int m_Hp, m_MaxHp;
+		int m_Mp, m_MaxMp;
+		int m_Exp, m_MaxExp;
 
 		float m_ReShootTime;
 		bool isBuff;

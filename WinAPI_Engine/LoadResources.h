@@ -77,9 +77,26 @@ namespace YH
 		Resources::Load<graphics::Texture>(L"BossCygnusArena",		L"..\\Resources\\Map\\BossArena.png");
 
 		// UI
+		Resources::Load<graphics::Texture>(L"PlayMainUI",			L"..\\Resources\\UI\\PlayMainUI.png");
+		Resources::Load<graphics::Texture>(L"MainExpBar",			L"..\\Resources\\UI\\MainExpBar.png");
+
 		Resources::Load<graphics::Texture>(L"StatusBar",			L"..\\Resources\\UI\\StatusBar.png");
 		Resources::Load<graphics::Texture>(L"HpBar",				L"..\\Resources\\UI\\HpBar.png");
 		Resources::Load<graphics::Texture>(L"MpBar",				L"..\\Resources\\UI\\MpBar.png");
+
+		Resources::Load<graphics::Texture>(L"NormalDamage",			L"..\\Resources\\UI\\DamageFont.png");
+
+		Resources::Load<graphics::Texture>(L"Zero",					L"..\\Resources\\UI\\DamageFont\\Zero.png");
+		Resources::Load<graphics::Texture>(L"One",					L"..\\Resources\\UI\\DamageFont\\One.png");
+		Resources::Load<graphics::Texture>(L"Two",					L"..\\Resources\\UI\\DamageFont\\Two.png");
+		Resources::Load<graphics::Texture>(L"Three",				L"..\\Resources\\UI\\DamageFont\\Three.png");
+		Resources::Load<graphics::Texture>(L"Four",					L"..\\Resources\\UI\\DamageFont\\Four.png");
+		Resources::Load<graphics::Texture>(L"Five",					L"..\\Resources\\UI\\DamageFont\\Five.png");
+		Resources::Load<graphics::Texture>(L"Six",					L"..\\Resources\\UI\\DamageFont\\Six.png");
+		Resources::Load<graphics::Texture>(L"Seven",				L"..\\Resources\\UI\\DamageFont\\Seven.png");
+		Resources::Load<graphics::Texture>(L"Eight",				L"..\\Resources\\UI\\DamageFont\\Eight.png");
+		Resources::Load<graphics::Texture>(L"Nine",					L"..\\Resources\\UI\\DamageFont\\Nine.png");
+
 
 		Resources::Load<graphics::Texture>(L"Test",					L"..\\Resources\\UI\\Test.bmp");
 

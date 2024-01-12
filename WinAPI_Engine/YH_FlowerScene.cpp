@@ -25,6 +25,7 @@
 #include "YH_GroundScript.h"
 #include "YH_RopeScript.h"
 #include "YH_PortalScript.h"
+#include "YH_DamageFont.h"
 
 #include "YH_AudioClip.h"
 #include "YH_AudioListener.h"
@@ -129,6 +130,7 @@ namespace YH
 		{
 			TigurueScript* tigurueScript = m_Monster[i]->AddComponent<TigurueScript>();
 			m_Monster[i]->AddComponent<AudioSource>();
+			//m_Monster[i]->AddComponent<DamageFont>();
 
 			tigurueScript->SetSpawnPos(m_Monster[i]->GetComponent<Transform>()->GetPostion());
 

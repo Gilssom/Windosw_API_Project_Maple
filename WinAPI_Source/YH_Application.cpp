@@ -83,10 +83,10 @@ namespace YH
 	void Application::ClearRenderTarget()
 	{
 		// ���� �ٲٱ�
-		HBRUSH grayBrush = (HBRUSH)CreateSolidBrush(RGB(128, 128, 128));
+		HBRUSH grayBrush = (HBRUSH)CreateSolidBrush(RGB(255, 255, 255));
 		HBRUSH oldBrush = (HBRUSH)SelectObject(m_BackHdc, grayBrush);
 
-		Rectangle(m_BackHdc, -1, -1, 1600, 900);
+		Rectangle(m_BackHdc, -1, -1, 1366, 768);
 
 		(HBRUSH)SelectObject(m_BackHdc, oldBrush);
 		DeleteObject(grayBrush);

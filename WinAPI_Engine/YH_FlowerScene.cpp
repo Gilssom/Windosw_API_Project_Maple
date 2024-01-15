@@ -45,6 +45,8 @@ namespace YH
 
 	void FlowerScene::Initialize()
 	{
+		SetSceneNumber(1);
+
 		bg = object::Instantiate<GameObject>(enums::LayerType::BackGround);
 
 		SetAudioSource(bg->AddComponent<AudioSource>());

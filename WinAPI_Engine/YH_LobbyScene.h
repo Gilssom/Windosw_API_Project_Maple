@@ -14,6 +14,11 @@ namespace YH
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
+		void OnEnter() override;
+		void OnExit() override;
+
+		void WorldSelect();
+
 	private:
 		class GameObject* bg[50];
 		class GameObject* logo;

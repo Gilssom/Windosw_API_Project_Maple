@@ -39,6 +39,8 @@ namespace YH
 	void BossCygnusScene::Initialize()
 	{
 		#pragma region BackGround Settings
+		SetSceneNumber(3);
+
 		m_Bg = object::Instantiate<GameObject>(enums::LayerType::BackGround);
 
 		SetAudioSource(m_Bg->AddComponent<AudioSource>());
@@ -146,6 +148,9 @@ namespace YH
 		GetAudioSource()->Play();
 
 		m_Cygnus->GetComponent<CygnusScript>()->SetTarget(cameraComp->GetPlayer());
+
+		UIManager::Push(UIType::BossHpBarBack);
+		UIManager::Push(UIType::BossHpBar);
 
 		Scene::OnEnter();
 	}

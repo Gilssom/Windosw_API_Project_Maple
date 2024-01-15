@@ -84,7 +84,19 @@ namespace YH
 		Resources::Load<graphics::Texture>(L"HpBar",				L"..\\Resources\\UI\\HpBar.png");
 		Resources::Load<graphics::Texture>(L"MpBar",				L"..\\Resources\\UI\\MpBar.png");
 
+		Resources::Load<graphics::Texture>(L"BossHpBarBg",			L"..\\Resources\\UI\\BossHpBackGround.png");
+		Resources::Load<graphics::Texture>(L"BossHpBar",			L"..\\Resources\\UI\\BossHpBar.png");
+
 		Resources::Load<graphics::Texture>(L"NormalDamage",			L"..\\Resources\\UI\\DamageFont.png");
+
+		Resources::Load<graphics::Texture>(L"QueensRoadmap",		L"..\\Resources\\UI\\QueensRoadMinimap.png");
+		Resources::Load<graphics::Texture>(L"Flowermap",			L"..\\Resources\\UI\\FlowerMinimap.png");
+		Resources::Load<graphics::Texture>(L"BossReadymap",			L"..\\Resources\\UI\\BossReadyMinimap.png");
+		Resources::Load<graphics::Texture>(L"BossAreamap",			L"..\\Resources\\UI\\BossAreaMinimap.png");
+
+		Resources::Load<graphics::Texture>(L"WorldButton",			L"..\\Resources\\UI\\WorldSelectButton.png");
+		Resources::Load<graphics::Texture>(L"WorldButtonOver",		L"..\\Resources\\UI\\WorldSelectButtonOver.png");
+		Resources::Load<graphics::Texture>(L"WorldButtonPress",		L"..\\Resources\\UI\\WorldSelectButtonPress.png");
 
 		Resources::Load<graphics::Texture>(L"Zero",					L"..\\Resources\\UI\\DamageFont\\Zero.png");
 		Resources::Load<graphics::Texture>(L"One",					L"..\\Resources\\UI\\DamageFont\\One.png");

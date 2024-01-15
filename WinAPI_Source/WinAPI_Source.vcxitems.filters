@@ -91,9 +91,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIBase.cpp">
       <Filter>UI</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIHUD.cpp">
-      <Filter>UI\HUD</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIButton.cpp">
       <Filter>UI\Button</Filter>
     </ClCompile>
@@ -112,14 +109,26 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Animation.cpp">
       <Filter>Resource\Animation</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIBossHpBar.cpp">
+      <Filter>UI\HUD\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIBossHUD.cpp">
+      <Filter>UI\HUD\Boss</Filter>
+    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIExp.cpp">
-      <Filter>UI\HUD</Filter>
+      <Filter>UI\HUD\Player</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIHpBar.cpp">
-      <Filter>UI\HUD</Filter>
+      <Filter>UI\HUD\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIHUD.cpp">
+      <Filter>UI\HUD\Player</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIMpBar.cpp">
-      <Filter>UI\HUD</Filter>
+      <Filter>UI\HUD\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIMinimap.cpp">
+      <Filter>UI\HUD\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -219,9 +228,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIBase.h">
       <Filter>UI</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIHUD.h">
-      <Filter>UI\HUD</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIButton.h">
       <Filter>UI\Button</Filter>
     </ClInclude>
@@ -240,14 +246,26 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Animation.h">
       <Filter>Resource\Animation</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIBossHpBar.h">
+      <Filter>UI\HUD\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIBossHUD.h">
+      <Filter>UI\HUD\Boss</Filter>
+    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIExp.h">
-      <Filter>UI\HUD</Filter>
+      <Filter>UI\HUD\Player</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIHpBar.h">
-      <Filter>UI\HUD</Filter>
+      <Filter>UI\HUD\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIHUD.h">
+      <Filter>UI\HUD\Player</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIMpBar.h">
-      <Filter>UI\HUD</Filter>
+      <Filter>UI\HUD\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIMinimap.h">
+      <Filter>UI\HUD\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -328,6 +346,12 @@
     </Filter>
     <Filter Include="Resource\Animation">
       <UniqueIdentifier>{8fc2e0f6-51b6-43e8-8afc-2700153bb091}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\HUD\Boss">
+      <UniqueIdentifier>{ca4cccd1-be1c-4abe-af84-a72d1fd416b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\HUD\Player">
+      <UniqueIdentifier>{3dff6983-edfa-4282-a7fd-072f47b68bbd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -17,8 +17,8 @@ namespace YH
 		void OnEnter() override;
 		void OnExit() override;
 
-	protected:
-
+	private:
+		void PlayerCreate();
 
 	private:
 		class GameObject* bg[50];

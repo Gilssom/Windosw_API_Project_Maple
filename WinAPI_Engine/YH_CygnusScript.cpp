@@ -12,11 +12,14 @@
 #include "YH_ArrowScript.h"
 #include "YH_DarkGenesis.h"
 
+#include "..\\WinAPI_Source\\YH_UIManager.h"
+
 namespace YH
 {
 	CygnusScript::CygnusScript() : m_State(CygnusScript::State::Idle)
 		, m_Animator(nullptr), m_Dir(CygnusScript::Direction::Left)
 		, m_Time(0.0f), m_DeathTime(0.0f), m_SkillDelay(0.0f), m_DoSkill(false)
+		, m_MaxHp(63000000000), m_Hp(63000000000)
 	{
 
 	}
@@ -77,51 +80,60 @@ namespace YH
 	{
 		enums::ColliderType type = other->GetCollType();
 
-		switch (type)
+		if (m_State != CygnusScript::State::Death)
 		{
-		case enums::ColliderType::FairyTurn:
-		{
-			GameObject* fariyHit = object::Instantiate<GameObject>(enums::LayerType::Effect, GetOwner()->GetComponent<Transform>()->GetPostion());
+			switch (type)
+			{
+				case enums::ColliderType::FairyTurn:
+				{
+					GameObject* fariyHit = object::Instantiate<GameObject>(enums::LayerType::Effect, GetOwner()->GetComponent<Transform>()->GetPostion());
 
-			graphics::Texture* fariyHiteff = Resources::Find<graphics::Texture>(L"FairyTurnHit");
-			Animator* FHanim = fariyHit->AddComponent<Animator>();
-			FHanim->CreateAnimation(L"Fairy Hit Effect", fariyHiteff, Vector2(0.0f, 0.0f), Vector2(169.0f, 176.0f),
-				Vector2::Zero, 6, 0.1f);
-			FHanim->PlayAnimation(L"Fairy Hit Effect", false);
+					graphics::Texture* fariyHiteff = Resources::Find<graphics::Texture>(L"FairyTurnHit");
+					Animator* FHanim = fariyHit->AddComponent<Animator>();
+					FHanim->CreateAnimation(L"Fairy Hit Effect", fariyHiteff, Vector2(0.0f, 0.0f), Vector2(169.0f, 176.0f),
+						Vector2::Zero, 6, 0.1f);
+					FHanim->PlayAnimation(L"Fairy Hit Effect", false);
 
-			fariyHit->AddComponent<HitEffect>();
+					fariyHit->AddComponent<HitEffect>();
 
-			DeathCheck();
-			break;
-		}
-		case enums::ColliderType::HowlingGale:
-		{
-			GameObject* howlingHit = object::Instantiate<GameObject>(enums::LayerType::Effect, GetOwner()->GetComponent<Transform>()->GetPostion());
+					m_Hp -= 50000000;
 
-			graphics::Texture* howlingHiteff = Resources::Find<graphics::Texture>(L"HowlingHit");
-			Animator* HHanim = howlingHit->AddComponent<Animator>();
-			HHanim->CreateAnimation(L"Howling Hit Effect", howlingHiteff, Vector2(0.0f, 0.0f), Vector2(272.0f, 252.0f),
-				Vector2::Zero, 6, 0.1f);
-			HHanim->PlayAnimation(L"Howling Hit Effect", false);
+					//DeathCheck();
+					break;
+				}
+				case enums::ColliderType::HowlingGale:
+				{
+					GameObject* howlingHit = object::Instantiate<GameObject>(enums::LayerType::Effect, GetOwner()->GetComponent<Transform>()->GetPostion());
 
-			howlingHit->AddComponent<HitEffect>();
-			break;
-		}
-		case enums::ColliderType::BoringArrow:
-		{
-			GameObject* arrowHit = object::Instantiate<GameObject>(enums::LayerType::Effect, GetOwner()->GetComponent<Transform>()->GetPostion());
+					graphics::Texture* howlingHiteff = Resources::Find<graphics::Texture>(L"HowlingHit");
+					Animator* HHanim = howlingHit->AddComponent<Animator>();
+					HHanim->CreateAnimation(L"Howling Hit Effect", howlingHiteff, Vector2(0.0f, 0.0f), Vector2(272.0f, 252.0f),
+						Vector2::Zero, 6, 0.1f);
+					HHanim->PlayAnimation(L"Howling Hit Effect", false);
 
-			graphics::Texture* arrowHiteff = Resources::Find<graphics::Texture>(L"BoringHit");
-			Animator* AHanim = arrowHit->AddComponent<Animator>();
-			AHanim->CreateAnimation(L"Boring Hit Effect", arrowHiteff, Vector2(0.0f, 0.0f), Vector2(149.0f, 136.0f),
-				Vector2::Zero, 7, 0.03f);
-			AHanim->PlayAnimation(L"Boring Hit Effect", false);
+					howlingHit->AddComponent<HitEffect>();
 
-			arrowHit->AddComponent<HitEffect>();
+					m_Hp -= 70000000;
+					break;
+				}
+				case enums::ColliderType::BoringArrow:
+				{
+					GameObject* arrowHit = object::Instantiate<GameObject>(enums::LayerType::Effect, GetOwner()->GetComponent<Transform>()->GetPostion());
 
-			object::Destroy(other->GetOwner());
-			break;
-		}
+					graphics::Texture* arrowHiteff = Resources::Find<graphics::Texture>(L"BoringHit");
+					Animator* AHanim = arrowHit->AddComponent<Animator>();
+					AHanim->CreateAnimation(L"Boring Hit Effect", arrowHiteff, Vector2(0.0f, 0.0f), Vector2(149.0f, 136.0f),
+						Vector2::Zero, 7, 0.03f);
+					AHanim->PlayAnimation(L"Boring Hit Effect", false);
+
+					arrowHit->AddComponent<HitEffect>();
+
+					m_Hp -= 20000000;
+
+					object::Destroy(other->GetOwner());
+					break;
+				}
+			}
 		}
 	}
 
@@ -443,6 +455,9 @@ namespace YH
 
 	void CygnusScript::Death()
 	{
+		UIManager::Pop(UIType::BossHpBarBack);
+		UIManager::Pop(UIType::BossHpBar);
+
 		if (m_Animator->IsComplete())
 			object::Destroy(GetOwner());
 	}

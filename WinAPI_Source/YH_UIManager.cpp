@@ -4,6 +4,9 @@
 #include "YH_UIHpBar.h"
 #include "YH_UIMpBar.h"
 #include "YH_UIButton.h"
+#include "YH_UIBossHUD.h"
+#include "YH_UIBossHpBar.h"
+#include "YH_UIMinimap.h"
 
 namespace YH
 {
@@ -18,10 +21,17 @@ namespace YH
 		UIExp* exp = new UIExp();
 		UIHpBar* hpbar = new UIHpBar();
 		UIMpBar* mpbar = new UIMpBar();
+		UIBossHUD* bossHud = new UIBossHUD();
+		UIBossHpBar* bossHpbar = new UIBossHpBar();
+		UIMinimap* miniMap = new UIMinimap();
+
 		m_UIs.insert(std::make_pair(UIType::MainUI, hud));
 		m_UIs.insert(std::make_pair(UIType::ExpBar, exp));
 		m_UIs.insert(std::make_pair(UIType::HpBar, hpbar));
 		m_UIs.insert(std::make_pair(UIType::MpBar, mpbar));
+		m_UIs.insert(std::make_pair(UIType::BossHpBarBack, bossHud));
+		m_UIs.insert(std::make_pair(UIType::BossHpBar, bossHpbar));
+		m_UIs.insert(std::make_pair(UIType::Minimap, miniMap));
 
 		UIButton* button = new UIButton();
 		m_UIs.insert(std::make_pair(UIType::Button, button));

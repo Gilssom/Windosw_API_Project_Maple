@@ -68,6 +68,8 @@ namespace YH
 
 		void ExpUp(int exp) { m_Exp += exp; }
 
+		int GetPlayerMapNumber() { return m_MapNumber; }
+
 	private:
 		void Idle();
 		void Move();
@@ -89,6 +91,7 @@ namespace YH
 		class AudioSource* m_AudioSource;
 		class BoxCollider2D* m_PlayerColl;
 		Vector2 m_PlayerPos;
+		int m_MapNumber;
 
 		int m_Hp, m_MaxHp;
 		int m_Mp, m_MaxMp;

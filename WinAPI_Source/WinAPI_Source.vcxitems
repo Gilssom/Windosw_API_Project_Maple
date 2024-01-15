@@ -50,11 +50,14 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_SpriteRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Transform.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIBase.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIBossHpBar.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIBossHUD.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIButton.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIExp.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIHpBar.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIHUD.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIMinimap.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIMpBar.h" />
   </ItemGroup>
   <ItemGroup>
@@ -92,11 +95,14 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_SpriteRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_Transform.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIBase.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIBossHpBar.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIBossHUD.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIButton.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIExp.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIHpBar.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIHUD.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIMinimap.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIMpBar.cpp" />
   </ItemGroup>
 </Project>

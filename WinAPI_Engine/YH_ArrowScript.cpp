@@ -30,7 +30,7 @@ namespace YH
 	{
 		m_DeathTime += Time::DeltaTime();
 
-		if (m_DeathTime > 3.0f)
+		if (m_DeathTime > 1.5f)
 			object::Destroy(GetOwner());
 
 		if (!m_Animator)

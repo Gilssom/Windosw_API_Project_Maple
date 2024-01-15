@@ -1,4 +1,5 @@
 #include "YH_PlayScene.h"
+#include "..\\WinAPI_Source\\YH_Application.h"
 #include "YH_GameObject.h"
 #include "YH_UIManager.h"
 #include "YH_Transform.h"
@@ -29,6 +30,8 @@
 #include "YH_AudioListener.h"
 #include "YH_AudioSource.h"
 
+extern YH::Application App;
+
 namespace YH
 {
 	PlayScene::PlayScene() : bg { }
@@ -56,6 +59,8 @@ namespace YH
 		#pragma endregion
 
 		#pragma region BackGround Settings
+		SetSceneNumber(0);
+
 		bg[0] = object::Instantiate<GameObject>(enums::LayerType::BackGround);
 
 		SetAudioSource(bg[0]->AddComponent<AudioSource>());
@@ -80,92 +85,11 @@ namespace YH
 		portal_0->SetCollType(ColliderType::Portal);
 
 		PortalScript* portalSc = portal->AddComponent<PortalScript>();
-		portalSc->SetNextScene(L"FlowerScene");
-		portalSc->SetSpawnPos(Vector2(1829.0f, 1465.0f));
+		//portalSc->SetNextScene(L"FlowerScene");
+		//portalSc->SetSpawnPos(Vector2(1829.0f, 1465.0f));
 		// Test
-		//portalSc->SetNextScene(L"BossCygnusScene");
-		//portalSc->SetSpawnPos(Vector2(153.0f, 586.0f));
-		#pragma endregion
-		
-		#pragma region Player Setting
-		m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(1384.0f, 770.0f));
-		object::DontDestroyOnLoad(m_Player);
-
-		m_Player->AddComponent<Rigidbody>();
-		m_Player->AddComponent<AudioListener>();
-		m_Player->AddComponent<AudioSource>();
-
-		graphics::Texture* player = Resources::Find<graphics::Texture>(L"Player");
-		PlayerScript* playerScript = m_Player->AddComponent<PlayerScript>();
-
-		BoxCollider2D* playerColl = m_Player->AddComponent<BoxCollider2D>();
-		playerColl->SetOffset(Vector2(0.0f, -10.0f));
-		playerColl->SetSize(Vector2(0.4f, 0.5f));
-
-		Animator* playerAnim = m_Player->AddComponent<Animator>();
-		#pragma region Player Normal Animation
-		playerAnim->CreateAnimation(L"Player Left Idle", player, Vector2(0.0f, 0.0f), Vector2(170.0f, 170.0f),
-			Vector2::Zero, 4, 0.5f);
-		playerAnim->CreateAnimation(L"Player Right Idle", player, Vector2(680.0f, 0.0f), Vector2(170.0f, 170.0f),
-			Vector2::Zero, 4, 0.5f);
-
-		playerAnim->CreateAnimation(L"Player Left Walk", player, Vector2(0.0f, 170.0f), Vector2(170.0f, 170.0f),
-			Vector2::Zero, 4, 0.2f);
-		playerAnim->CreateAnimation(L"Player Right Walk", player, Vector2(680.0f, 170.0f), Vector2(170.0f, 170.0f),
-			Vector2::Zero, 4, 0.2f);
-
-		playerAnim->CreateAnimation(L"Player Left Attack", player, Vector2(0.0f, 340.0f), Vector2(170.0f, 170.0f),
-			Vector2::Zero, 3, 0.15f);
-		playerAnim->CreateAnimation(L"Player Right Attack", player, Vector2(510.0f, 340.0f), Vector2(170.0f, 170.0f),
-			Vector2::Zero, 3, 0.15f);
-
-		playerAnim->CreateAnimation(L"Player Left Down", player, Vector2(0.0f, 510.0f), Vector2(170.0f, 170.0f),
-			Vector2::Zero, 1, 0.0f);
-		playerAnim->CreateAnimation(L"Player Right Down", player, Vector2(1020.0f, 340.0f), Vector2(170.0f, 170.0f),
-			Vector2::Zero, 1, 0.0f);
-
-		playerAnim->CreateAnimation(L"Player Left Down Attack", player, Vector2(170.0f, 510.0f), Vector2(170.0f, 170.0f),
-			Vector2::Zero, 1, 0.3f);
-		playerAnim->CreateAnimation(L"Player Right Down Attack", player, Vector2(1190.0f, 340.0f), Vector2(170.0f, 170.0f),
-			Vector2::Zero, 1, 0.3f);
-
-		playerAnim->CreateAnimation(L"Player Left Jump", player, Vector2(340.0f, 510.0f), Vector2(170.0f, 170.0f),
-			Vector2::Zero, 1, 0.0f);
-		playerAnim->CreateAnimation(L"Player Right Jump", player, Vector2(510.0f, 510.0f), Vector2(170.0f, 170.0f),
-			Vector2::Zero, 1, 0.0f);
-
-		playerAnim->CreateAnimation(L"Player Rope", player, Vector2(680.0f, 510.0f), Vector2(170.0f, 170.0f),
-			Vector2::Zero, 2, 0.5f);
-
-		playerAnim->CreateAnimation(L"Player Fairy Left Attack", player, Vector2(0.0f, 340.0f), Vector2(170.0f, 170.0f),
-			Vector2::Zero, 3, 0.15f);
-		playerAnim->CreateAnimation(L"Player Fairy Right Attack", player, Vector2(510.0f, 340.0f), Vector2(170.0f, 170.0f),
-			Vector2::Zero, 3, 0.15f);
-
-		playerAnim->CreateAnimation(L"Player Boring Left Attack", player, Vector2(1020.0f, 510.0f), Vector2(170.0f, 170.0f),
-			Vector2::Zero, 1, 0.0f);
-		playerAnim->CreateAnimation(L"Player Boring Right Attack", player, Vector2(1190.0f, 510.0f), Vector2(170.0f, 170.0f),
-			Vector2::Zero, 1, 0.0f);
-
-		playerAnim->CreateAnimation(L"Player Howling Left Attack", player, Vector2(1020.0f, 510.0f), Vector2(170.0f, 170.0f),
-			Vector2::Zero, 1, 0.0f);
-		playerAnim->CreateAnimation(L"Player Howling Right Attack", player, Vector2(1190.0f, 510.0f), Vector2(170.0f, 170.0f),
-			Vector2::Zero, 1, 0.0f);
-		#pragma endregion
-
-		playerAnim->PlayAnimation(L"Player Left Idle");
-
-		#pragma region Player Anim Event
-		playerAnim->GetStartEvent(L"Player Fairy Left Attack") = std::bind(&PlayerScript::FairyTurnEff, playerScript);
-		playerAnim->GetStartEvent(L"Player Fairy Right Attack") = std::bind(&PlayerScript::FairyTurnEff, playerScript);
-
-		playerAnim->GetStartEvent(L"Player Boring Left Attack") = std::bind(&PlayerScript::BoringSongEff, playerScript);
-		playerAnim->GetStartEvent(L"Player Boring Right Attack") = std::bind(&PlayerScript::BoringSongEff, playerScript);
-
-		playerAnim->GetStartEvent(L"Player Howling Left Attack") = std::bind(&PlayerScript::HowlingEff, playerScript);
-		playerAnim->GetStartEvent(L"Player Howling Right Attack") = std::bind(&PlayerScript::HowlingEff, playerScript);
-		#pragma endregion
-
+		portalSc->SetNextScene(L"BossCygnusScene");
+		portalSc->SetSpawnPos(Vector2(153.0f, 586.0f));
 		#pragma endregion
 		
 		SetAudioClip(Resources::Load<AudioClip>(L"QueensGarden", L"..\\\Resources\\SoundResource\\QueensGarden.mp3"));
@@ -182,12 +106,6 @@ namespace YH
 	void PlayScene::LateUpdate()
 	{
 		Scene::LateUpdate();
-
-		if (Input::GetKeyDown(KeyCode::N))
-		{
-			m_Player->GetComponent<Transform>()->SetPosition(Vector2(153.0f, 586.0f));
-			SceneManager::LoadScene(L"BossCygnusScene");
-		}
 	}
 
 	void PlayScene::Render(HDC hdc)
@@ -197,15 +115,17 @@ namespace YH
 
 	void PlayScene::OnEnter()
 	{
+		PlayerCreate();
+
 		m_Camera = object::Instantiate<GameObject>(enums::LayerType::Camera);
 		Camera* cameraComp = m_Camera->AddComponent<Camera>();
 		renderer::mainCamera = cameraComp;
 
-		const std::vector<GameObject*>& player = SceneManager::GetGameObjects(LayerType::Player);
+		const std::vector<GameObject*>& playerFind = SceneManager::GetGameObjects(LayerType::Player);
 
 		cameraComp->GetBackWidth(m_Width);
 		cameraComp->GetBackHeight(m_Height);
-		cameraComp->SetTarget(player.front());
+		cameraComp->SetTarget(playerFind.front());
 
 		GetAudioSource()->SetClip(GetAudioClip());
 		GetAudioSource()->Play();
@@ -214,6 +134,7 @@ namespace YH
 		UIManager::Push(UIType::ExpBar);
 		UIManager::Push(UIType::HpBar);
 		UIManager::Push(UIType::MpBar);
+		UIManager::Push(UIType::Minimap);
 
 		Scene::OnEnter();
 	}
@@ -223,5 +144,89 @@ namespace YH
 		GetAudioSource()->Stop();
 
 		Scene::OnExit();
+	}
+
+	void PlayScene::PlayerCreate()
+	{
+		#pragma region Player Setting
+				m_Player = object::Instantiate<Player>(enums::LayerType::Player, Vector2(1384.0f, 770.0f));
+				object::DontDestroyOnLoad(m_Player);
+
+				m_Player->AddComponent<Rigidbody>();
+				m_Player->AddComponent<AudioListener>();
+				m_Player->AddComponent<AudioSource>();
+
+				graphics::Texture* player = Resources::Find<graphics::Texture>(L"Player");
+				PlayerScript* playerScript = m_Player->AddComponent<PlayerScript>();
+
+				BoxCollider2D* playerColl = m_Player->AddComponent<BoxCollider2D>();
+				playerColl->SetOffset(Vector2(0.0f, -10.0f));
+				playerColl->SetSize(Vector2(0.4f, 0.5f));
+
+				Animator* playerAnim = m_Player->AddComponent<Animator>();
+		#pragma region Player Normal Animation
+				playerAnim->CreateAnimation(L"Player Left Idle", player, Vector2(0.0f, 0.0f), Vector2(170.0f, 170.0f),
+					Vector2::Zero, 4, 0.5f);
+				playerAnim->CreateAnimation(L"Player Right Idle", player, Vector2(680.0f, 0.0f), Vector2(170.0f, 170.0f),
+					Vector2::Zero, 4, 0.5f);
+
+				playerAnim->CreateAnimation(L"Player Left Walk", player, Vector2(0.0f, 170.0f), Vector2(170.0f, 170.0f),
+					Vector2::Zero, 4, 0.2f);
+				playerAnim->CreateAnimation(L"Player Right Walk", player, Vector2(680.0f, 170.0f), Vector2(170.0f, 170.0f),
+					Vector2::Zero, 4, 0.2f);
+
+				playerAnim->CreateAnimation(L"Player Left Attack", player, Vector2(0.0f, 340.0f), Vector2(170.0f, 170.0f),
+					Vector2::Zero, 3, 0.15f);
+				playerAnim->CreateAnimation(L"Player Right Attack", player, Vector2(510.0f, 340.0f), Vector2(170.0f, 170.0f),
+					Vector2::Zero, 3, 0.15f);
+
+				playerAnim->CreateAnimation(L"Player Left Down", player, Vector2(0.0f, 510.0f), Vector2(170.0f, 170.0f),
+					Vector2::Zero, 1, 0.0f);
+				playerAnim->CreateAnimation(L"Player Right Down", player, Vector2(1020.0f, 340.0f), Vector2(170.0f, 170.0f),
+					Vector2::Zero, 1, 0.0f);
+
+				playerAnim->CreateAnimation(L"Player Left Down Attack", player, Vector2(170.0f, 510.0f), Vector2(170.0f, 170.0f),
+					Vector2::Zero, 1, 0.3f);
+				playerAnim->CreateAnimation(L"Player Right Down Attack", player, Vector2(1190.0f, 340.0f), Vector2(170.0f, 170.0f),
+					Vector2::Zero, 1, 0.3f);
+
+				playerAnim->CreateAnimation(L"Player Left Jump", player, Vector2(340.0f, 510.0f), Vector2(170.0f, 170.0f),
+					Vector2::Zero, 1, 0.0f);
+				playerAnim->CreateAnimation(L"Player Right Jump", player, Vector2(510.0f, 510.0f), Vector2(170.0f, 170.0f),
+					Vector2::Zero, 1, 0.0f);
+
+				playerAnim->CreateAnimation(L"Player Rope", player, Vector2(680.0f, 510.0f), Vector2(170.0f, 170.0f),
+					Vector2::Zero, 2, 0.5f);
+
+				playerAnim->CreateAnimation(L"Player Fairy Left Attack", player, Vector2(0.0f, 340.0f), Vector2(170.0f, 170.0f),
+					Vector2::Zero, 3, 0.15f);
+				playerAnim->CreateAnimation(L"Player Fairy Right Attack", player, Vector2(510.0f, 340.0f), Vector2(170.0f, 170.0f),
+					Vector2::Zero, 3, 0.15f);
+
+				playerAnim->CreateAnimation(L"Player Boring Left Attack", player, Vector2(1020.0f, 510.0f), Vector2(170.0f, 170.0f),
+					Vector2::Zero, 1, 0.0f);
+				playerAnim->CreateAnimation(L"Player Boring Right Attack", player, Vector2(1190.0f, 510.0f), Vector2(170.0f, 170.0f),
+					Vector2::Zero, 1, 0.0f);
+
+				playerAnim->CreateAnimation(L"Player Howling Left Attack", player, Vector2(1020.0f, 510.0f), Vector2(170.0f, 170.0f),
+					Vector2::Zero, 1, 0.0f);
+				playerAnim->CreateAnimation(L"Player Howling Right Attack", player, Vector2(1190.0f, 510.0f), Vector2(170.0f, 170.0f),
+					Vector2::Zero, 1, 0.0f);
+		#pragma endregion
+
+				playerAnim->PlayAnimation(L"Player Left Idle");
+
+		#pragma region Player Anim Event
+				playerAnim->GetStartEvent(L"Player Fairy Left Attack") = std::bind(&PlayerScript::FairyTurnEff, playerScript);
+				playerAnim->GetStartEvent(L"Player Fairy Right Attack") = std::bind(&PlayerScript::FairyTurnEff, playerScript);
+
+				playerAnim->GetStartEvent(L"Player Boring Left Attack") = std::bind(&PlayerScript::BoringSongEff, playerScript);
+				playerAnim->GetStartEvent(L"Player Boring Right Attack") = std::bind(&PlayerScript::BoringSongEff, playerScript);
+
+				playerAnim->GetStartEvent(L"Player Howling Left Attack") = std::bind(&PlayerScript::HowlingEff, playerScript);
+				playerAnim->GetStartEvent(L"Player Howling Right Attack") = std::bind(&PlayerScript::HowlingEff, playerScript);
+		#pragma endregion
+
+		#pragma endregion
 	}
 }

@@ -72,6 +72,9 @@ namespace YH::enums
 		MpBar,
 		ExpBar,
 		Button,
+		Minimap,
+		BossHpBarBack,
+		BossHpBar,
 		End,
 	};
 }

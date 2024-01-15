@@ -37,6 +37,8 @@ namespace YH
 	void BossReadyScene::Initialize()
 	{
 		#pragma region BackGround Settings
+		SetSceneNumber(2);
+
 		m_Bg = object::Instantiate<GameObject>(enums::LayerType::BackGround);
 
 		SetAudioSource(m_Bg->AddComponent<AudioSource>());

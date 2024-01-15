@@ -31,12 +31,15 @@ namespace YH
 		AudioSource* GetAudioSource() { return m_AudioSource; }
 		void SetAudioClip(AudioClip* as) { m_BgSound = as; }
 		AudioClip* GetAudioClip() { return m_BgSound; }
+		void SetSceneNumber(int sceneNumber) { m_SceneNumber = sceneNumber; }
+		int GetSceneNumber() { return m_SceneNumber; }
 
 	private:
 		void CreateLayers();
 
 	private:
 		std::vector<Layer*> m_Layers;
+		int m_SceneNumber;
 
 		AudioSource* m_AudioSource;
 		AudioClip* m_BgSound;

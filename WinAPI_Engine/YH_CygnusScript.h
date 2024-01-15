@@ -41,6 +41,8 @@ namespace YH
 		void Skill2Ball();
 		void Skill3Ball();
 
+		float GetHpPercent() { return (double)m_Hp / (double)m_MaxHp; }
+
 	private:
 		void DeathCheck();
 		void Idle();
@@ -55,6 +57,9 @@ namespace YH
 		void Translate(Transform* transform);
 
 	private:
+		__int64 m_Hp, m_MaxHp;
+		int m_Exp;
+
 		State m_State;
 		Direction m_Dir;
 		class Animator* m_Animator;

@@ -31,6 +31,8 @@
 #include "YH_AudioListener.h"
 #include "YH_AudioSource.h"
 
+#include "YH_UIFadeInOut.h"
+
 namespace YH
 {
 	FlowerScene::FlowerScene() : m_Monster{}, bg(nullptr)
@@ -201,6 +203,12 @@ namespace YH
 	{
 		ReSpawnCheck();
 
+		if (UIFadeInOut::GetNeedPop() && !check)
+		{
+			UIManager::Pop(UIType::FadeInOut);
+			check = true;
+		}
+
 		Scene::Update();
 	}
 
@@ -235,6 +243,8 @@ namespace YH
 	void FlowerScene::OnExit()
 	{
 		GetAudioSource()->Stop();
+
+		check = false;
 
 		Scene::OnExit();
 	}

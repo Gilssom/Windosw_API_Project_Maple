@@ -30,5 +30,6 @@ namespace YH
 		class GameObject* m_Camera;
 
 		float m_Width, m_Height;
+		bool check = false;
 	};
 }

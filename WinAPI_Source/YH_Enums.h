@@ -75,6 +75,7 @@ namespace YH::enums
 		Minimap,
 		BossHpBarBack,
 		BossHpBar,
+		FadeInOut,
 		End,
 	};
 }

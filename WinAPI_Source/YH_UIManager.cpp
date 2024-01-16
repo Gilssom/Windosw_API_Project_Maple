@@ -7,6 +7,7 @@
 #include "YH_UIBossHUD.h"
 #include "YH_UIBossHpBar.h"
 #include "YH_UIMinimap.h"
+#include "YH_UIFadeInOut.h"
 
 namespace YH
 {
@@ -24,6 +25,7 @@ namespace YH
 		UIBossHUD* bossHud = new UIBossHUD();
 		UIBossHpBar* bossHpbar = new UIBossHpBar();
 		UIMinimap* miniMap = new UIMinimap();
+		UIFadeInOut* fadeInOut = new UIFadeInOut();
 
 		m_UIs.insert(std::make_pair(UIType::MainUI, hud));
 		m_UIs.insert(std::make_pair(UIType::ExpBar, exp));
@@ -32,6 +34,7 @@ namespace YH
 		m_UIs.insert(std::make_pair(UIType::BossHpBarBack, bossHud));
 		m_UIs.insert(std::make_pair(UIType::BossHpBar, bossHpbar));
 		m_UIs.insert(std::make_pair(UIType::Minimap, miniMap));
+		m_UIs.insert(std::make_pair(UIType::FadeInOut, fadeInOut));
 
 		UIButton* button = new UIButton();
 		m_UIs.insert(std::make_pair(UIType::Button, button));

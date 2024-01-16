@@ -98,6 +98,8 @@ namespace YH
 		Resources::Load<graphics::Texture>(L"WorldButtonOver",		L"..\\Resources\\UI\\WorldSelectButtonOver.png");
 		Resources::Load<graphics::Texture>(L"WorldButtonPress",		L"..\\Resources\\UI\\WorldSelectButtonPress.png");
 
+		Resources::Load<graphics::Texture>(L"FadeInOut",			L"..\\Resources\\UI\\FadeInOut.png");
+
 		Resources::Load<graphics::Texture>(L"Zero",					L"..\\Resources\\UI\\DamageFont\\Zero.png");
 		Resources::Load<graphics::Texture>(L"One",					L"..\\Resources\\UI\\DamageFont\\One.png");
 		Resources::Load<graphics::Texture>(L"Two",					L"..\\Resources\\UI\\DamageFont\\Two.png");

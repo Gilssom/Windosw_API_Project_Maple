@@ -130,6 +130,9 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIMinimap.cpp">
       <Filter>UI\HUD\Player</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIFadeInOut.cpp">
+      <Filter>UI\HUD</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_Component.h">
@@ -266,6 +269,9 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIMinimap.h">
       <Filter>UI\HUD\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIFadeInOut.h">
+      <Filter>UI\HUD</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

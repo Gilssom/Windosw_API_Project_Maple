@@ -6,6 +6,8 @@
 #include "YH_Animator.h"
 #include "YH_Object.h"
 #include "YH_Rigidbody.h"
+#include "YH_UIManager.h"
+#include "YH_UIFadeInOut.h"
 
 namespace YH
 {
@@ -31,7 +33,12 @@ namespace YH
 
 	void PortalScript::LateUpdate()
 	{
-
+		if (UIFadeInOut::GetComplete() && isPortal)
+		{
+			m_Other->GetOwner()->GetComponent<Transform>()->SetPosition(m_SpawnPosition);
+			SceneManager::LoadScene(m_ConnectionScene);
+			isPortal = false;
+		}
 	}
 
 	void PortalScript::Render(HDC hdc)
@@ -48,8 +55,10 @@ namespace YH
 	{
 		if (Input::GetKeyDown(KeyCode::Up))
 		{
-			other->GetOwner()->GetComponent<Transform>()->SetPosition(m_SpawnPosition);
-			SceneManager::LoadScene(m_ConnectionScene);
+			UIManager::Push(UIType::FadeInOut);
+
+			m_Other = other;
+			isPortal = true;
 		}
 	}
 

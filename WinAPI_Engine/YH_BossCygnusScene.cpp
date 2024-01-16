@@ -24,6 +24,8 @@
 #include "YH_AudioListener.h"
 #include "YH_AudioSource.h"
 
+#include "YH_UIFadeInOut.h"
+
 namespace YH
 {
 	BossCygnusScene::BossCygnusScene()
@@ -119,6 +121,12 @@ namespace YH
 
 	void BossCygnusScene::Update()
 	{
+		if (UIFadeInOut::GetNeedPop() && !check)
+		{
+			UIManager::Pop(UIType::FadeInOut);
+			check = true;
+		}
+
 		Scene::Update();
 	}
 
@@ -158,6 +166,8 @@ namespace YH
 	void BossCygnusScene::OnExit()
 	{
 		//GetAudioSource()->Stop();
+
+		check = false;
 
 		Scene::OnExit();
 	}

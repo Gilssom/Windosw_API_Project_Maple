@@ -25,5 +25,7 @@ namespace YH
 	private:
 		std::wstring m_ConnectionScene;
 		Vector2 m_SpawnPosition;
+		Collider* m_Other;
+		bool isPortal;
 	};
 }

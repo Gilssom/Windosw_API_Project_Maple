@@ -25,5 +25,7 @@ namespace YH
 		class Player* m_Player;
 
 		float m_Width, m_Height;
+
+		bool check = false;
 	};
 }

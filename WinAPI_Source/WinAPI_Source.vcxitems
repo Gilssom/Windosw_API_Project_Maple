@@ -54,6 +54,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIBossHUD.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIButton.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIExp.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIFadeInOut.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIHpBar.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIHUD.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)YH_UIManager.h" />
@@ -99,6 +100,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIBossHUD.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIButton.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIExp.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIFadeInOut.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIHpBar.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIHUD.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)YH_UIManager.cpp" />

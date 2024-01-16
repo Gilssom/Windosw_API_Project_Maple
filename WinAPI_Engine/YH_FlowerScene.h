@@ -26,5 +26,6 @@ namespace YH
 		class GameObject* m_RimitGround[5];
 
 		float m_Width, m_Height;
+		bool check = false;
 	};
 }

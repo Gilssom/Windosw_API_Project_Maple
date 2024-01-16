@@ -3,6 +3,7 @@
 #include "YH_Resources.h"
 #include "YH_Renderer.h"
 #include "YH_SceneManager.h"
+#include "YH_UIManager.h"
 
 namespace YH
 {
@@ -61,13 +62,13 @@ namespace YH
 			}
 		}
 
-		if(Input::GetKeyUp(KeyCode::LeftMouse))
+		if(Input::GetKeyUp(KeyCode::LeftMouse) && isMouseOn)
 			m_OnClick();
 	}
 
 	void UIButton::OnLateUpdate()
 	{
-
+		
 	}
 
 	void UIButton::OnRender(HDC hdc)
@@ -100,6 +101,6 @@ namespace YH
 
 	void UIButton::ButtonClick()
 	{
-		SceneManager::LoadScene(L"PlayScene");
+		UIManager::Push(UIType::FadeInOut);
 	}
 }

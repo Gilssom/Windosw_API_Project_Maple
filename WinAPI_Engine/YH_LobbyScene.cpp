@@ -16,6 +16,7 @@
 #include "YH_AudioSource.h"
 
 #include "YH_UIManager.h"
+#include "YH_UIFadeInOut.h"
 
 extern YH::Application App;
 
@@ -61,6 +62,11 @@ namespace YH
 
 	void LobbyScene::LateUpdate()
 	{
+		if (UIFadeInOut::GetComplete())
+		{
+			SceneManager::LoadScene(L"PlayScene");
+		}
+
 		Scene::LateUpdate();
 	}
 

@@ -21,5 +21,6 @@ namespace YH
 		class GameObject* m_Bg;
 
 		float m_Width, m_Height;
+		bool check = false;
 	};
 }

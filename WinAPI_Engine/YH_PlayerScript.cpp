@@ -24,6 +24,7 @@ namespace YH
 		, m_MaxHp(25000), m_Hp(25000)
 		, m_MaxMp(20000), m_Mp(20000)
 		, m_MaxExp(100000), m_Exp(0)
+		, m_Level(1)
 	{
 	}
 
@@ -162,6 +163,16 @@ namespace YH
 					Vector2(0.0f, 0.0f), 8, 0.05f);
 		#pragma endregion
 
+		#pragma region Level Up Effect
+						m_LevelUpEffect = object::Instantiate<GameObject>(enums::LayerType::Effect);
+						graphics::Texture* levelupEff = Resources::Find<graphics::Texture>(L"LevelUp");
+						Animator* levelupAnim = m_LevelUpEffect->AddComponent<Animator>();
+						m_LevelUpEffect->SetActive(false);
+						levelupAnim->CreateAnimation(L"Level Up", levelupEff, Vector2::Zero, Vector2(904.0f, 904.0f),
+							Vector2(0.0f, 0.0f), 20, 0.1f);
+		#pragma endregion
+
+
 
 		#pragma region DontDestroyObject
 				object::DontDestroyOnLoad(m_FairyTurn);
@@ -185,6 +196,9 @@ namespace YH
 			m_PlayerColl = GetOwner()->GetComponent<BoxCollider2D>();
 
 		m_PlayerPos = GetOwner()->GetComponent<Transform>()->GetPostion();
+
+		if (Input::GetKeyDown(KeyCode::T))
+			ExpUp(20000);
 
 		switch (m_State)
 		{
@@ -224,20 +238,15 @@ namespace YH
 		default:
 			break;
 		}
-
-		// ���콺 ��ǥ �������� ����
-		if (Input::GetKey(KeyCode::LeftMouse))
-		{
-			//m_State = PlayerScript::State::FairyTurn;
-
-			Vector2 mousePos = Input::GetMousePosition();
-			int a = 0;
-		}
 	}
 
 	void PlayerScript::LateUpdate()
 	{
-
+		if (m_LevelUpEffect->IsActive() && m_Level > 1)
+		{
+			if (m_LevelUpEffect->GetComponent<Animator>()->IsComplete())
+				m_LevelUpEffect->SetActive(false);
+		}
 	}
 
 	void PlayerScript::Render(HDC hdc)
@@ -487,6 +496,28 @@ namespace YH
 		}
 	}
 #pragma endregion
+
+	void PlayerScript::ExpUp(int exp)
+	{
+		m_Exp += exp;
+
+		if (m_Exp >= m_MaxExp)
+		{
+			int overExp = m_Exp - m_MaxExp;
+			m_MaxExp *= 1.05f;
+			m_Level++;
+			m_Exp = overExp;
+
+			m_LevelUpEffect->SetActive(true);
+			//Vector2 pos = renderer::mainCamera->CaluatePosition(Vector2(m_PlayerPos.x, m_PlayerPos.y));
+			m_LevelUpEffect->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x, m_PlayerPos.y - 200.0f));
+			m_LevelUpEffect->GetComponent<Animator>()->PlayAnimation(L"Level Up", false);
+
+			AudioClip* ac = Resources::Load<AudioClip>(L"LevelUp Sound", L"..\\Resources\\SoundResource\\LevelUp.mp3");
+			m_AudioSource->SetClip(ac);
+			m_AudioSource->Play();
+		}
+	}
 
 	void PlayerScript::Idle()
 	{
@@ -858,7 +889,7 @@ namespace YH
 
 					m_DoubleJump->GetComponent<Animator>()->PlayAnimation(L"Right Double Jump", false);
 
-					m_Rigidbody->AddForce(Vector2(60000.0f, -5500.0f));
+					m_Rigidbody->AddForce(Vector2(30000.0f, -5500.0f));
 					break;
 				case YH::PlayerScript::Direction::Left:
 					m_DoubleJump->SetActive(true);
@@ -867,7 +898,7 @@ namespace YH
 
 					m_DoubleJump->GetComponent<Animator>()->PlayAnimation(L"Left Double Jump", false);
 
-					m_Rigidbody->AddForce(Vector2(-60000.0f, -5500.0f));
+					m_Rigidbody->AddForce(Vector2(-30000.0f, -5500.0f));
 					break;
 				}
 			}

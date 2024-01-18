@@ -14,7 +14,11 @@ namespace YH
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
-		void SetDamage(int damage) { m_Damage = damage; }
+		void SetDamage(int damage) 
+		{ 
+			m_Damage = damage; 
+			ViewDamageFont();
+		}
 		void ViewDamageFont();
 
 	private:

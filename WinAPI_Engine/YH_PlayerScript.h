@@ -66,7 +66,7 @@ namespace YH
 		float GetMpPercent() { return (float)m_Mp / (float)m_MaxMp; }
 		float GetExpPercent() { return (float)m_Exp / (float)m_MaxExp; }
 
-		void ExpUp(int exp) { m_Exp += exp; }
+		void ExpUp(int exp);
 
 		int GetPlayerMapNumber() { return m_MapNumber; }
 
@@ -96,6 +96,7 @@ namespace YH
 		int m_Hp, m_MaxHp;
 		int m_Mp, m_MaxMp;
 		int m_Exp, m_MaxExp;
+		int m_Level;
 
 		float m_ReShootTime;
 		bool isBuff;
@@ -109,6 +110,7 @@ namespace YH
 		GameObject* m_SharpEyes;
 		GameObject* m_DoubleJump;
 		GameObject* m_HighJump;
+		GameObject* m_LevelUpEffect;
 		class BoxCollider2D* m_FairyColl; 
 		class BoxCollider2D* m_HowlingColl;
 	};

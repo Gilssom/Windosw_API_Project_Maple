@@ -100,6 +100,8 @@ namespace YH
 
 		Resources::Load<graphics::Texture>(L"FadeInOut",			L"..\\Resources\\UI\\FadeInOut.png");
 
+		Resources::Load<graphics::Texture>(L"LevelUp",				L"..\\Resources\\UI\\LevelUpSprite.png");
+
 		Resources::Load<graphics::Texture>(L"Zero",					L"..\\Resources\\UI\\DamageFont\\Zero.png");
 		Resources::Load<graphics::Texture>(L"One",					L"..\\Resources\\UI\\DamageFont\\One.png");
 		Resources::Load<graphics::Texture>(L"Two",					L"..\\Resources\\UI\\DamageFont\\Two.png");

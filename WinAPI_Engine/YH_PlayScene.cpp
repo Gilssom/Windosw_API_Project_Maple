@@ -125,11 +125,11 @@ namespace YH
 	{
 		PlayerCreate();
 
+		const std::vector<GameObject*>& playerFind = SceneManager::GetGameObjects(LayerType::Player);
+
 		m_Camera = object::Instantiate<GameObject>(enums::LayerType::Camera);
 		Camera* cameraComp = m_Camera->AddComponent<Camera>();
 		renderer::mainCamera = cameraComp;
-
-		const std::vector<GameObject*>& playerFind = SceneManager::GetGameObjects(LayerType::Player);
 
 		cameraComp->GetBackWidth(m_Width);
 		cameraComp->GetBackHeight(m_Height);

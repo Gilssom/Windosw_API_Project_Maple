@@ -51,6 +51,7 @@ namespace YH
 		CollisionManager::CollisionLayerCheck(LayerType::Player, LayerType::Ground, true);
 		CollisionManager::CollisionLayerCheck(LayerType::Player, LayerType::Rope, true);
 		CollisionManager::CollisionLayerCheck(LayerType::Player, LayerType::Boss, true);
+		CollisionManager::CollisionLayerCheck(LayerType::Player, LayerType::BossEffect, true);
 
 		CollisionManager::CollisionLayerCheck(LayerType::Monster, LayerType::Player, true);
 		CollisionManager::CollisionLayerCheck(LayerType::Monster, LayerType::RimitGround, true);

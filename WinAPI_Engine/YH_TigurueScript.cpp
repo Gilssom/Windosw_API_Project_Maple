@@ -29,15 +29,7 @@ namespace YH
 
 	void TigurueScript::Initialize()
 	{
-		for (int i = 0; i < 10; i++)
-		{
-			m_NumberImage[i] = object::Instantiate<GameObject>(enums::LayerType::Effect, Vector2(0.0f, 0.0f));
-			SpriteRenderer* renderer = m_NumberImage[i]->AddComponent<SpriteRenderer>();
-			renderer->SetName(m_Name[i]);
-			graphics::Texture* texture = Resources::Find<graphics::Texture>(m_Name[i]);
-			renderer->SetTexture(texture);
-			m_NumberImage[i]->SetActive(false);
-		}
+
 	}
 
 	void TigurueScript::Update()
@@ -99,15 +91,28 @@ namespace YH
 					as->SetClip(ac);
 					as->Play();
 
-					SetDamage(4520);
-					//m_DamageFont->ViewDamageFont();
+					const std::vector<GameObject*>& player = SceneManager::GetGameObjects(LayerType::Player);
+					PlayerScript* playerSc = player.front()->GetComponent<PlayerScript>();
+
+					for (int i = 0; i < 3; i++)
+					{
+						int d = rand() % (playerSc->GetMaxDamage() - playerSc->GetMinDamage() + 1) + playerSc->GetMinDamage();
+						float chance = rand() % 101;
+						bool critical = false;
+
+						if (chance <= playerSc->GetCriticalChance())
+						{
+							d *= playerSc->GetCriticalDamage();
+							critical = true;
+						}
+
+						SetDamage(d, i, critical);
+					}
+
+					playerSc->ExpUp(15000);
 
 					m_State = TigurueScript::State::Death;
 					m_Animator->PlayAnimation(L"Tigurue Die");
-
-					const std::vector<GameObject*>& player = SceneManager::GetGameObjects(LayerType::Player);
-					PlayerScript* playerSc = player.front()->GetComponent<PlayerScript>();
-					playerSc->ExpUp(15000);
 
 					break;
 				}
@@ -287,21 +292,13 @@ namespace YH
 		transform->SetPosition(pos);
 	}
 
-	void TigurueScript::ViewDamageFont(int damage)
+	void TigurueScript::ViewDamageFont(int damage, int cnt, bool critical)
 	{
-		Vector2 pos = GetOwner()->GetComponent<Transform>()->GetPostion();
-		
-		int cnt = 0;
+		GameObject* damageFont = object::Instantiate<GameObject>(enums::LayerType::Effect);
+		damageFont->AddComponent<DamageFont>();
 
-		while (damage != 0)
-		{
-			int temp = damage % 10;
-
-			m_NumberImage[temp]->SetActive(true);
-			m_NumberImage[temp]->GetComponent<Transform>()->SetPosition(Vector2(pos.x - (28.0 * cnt), pos.y - 100.0f));
-
-			cnt++;
-			damage /= 10;
-		}
+		DamageFont* damageScr = damageFont->GetComponent<DamageFont>();
+		damageScr->SetMonster(GetOwner());
+		damageScr->SetDamage(damage, cnt, critical);
 	}
 }

@@ -25,6 +25,9 @@ namespace YH
 		, m_MaxMp(20000), m_Mp(20000)
 		, m_MaxExp(100000), m_Exp(0)
 		, m_Level(1)
+		, m_MinAttack(1350000), m_MaxAttack(1800000)
+		, m_CriticalChance(60.0f)
+		, m_CriticalDamage(1.5f)
 	{
 	}
 
@@ -164,12 +167,14 @@ namespace YH
 		#pragma endregion
 
 		#pragma region Level Up Effect
-						m_LevelUpEffect = object::Instantiate<GameObject>(enums::LayerType::Effect);
-						graphics::Texture* levelupEff = Resources::Find<graphics::Texture>(L"LevelUp");
-						Animator* levelupAnim = m_LevelUpEffect->AddComponent<Animator>();
-						m_LevelUpEffect->SetActive(false);
-						levelupAnim->CreateAnimation(L"Level Up", levelupEff, Vector2::Zero, Vector2(904.0f, 904.0f),
-							Vector2(0.0f, 0.0f), 20, 0.1f);
+				m_LevelUpEffect = object::Instantiate<GameObject>(enums::LayerType::Effect);
+				graphics::Texture* levelupEff = Resources::Find<graphics::Texture>(L"LevelUp");
+				Animator* levelupAnim = m_LevelUpEffect->AddComponent<Animator>();
+				m_LevelUpEffect->SetActive(false);
+				levelupAnim->CreateAnimation(L"Level Up", levelupEff, Vector2::Zero, Vector2(904.0f, 904.0f),
+					Vector2(0.0f, 0.0f), 20, 0.1f);
+
+				levelupAnim->GetCompleteEvent(L"Level Up") = std::bind(&PlayerScript::ExpEffectOff, this);
 		#pragma endregion
 
 
@@ -181,6 +186,7 @@ namespace YH
 				object::DontDestroyOnLoad(m_SharpEyes);
 				object::DontDestroyOnLoad(m_DoubleJump);
 				object::DontDestroyOnLoad(m_HighJump);
+				object::DontDestroyOnLoad(m_LevelUpEffect);
 		#pragma endregion
 	}
 
@@ -242,11 +248,7 @@ namespace YH
 
 	void PlayerScript::LateUpdate()
 	{
-		if (m_LevelUpEffect->IsActive() && m_Level > 1)
-		{
-			if (m_LevelUpEffect->GetComponent<Animator>()->IsComplete())
-				m_LevelUpEffect->SetActive(false);
-		}
+		
 	}
 
 	void PlayerScript::Render(HDC hdc)
@@ -467,6 +469,22 @@ namespace YH
 	{
 		if (other->GetCollType() == ColliderType::Rope)
 			isRope = true;
+
+		enums::ColliderType type = other->GetCollType();
+
+		switch (type)
+		{
+			case enums::ColliderType::DarknessBall:
+			{
+				m_Hp -= 5000;
+				break;
+			}
+			case enums::ColliderType::CygnusAttack:
+			{
+				m_Hp -= 15000;
+				break;
+			}
+		}
 	}
 
 	void PlayerScript::OnCollisionStay(Collider* other)
@@ -509,7 +527,6 @@ namespace YH
 			m_Exp = overExp;
 
 			m_LevelUpEffect->SetActive(true);
-			//Vector2 pos = renderer::mainCamera->CaluatePosition(Vector2(m_PlayerPos.x, m_PlayerPos.y));
 			m_LevelUpEffect->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x, m_PlayerPos.y - 200.0f));
 			m_LevelUpEffect->GetComponent<Animator>()->PlayAnimation(L"Level Up", false);
 
@@ -517,6 +534,12 @@ namespace YH
 			m_AudioSource->SetClip(ac);
 			m_AudioSource->Play();
 		}
+	}
+
+	void PlayerScript::ExpEffectOff()
+	{
+		if (m_LevelUpEffect->GetComponent<Animator>()->IsComplete())
+			m_LevelUpEffect->SetActive(false);
 	}
 
 	void PlayerScript::Idle()
@@ -695,6 +718,12 @@ namespace YH
 				m_SharpEyes->GetComponent<Transform>()->SetPosition(Vector2(m_PlayerPos.x, m_PlayerPos.y - 100.0f));
 				isBuff = true;
 				m_SharpEyes->GetComponent<Animator>()->PlayAnimation(L"Sharp Eyes", false);
+			}
+
+			if (Input::GetKeyDown(KeyCode::Delete))
+			{
+				if(m_Hp != m_MaxHp)
+					m_Hp = m_MaxHp;
 			}
 		#pragma endregion
 	}
@@ -1166,6 +1195,8 @@ namespace YH
 		if (m_SharpEyes->GetComponent<Animator>()->IsComplete())
 		{
 			m_State = PlayerScript::State::Idle;
+			m_CriticalChance += 30.0f;
+			m_CriticalDamage += 0.5f;
 			isBuff = false;
 			m_SharpEyes->SetActive(false);
 		}

@@ -14,16 +14,25 @@ namespace YH
 		void LateUpdate() override;
 		void Render(HDC hdc) override;
 
-		void SetDamage(int damage) 
+		void SetMonster(GameObject* monster) { m_Monster = monster; }
+		void SetDamage(int damage, int cnt, bool critical)
 		{ 
 			m_Damage = damage; 
-			ViewDamageFont();
+			m_Count = cnt;
+			ViewDamageFont(critical);
 		}
-		void ViewDamageFont();
+		void ViewDamageFont(bool critical);
 
 	private:
-		class GameObject* m_NumberImage[10];
+		GameObject* m_Monster;
+		GameObject* m_CriEffect;
+		GameObject* m_NumberImage[10];
 		int m_Damage;
+		int m_Count;
+
+		float m_DeathTime;
+
+		std::vector<GameObject*> m_DamageFonts;
 
 		std::wstring m_Name[10] =
 		{

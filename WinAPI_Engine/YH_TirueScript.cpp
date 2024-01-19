@@ -10,6 +10,8 @@
 
 #include "YH_Resources.h"
 #include "YH_AudioSource.h"
+#include "YH_PlayerScript.h"
+#include "YH_DamageFont.h"
 
 namespace YH
 {
@@ -87,6 +89,26 @@ namespace YH
 					AudioClip* ac = Resources::Load<AudioClip>(L"Fairy Turn Sound", L"..\\Resources\\SoundResource\\FairyTurnHit.mp3");
 					as->SetClip(ac);
 					as->Play();
+
+					const std::vector<GameObject*>& player = SceneManager::GetGameObjects(LayerType::Player);
+					PlayerScript* playerSc = player.front()->GetComponent<PlayerScript>();
+
+					for (int i = 0; i < 3; i++)
+					{
+						int d = rand() % (playerSc->GetMaxDamage() - playerSc->GetMinDamage() + 1) + playerSc->GetMinDamage();
+						float chance = rand() % 101;
+						bool critical = false;
+
+						if (chance <= playerSc->GetCriticalChance())
+						{
+							d *= playerSc->GetCriticalDamage();
+							critical = true;
+						}
+
+						SetDamage(d, i, critical);
+					}
+
+					playerSc->ExpUp(15000);
 
 					m_State = TirueScript::State::Death;
 					m_Animator->PlayAnimation(L"Tirue Die");
@@ -265,5 +287,15 @@ namespace YH
 		}
 
 		transform->SetPosition(pos);
+	}
+
+	void TirueScript::ViewDamageFont(int damage, int cnt, bool critical)
+	{
+		GameObject* damageFont = object::Instantiate<GameObject>(enums::LayerType::Effect);
+		damageFont->AddComponent<DamageFont>();
+
+		DamageFont* damageScr = damageFont->GetComponent<DamageFont>();
+		damageScr->SetMonster(GetOwner());
+		damageScr->SetDamage(damage, cnt, critical);
 	}
 }

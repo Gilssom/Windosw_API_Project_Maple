@@ -47,6 +47,13 @@ namespace YH
 
 		void Translate(Transform* transform);
 
+		void SetDamage(int damage, int cnt, bool critical)
+		{
+			m_Damage = damage;
+			ViewDamageFont(m_Damage, cnt, critical);
+		}
+		void ViewDamageFont(int damage, int cnt, bool critical);
+
 	private:
 		State m_State;
 		Direction m_Dir;
@@ -56,5 +63,7 @@ namespace YH
 		float m_NextFsmTime;
 		float m_DeathTime;
 		bool isDeath;
+
+		int m_Damage;
 	};
 }

@@ -40,9 +40,8 @@ namespace YH
 		if (!m_Attack && m_AttackTime > m_SkillDelay)
 		{
 			BoxCollider2D* genesisColl = GetOwner()->AddComponent<BoxCollider2D>();
-			//genesisColl->SetCollType(enums::ColliderType::HowlingGale);
+			genesisColl->SetCollType(enums::ColliderType::CygnusAttack);
 			genesisColl->SetOffset(m_SkillOffset);
-			//genesisColl->SetSize(Vector2(2.3f, 5.5f));
 			genesisColl->SetSize(m_SkillSize);
 
 			m_Attack = true;

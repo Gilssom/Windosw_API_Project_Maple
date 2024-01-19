@@ -47,12 +47,12 @@ namespace YH
 
 		void Translate(Transform* transform);
 
-		void SetDamage(int damage)
+		void SetDamage(int damage, int cnt, bool critical)
 		{
 			m_Damage = damage;
-			ViewDamageFont(m_Damage);
+			ViewDamageFont(m_Damage, cnt, critical);
 		}
-		void ViewDamageFont(int damage);
+		void ViewDamageFont(int damage, int cnt, bool critical);
 
 	private:
 		State m_State;
@@ -64,21 +64,6 @@ namespace YH
 		float m_DeathTime;
 		bool isDeath;
 
-		class GameObject* m_NumberImage[10];
 		int m_Damage;
-
-		std::wstring m_Name[10] =
-		{
-			L"Zero",
-			L"One",
-			L"Two",
-			L"Three",
-			L"Four",
-			L"Five",
-			L"Six",
-			L"Seven",
-			L"Eight",
-			L"Nine",
-		};
 	};
 }

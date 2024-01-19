@@ -113,6 +113,18 @@ namespace YH
 		Resources::Load<graphics::Texture>(L"Eight",				L"..\\Resources\\UI\\DamageFont\\Eight.png");
 		Resources::Load<graphics::Texture>(L"Nine",					L"..\\Resources\\UI\\DamageFont\\Nine.png");
 
+		Resources::Load<graphics::Texture>(L"CriZero",				L"..\\Resources\\UI\\DamageFont\\CriZero.png");
+		Resources::Load<graphics::Texture>(L"CriOne",				L"..\\Resources\\UI\\DamageFont\\CriOne.png");
+		Resources::Load<graphics::Texture>(L"CriTwo",				L"..\\Resources\\UI\\DamageFont\\CriTwo.png");
+		Resources::Load<graphics::Texture>(L"CriThree",				L"..\\Resources\\UI\\DamageFont\\CriThree.png");
+		Resources::Load<graphics::Texture>(L"CriFour",				L"..\\Resources\\UI\\DamageFont\\CriFour.png");
+		Resources::Load<graphics::Texture>(L"CriFive",				L"..\\Resources\\UI\\DamageFont\\CriFive.png");
+		Resources::Load<graphics::Texture>(L"CriSix",				L"..\\Resources\\UI\\DamageFont\\CriSix.png");
+		Resources::Load<graphics::Texture>(L"CriSeven",				L"..\\Resources\\UI\\DamageFont\\CriSeven.png");
+		Resources::Load<graphics::Texture>(L"CriEight",				L"..\\Resources\\UI\\DamageFont\\CriEight.png");
+		Resources::Load<graphics::Texture>(L"CriNine",				L"..\\Resources\\UI\\DamageFont\\CriNine.png");
+		Resources::Load<graphics::Texture>(L"CriEffect",			L"..\\Resources\\UI\\DamageFont\\CriEffect.png");
+
 
 		Resources::Load<graphics::Texture>(L"Test",					L"..\\Resources\\UI\\Test.bmp");
 

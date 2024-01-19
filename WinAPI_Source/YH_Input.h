@@ -19,6 +19,7 @@ namespace YH
 		Left, Right, Down, Up, Space,
 		LeftCtrl, LeftAlt,
 		LeftMouse, MiddleMouse, RightMouse,
+		Delete,
 		End,
 	};
 

@@ -66,7 +66,13 @@ namespace YH
 		float GetMpPercent() { return (float)m_Mp / (float)m_MaxMp; }
 		float GetExpPercent() { return (float)m_Exp / (float)m_MaxExp; }
 
+		int GetMinDamage() { return m_MinAttack; }
+		int GetMaxDamage() { return m_MaxAttack; }
+		float GetCriticalChance() { return m_CriticalChance; }
+		float GetCriticalDamage() { return m_CriticalDamage; }
+
 		void ExpUp(int exp);
+		void ExpEffectOff();
 
 		int GetPlayerMapNumber() { return m_MapNumber; }
 
@@ -97,6 +103,9 @@ namespace YH
 		int m_Mp, m_MaxMp;
 		int m_Exp, m_MaxExp;
 		int m_Level;
+		int m_MinAttack, m_MaxAttack;
+		float m_CriticalChance;
+		float m_CriticalDamage;
 
 		float m_ReShootTime;
 		bool isBuff;

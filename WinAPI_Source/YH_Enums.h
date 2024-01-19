@@ -32,6 +32,7 @@ namespace YH::enums
 		RimitGround,
 		Portal,
 		Effect,
+		BossEffect,
 		UI,
 		Max = 20,
 		// ...
@@ -53,6 +54,7 @@ namespace YH::enums
 		HowlingGale,
 		BoringArrow,
 		DarknessBall,
+		CygnusAttack,
 		Portal,
 		Rope,
 		RimitGround,

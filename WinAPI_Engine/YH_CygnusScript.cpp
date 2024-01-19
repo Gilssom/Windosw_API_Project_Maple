@@ -11,6 +11,8 @@
 
 #include "YH_ArrowScript.h"
 #include "YH_DarkGenesis.h"
+#include "YH_PlayerScript.h"
+#include "YH_DamageFont.h"
 
 #include "..\\WinAPI_Source\\YH_UIManager.h"
 
@@ -96,7 +98,24 @@ namespace YH
 
 					fariyHit->AddComponent<HitEffect>();
 
-					m_Hp -= 50000000;
+					const std::vector<GameObject*>& player = SceneManager::GetGameObjects(LayerType::Player);
+					PlayerScript* playerSc = player.front()->GetComponent<PlayerScript>();
+
+					for (int i = 0; i < 3; i++)
+					{
+						int d = rand() % (playerSc->GetMaxDamage() - playerSc->GetMinDamage() + 1) + playerSc->GetMinDamage();
+						float chance = rand() % 101;
+						bool critical = false;
+
+						if (chance <= playerSc->GetCriticalChance())
+						{
+							d *= playerSc->GetCriticalDamage();
+							critical = true;
+						}
+
+						SetDamage(d, i, critical);
+						m_Hp -= d;
+					}
 
 					//DeathCheck();
 					break;
@@ -113,7 +132,25 @@ namespace YH
 
 					howlingHit->AddComponent<HitEffect>();
 
-					m_Hp -= 70000000;
+					const std::vector<GameObject*>& player = SceneManager::GetGameObjects(LayerType::Player);
+					PlayerScript* playerSc = player.front()->GetComponent<PlayerScript>();
+
+					for (int i = 0; i < 5; i++)
+					{
+						int d = rand() % (playerSc->GetMaxDamage() - playerSc->GetMinDamage() + 1) + playerSc->GetMinDamage();
+						float chance = rand() % 101;
+						bool critical = false;
+
+						if (chance <= playerSc->GetCriticalChance())
+						{
+							d *= playerSc->GetCriticalDamage();
+							critical = true;
+						}
+
+						SetDamage(d, i, critical);
+						m_Hp -= d;
+					}
+
 					break;
 				}
 				case enums::ColliderType::BoringArrow:
@@ -127,8 +164,21 @@ namespace YH
 					AHanim->PlayAnimation(L"Boring Hit Effect", false);
 
 					arrowHit->AddComponent<HitEffect>();
+					const std::vector<GameObject*>& player = SceneManager::GetGameObjects(LayerType::Player);
+					PlayerScript* playerSc = player.front()->GetComponent<PlayerScript>();
 
-					m_Hp -= 20000000;
+					int d = rand() % (playerSc->GetMaxDamage() - playerSc->GetMinDamage() + 1) + playerSc->GetMinDamage();
+					float chance = rand() % 101;
+					bool critical = false;
+
+					if (chance <= playerSc->GetCriticalChance())
+					{
+						d *= playerSc->GetCriticalDamage();
+						critical = true;
+					}
+
+					SetDamage(d, 0, critical);
+					m_Hp -= d;
 
 					object::Destroy(other->GetOwner());
 					break;
@@ -154,7 +204,7 @@ namespace YH
 
 		for (int i = 0; i < 6; i++)
 		{
-			GameObject* genesis = object::Instantiate<GameObject>(enums::LayerType::Effect, m_GPos[i]);
+			GameObject* genesis = object::Instantiate<GameObject>(enums::LayerType::BossEffect, m_GPos[i]);
 
 			DarkGenesis* skillSc = genesis->AddComponent<DarkGenesis>();
 			skillSc->SetSkillDelay(3.85f);
@@ -172,7 +222,7 @@ namespace YH
 
 	void CygnusScript::Skill2Ball()
 	{
-		GameObject* ball = object::Instantiate<GameObject>(enums::LayerType::Effect);
+		GameObject* ball = object::Instantiate<GameObject>(enums::LayerType::BossEffect);
 
 		Animator* ballAnim = ball->AddComponent<Animator>();
 		graphics::Texture* ballTexture = Resources::Find<graphics::Texture>(L"CygnusSkill2Ball");
@@ -187,7 +237,7 @@ namespace YH
 		ballScript->SetSpeed(500.0f);
 
 		BoxCollider2D* ballColl = ball->AddComponent<BoxCollider2D>();
-		//ballColl->SetCollType(enums::ColliderType::BoringArrow);
+		ballColl->SetCollType(enums::ColliderType::DarknessBall);
 		ballColl->SetSize(Vector2(1.f, 0.5f));
 
 		Transform* cygnusTf = GetOwner()->GetComponent<Transform>();
@@ -213,7 +263,7 @@ namespace YH
 
 	void CygnusScript::Skill3Ball()
 	{
-		GameObject* fireArea = object::Instantiate<GameObject>(enums::LayerType::Effect, Vector2(m_TargetPos.x, 430.0f));
+		GameObject* fireArea = object::Instantiate<GameObject>(enums::LayerType::BossEffect, Vector2(m_TargetPos.x, 430.0f));
 
 		DarkGenesis* skillSc = fireArea->AddComponent<DarkGenesis>();
 		skillSc->SetSkillDelay(2.65f);
@@ -495,5 +545,15 @@ namespace YH
 		}
 
 		transform->SetPosition(pos);
+	}
+
+	void CygnusScript::ViewDamageFont(int damage, int cnt, bool critical)
+	{
+		GameObject* damageFont = object::Instantiate<GameObject>(enums::LayerType::Effect);
+		damageFont->AddComponent<DamageFont>();
+
+		DamageFont* damageScr = damageFont->GetComponent<DamageFont>();
+		damageScr->SetMonster(GetOwner());
+		damageScr->SetDamage(damage, cnt, critical);
 	}
 }

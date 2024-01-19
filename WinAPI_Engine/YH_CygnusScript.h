@@ -56,6 +56,13 @@ namespace YH
 
 		void Translate(Transform* transform);
 
+		void SetDamage(int damage, int cnt, bool critical)
+		{
+			m_Damage = damage;
+			ViewDamageFont(m_Damage, cnt, critical);
+		}
+		void ViewDamageFont(int damage, int cnt, bool critical);
+
 	private:
 		__int64 m_Hp, m_MaxHp;
 		int m_Exp;
@@ -70,6 +77,8 @@ namespace YH
 		float m_SkillDelay;
 		bool m_DoSkill;
 		float m_DeathTime;
+
+		int m_Damage;
 
 		Vector2 m_GPos[6] =
 		{

@@ -16,6 +16,7 @@ namespace YH
 		VK_LEFT, VK_RIGHT, VK_DOWN, VK_UP, VK_SPACE,
 		VK_LCONTROL, VK_LMENU,
 		VK_LBUTTON, VK_MBUTTON, VK_RBUTTON,
+		VK_DELETE,
 	};
 
 	void Input::Initailize()

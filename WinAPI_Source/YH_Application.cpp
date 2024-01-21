@@ -62,7 +62,7 @@ namespace YH
 
 		CollisionManager::Render(m_BackHdc);
 		SceneManager::Render(m_BackHdc);
-		Time::Render(m_BackHdc);
+		//Time::Render(m_BackHdc);
 		UIManager::Render(m_BackHdc);
 
 		CopyRenderTarget(m_BackHdc, m_Hdc);

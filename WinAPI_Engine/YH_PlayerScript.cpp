@@ -15,6 +15,7 @@
 #include "YH_BoxCollider2D.h"
 #include "YH_AudioSource.h"
 #include "YH_AudioClip.h"
+#include "YH_DamageFont.h"
 
 namespace YH
 {
@@ -204,7 +205,7 @@ namespace YH
 		m_PlayerPos = GetOwner()->GetComponent<Transform>()->GetPostion();
 
 		if (Input::GetKeyDown(KeyCode::T))
-			ExpUp(20000);
+			BoxCollider2D::DrawOnOff();
 
 		switch (m_State)
 		{
@@ -476,11 +477,13 @@ namespace YH
 		{
 			case enums::ColliderType::DarknessBall:
 			{
+				SetDamage(5000, 0, false);
 				m_Hp -= 5000;
 				break;
 			}
 			case enums::ColliderType::CygnusAttack:
 			{
+				SetDamage(15000, 0, false);
 				m_Hp -= 15000;
 				break;
 			}
@@ -540,6 +543,16 @@ namespace YH
 	{
 		if (m_LevelUpEffect->GetComponent<Animator>()->IsComplete())
 			m_LevelUpEffect->SetActive(false);
+	}
+
+	void PlayerScript::ViewDamageFont(int damage, int cnt, bool critical)
+	{
+		GameObject* damageFont = object::Instantiate<GameObject>(enums::LayerType::UI);
+		damageFont->AddComponent<DamageFont>();
+
+		DamageFont* damageScr = damageFont->GetComponent<DamageFont>();
+		damageScr->SetMonster(GetOwner());
+		damageScr->SetDamage(damage, cnt, critical, true);
 	}
 
 	void PlayerScript::Idle()

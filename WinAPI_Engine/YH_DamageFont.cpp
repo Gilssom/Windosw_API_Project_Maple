@@ -38,7 +38,7 @@ namespace YH
 	{
 		m_DeathTime += Time::DeltaTime();
 
-		if (m_DeathTime > 2.0f)
+		if (m_DeathTime > 1.5f)
 		{
 			for (int i = 0; i < m_DamageFonts.size(); i++)
 			{
@@ -69,9 +69,10 @@ namespace YH
 
 	}
 
-	void DamageFont::ViewDamageFont(bool critical)
+	void DamageFont::ViewDamageFont(bool critical, bool isPlayer)
 	{
 		Vector2 pos = m_Monster->GetComponent<Transform>()->GetPostion();
+		pos = Vector2(pos.x + 70.0f, pos.y);
 
 		int Xcnt = 0;
 
@@ -93,17 +94,24 @@ namespace YH
 			renderer->SetName(m_Name[temp]);
 			graphics::Texture* texture = nullptr;
 
-			if (!critical)
+			if (isPlayer)
 			{
-				texture = Resources::Find<graphics::Texture>(m_Name[temp]);
+				texture = Resources::Find<graphics::Texture>(L"Hit" + m_Name[temp]);
 				renderer->SetTexture(texture);
 			}
 			else
 			{
-				texture = Resources::Find<graphics::Texture>(L"Cri" + m_Name[temp]);
-				renderer->SetTexture(texture);
+				if (!critical)
+				{
+					texture = Resources::Find<graphics::Texture>(m_Name[temp]);
+					renderer->SetTexture(texture);
+				}
+				else
+				{
+					texture = Resources::Find<graphics::Texture>(L"Cri" + m_Name[temp]);
+					renderer->SetTexture(texture);
+				}
 			}
-
 			m_NumberImage[temp]->GetComponent<Transform>()->SetPosition(Vector2(pos.x - ((texture->GetWidth() - 10.0f) * Xcnt), pos.y - (100.0f + 24.5f * m_Count)));
 
 			if (m_CriEffect)

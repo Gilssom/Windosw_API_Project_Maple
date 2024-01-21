@@ -15,13 +15,13 @@ namespace YH
 		void Render(HDC hdc) override;
 
 		void SetMonster(GameObject* monster) { m_Monster = monster; }
-		void SetDamage(int damage, int cnt, bool critical)
+		void SetDamage(int damage, int cnt, bool critical, bool isPlayer = false)
 		{ 
 			m_Damage = damage; 
 			m_Count = cnt;
-			ViewDamageFont(critical);
+			ViewDamageFont(critical, isPlayer);
 		}
-		void ViewDamageFont(bool critical);
+		void ViewDamageFont(bool critical, bool isPlayer = false);
 
 	private:
 		GameObject* m_Monster;
@@ -45,7 +45,7 @@ namespace YH
 			L"Six",
 			L"Seven",
 			L"Eight",
-			L"Nine",
+			L"Nine"
 		};
 	};
 }

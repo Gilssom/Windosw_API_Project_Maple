@@ -70,7 +70,7 @@ namespace YH
 
 	void CygnusScript::LateUpdate()
 	{
-
+		
 	}
 
 	void CygnusScript::Render(HDC hdc)
@@ -104,6 +104,7 @@ namespace YH
 					for (int i = 0; i < 3; i++)
 					{
 						int d = rand() % (playerSc->GetMaxDamage() - playerSc->GetMinDamage() + 1) + playerSc->GetMinDamage();
+						d *= 50;
 						float chance = rand() % 101;
 						bool critical = false;
 
@@ -115,9 +116,11 @@ namespace YH
 
 						SetDamage(d, i, critical);
 						m_Hp -= d;
+
+						if (m_Hp <= 0)
+							DeathCheck();
 					}
 
-					//DeathCheck();
 					break;
 				}
 				case enums::ColliderType::HowlingGale:
@@ -138,6 +141,7 @@ namespace YH
 					for (int i = 0; i < 5; i++)
 					{
 						int d = rand() % (playerSc->GetMaxDamage() - playerSc->GetMinDamage() + 1) + playerSc->GetMinDamage();
+						d *= 50;
 						float chance = rand() % 101;
 						bool critical = false;
 
@@ -149,6 +153,9 @@ namespace YH
 
 						SetDamage(d, i, critical);
 						m_Hp -= d;
+
+						if (m_Hp <= 0)
+							DeathCheck();
 					}
 
 					break;
@@ -168,6 +175,7 @@ namespace YH
 					PlayerScript* playerSc = player.front()->GetComponent<PlayerScript>();
 
 					int d = rand() % (playerSc->GetMaxDamage() - playerSc->GetMinDamage() + 1) + playerSc->GetMinDamage();
+					d *= 50;
 					float chance = rand() % 101;
 					bool critical = false;
 
@@ -180,7 +188,11 @@ namespace YH
 					SetDamage(d, 0, critical);
 					m_Hp -= d;
 
+					if (m_Hp <= 0)
+						DeathCheck();
+
 					object::Destroy(other->GetOwner());
+
 					break;
 				}
 			}
@@ -549,7 +561,7 @@ namespace YH
 
 	void CygnusScript::ViewDamageFont(int damage, int cnt, bool critical)
 	{
-		GameObject* damageFont = object::Instantiate<GameObject>(enums::LayerType::Effect);
+		GameObject* damageFont = object::Instantiate<GameObject>(enums::LayerType::UI);
 		damageFont->AddComponent<DamageFont>();
 
 		DamageFont* damageScr = damageFont->GetComponent<DamageFont>();

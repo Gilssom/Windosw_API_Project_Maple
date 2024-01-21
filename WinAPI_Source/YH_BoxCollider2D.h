@@ -14,7 +14,16 @@ namespace YH
 		virtual void LateUpdate();
 		virtual void Render(HDC hdc);
 
+		static void DrawOnOff() 
+		{ 
+			if (isDraw)
+				isDraw = false;
+			else
+				isDraw = true;
+		}
+
 	private:
+		static bool isDraw;
 	};
 }
 

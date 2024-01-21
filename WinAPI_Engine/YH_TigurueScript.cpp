@@ -209,7 +209,6 @@ namespace YH
 
 			int direction = (rand() % 2);
 			m_Dir = (Direction)direction;
-			// rand() % (b - a + 1) + a = a 부터 b 까지 범위
 			m_NextFsmTime = (rand() % 3 + 2);
 			PlayWalkAnimationByDirection(m_Dir);
 			m_Time = 0.0f;
@@ -294,7 +293,7 @@ namespace YH
 
 	void TigurueScript::ViewDamageFont(int damage, int cnt, bool critical)
 	{
-		GameObject* damageFont = object::Instantiate<GameObject>(enums::LayerType::Effect);
+		GameObject* damageFont = object::Instantiate<GameObject>(enums::LayerType::UI);
 		damageFont->AddComponent<DamageFont>();
 
 		DamageFont* damageScr = damageFont->GetComponent<DamageFont>();

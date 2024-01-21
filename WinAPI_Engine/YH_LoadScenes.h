@@ -21,9 +21,9 @@ namespace YH
 
 		//SceneManager::CreateScene<ToolScene>(L"ToolScene");
 
-		//SceneManager::LoadScene(L"TitleScene");
+		SceneManager::LoadScene(L"TitleScene");
 		//SceneManager::LoadScene(L"LobbyScene");
-		SceneManager::LoadScene(L"PlayScene");
+		//SceneManager::LoadScene(L"PlayScene");
 		//SceneManager::LoadScene(L"PlayScene");
 	}
 }

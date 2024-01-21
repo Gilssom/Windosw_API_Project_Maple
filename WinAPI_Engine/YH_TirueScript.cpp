@@ -291,7 +291,7 @@ namespace YH
 
 	void TirueScript::ViewDamageFont(int damage, int cnt, bool critical)
 	{
-		GameObject* damageFont = object::Instantiate<GameObject>(enums::LayerType::Effect);
+		GameObject* damageFont = object::Instantiate<GameObject>(enums::LayerType::UI);
 		damageFont->AddComponent<DamageFont>();
 
 		DamageFont* damageScr = damageFont->GetComponent<DamageFont>();

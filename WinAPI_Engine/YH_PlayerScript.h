@@ -76,6 +76,12 @@ namespace YH
 
 		int GetPlayerMapNumber() { return m_MapNumber; }
 
+		void SetDamage(int damage, int cnt, bool critical)
+		{
+			ViewDamageFont(damage, cnt, critical);
+		}
+		void ViewDamageFont(int damage, int cnt, bool critical);
+
 	private:
 		void Idle();
 		void Move();

@@ -73,10 +73,6 @@ namespace YH
 	void LobbyScene::Render(HDC hdc)
 	{
 		Scene::Render(hdc);
-
-		wchar_t str[50] = L"Lobby Scene";
-
-		TextOut(hdc, 0, 0, str, 11);
 	}
 
 	void LobbyScene::OnEnter()

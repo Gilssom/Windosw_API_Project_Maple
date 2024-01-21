@@ -125,6 +125,18 @@ namespace YH
 		Resources::Load<graphics::Texture>(L"CriNine",				L"..\\Resources\\UI\\DamageFont\\CriNine.png");
 		Resources::Load<graphics::Texture>(L"CriEffect",			L"..\\Resources\\UI\\DamageFont\\CriEffect.png");
 
+		Resources::Load<graphics::Texture>(L"HitZero",				L"..\\Resources\\UI\\DamageFont\\HitZero.png");
+		Resources::Load<graphics::Texture>(L"HitOne",				L"..\\Resources\\UI\\DamageFont\\HitOne.png");
+		Resources::Load<graphics::Texture>(L"HitTwo",				L"..\\Resources\\UI\\DamageFont\\HitTwo.png");
+		Resources::Load<graphics::Texture>(L"HitThree",				L"..\\Resources\\UI\\DamageFont\\HitThree.png");
+		Resources::Load<graphics::Texture>(L"HitFour",				L"..\\Resources\\UI\\DamageFont\\HitFour.png");
+		Resources::Load<graphics::Texture>(L"HitFive",				L"..\\Resources\\UI\\DamageFont\\HitFive.png");
+		Resources::Load<graphics::Texture>(L"HitSix",				L"..\\Resources\\UI\\DamageFont\\HitSix.png");
+		Resources::Load<graphics::Texture>(L"HitSeven",				L"..\\Resources\\UI\\DamageFont\\HitSeven.png");
+		Resources::Load<graphics::Texture>(L"HitEight",				L"..\\Resources\\UI\\DamageFont\\HitEight.png");
+		Resources::Load<graphics::Texture>(L"HitNine",				L"..\\Resources\\UI\\DamageFont\\HitNine.png");
+		Resources::Load<graphics::Texture>(L"HitEffect",			L"..\\Resources\\UI\\DamageFont\\HitEffect.png");
+
 
 		Resources::Load<graphics::Texture>(L"Test",					L"..\\Resources\\UI\\Test.bmp");
 
